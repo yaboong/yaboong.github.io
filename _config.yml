@@ -5,7 +5,7 @@ canonical: http://jekyll.gtat.me
 
 gems:
   - jekyll-paginate
-paginate: 1
+paginate: 5
 paginate_path: /page:num/
 
 # Owner/author information
