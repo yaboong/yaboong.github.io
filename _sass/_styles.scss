@@ -324,7 +324,7 @@ header.site-header nav {
             width: 100%;
             margin-top: 0;
             .date {
-                font-family: $sans;
+                font-family: $serif;
                 font-size: $fs5;
                 font-weight: bold;
                 color: $grey-light;
@@ -909,5 +909,29 @@ small {
 }
 
 
+// Yaboong Custom
+/* Paginator */
 
-
+.pagination {
+    text-align: center;
+    margin: 2.666668em;
+    span {
+        background-color: darken($link, 5%);
+        color: $white;
+    }
+    a:hover {
+        background-color: lighten($link, 5%);
+        color: $white;
+    }
+}
+.page-item {
+    background-color: $white;
+    color: $link;
+    padding: 4px 8px;
+    font-weight: 400;
+    padding: 0.5em 1em;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+}

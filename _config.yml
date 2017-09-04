@@ -3,6 +3,11 @@ tagline:          A beautiful theme.
 description:      Describe your website.
 canonical: http://jekyll.gtat.me
 
+gems:
+  - jekyll-paginate
+paginate: 1
+paginate_path: /page:num/
+
 # Owner/author information
 owner:
   name:           Yaboong
@@ -58,7 +63,7 @@ sass:
     style: :compressed
 
 # https://github.com/mojombo/jekyll/wiki/Permalinks
-permalink:   /:categories/:title
+#permalink:   /:categories/:year/:month/:day/:title
 
 include: [".htaccess"]
 exclude: ["lib", "config.rb", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp"]
