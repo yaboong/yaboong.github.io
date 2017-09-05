@@ -1,0 +1,110 @@
+---
+layout: default
+title: Blog
+---
+
+<div class="posts">
+  {% for post in paginator.posts %}
+  <div class="post">
+    <h1 class="post-title">
+      <a href="{{ site.baseurl }}{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </h1>
+
+    <span class="post-date">{{ post.date | date_to_string }}</span>
+    {% if post.tags %} | 
+    {% for tag in post.tags %}
+    <a href="{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
+    {% endfor %}
+    {% endif %}
+
+    <article>
+      {{ post.excerpt | markdownify }}
+    <article>
+    <div class="post-more">
+      {% if site.disqus_short_name %}
+      <a href="{{ site.baseurl }}{{ post.url }}#disqus_thread"> <i class="fa fa-comments" aria-hidden="true"></i>Comment</a>&nbsp;
+      {% endif %}
+      <a href="{{ site.baseurl }}{{ post.url }}"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+<!-- theme default pagination -->
+<!--<div class="pagination">-->
+  <!--{% if paginator.next_page %}-->
+    <!--<a class="pagination-item older" href="{{ site.baseurl }}/blog/page{{paginator.next_page}}">Older</a>-->
+  <!--{% else %}-->
+    <!--<span class="pagination-item older">Older</span>-->
+  <!--{% endif %}-->
+  <!--{% if paginator.previous_page %}-->
+    <!--{% if paginator.page == 2 %}-->
+      <!--<a class="pagination-item newer" href="{{ site.baseurl }}/blog/">Newer</a>-->
+    <!--{% else %}-->
+      <!--<a class="pagination-item newer" href="{{ site.baseurl }}/blog/page{{paginator.previous_page}}">Newer</a>-->
+    <!--{% endif %}-->
+  <!--{% else %}-->
+    <!--<span class="pagination-item newer">Newer</span>-->
+  <!--{% endif %}-->
+<!--</div>-->
+
+
+
+  <!-- Pagination links -->
+  <!--{% if paginator.total_pages > 1 %}-->
+  <!--<div class="pagination">-->
+          <!--{% if paginator.previous_page == 1 %}-->
+          <!--<a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}" class="page-item">&laquo;</a>-->
+          <!--{% elsif paginator.previous_page%}-->
+          <!--<a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="page-item">&laquo;</a>-->
+          <!--{% else %}-->
+          <!--<span class="page-item">&laquo;</span>-->
+          <!--{% endif %}-->
+
+          <!--{% for page in (1..paginator.total_pages) %}-->
+          <!--{% if page == paginator.page %}-->
+          <!--<span class="page-item">{{ page }}</span>-->
+          <!--{% elsif page == 1 %}-->
+          <!--<a href="{{ '/' | prepend: site.baseurl | replace: '//', '/' }}" class="page-item">{{ page }}</a>-->
+          <!--{% else %}-->
+
+          <!--<a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}" class="page-item">{{ page }}</a>-->
+          <!--{% endif %}-->
+          <!--{% endfor %}-->
+
+          <!--{% if paginator.next_page %}-->
+          <!--<a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}" class="page-item">&raquo;</a>-->
+          <!--{% else %}-->
+          <!--<span class="page-item">&raquo;</span>-->
+          <!--{% endif %}-->
+      <!--</div>-->
+  <!--{% endif %}-->
+
+{% if paginator.total_pages > 1 %}
+<div class="pagination">
+    {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; </a>
+    {% else %}
+    <span>&laquo; </span>
+    {% endif %}
+
+    {% for page in (1..paginator.total_pages) %}
+    {% if page == paginator.page %}
+    <em>{{ page }}</em>
+    {% elsif page == 1 %}
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+    {% else %}
+    <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+    {% endfor %}
+
+    {% if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"> &raquo;</a>
+    {% else %}
+    <span> &raquo;</span>
+    {% endif %}
+</div>
+{% endif %}
