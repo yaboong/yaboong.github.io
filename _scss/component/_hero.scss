@@ -1,10 +1,57 @@
+//.hero {
+//  text-align: center;
+//  font-size: 0.75rem;
+//  img {
+//    height: 28rem;
+//    width: auto;
+//    display: inline;
+//    margin-top: -1rem;
+//  }
+//}
+
 .hero {
   text-align: center;
-  font-size: 0.75rem;
+
   img {
     height: 28rem;
     width: auto;
     display: inline;
     margin-top: -1rem;
+  }
+
+  .yaboong {
+    position: relative;
+    marign: 0;
+    padding: 30px 120px;
+    text-align: center;
+    font-size: 20px;
+  }
+
+  .yaboong:before, .yaboong:after {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    font-size: 120px;
+    line-height: 1;
+  }
+
+  .yaboong:before {
+    top: 0;
+    left: 0;
+    content: "\201C";
+  }
+
+  .yaboong:after {
+    top: 0;
+    right: 0;
+    content: "\201D";
+  }
+
+  .yaboong p {
+    margin-bottom: 30px;
+  }
+
+  .yaboong p:last-child {
+    margin-bottom: 0;
   }
 }

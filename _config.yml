@@ -1,13 +1,13 @@
 # Site Info
-title: Codinfox Lanyon
-tagline: 'A Jekyll theme based on Lanyon'
+title: YABOONG
+tagline: 'Yaboong''s blog for yaboong'
 description: 'A Jekyll theme adapted from <a href="http://lanyon.getpoole.com/" target="_blank">Lanyon</a>. Made by <a href="http://codinfox.github.io" target="_blank">@codinfox</a>.'
 baseurl: ""
 url: http://codinfox.github.io
 logo: '/public/logo.png'
 
 # Site configurations
-gems:
+plugins:
   - jekyll-paginate
 markdown: kramdown
 kramdown:
@@ -25,15 +25,15 @@ version: 1.0.0
 # About/contact
 author:
   name: Yaboong
-  description: A passionate <strong>developer</strong>, learning to be a giant.
+  description: <strong>developer yaboong</strong>
   gravatar: 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
   contact:
-    linkedin:  https://www.linkedin.com/in/lizhihao
-    github:    https://github.com/codinfox
+#    linkedin:
+    github:    https://github.com/yaboong
     # facebook:  <hide>
-    twitter:   https://twitter.com/Li_Zhihao
-    weibo:     http://weibo.com/41173780
-    email:     http://www.google.com/recaptcha/mailhide/d?k=01I3lZFiZYng9N3QxYEtsDaQ==&c=31wAnZkuKqcG0ATAqJN8Z3ln5kkYLA9TwkGc-IbygpM=
+    twitter:
+#    email:     http://www.google.com/recaptcha/mailhide/d?k=01I3lZFiZYng9N3QxYEtsDaQ==&c=31wAnZkuKqcG0ATAqJN8Z3ln5kkYLA9TwkGc-IbygpM=
+    email: daniel.yebon.yoo@gmail.com
 
 # Navigation (2nd level links supported)
 nav:
@@ -52,9 +52,13 @@ nav:
 tag_page: '/blog/tags/'
 category_page: '/blog/categories/'
 
-hero:
-  image: /public/img/we_will_be_giants_by_yalestewart.jpg
-  caption: Original Artwork &copy; <a href="http://yalestewart.deviantart.com/art/We-Will-Be-Giants-370176475">Yale Stewart</a>
+yaboong:
+  image: /public/img/schindlers_list.jpg
+  caption: 오스카 쉰들러는 흔해빠진 기회주의자요 부패한 사업가였다. 그러나 거대한 악이 세상을 점령하는 것처럼 보일 때 그 악에 대항해서 사람의 생명을 구한 것은 귀족도 지식인도 종교인도 아닌 부패한 기회주의자 오스카 쉰들러였다.
+#  그의 영혼에 안식과 축복이 있기를.
+#  caption: Oscar Schindler was a common opportunist and corrupt businessman.
+#          But it was Oscar Schindler, a corrupt opportunist who was not a noble, an intellectual, or a religious person who saved the life of a man against the evil when the great evil seemed to occupy the world.
+#          There is rest and blessing in his soul.
 
 # Puglins
 mathjax: true # whether support mathjax
