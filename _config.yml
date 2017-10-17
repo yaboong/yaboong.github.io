@@ -19,6 +19,8 @@ sass:
 paginate: 5
 paginate_path: '/blog/page:num'
 permalink: pretty
+timezone: 'Asia/Seoul'
+future: true
 
 version: 1.0.0
 
