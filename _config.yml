@@ -4,7 +4,7 @@ tagline: 'Yaboong''s blog for yaboong'
 description: 'A Jekyll theme adapted from <a href="http://lanyon.getpoole.com/" target="_blank">Lanyon</a>. Made by <a href="http://codinfox.github.io" target="_blank">@codinfox</a>.'
 baseurl: ""
 url: https://github.com/yaboong
-logo: '/public/logo.png'
+logo: '/public/yaboong_logo.png'
 
 # Site configurations
 plugins:
