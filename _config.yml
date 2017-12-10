@@ -1,6 +1,6 @@
 # Site Info
 title: YABOONG
-tagline: 'Yaboong''s blog for yaboong'
+tagline: 'Yaboong''s blog'
 description: 'A Jekyll theme adapted from <a href="http://lanyon.getpoole.com/" target="_blank">Lanyon</a>. Made by <a href="http://codinfox.github.io" target="_blank">@codinfox</a>.'
 baseurl: ""
 url: https://github.com/yaboong
@@ -16,7 +16,7 @@ excerpt_separator: "<!-- more -->"
 sass:
   style: compressed
   sass_dir: _scss    
-paginate: 5
+paginate: 3
 paginate_path: '/blog/page:num'
 permalink: pretty
 timezone: 'Asia/Seoul'
