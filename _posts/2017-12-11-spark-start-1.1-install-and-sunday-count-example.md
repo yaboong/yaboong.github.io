@@ -75,7 +75,7 @@ assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeSca
 ```
 
 
-## plugins.sbt 편
+## plugins.sbt 편집
 sbt-assembly 플러그인을 사용하려면 plugins.sbt 에 아래와 같이 추가해 준다.
 ```scala
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.13.0")
