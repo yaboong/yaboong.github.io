@@ -152,5 +152,78 @@ $ spark-submit --master local --class com.yaboong.spark.SundayCount target/scala
 ```
 
 
+## 실행결과
+```java
+$ spark-submit --master local --class com.yaboong.spark.SundayCount target/scala-2.11/spark-study-project-assembly-0.0.1.jar resource/test_small_data.txt
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+17/12/11 03:00:40 INFO SparkContext: Running Spark version 2.2.0
+17/12/11 03:00:40 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+17/12/11 03:00:41 INFO SparkContext: Submitted application: com.yaboong.spark.SundayCount
+17/12/11 03:00:41 INFO SecurityManager: Changing view acls to: yaboong
+17/12/11 03:00:41 INFO SecurityManager: Changing modify acls to: yaboong
+17/12/11 03:00:41 INFO SecurityManager: Changing view acls groups to:
+17/12/11 03:00:41 INFO SecurityManager: Changing modify acls groups to:
+17/12/11 03:00:41 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(yaboong); groups with view permissions: Set(); users  with modify permissions: Set(yaboong); groups with modify permissions: Set()
+17/12/11 03:00:41 INFO Utils: Successfully started service 'sparkDriver' on port 50747.
+17/12/11 03:00:41 INFO SparkEnv: Registering MapOutputTracker
+17/12/11 03:00:41 INFO SparkEnv: Registering BlockManagerMaster
+17/12/11 03:00:41 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+17/12/11 03:00:41 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+17/12/11 03:00:41 INFO DiskBlockManager: Created local directory at /private/var/folders/mz/7nk42g591rzd1v3x18ln5jpm0000gn/T/blockmgr-97df123e-30af-4bad-812a-e74c1429a79e
+17/12/11 03:00:41 INFO MemoryStore: MemoryStore started with capacity 366.3 MB
+17/12/11 03:00:41 INFO SparkEnv: Registering OutputCommitCoordinator
+17/12/11 03:00:41 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+17/12/11 03:00:41 INFO SparkUI: Bound SparkUI to 127.0.0.1, and started at http://127.0.0.1:4040
+17/12/11 03:00:41 INFO SparkContext: Added JAR file:/Users/yaboong/DevWorkspace/etc-workspace/spark-study-project/target/scala-2.11/spark-study-project-assembly-0.0.1.jar at spark://127.0.0.1:50747/jars/spark-study-project-assembly-0.0.1.jar with timestamp 1512928841680
+17/12/11 03:00:41 INFO Executor: Starting executor ID driver on host localhost
+17/12/11 03:00:41 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 50748.
+17/12/11 03:00:41 INFO NettyBlockTransferService: Server created on 127.0.0.1:50748
+17/12/11 03:00:41 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+17/12/11 03:00:41 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 127.0.0.1, 50748, None)
+17/12/11 03:00:41 INFO BlockManagerMasterEndpoint: Registering block manager 127.0.0.1:50748 with 366.3 MB RAM, BlockManagerId(driver, 127.0.0.1, 50748, None)
+17/12/11 03:00:41 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 127.0.0.1, 50748, None)
+17/12/11 03:00:41 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 127.0.0.1, 50748, None)
+17/12/11 03:00:42 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 236.5 KB, free 366.1 MB)
+17/12/11 03:00:42 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 22.9 KB, free 366.0 MB)
+17/12/11 03:00:42 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on 127.0.0.1:50748 (size: 22.9 KB, free: 366.3 MB)
+17/12/11 03:00:42 INFO SparkContext: Created broadcast 0 from textFile at SundayCount.scala:22
+17/12/11 03:00:42 INFO FileInputFormat: Total input paths to process : 1
+17/12/11 03:00:42 INFO SparkContext: Starting job: count at SundayCount.scala:33
+17/12/11 03:00:42 INFO DAGScheduler: Got job 0 (count at SundayCount.scala:33) with 1 output partitions
+17/12/11 03:00:42 INFO DAGScheduler: Final stage: ResultStage 0 (count at SundayCount.scala:33)
+17/12/11 03:00:42 INFO DAGScheduler: Parents of final stage: List()
+17/12/11 03:00:42 INFO DAGScheduler: Missing parents: List()
+17/12/11 03:00:42 INFO DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[3] at filter at SundayCount.scala:29), which has no missing parents
+17/12/11 03:00:42 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 3.5 KB, free 366.0 MB)
+17/12/11 03:00:42 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 2.1 KB, free 366.0 MB)
+17/12/11 03:00:42 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on 127.0.0.1:50748 (size: 2.1 KB, free: 366.3 MB)
+17/12/11 03:00:42 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1006
+17/12/11 03:00:42 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[3] at filter at SundayCount.scala:29) (first 15 tasks are for partitions Vector(0))
+17/12/11 03:00:42 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks
+17/12/11 03:00:42 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0, localhost, executor driver, partition 0, PROCESS_LOCAL, 4914 bytes)
+17/12/11 03:00:42 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)
+17/12/11 03:00:42 INFO Executor: Fetching spark://127.0.0.1:50747/jars/spark-study-project-assembly-0.0.1.jar with timestamp 1512928841680
+17/12/11 03:00:42 INFO TransportClientFactory: Successfully created connection to /127.0.0.1:50747 after 30 ms (0 ms spent in bootstraps)
+17/12/11 03:00:42 INFO Utils: Fetching spark://127.0.0.1:50747/jars/spark-study-project-assembly-0.0.1.jar to /private/var/folders/mz/7nk42g591rzd1v3x18ln5jpm0000gn/T/spark-1f60cc49-57f1-4eb7-a2d1-81affd8b386d/userFiles-b1dbde70-0d8b-4f05-98f6-482026da9499/fetchFileTemp1285813487153374630.tmp
+17/12/11 03:00:42 INFO Executor: Adding file:/private/var/folders/mz/7nk42g591rzd1v3x18ln5jpm0000gn/T/spark-1f60cc49-57f1-4eb7-a2d1-81affd8b386d/userFiles-b1dbde70-0d8b-4f05-98f6-482026da9499/spark-study-project-assembly-0.0.1.jar to class loader
+17/12/11 03:00:42 INFO HadoopRDD: Input split: file:/Users/yaboong/DevWorkspace/etc-workspace/spark-study-project/resource/test_small_data.txt:0+17
+17/12/11 03:00:42 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 875 bytes result sent to driver
+17/12/11 03:00:43 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 318 ms on localhost (executor driver) (1/1)
+17/12/11 03:00:43 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool
+17/12/11 03:00:43 INFO DAGScheduler: ResultStage 0 (count at SundayCount.scala:33) finished in 0.339 s
+17/12/11 03:00:43 INFO DAGScheduler: Job 0 finished: count at SundayCount.scala:33, took 0.481286 s
+주어진 데이터에는 일요일이 1개 들어 있습니다
+17/12/11 03:00:43 INFO SparkUI: Stopped Spark web UI at http://127.0.0.1:4040
+17/12/11 03:00:43 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+17/12/11 03:00:43 INFO MemoryStore: MemoryStore cleared
+17/12/11 03:00:43 INFO BlockManager: BlockManager stopped
+17/12/11 03:00:43 INFO BlockManagerMaster: BlockManagerMaster stopped
+17/12/11 03:00:43 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+17/12/11 03:00:43 INFO SparkContext: Successfully stopped SparkContext
+17/12/11 03:00:43 INFO ShutdownHookManager: Shutdown hook called
+17/12/11 03:00:43 INFO ShutdownHookManager: Deleting directory /private/var/folders/mz/7nk42g591rzd1v3x18ln5jpm0000gn/T/spark-1f60cc49-57f1-4eb7-a2d1-81affd8b386d
+```
+
+
 ## Error
 혹시 프로그램을 실행하는 중 `Service 'sparkDriver' could not bind on port` 에러가 뜬다면 ~/.bash_profile 에 `export SPARK_LOCAL_IP=127.0.0.1` 를 추가하고 실행하면 로컬 머신에서는 잘 작동하는 것을 확인 할 수 있다.
