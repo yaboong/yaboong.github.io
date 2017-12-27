@@ -1,10 +1,10 @@
 # Site Info
 title: YABOONG
-tagline: 'Yaboong''s blog'
+tagline: '안뇽'
 description: 'A Jekyll theme adapted from <a href="http://lanyon.getpoole.com/" target="_blank">Lanyon</a>. Made by <a href="http://codinfox.github.io" target="_blank">@codinfox</a>.'
 baseurl: ""
 url: https://github.com/yaboong
-logo: '/public/yaboong_logo.png'
+#logo: '/public/yaboong_logo.png'
 
 # Site configurations
 plugins:
