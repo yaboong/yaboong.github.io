@@ -1,9 +1,9 @@
 ---
 layout: post
-title: What is functional programming? - 1
-category: functional-programming
+title: "What is functional programming? - 1"
+date: 2017-10-18
+banner_image:
 tags: [scala, summary, functional-programming]
-excerpt: "부수효과가 없는 순수함수, 참조 투명성, 치환모형"
 ---
 ## What is functional programming? - 1
 
@@ -23,7 +23,7 @@ excerpt: "부수효과가 없는 순수함수, 참조 투명성, 치환모형"
 함수형 프로그래밍은 우리가 프로그램을 작성하는 **방식**에 대한 제약이지 표현 가능한 프로그램의 **종류**에 대한 제약은 아니다.
 
 순수 함수들로 프로그램을 작성하면 **모듈성(modularity)**이 증가하고, 이 덕분에 순수 함수는 테스트, 재사용, 병렬화, 일반화, 분석이 쉽고 버그가 생길 여지가 훨씬 적다.
-
+<!--more-->
 실제 프로그램에서 부수효과는 아래와 같은 코드에서 발생한다.
 ```scala
 class Cafe {

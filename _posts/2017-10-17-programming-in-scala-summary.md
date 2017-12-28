@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Programming in Scala summary
-category: scala
+title: "Programming in Scala summary"
+date: 2017-10-17
+banner_image:
 tags: [scala, summary]
-excerpt: "Programming in Scala summary by yaboong"
 ---
 
     
@@ -35,7 +35,7 @@ excerpt: "Programming in Scala summary by yaboong"
         * 여기서 :: 연산자(함수)는 오른쪽 피연산자에 대한 호출을 하므로 (2 :: 3) 은 3.::(2) 의 호출 형태를 보인다.
         * 3은 Int 이기 때문에 :: 이라는 함수가 없다.
         * :: 함수를 호출하기 위해서는 리스트 타입이 있어야 하는데, 이를 위해 스칼라에서는 Nil 을 List 클래스의 멤버로 둔 것이다.
-    
+<!--more-->
 * List, Tuple, Set, Map
     ```
     val set = scala.collection.immutable.Set    // 변경불가

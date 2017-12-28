@@ -1,9 +1,9 @@
 ---
 layout: post
-title: Spark 시작하기 1.1 - 설치 및 간단한 예제
-category: spark
+title: "Spark 시작하기 1.1 - 설치 및 간단한 예제"
+date: 2017-12-11
+banner_image:
 tags: [scala, spark]
-excerpt: "Spark 시작하기 - date string 을 가진 txt file 에서 일요일이 몇개인지 구하는 스파크 hello world"
 ---
 
 ## 소스 받기
@@ -36,7 +36,7 @@ Type :help for more information.
 
 scala>
 ```
-
+<!--more-->
 
 
 ## 로컬 머신에 스파크 프로젝트 생성

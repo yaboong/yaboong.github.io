@@ -1,14 +1,15 @@
 ---
 layout: post
-title: Data Science 이야기 - 임백준님 한빛미디어 세미나
-category: data-science
+title: "Data Science 이야기 - 임백준님 한빛미디어 세미나"
+date: 2017-12-27
+banner_image: data-science.jpg
 tags: [data-science, seminar]
-excerpt: "임백준 저자와 함께하는 데이터과학자를 꿈꾸는 히치하이커를 위한 안내서 (한빛미디어 세미나 내용 요약)"
 ---
 [http://www.hanbit.co.kr/store/education/edu_view.html?p_code=S2703738600](http://www.hanbit.co.kr/store/education/edu_view.html?p_code=S2703738600)
 
 > 세미나가서 들으면서 정리한 노트. 누구에게든 도움이 많이 될 것 같은 내용이라 공유. 모르는 내용이 많아서 잘못 받아적은 내용이 있을 수 있겠지만, 용어는 찾아가면서 정확하게 적으려 노력함.
 
+<!--more-->
 # 서론
 * [임백준](https://ko.wikipedia.org/wiki/%EC%9E%84%EB%B0%B1%EC%A4%80) 소개
 * 본인은 데이터 관련해서 hands on 하다고 이야기 하기에는 힘들다.

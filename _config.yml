@@ -1,69 +1,75 @@
-# Site Info
-title: YABOONG
-tagline: '안뇽'
-description: 'A Jekyll theme adapted from <a href="http://lanyon.getpoole.com/" target="_blank">Lanyon</a>. Made by <a href="http://codinfox.github.io" target="_blank">@codinfox</a>.'
-baseurl: ""
-url: https://github.com/yaboong
-#logo: '/public/yaboong_logo.png'
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
 
-# Site configurations
-plugins:
-  - jekyll-paginate
+# Site title
+title: "Yaboong"
+
+# A description of your site for social meta tag, search engines, and feed.xml
+description: "BlogInn is a bold theme for the Jekyll blogging platform. Available for purchase at ThemeForest.net."
+
+# Tagline near the site title
+tagline: "Thoughts, stories and ideas."
+
+# The subpath of your site, e.g. /blog, for generating urls
+baseurl:
+
+sass:
+  sass_dir: _sass
+
+# The base hostname & protocol of your site for where absolute urls are needed
+url: "http://justgoodthemes.com"
+
+# Site navigation - each item must have a title and a url.
+navigation:
+- text: Home
+  url: /
+- text: About
+  url: /about/
+#- text: Style Guides
+#  url: /style-guide/
+- text: Archives
+  url: /tags/
+
+# The shortname for your Disqus site to enable comments.
+disqus:
+
+# Author information - author info at the bottom of the post
+author_name: "Yaboong"
+author_bio: "오스카 쉰들러는 흔해빠진 기회주의자요 부패한 사업가였다. 그러나 거대한 악이 세상을 점령하는 것처럼 보일 때 그 악에 대항해서 사람의 생명을 구한 것은 귀족도 지식인도 종교인도 아닌 부패한 기회주의자 오스카 쉰들러였다."
+author_url:  "https://github.com/yaboong"
+author_location: "Seoul, South Korea"
+author_image: /images/yaboong.jpeg
+
+# Sidebar Add banner
+banner_url: "https://github.com/yaboong"
+banner_image: images/yaboong.jpeg
+
+# Sidebar newsletter widget - add your form action url for MailChimp signup form here
+#mailchimp_url: "//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117"
+
+# Social links in the site footer
+#twitter_username: "username"
+facebook_username: "yabooong"
+googleplus_username: "u/0/101688448325229683345"
+github_username: "yaboong"
+#codepen_username: "username"
+#dribbble_uername: "username"
+#medium_username: "@username"
+instagram_username: "yaboooong"
+#pinterest_username: "username"
+#linkedin_username: "username"
+#weibo_username: "username"
+
+# http://jekyllrb.com/docs/pagination/
+paginate: 3
+paginate_path: '/blog/page:num/'
+plugins: [jekyll-paginate]
+
+permalink: pretty
 markdown: kramdown
 kramdown:
-  input: GFM
-excerpt_separator: "<!-- more -->"
-sass:
-  style: compressed
-  sass_dir: _scss    
-paginate: 3
-paginate_path: '/blog/page:num'
-permalink: pretty
-timezone: 'Asia/Seoul'
-future: true
-
-version: 1.0.0
-
-# About/contact
-author:
-  name: Yaboong
-  description: <strong>developer yaboong</strong>
-  gravatar: 3c2986ad7ac1f2230ea3596f44563328 # md5 hash of your email address
-  contact:
-#    linkedin:
-    github:    https://github.com/yaboong
-    # facebook:  <hide>
-    twitter:
-#    email:     http://www.google.com/recaptcha/mailhide/d?k=01I3lZFiZYng9N3QxYEtsDaQ==&c=31wAnZkuKqcG0ATAqJN8Z3ln5kkYLA9TwkGc-IbygpM=
-    email: daniel.yebon.yoo@gmail.com
-
-# Navigation (2nd level links supported)
-nav:
-  Home:           
-    - '/'
-  Blog:           
-    - '/blog/'
-    - { Categories: '/blog/categories/' }
-    - { Tags: '/blog/tags/' }
-  About:          
-    - '/about/'
-  Github Project: 
-    - 'https://github.com/yaboong'
-
-# Where are tags and categories displayed
-tag_page: '/blog/tags/'
-category_page: '/blog/categories/'
-
-yaboong:
-  image: /public/img/schindlers_list.jpg
-  caption: 오스카 쉰들러는 흔해빠진 기회주의자요 부패한 사업가였다. 그러나 거대한 악이 세상을 점령하는 것처럼 보일 때 그 악에 대항해서 사람의 생명을 구한 것은 귀족도 지식인도 종교인도 아닌 부패한 기회주의자 오스카 쉰들러였다.
-#  그의 영혼에 안식과 축복이 있기를.
-#  caption: Oscar Schindler was a common opportunist and corrupt businessman.
-#          But it was Oscar Schindler, a corrupt opportunist who was not a noble, an intellectual, or a religious person who saved the life of a man against the evil when the great evil seemed to occupy the world.
-#          There is rest and blessing in his soul.
-
-# Puglins
-mathjax: true # whether support mathjax
-google_analytics_token: 'UA-00000000-1' # leave blank if you don't want google analytics
-disqus_short_name: 'your_short_name' # leave blank if you don't want disqus
-
+    auto_ids: false
