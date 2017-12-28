@@ -3,6 +3,7 @@
     {% if site.author_bio and site.author_name %}
     <section class="widget widget-text">
         <h2 class="widget-title">{{ site.author_name }}</h2>
+        <p><a href="{{ site.banner_url }}" target="_blank"><img src="{{ site.baseurl }}/{{ site.banner_image }}" alt="Optional Banner Ad" /></a></p>
         <p>{{ site.author_bio }}</p>
     </section><!-- .widget-text -->
     {% endif %}
@@ -24,11 +25,11 @@
     </section><!-- .widget -->
     {% endif %}
 
-    {% if site.banner_image %}
-    <section class="widget widget-text">
-        <p><a href="{{ site.banner_url }}" target="_blank"><img src="{{ site.baseurl }}/{{ site.banner_image }}" alt="Optional Banner Ad" /></a></p>
-    </section><!-- .widget-text-->
-    {% endif %}
+    <!--{% if site.banner_image %}-->
+    <!--<section class="widget widget-text">-->
+        <!--<p><a href="{{ site.banner_url }}" target="_blank"><img src="{{ site.baseurl }}/{{ site.banner_image }}" alt="Optional Banner Ad" /></a></p>-->
+    <!--</section>&lt;!&ndash; .widget-text&ndash;&gt;-->
+    <!--{% endif %}-->
 
     <section class="widget widget-recent-posts">
         <h2 class="widget-title">Latest Posts</h2>
