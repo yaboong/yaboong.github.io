@@ -2,7 +2,7 @@
 layout: post
 title: "Spark 시작하기 1.1 - 설치 및 간단한 예제"
 date: 2017-12-11
-banner_image:
+banner_image: spark.jpg
 tags: [scala, spark]
 ---
 
@@ -14,6 +14,7 @@ tags: [scala, spark]
 %Y%m%d (20171210) 형식의 date string 을 가진 .txt 파일을 input 으로 받아 각 date string 을 가지고 있는 line 을 
 Date 오브젝트로 변환후 joda time 으로 무슨 요일인지 알아내고, 일요일의 총 개수를 카운트 하는 프로그램.
 
+<!--more-->
 
 ## 로컬 머신에 스파크 설치
 java 와 scala 는 설치되어 있다는 가정하에 spark 설치는 아래와 같이 간단하다.
@@ -36,7 +37,6 @@ Type :help for more information.
 
 scala>
 ```
-<!--more-->
 
 
 ## 로컬 머신에 스파크 프로젝트 생성

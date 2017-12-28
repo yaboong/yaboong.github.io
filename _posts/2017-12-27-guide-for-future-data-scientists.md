@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Data Science 이야기 - 임백준님 한빛미디어 세미나"
+title: "Data Science 이야기 - 임백준님 한빛미디어 세미나 참가 후기"
 date: 2017-12-27
 banner_image: data-science.jpg
 tags: [data-science, seminar]

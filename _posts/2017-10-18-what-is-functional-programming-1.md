@@ -2,7 +2,7 @@
 layout: post
 title: "What is functional programming? - 1"
 date: 2017-10-18
-banner_image:
+banner_image: functional-programming.png
 tags: [scala, summary, functional-programming]
 ---
 ## What is functional programming? - 1
