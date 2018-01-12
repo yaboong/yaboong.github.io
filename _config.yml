@@ -6,13 +6,13 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Site title
-title: "Yaboong"
+title: "Safe zone is unsafe"
 
 # A description of your site for social meta tag, search engines, and feed.xml
 description: "BlogInn is a bold theme for the Jekyll blogging platform. Available for purchase at ThemeForest.net."
 
 # Tagline near the site title
-tagline: "Thoughts, stories and ideas."
+tagline: "Yaboong"
 
 # The subpath of your site, e.g. /blog, for generating urls
 baseurl:
