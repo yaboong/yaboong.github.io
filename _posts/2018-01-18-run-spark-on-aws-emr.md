@@ -325,5 +325,5 @@ $ hdfs dfs -put ~/workspace/emr-spark-example/resource/test_big_data.txt /user/h
 총 5대의 ec2 instance 를 이용해서 돌렸지만 이걸 50대로 늘린다고 해도 네트워크에 소모되는 시간, 최적화를 위한 시간 등 준비시간이 있기 때문에 1초만에 끝나지는 않는다.
 하지만 TB 단위의 입력 데이터를 수십대의 인스턴스로 spark 를 돌리면 진짜 위력을 볼 수 있을 것 같다.
 
-
+이 정도면 spark 로 hello world 찍기는 나름 열심히 한 것 같다. 이거 하려고.. 얼마나 삽질을 많이 했는지.. 힘들었다.. 근데 재밌다!!!! 신기하다!!!
 # EMR 종료하는 것 까먹으면 요금 폭탄 맞는다!!!
