@@ -3,7 +3,7 @@ layout: post
 title: "Data Science 이야기 - 임백준님 한빛미디어 세미나 참가 후기"
 date: 2017-12-27
 banner_image: data-science.jpg
-tags: [data-science, seminar]
+tags: [data-science]
 ---
 [http://www.hanbit.co.kr/store/education/edu_view.html?p_code=S2703738600](http://www.hanbit.co.kr/store/education/edu_view.html?p_code=S2703738600)
 
