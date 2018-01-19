@@ -6,17 +6,17 @@ banner_image: sp-img.jpg
 tags: [spark]
 ---
 
-## 소스 받기
+### 소스 받기
 > $ git pull [https://github.com/yaboong/spark-study-project.git](https://github.com/yaboong/spark-study-project)
 
 
-## 개요
+### 개요
 %Y%m%d (20171210) 형식의 date string 을 가진 .txt 파일을 input 으로 받아 각 date string 을 가지고 있는 line 을 
 Date 오브젝트로 변환후 joda time 으로 무슨 요일인지 알아내고, 일요일의 총 개수를 카운트 하는 프로그램.
 
 <!--more-->
 
-## 로컬 머신에 스파크 설치
+### 로컬 머신에 스파크 설치
 java 와 scala 는 설치되어 있다는 가정하에 spark 설치는 아래와 같이 간단하다.
 ```bash
 $ brew install apache-spark
@@ -39,7 +39,7 @@ scala>
 ```
 
 
-## 로컬 머신에 스파크 프로젝트 생성
+### 로컬 머신에 스파크 프로젝트 생성
 > [https://github.com/holdenk/sparkProjectTemplate.g8](https://github.com/holdenk/sparkProjectTemplate.g8)
 
 ```bash
@@ -50,7 +50,7 @@ sbt new holdenk/sparkProjectTemplate.g8
 
 
 
-## build.sbt 편집 - libraryDependencies 설정
+### build.sbt 편집 - libraryDependencies 설정
 spark 라이브러리와 일요일을 판단하기 위해 joda-time 라이브러리를 사용할 것 이므로 build.sbt 의  libraryDependencies 를 아래와 같이 설정 해 준다.
 ```scala
 libraryDependencies ++= Seq(
@@ -68,21 +68,21 @@ libraryDependencies ++= Seq(
 * <configuration> 을 "provided" 로 설정하면, 애플리케이션의 컴파일 단계에는 클래스패스에 포함되지만, sbt-assembly 를 이용한 패키지 단계에는 어셈블리 JAR 에 포함되지 않는다는 의미이다.
 * 애플리케이션이 spark-core 2.11 에 의존하고 있음에도 불구하고 어셈블리 JAR 에 포함하지 않아도 되는 이유는 spark-core 2.11 에 들어있는 클래스 파일이 스파크 본체에 포함되기 때문이다. 애플리케이션이 실행 될 때 자동으로 스파크 본체에 포함된 클래스 파일을 참조하므로 어셈블리 JAR 에 포함할 필요가 없다.
 
-## build.sbt 편집 - assemblyOption 설정
+### build.sbt 편집 - assemblyOption 설정
 assemblyOption 항목은 sbt-assembly 플러그인을 사용하기 위한 옵션 설정이다. sbt-assembly 플러그인으로 어셈블리 JAR 파일을 작성할 경우, 기본적으로 스칼라 라이브러리도 피요하다  이 라이브러리도 스파크 본체에 들어 있으므로 어셈블리 JAR 파일에 포함할 필요가 없고, 샘플 프로젝트의 정의 파일에도 포함하지 않도록 설정 `(includeScala=false)` 한다.
 ```scala
 assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
 ```
 
 
-## plugins.sbt 편집
+### plugins.sbt 편집
 sbt-assembly 플러그인을 사용하려면 plugins.sbt 에 아래와 같이 추가해 준다.
 ```scala
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.13.0")
 ```
 
 
-## 예제코드
+### 예제코드
 > SundayCount.scala
 
 ```scala
@@ -125,7 +125,7 @@ object SundayCount {
 ```
 
 
-## 빌드
+### 빌드
 ```bash
 $ cd "your project root"
 $ sbt assembly
@@ -134,7 +134,7 @@ $ sbt assembly
 * 어셈블리 JAR 파일의 이름은 `build.sbt` 의 name 과 version 에 설정한 값으로 `\<name\>-assembly-\<version\>.jar` 라는 이름으로 생성된다.
 
 
-## 실행
+### 실행
 * Spark 애플리케이션의 실행에는 spark-submit 명령어를 사용한다.
 ```bash
 $ spark-submit \ 
@@ -152,7 +152,7 @@ $ spark-submit --master local --class com.yaboong.spark.SundayCount target/scala
 ```
 
 
-## 실행결과
+### 실행결과
 ```java
 $ spark-submit --master local --class com.yaboong.spark.SundayCount target/scala-2.11/spark-study-project-assembly-0.0.1.jar resource/test_small_data.txt
 Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
@@ -225,5 +225,5 @@ Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
 ```
 
 
-## Error
+### Error
 혹시 프로그램을 실행하는 중 `Service 'sparkDriver' could not bind on port` 에러가 뜬다면 ~/.bash_profile 에 `export SPARK_LOCAL_IP=127.0.0.1` 를 추가하고 실행하면 로컬 머신에서는 잘 작동하는 것을 확인 할 수 있다.

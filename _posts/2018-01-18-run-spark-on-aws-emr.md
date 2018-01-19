@@ -6,11 +6,11 @@ banner_image: sp-img.jpg
 tags: [spark]
 ---
 
-## 소스 받기
+### 소스 받기
 > $ git pull [https://github.com/yaboong/spark-study-project.git](https://github.com/yaboong/spark-study-project)
 
 
-## 개요
+### 개요
 지금까지 spark 를 local machine 에서 standalone 으로만 돌렸다. 단순 스크립트로 54분이 걸리는 작업을 spark 로는 90초 밖에 걸리지 않는 것을 확인했다.
 그러면 [AWS EMR(Elastic Map Reduce)](https://aws.amazon.com/ko/emr/) 의 도움을 받아 클러스터링 해서 돌리면 얼마나 더 빨라질까?
 

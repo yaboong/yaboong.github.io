@@ -6,11 +6,11 @@ banner_image: sp-img.jpg
 tags: [spark]
 ---
 
-## 소스 받기
+### 소스 받기
 > $ git pull [https://github.com/yaboong/spark-study-project.git](https://github.com/yaboong/spark-study-project)
 
 
-## 개요
+### 개요
 [이전 포스팅](https://yaboong.github.io/2017/12/11/spark-start-1.1-install-and-sunday-count-example/) 에서 %Y%m%d (20171210) 형식의 date string 을 가진 .txt 파일을 input 으로 받아 일요일이 몇개 있는지 알아내는 코드를 짰다. 
 이 코드를 똑같이 사용하고, 총 175,310,001 (약 1억 7천 5백만) 개의 lines, 1.58 GB 크기로 이루어진 .txt 파일을 input 으로 받아서 일요일이 몇개 있는지 찾아 볼 것이다.
 똑같이 local machine 에서 standalone 으로 돌려 볼 것이며, 같은 작업을 python script 로 돌렸을 때와 시간이 얼마나 차이 나는지 살펴 볼 것이다.
