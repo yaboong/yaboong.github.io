@@ -174,8 +174,11 @@ $ aws --profile yaboong ecr create-repository --repository-name yaboong/http4s-t
     }
 }
 ```
+
 이렇게 생성되었다고 알려준다. aws ecr 명령어 실행할 때 \-\-profile yaboong 을 입력해준 건 aws cli 는 하나지만 aws 계정은 여러개를 사용하고 있어서 그렇다.
-<registry_id> 값은 계정마다 고유하게 가지는 숫자인 것 같다. repository 마다 registryId 값이 다를 줄 알았는데 모두 같은 걸 사용한다.
+
+
+\<registry_id\> 값은 계정마다 고유하게 가지는 숫자인 것 같다. repository 마다 registryId 값이 다를 줄 알았는데 모두 같은 걸 사용한다.
 
 ```python
 $ vi ~/.aws/config
