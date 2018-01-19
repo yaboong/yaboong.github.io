@@ -244,9 +244,11 @@ e27a10675c56: Waiting
 
 #### Deployment
 Tomcat 환경의 eb 에서는 .war 파일을 업로드 하면 됐었는데 Docker 환경에서는 Dockerrun.aws.json 파일을 하나 작성해서 .zip 파일로 업로드 하면 된다. 
+
 ```
 $ vi Dockerrun.aws.json
 ```
+
 ```
 {
   "AWSEBDockerrunVersion": "1",
@@ -261,12 +263,28 @@ $ vi Dockerrun.aws.json
   ]
 }
 ```
-위 파일을 Dockerrun.aws.json.zip 으로 업로드 하면된다. 주의할 점은 폴더를 압축하는 것이 아니라 Dockerrun.aws.json 파일 하나만 압축해서 올려야 한다. 
-아래는 접속결과이다.
+
+
+> 주의할 점 1 - 폴더를 압축하는 것이 아니라 Dockerrun.aws.json 파일 하나만 압축해서 올려야 한다.
+
+> 주의할 점 2 - Elastic Beanstalk 의 권한에 AmazonEC2ContainerRegistryReadOnly 를 추가해줘야 한다.
+
+###### 주의할점 2 - 부연설명
+EB 관리도구 화면에서 생성한 환경 마다 가질 수 있는 권한이 있다. 이 권한은 '환경이름' > 구성 > 인스턴스 설정 아이콘 > 인스턴스 프로파일 에 설정되어 있다.
+Default 는 aws-elasticbeanstalk-ec2-role 로 설정이 되는데, 기본으로 가지는 role 에는 ECR 접속 권한이 없기 때문에 Dockerrun.aws.json.zip 파일을 올려
+deploy 를 하더라도 eb 에서 docker image 를 가져올 수 없다. aws-elasticbeanstalk-ec2-role 에 AmazonEC2ContainerRegistryReadOnly 를 추가해 줘도 되고 새롭게 role 을 생성해서 같은 권한을 추가해줘도 된다.
+
+권한 추가는 IAM Management Console > 역할 에서 수정하고자 하는 role 을 선택하고 '정책연결' 로 AmazonEC2ContainerRegistryReadOnly 를 추가해 주면 된다. 
+
+
+### 최종 결과
+
+> https://your-env-name.your-region.elasticbeanstalk.com/hello/anything
+
 ![](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/http4s/aws-eb-docker-deploy-complete.png)
 
 이제 엄청난 트래픽의 hello world 를 받을 수 있는 웹 애플리케이션이 하나 생겼다. 하하하. 
 같은 기능을 하는 다른 프레임워크로 구성 된 여러 웹 애플리케이션을 만들어서 부하 테스트를 한번 해 봐야겠다.
 
-# eb-role 권한에 ecr access 권한 추가해줘야함!!! -- 나중에 수정하자 
+
 
