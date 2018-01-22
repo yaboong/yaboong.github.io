@@ -284,13 +284,13 @@ deploy 를 하더라도 eb 에서 docker image 를 가져올 수 없다. aws-ela
 ![](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/http4s/aws-eb-docker-deploy-complete.png)
 
 
-#### 
+#### 뭘 좀 더 해볼까
 일단 엄청난 트래픽의 hello world 를 받을 수 있는 웹 애플리케이션이 하나 생겼다.
 근데 과정이 너무 복잡하고 비효율적이다.
 
 sbt 로 docker image 생성 -> image ecr push -> Dockerrun.aws.json 생성 -> eb deploy
 
-과정을 단순화 하고 자동화 할 수 있는 것이 있는지 알아보고 수정해봐야겠다.
+과정을 단순화 하고 자동화 할 수 있는 것이 있는지 알아보고 수정 해 봐야겠다.
 그리고 같은 기능을 하는 다른 프레임워크로 구성 된 여러 웹 애플리케이션을 만들어서 부하 테스트를 한번 해 봐야겠다.
 
 
