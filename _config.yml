@@ -31,10 +31,10 @@ navigation:
   url: /about/
 #- text: Style Guides
 #  url: /style-guide/
-- text: Categories
-  url: /categories
 - text: Archives
   url: /tags/
+- text: Categories
+  url: /categories
 
 # The shortname for your Disqus site to enable comments.
 disqus:
@@ -73,5 +73,8 @@ plugins: [jekyll-paginate]
 
 permalink: pretty
 markdown: kramdown
+#kramdown:
+#    auto_ids: false
 kramdown:
-    auto_ids: false
+  input: GFM
+  syntax_highlighter: rouge
