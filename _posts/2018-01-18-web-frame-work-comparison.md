@@ -3,7 +3,8 @@ layout: post
 title: "듣보잡(?) Web Framework 사용해보기 - 1"
 date: 2018-01-18
 banner_image: /banner/web-frameworks.jpg
-tags: [frameworks]
+categories: [frameworks]
+tags: [http4s]
 ---
 
 ### 개요

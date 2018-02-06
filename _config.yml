@@ -31,6 +31,8 @@ navigation:
   url: /about/
 #- text: Style Guides
 #  url: /style-guide/
+- text: Categories
+  url: /categories
 - text: Archives
   url: /tags/
 

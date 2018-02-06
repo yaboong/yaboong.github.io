@@ -3,7 +3,8 @@ layout: post
 title: "Programming in Scala summary"
 date: 2017-10-17
 banner_image:
-tags: [scala]
+categories: [scala]
+tags: [scala, functional-programming]
 ---
 
     

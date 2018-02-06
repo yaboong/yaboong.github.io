@@ -3,7 +3,8 @@ layout: post
 title: "Spark 시작하기 1.3 - AWS EMR 로 인스턴스 5대 클러스터링 해서 Spark 돌려보기"
 date: 2018-01-18
 banner_image: sp-img.jpg
-tags: [spark]
+categories: [data-engineering]
+tags: [spark, aws, emr, clustering]
 ---
 
 ### 소스 받기

@@ -3,7 +3,8 @@ layout: post
 title: "Docker 로 Http4s 프로젝트 Aws Elastic Beanstalk 에 배포해보기 - 1"
 date: 2018-01-19
 banner_image: /banner/docker-on-aws.png"
-tags: [docker, http4s, aws, eb]
+categories: [docker]
+tags: [docker, http4s, aws, elastic-beanstalk]
 ---
 
 ### 개요

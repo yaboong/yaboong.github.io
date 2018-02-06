@@ -3,7 +3,8 @@ layout: post
 title: "Spark 시작하기 1.1 - 설치 및 간단한 예제"
 date: 2017-12-11
 banner_image: sp-img.jpg
-tags: [spark]
+categories: [data-engineering]
+tags: [data-engineering, spark, scala]
 ---
 
 ### 소스 받기

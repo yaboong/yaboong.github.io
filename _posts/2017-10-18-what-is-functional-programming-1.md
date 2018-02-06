@@ -3,7 +3,8 @@ layout: post
 title: "What is functional programming? - 1"
 date: 2017-10-18
 banner_image: fp-img.jpg
-tags: [functional-programming]
+categories: [functional-programming]
+tags: [functional-programming, scala]
 ---
 ## What is functional programming? - 1
 
