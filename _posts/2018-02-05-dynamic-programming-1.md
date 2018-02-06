@@ -2,7 +2,7 @@
 layout: post
 title: "(TEST POST) Dynamic Programming 기초1 - Fibonacci"
 date: 2018-02-05
-banner_image: /banner/algorithms.jpg"
+banner_image: /banner/algo.jpg"
 categories: [algorithms]
 tags: [dynamic-programming, java]
 ---
