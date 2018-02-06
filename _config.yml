@@ -73,8 +73,5 @@ plugins: [jekyll-paginate]
 
 permalink: pretty
 markdown: kramdown
-#kramdown:
-#    auto_ids: false
 kramdown:
-  input: GFM
-  syntax_highlighter: rouge
+    auto_ids: false
