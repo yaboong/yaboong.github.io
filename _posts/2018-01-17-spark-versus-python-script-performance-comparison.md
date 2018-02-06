@@ -3,7 +3,7 @@ layout: post
 title: "Spark 시작하기 1.2 - 좀 더 큰 데이터 처리해보기 & 성능비교"
 date: 2018-01-17
 banner_image: sp-img.jpg
-categories: [data-engineering]
+categories: [spark]
 tags: [spark]
 ---
 
