@@ -13,7 +13,7 @@ tags: [dynamic-programming, java]
 * Recursion with Memoization
 * Bottom-Up Approach
 
-<a href="https://github.com/yaboong/problem-solving-java/blob/master/src/com/yaboong/algorithms/Fibonacci.java" target="_blank">Sample Code</a>
+<a href="https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/algorithms/etc/Fibonacci.java" target="_blank">Sample Code</a>
 
 
 <!--more-->
@@ -44,7 +44,7 @@ n=5 일 때 벌써 함수 호출을 15번이나 해야 한다. n이 작을때는
 * 재귀호출이 지나치게 많아져서 memory 가 부족해 질 수 있다.
     * 함수가 호출되고 return 하기 전까지는 memory 의 stack 영역에 돌아갈 곳을 기록해 둔다. n 이 커지면 커질수록 stack 에 함수 호출에 대한 기록이 더 많이 쌓이는데 return 하기 까지 또다른 재귀적 호출이 있기 때문에 문제가 생길 수 있다.
 * 느리다. 
-    * O(2<sup>n</sup>) 의 시간 복잡도를 가진다.
+    * <mark>O(2<sup>n</sup>)</mark> 의 시간 복잡도를 가진다.
     
 ![https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/time-complexity-graph.png](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/time-complexity-graph.png)
 
