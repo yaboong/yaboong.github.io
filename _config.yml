@@ -74,3 +74,6 @@ plugins: [jekyll-paginate]
 permalink: pretty
 markdown: kramdown
 highlighter: rouge
+
+# Google Analytics
+google_analytics: UA-113745841-1
