@@ -92,7 +92,7 @@ private static long fibBottomUp(int n) {
 
 
 #### Comparison
-위 세가지 방법을 thread 에서 동시에 실행 시키고 execution time 을 milli second 단위로 측정해 보았다.
+위 세가지 방법을 thread 에서 동시에 실행 시키고 execution time 을 milliseconds 단위로 측정해 보았다.
 
 ```javascript
 public class Fibonacci {
