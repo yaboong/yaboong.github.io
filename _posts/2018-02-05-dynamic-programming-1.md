@@ -152,8 +152,8 @@ fibMemoization elapsed time: 25 ms
 fibBottomUp: 12586269025
 fibBottomUp elapsed time: 25 ms
 
-fibRecursion: 12586269025
-fibRecursion elapsed time: 72173 ms
+fibSimple: 12586269025
+fibSimple elapsed time: 72173 ms
 
 
 Process finished with exit code 0
