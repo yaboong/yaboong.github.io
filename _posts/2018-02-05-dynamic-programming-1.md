@@ -26,13 +26,11 @@ tags: [dynamic-programming, java]
 
 nth value = (n-1)th + (n-2)th 의 방식으로 전개되는 수열이다. 재귀함수로 구현할 수 있다.
 
-{% highlight javascript %}
-
+```javascript
 private static long fibSimple(int n) {
     return (n < 2) ? n : fib(n-1) + fib(n-2);
 }
-
-{% endhighlight %}
+```
 
 
 #### 기존 Recursion 의 문제점
@@ -64,35 +62,101 @@ Memoization 을 사용했을 때의 recursion tree 는 아래 그림과 같다.
 <img src="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/fib-call-tree-2.svg"/>
 </div>
 
-재귀 호출이 위 트리를 순회하는 방식은 [postorder](https://www.geeksforgeeks.org/tree-traversals-inorder-preorder-and-postorder/) 방식이다.
-
-{% highlight javascript %}
+```javascript
 private static long fibMemoization(int n, long[] memo) {
-    if (memo[n] != 0) return memo[n];
-    long result = (n == 1 || n == 2) ? 1 : fibMemoization(n-1, memo) + fibMemoization(n-2, memo);
-    memo[n] = result;
-    return result;
+    if (memo[n] != 0) return memo[n]; // 기록해 둔 것이 있으면 사용
+    memo[n] = (n == 1 || n == 2) ? 1 : fibMemoization(n-1, memo) + fibMemoization(n-2, memo); // 기록해 둔 것이 없으면 계산하고 기록
+    return memo[n];
 }
-{% endhighlight %}
+```
 
 Memoization 을 사용하는 호출의 경우 상수시간이 걸리고, 첫번째 fib(n) 을 계산 할 때만 재귀적 호출이 두번 f(n-1) + f(n-2) 이루어지기 때문에 O(2n + c) = O(n) 의 time complexity 를 가진다.
 기존 O(2<sup>n</sup>) 에서 O(n) 으로의 개선은 큰 변화다. 
 
 
 #### 해결방법2 - Bottom-Up
-작성중..
+> Recursion 을 사용하지 않는 방법. 상대적으로 memory 를 적게 사용한다. Recursion 이 top-down 이라면, bottom-up 은 말 그대로 작은 것 부터 순차적으로 풀어나간다.
+
+풀이방법은 간단하다. 1st, 2nd, 3rd element 는 직접 지정해주고, 4th element 부터는 array[n-1] + array[n-2] 를 계산한다.
+
+```javascript
+private static long fibBottomUp(int n) {
+    long[] bottomUp = new long[n+1];
+    bottomUp[1] = 1;
+    bottomUp[2] = 1;
+    for (int i=3; i<=n; i++) bottomUp[i] = bottomUp[i-1] + bottomUp[i-2];
+    return bottomUp[n];
+}
+```
+이 방법 역시 from 3 to n 까지 한 번의 loop 만 수행하면 되므로 O(n) 의 시간복잡도를 가진다.
 
 
+#### Comparison
+위 세가지 방법을 thread 에서 동시에 실행 시키고 execution time 을 milli second 단위로 측정해 보았다.
 
+```javascript
+public class Fibonacci {
+    public static void main(String[] args) throws Exception {
+        int N = 50;
+        long[] memo = new long[N+1];
+
+        Thread fibSimpleThread = new Thread(() -> {
+            long startTime = System.currentTimeMillis();
+            System.out.format("fibSimple: %d %n", fibSimple(N));
+            System.out.format("fibSimple elapsed time: %d ms%n%n", (System.currentTimeMillis() - startTime));
+        });
+
+        Thread fibMemoizationThread = new Thread(() -> {
+            long startTime = System.currentTimeMillis();
+            System.out.format("fibMemoization: %d %n", fibMemoization(N, memo));
+            System.out.format("fibMemoization elapsed time: %d ms%n%n", (System.currentTimeMillis() - startTime));
+        });
+
+        Thread fibBottomUpThread = new Thread(() -> {
+            long startTime = System.currentTimeMillis();
+            System.out.format("fibBottomUp: %d%n", fibBottomUp(N));
+            System.out.format("fibBottomUp elapsed time: %d ms%n%n", (System.currentTimeMillis() - startTime));
+        });
+
+        fibSimpleThread.start();
+        fibMemoizationThread.start();
+        fibBottomUpThread.start();
+    }
+
+    private static long fibSimple(int n) {
+        return (n < 2) ? n : fibSimple(n-1) + fibSimple(n-2);
+    }
+
+    private static long fibMemoization(int n, long[] memo) {
+        if (memo[n] != 0) return memo[n];
+        memo[n] = (n == 1 || n == 2) ? 1 : fibMemoization(n-1, memo) + fibMemoization(n-2, memo);
+        return memo[n];
+    }
+
+    private static long fibBottomUp(int n) {
+        long[] bottomUp = new long[n+1];
+        bottomUp[1] = 1;
+        bottomUp[2] = 1;
+        for (int i=3; i<=n; i++)
+            bottomUp[i] = bottomUp[i-1] + bottomUp[i-2];
+        return bottomUp[n];
+    }
+}
+``` 
+
+N 이 50만 되어도 실행 시간은 아래와같이 크게 차이 난다. 단순하게 재귀로 접근한 방법보다 memoization, bottom-up approach 를 사용한 dynamic programming 방식이 (N=50 일 때) 약 2880배 빠르다.
 ```log
 fibMemoization: 12586269025 
-fibMemoization elapsed time: 22 ms
-fibRecursion: 12586269025 
-fibRecursion elapsed time: 72259 ms
+fibMemoization elapsed time: 25 ms
+
+fibBottomUp: 12586269025
+fibBottomUp elapsed time: 25 ms
+
+fibRecursion: 12586269025
+fibRecursion elapsed time: 72173 ms
+
 
 Process finished with exit code 0
 ```
 
-
-
-
+계산 결과가 맞는지는 [여기](http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibtable.html) 로 가면 n=300 까지의 피보나치 수를 확인할 수 있다. 
