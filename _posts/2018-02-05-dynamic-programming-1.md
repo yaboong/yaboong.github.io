@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title: "Dynamic Programming 기초1 - Fibonacci"
 date: 2018-02-05
 banner_image: /banner/algo.jpg"
