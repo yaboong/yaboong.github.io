@@ -35,17 +35,11 @@ layout: default
                     {% endif %}
                 </footer><!-- .entry-footer -->
             </article><!-- .post -->
-            <div class="author-box">
-                <div class="author-info">
-                    <div class="author-avatar" style="background-image: url({{ site.author_image }})"><span class="screen-reader-text">{{ site.author_name }}'s Picture</span></div>
-                    <div class="author-details">
-                        <h2 class="author-title">{{ site.author_name }}</h2>
-                        <p class="author-bio">{{ site.author_bio }}</p>
-                        <span class="author-location"><i class="fa-map-marker" aria-hidden="true"></i> {{ site.author_location }}</span>
-                        <span class="author-website"><i class="fa-chain" aria-hidden="true"></i> <a href="{{ site.author_url }}" target="_blank"> {{ site.author_url }}</a></span>
-                    </div><!-- .author-details -->
-                </div><!-- .author-info -->
-            </div><!-- .author-box -->
+
+            {% if site.disqus %}
+            {% include disqus.html %}
+            {% endif %}
+
             <nav class="post-navigation">
                 <h2 class="screen-reader-text">Post navigation</h2>
                 {% if page.previous.url %}
@@ -73,9 +67,17 @@ layout: default
                 </div><!-- .nav-next -->
                 {% endif %}
             </nav><!-- .post-navigation -->
-            {% if site.disqus %}
-                {% include disqus.html %}
-            {% endif %}
+            <div class="author-box">
+                <div class="author-info">
+                    <div class="author-avatar" style="background-image: url({{ site.author_image }})"><span class="screen-reader-text">{{ site.author_name }}'s Picture</span></div>
+                    <div class="author-details">
+                        <h2 class="author-title">{{ site.author_name }}</h2>
+                        <p class="author-bio">{{ site.author_bio }}</p>
+                        <span class="author-location"><i class="fa-map-marker" aria-hidden="true"></i> {{ site.author_location }}</span>
+                        <span class="author-website"><i class="fa-chain" aria-hidden="true"></i> <a href="{{ site.author_url }}" target="_blank"> {{ site.author_url }}</a></span>
+                    </div><!-- .author-details -->
+                </div><!-- .author-info -->
+            </div><!-- .author-box -->
         </main><!-- .site-main -->
         {% include sidebar.html %}
     </div><!-- .inner -->
