@@ -9,7 +9,7 @@ tags: [data-structures, array, java]
 
 ### 개요
 * Array 와 cache locality
-* Java ArrayList 살펴보기
+* Java ArrayList 소스코드 까보기
 
 <!--more-->
 
