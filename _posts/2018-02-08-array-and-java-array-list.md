@@ -2,7 +2,7 @@
 layout: post
 title: "Data Structures - Array, ArrayList"
 date: 2018-02-08
-banner_image: /banner/ds.jpg"
+banner_image: /banner/ds-new.jpg"
 categories: [data-structures]
 tags: [data-structures, array, java]
 ---
