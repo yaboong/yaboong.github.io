@@ -6,4 +6,4 @@ banner_image: about_yaboong.jpg
 ---
 ### YABOONG
 
-> 음악도 잘 하고 개발도 잘 하고 싶다
+> 인생 리팩토링 중

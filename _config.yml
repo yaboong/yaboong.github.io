@@ -29,15 +29,13 @@ navigation:
   url: /
 - text: About
   url: /about/
-#- text: Style Guides
-#  url: /style-guide/
-- text: Archives
-  url: /tags/
 - text: Categories
   url: /categories
+- text: Archives
+  url: /tags/
 
 # The shortname for your Disqus site to enable comments.
-disqus:
+disqus: yaboong
 
 # Author information - author info at the bottom of the post
 author_name: "Yaboong"
