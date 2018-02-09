@@ -111,4 +111,5 @@ public T pop(){
 * 그냥 ArrayList 를 쓰면 더 편할 것 같다.
 * 짜고보니 malloc 만 없지 C 코드 같다.
 * Linked List 를 사용하는 게 stack 구현은 더 편한 것 같다.
+* 하지만, 이렇게 array 를 resize 하는 방법은 heap 을 구현할 때에도 동일하게 쓰이므로 알아두면 좋다.
 * 전체 예제 코드는 [여기](https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/ds/array/ArrayOfStack.java) 에 있다.
