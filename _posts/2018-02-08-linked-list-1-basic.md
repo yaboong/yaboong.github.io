@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Data Structures - Linked List"
+title: "Linked List 기초 1"
 date: 2018-02-08
 banner_image: /banner/ds-new.jpg"
 categories: [data-structures]
@@ -9,10 +9,10 @@ tags: [data-structures, linked-list, java]
 
 ### 개요
 * Singly Linked List 장점과 단점
-* 간단한 구현 예제
 * Java built-in LinkedList class
 * Doubly Linked List 에 대한 간단한 설명
 * Linked List 를 사용하여 구현할 수 있는 또 다른 데이터 구조
+* [구현예제보기](https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/ds/linkedlist/LinkedList.java)
 
 <!--more-->
 

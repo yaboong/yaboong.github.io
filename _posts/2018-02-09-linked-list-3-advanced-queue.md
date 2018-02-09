@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Data Structures - LinkedList 이용한 Queue 구현 예제"
+title: "LinkedList 를 이용한 Queue 구현 예제"
 date: 2018-02-09
 banner_image: /banner/ds-new.jpg"
 categories: [data-structures]
@@ -8,8 +8,8 @@ tags: [data-structures, linked-list, queue]
 ---
 
 ### 개요
-LinkedList 를 사용하여 Queue 를 직접 구현해본다.
-[구현예제보기](https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/ds/linkedlist/LinkedListQueue.java)
+* LinkedList 를 사용하여 Queue 를 직접 구현해본다.
+* [구현예제보기](https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/ds/linkedlist/LinkedListQueue.java)
 
 <!--more-->
 

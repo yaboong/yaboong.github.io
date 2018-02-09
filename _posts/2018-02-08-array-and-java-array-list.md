@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Data Structures - Array, ArrayList"
+title: "Array, ArrayList 기초 1"
 date: 2018-02-08
 banner_image: /banner/ds-new.jpg"
 categories: [data-structures]
