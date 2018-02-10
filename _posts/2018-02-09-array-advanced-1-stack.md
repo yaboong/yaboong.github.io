@@ -4,7 +4,7 @@ title: "Array 를 이용한 Stack 구현 예제"
 date: 2018-02-09
 banner_image: /banner/ds-new.jpg"
 categories: [data-structures]
-tags: [data-structures, array, stack]
+tags: [data-structures, array, stack, java]
 ---
 
 ### 개요

@@ -4,7 +4,7 @@ title: "LinkedList 를 이용한 Queue 구현 예제"
 date: 2018-02-09
 banner_image: /banner/ds-new.jpg"
 categories: [data-structures]
-tags: [data-structures, linked-list, queue]
+tags: [data-structures, linked-list, queue, java]
 ---
 
 ### 개요
