@@ -47,7 +47,7 @@ n=5 일 때 벌써 함수 호출을 15번이나 해야 한다. n이 작을때는
 * 느리다. 
     * <mark>O(2<sup>n</sup>)</mark> 의 시간 복잡도를 가진다.
     
-![https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/time-complexity-graph.png](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/time-complexity-graph.png)
+![https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/etc/time-complexity-graph.png](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/time-complexity-graph.png)
 
 O(2<sup>n</sup>) 의 시간 복잡도를 가지는 알고리즘은 factorial 다음으로 최악의 성능을 가진다. Input 이 크다면 반드시 피해야 하는 방법이다.
 
