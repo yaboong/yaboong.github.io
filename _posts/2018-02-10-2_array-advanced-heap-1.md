@@ -161,10 +161,8 @@ private void buildMinHeap() {
 
 ##### Helper 메소드 여러개
 * Helper 메소드는 사실 메소드 이름이 의미하는 것이 구현부의 전부다. 
-* <mark>hasLeftChild()</mark> 와 <mark>hasRightChild</mark> 부분이 직관적으로 잘 이해 되지 않을 수 있다.
-* 자식 노드의 index 가 size 보다 작으면 자식노드가 존재하는 것으로 구현을 했다. 
-* 즉, 자식 노드의 index 를 구했는데 size 보다 크거나 같으면 자식노드가 없는 것이다. 그런 경우는 없어야 한다. 
-(그런 경우가 있다면 size 계산을 잘못 한 것이다) 배열로 구현했고 index 는 0 부터 시작했기 때문에 마지막 노드의 index 는 항상 size - 1 의 값을 가져야 하기 때문이다.
+* <mark>hasLeftChild()</mark> 와 <mark>hasRightChild</mark> 부분이 잘 이해 되지 않을 수 있다.
+* 자식 노드의 index 가 size 보다 작으면 자식노드가 존재하는 것으로 구현을 했다. 존재하는 모든 노드의 index 는 size 보다는 작아야 하기 때문이다.
 
 ```javascript
 private int getLeftChildIndex(int parentIndex) { return (parentIndex << 1) + 1; }
