@@ -19,7 +19,7 @@ tags: [data-structures, array, java]
 Array 는 같은 타입을 가진 여러 요소들은 한 곳에 저장하기 위해서 고안되었다. Array 는 할당하는 크기 만큼이 메모리에 연속적으로 할당 되는데 이로 인해 <mark>cache locality</mark> 을 이용한 빠른 접근이 가능하다.
 
 <div style="text-align:center">
-{% include image_caption.html imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/array1.png" style="text-align:center" title="Array" caption="array" %}
+{% include image_caption.html imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/ds/array1.png" style="text-align:center" title="Array" caption="array" %}
 </div>
 
 

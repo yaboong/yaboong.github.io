@@ -18,7 +18,7 @@ tags: [data-structures, linked-list, queue]
 * head, tail 두 개의 포인터 사용
 
 <div style="text-align:center">
-{% include image_caption.html imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/queue-1.png" title="queue" caption="Queue" %}
+{% include image_caption.html imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/ds/queue-1.png" title="queue" caption="Queue" %}
 </div>
 
 Queue 는 stack 과 구조적으로 다른 점은 먼저 넣은 데이터가 먼저 나온다는 것이다. FIFO (First In First Out).
