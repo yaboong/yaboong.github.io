@@ -166,4 +166,4 @@ Process finished with exit code 0
 <br/>
 
 #### 참고한 자료
-* <a target="_blank" href="https://www.youtube.com/watch?v=vYquumk4nWw">CJ Dojo Youtube Channel</a>
+* <a target="_blank" href="https://www.youtube.com/watch?v=vYquumk4nWw">CJ Dojo Youtube Channel - What Is Dynamic Programming and How To Use It</a>

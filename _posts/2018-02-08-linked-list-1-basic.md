@@ -256,4 +256,4 @@ Linked List 를 이용한 Stack, Queue 를 직접 구현하는 것은 다음 포
 <br/>
 
 #### 참고한 자료
-* <a target="_blank" href="https://www.youtube.com/watch?v=njTh_OwMljA">HackerRank Youtube Channel</a>
+* <a target="_blank" href="https://www.youtube.com/watch?v=njTh_OwMljA">HackerRank Youtube Channel - Data Structures: Linked Lists</a>

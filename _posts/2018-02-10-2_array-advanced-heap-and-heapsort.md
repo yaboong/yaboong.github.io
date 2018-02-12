@@ -400,8 +400,8 @@ productMinHeap.print();
 <br/>
 
 #### 참고한 자료
-* <a target="_blank" href="https://www.youtube.com/watch?v=onlhnHpGgC4">Algorithms with Attitude Youtube Channel</a>
-* <a target="_blank" href="https://www.youtube.com/watch?v=WCm3TqScBM8">Algorithms with Attitude Youtube Channel</a>
+* <a target="_blank" href="https://www.youtube.com/watch?v=onlhnHpGgC4">Algorithms with Attitude Youtube Channel - Heap Sort</a>
+* <a target="_blank" href="https://www.youtube.com/watch?v=WCm3TqScBM8">Algorithms with Attitude Youtube Channel - Introduction to Binary Heaps (MaxHeaps)</a>
 * <a target="_blank" href="https://www.youtube.com/watch?v=t0Cq6tVNRBA">HackerRank Youtube Channel - Data Structures: Heaps</a>
 * <a target="_blank" href="https://www.geeksforgeeks.org/binary-heap/">https://www.geeksforgeeks.org/binary-heap/</a>
 * <a target="_blank" href="https://www.geeksforgeeks.org/heap-sort/">https://www.geeksforgeeks.org/heap-sort/</a>
