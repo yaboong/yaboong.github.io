@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Linked List - 1"
+title: "Linked List - Java"
 date: 2018-02-08
 banner_image: /banner/ds-new.jpg"
 categories: [data-structures]

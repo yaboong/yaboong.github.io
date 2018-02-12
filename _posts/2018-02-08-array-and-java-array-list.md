@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Array & ArrayList - 1"
+title: "Array & ArrayList - Java"
 date: 2018-02-08
 banner_image: /banner/ds-new.jpg"
 categories: [data-structures]
