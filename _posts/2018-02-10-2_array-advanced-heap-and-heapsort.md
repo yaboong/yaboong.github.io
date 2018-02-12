@@ -345,12 +345,63 @@ poll() 메소드는 worst case 때 O(log n) 이 되는데 heapsort 에서는 pol
 
 <a target="_blank" href="https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/ds/heap/MinHeap.java">전체 소스 보기</a>
 
+<br/>
+
+### Customized class 로 Heap 사용하기
+* MinHeap class 를 정의 할 때 <mark>MinHeap T extends Comparable&lt;T&gt;&gt;</mark> 로 제너릭스를 이용해서 Comparable 인터페이스를 구현한 타입이면 모두 받을 수 있도록 정의했다.
+* 나에게 필요한 class 를 정의해서 Min Heap 으로 만들어보자.
+
+Comparable 인터페이스를 구현하는 것은 간단하다. compareTo() 메소드만 정의해주면 된다.
+compareTo() 메소드는 작으면 -1, 크면 1, 같으면 0 을 반환하는 메소드로 이에 맞게만 정의해주면 된다.
+
+```javascript
+class Product implements Comparable<Product> {
+    String name;
+    int price;
+
+    public Product(String name, int price) {
+        super();
+        this.name = name;
+        this.price= price;
+    }
+
+    @Override
+    public int compareTo(Product obj) {
+        if      (this.price < obj.price) return -1;
+        else if (this.price > obj.price) return  1;
+        else                             return  0;
+    }
+
+    public String toString() {
+        return "{" + this.name + ", " + this.price + "}";
+    }
+}
+```
+
+이제 min heap 에서 less() 메소드로 객체간 값을 비교할 때 이 compareTo() 메소드를 사용하여 비교하게 된다.
+위와 같이 정의한 클래스로 아래와 같이 사용할 수 있다.
+
+```javascript
+Product[] arrayOfProduct = {
+    new Product("알파스캔 24형 AOC 2470", 137440),
+    new Product("알파스캔 2481 IPS", 176640),
+    new Product("알파스캔 광시야각 AOC 2779", 219000),
+    new Product("알파스캔 27형 AOC 2777", 266110),
+    new Product("알파스캔 광시야각 AOC 3288", 289000),
+    new Product("알파스캔 게이밍 무결점 AOC G2460", 294730),
+    new Product("알파스캔 프레스티지 2215", 129000)
+};
+MinHeap<Product> productMinHeap = new MinHeap<>(arrayOfProduct);
+productMinHeap.print();
+```
+
+<a target="_blank" href="https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/ds/heap/MinHeap.java">전체 소스 보기</a>
 
 <br/>
 
 #### 참고한 자료
 * <a target="_blank" href="https://www.youtube.com/watch?v=onlhnHpGgC4">Algorithms with Attitude Youtube Channel</a>
 * <a target="_blank" href="https://www.youtube.com/watch?v=WCm3TqScBM8">Algorithms with Attitude Youtube Channel</a>
-* <a target="_blank" href="https://www.youtube.com/watch?v=t0Cq6tVNRBA">HackerRank Youtube Channel</a>
+* <a target="_blank" href="https://www.youtube.com/watch?v=t0Cq6tVNRBA">HackerRank Youtube Channel - Data Structures: Heaps</a>
 * <a target="_blank" href="https://www.geeksforgeeks.org/binary-heap/">https://www.geeksforgeeks.org/binary-heap/</a>
 * <a target="_blank" href="https://www.geeksforgeeks.org/heap-sort/">https://www.geeksforgeeks.org/heap-sort/</a>
