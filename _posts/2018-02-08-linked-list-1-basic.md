@@ -12,7 +12,7 @@ tags: [data-structures, linked-list, java]
 * Java built-in LinkedList class
 * Doubly Linked List 에 대한 간단한 설명
 * Linked List 를 사용하여 구현할 수 있는 또 다른 데이터 구조
-* [구현예제보기](https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/ds/linkedlist/LinkedList.java)
+* <a target="_blank" href="https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/ds/linkedlist/LinkedList.java">구현예제보기</a>
 
 <!--more-->
 

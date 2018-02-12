@@ -379,7 +379,7 @@ class Product implements Comparable<Product> {
 ```
 
 이제 min heap 에서 less() 메소드로 객체간 값을 비교할 때 이 compareTo() 메소드를 사용하여 비교하게 된다.
-위와 같이 정의한 클래스로 아래와 같이 사용할 수 있다.
+위와 같이 정의한 클래스로 아래와 같이 사용할 수 있다. (최근에 알파스캔 모니터를 사서... ㅎㅎㅎ)
 
 ```javascript
 Product[] arrayOfProduct = {

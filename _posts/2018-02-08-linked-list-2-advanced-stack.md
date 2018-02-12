@@ -9,7 +9,7 @@ tags: [data-structures, linked-list, stack, java]
 
 ### 개요
 * LinkedList 를 사용하여 Stack 을 직접 구현해본다.
-* [구현예제보기](https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/ds/linkedlist/LinkedListStack.java)
+* <a target="_blank" href="https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/ds/linkedlist/LinkedListStack.java">구현예제보기</a>
 
 <!--more-->
 
