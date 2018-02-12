@@ -93,3 +93,7 @@ public E pop() {
 
 하고 보니 stack 은 참 간단하다. 완성된 코드는 [여기](https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/ds/linkedlist/LinkedListStack.java) 에 있다.
 
+<br/>
+
+#### 참고한 자료
+* <a target="_blank" href="https://www.youtube.com/watch?v=TIC1gappbP8&list=PLxc4gS-_A5VDXUIOPkJkwQKYiT2T1t0I8&index=13">Coursera Algorithms and Data Structures - Princeton University</a>

@@ -161,3 +161,9 @@ Process finished with exit code 0
 ```
 
 계산 결과가 맞는지는 [여기](http://www.maths.surrey.ac.uk/hosted-sites/R.Knott/Fibonacci/fibtable.html) 로 가면 n=300 까지의 피보나치 수를 확인할 수 있다. 
+
+
+<br/>
+
+#### 참고한 자료
+* <a target="_blank" href="https://www.youtube.com/watch?v=vYquumk4nWw">CJ Dojo Youtube Channel</a>

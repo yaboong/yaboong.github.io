@@ -252,3 +252,8 @@ void linkBefore(E e, Node<E> succ) {
 
 위 구현 그림을 보면 head(first), last(tail) 포인터도 존재하는데 Queue 를 구현할 때에는 보통 head, tail 두 종류의 포인터를 함께 쓴다. append 는 tail 에 하고, remove 는 head 에서 하여 FIFO 를 구현하기 때문이다. (Stack 의 경우에는 head 하나만 있어도 된다. LIFO 이기 때문에.)
 Linked List 를 이용한 Stack, Queue 를 직접 구현하는 것은 다음 포스팅에서 다뤄 봐야겠다.
+
+<br/>
+
+#### 참고한 자료
+* <a target="_blank" href="https://www.youtube.com/watch?v=njTh_OwMljA">HackerRank Youtube Channel</a>

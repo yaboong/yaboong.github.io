@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Min Heap - Java"
+title: "Min Heap & Heap Sort - Java"
 date: 2018-02-10
 banner_image: /banner/ds-new.jpg"
 categories: [data-structures]
@@ -11,6 +11,7 @@ tags: [data-structures, heap, array, java]
 * Array 를 이용하여 Heap 을 직접 구현해 본다.
 * Heap 구현 - Java
 * 시간복잡도 분석
+* Heapsort 구현
 * <a href="https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/ds/heap/MinHeap.java" target="_blank" >예제코드 보기</a>
 
 <!--more-->
@@ -310,3 +311,46 @@ Insert 할 때 최악의 경우는 새롭게 insert 되는 요소가 가장 작�
 Delete 할 때 최악의 경우는 root 가 반환되고 새로운 root 가 된 마지막 요소가 가장 큰 값이어서 다시 마지막 위치로 가는 경우이다.
 
 두 경우 모두 트리의 높이 만큼만 움직이면 되기 때문에 트리의 높이를 의미하는 O(log n) 이 된다.
+
+
+<br/>
+
+### Heapsort
+구현한 Min Heap 을 이용해서 간단하게 heapsort 구현해보자.
+* 오름차순으로 정렬에는 Max Heap, 내림차순 정렬에는 Min Heap 이 사용된다.
+* 순서
+    * Heapify 한다. (배열을 힙의 구조를 가지게 만든다)
+    * Root 를 맨 끝으로 보낸다.
+    * Heap 의 size 만큼 반복한다.
+    
+Root 를 맨 끝으로 보내는 것은 poll() 메소드를 실행하고 반환된 결과 값을 배열의 마지막 위치로 보내면 된다.
+Min Heap 의 경우 가장 작은 값을 N번 동안 마지막으로 보낼 것이기 때문에 내림차순으로의 정렬이 된다.
+반대로 Max Heap 이었다면 가장 큰 값을 N번 동안 마지막으로 보낼 것이기 때문에 오름차순으로의 정렬이 된다.
+
+위에 구현한 Min Heap 을 이용하면 heapsort 메소드는 굉장히 간단하다.
+Min Heap 을 생성할 때 buildMinHeap() 으로 Heapify 해 주었으므로 나머지 작업만 해 주면 된다.
+
+```javascript
+public T[] heapSort() {
+    for (int i=size - 1; i >= 0; i--) {
+        T max = poll();
+        items[i] = max;
+    }
+    return items;
+}
+```
+
+poll() 메소드는 worst case 때 O(log n) 이 되는데 heapsort 에서는 poll() 메소드를 n번 호출하여 정렬 하게 되므로 heapsort 의 wort case time complexity 는 O(n log n) 이 된다.
+<a target="_blank" href="https://www.cs.usfca.edu/~galles/visualization/HeapSort.html">여기</a> 가면 heapsort 동작에 대한 visualization 자료를 볼 수 있다.
+
+<a target="_blank" href="https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/ds/heap/MinHeap.java">전체 소스 보기</a>
+
+
+<br/>
+
+#### 참고한 자료
+* <a target="_blank" href="https://www.youtube.com/watch?v=onlhnHpGgC4">Algorithms with Attitude Youtube Channel</a>
+* <a target="_blank" href="https://www.youtube.com/watch?v=WCm3TqScBM8">Algorithms with Attitude Youtube Channel</a>
+* <a target="_blank" href="https://www.youtube.com/watch?v=t0Cq6tVNRBA">HackerRank Youtube Channel</a>
+* <a target="_blank" href="https://www.geeksforgeeks.org/binary-heap/">https://www.geeksforgeeks.org/binary-heap/</a>
+* <a target="_blank" href="https://www.geeksforgeeks.org/heap-sort/">https://www.geeksforgeeks.org/heap-sort/</a>

@@ -101,3 +101,9 @@ public E dequeue(){
 
 삽입은 tail 포인터로, 제거는 head 포인터로 함으로써 삽입, 삭제 작업 모두 O(1) 로 가능하다.
 하고 보니 queue 도 참 간단하다. 완성된 코드는 [여기](https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/ds/linkedlist/LinkedListQueue.java) 에 있다.
+
+
+<br/>
+
+#### 참고한 자료
+* <a target="_blank" href="https://www.youtube.com/watch?v=HmBuR37Le20&index=15&list=PLxc4gS-_A5VDXUIOPkJkwQKYiT2T1t0I8">Coursera Algorithms and Data Structures - Princeton University</a>

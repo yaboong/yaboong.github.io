@@ -166,3 +166,8 @@ oldCapacity 값이 10 (default) 이었다면, <mark>10 >> 1</mark> 의 경우 10
 * Array 는 size 가 고정이고, 처음 할당한 size 와 다른 size 로 조절 하는 비용이 크다.
 * 그래서 java 에서는 ArrayList 를 쓸 수 있다.
 * 그런데 java 의 ArrayList 도 결국 size 조절에 array 를 copy 하는 방법을 사용하므로 비용이 큰건 같다.
+
+<br/>
+
+#### 참고한 자료
+* <a target="_blank" href="https://www.geeksforgeeks.org/array-data-structure/">https://www.geeksforgeeks.org/array-data-structure/</a>
