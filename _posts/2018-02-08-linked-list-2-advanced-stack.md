@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "LinkedList 를 이용한 Stack 구현 예제"
+title: "LinkedList Stack - Java"
 date: 2018-02-08
 banner_image: /banner/ds-new.jpg"
 categories: [data-structures]

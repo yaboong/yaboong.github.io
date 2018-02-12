@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Array 사용해서 Heap 구현해보기"
+title: "Min Heap - Java"
 date: 2018-02-10
 banner_image: /banner/ds-new.jpg"
 categories: [data-structures]
