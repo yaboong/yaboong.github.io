@@ -15,7 +15,7 @@ tags: [data-structures, linked-list, tree, binary-search-tree, java]
 <!--more-->
 
 
-<br>
+<br/>
 
 ### Tree 란
 아래와 같은 모양을 가지는 데이터 구조다. 아래 그림은 이진트리이지만 자식 노드는 여러개가 되어도 상관없다. 다만 Binary Search Tree (BST) 에는 이름 그대로 이진트리 형태로 구성된다.
