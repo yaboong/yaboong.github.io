@@ -6,7 +6,6 @@ banner_image: /banner/algorithms-banner.jpg"
 categories: [algorithms]
 tags: [algorithms, sorting, java]
 ---
-<script type="text/javascript"  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 ### 개요
 * Merge Sort 의 divide, merge 부분 동작 파악
