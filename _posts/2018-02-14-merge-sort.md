@@ -138,7 +138,7 @@ h = log<sub>2</sub>n<br/>
 
 ### 비교
 Coursera 강의에 재미있는 자료가 있었다. Merge sort 와 insertion sort 를 일반 컴퓨터, 슈퍼 컴퓨터로 실행한 결과에 대한 비교이다.
-삽입정렬은 N 이 10억개면 317년이 걸린다.
+<mark>삽입정렬은 N 이 10억개면 317년이 걸린다.</mark>
 
 <div style="text-align:center">
 {% include image_caption.html imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/algo/mergesort-vs-insertionsort.png" title="mergesort-vs-insertionsort" caption="merge sort vs insertion sort" %}
@@ -150,9 +150,11 @@ Coursera 강의에 재미있는 자료가 있었다. Merge sort 와 insertion so
 <br/>
 
 ### 참고한 자료
-* {% include href.html url="https://www.youtube.com/watch?v=iMT7gTPpaqw" text="Java: MergeSort explained" %}
-* {% include href.html url="https://www.youtube.com/watch?v=Sk7IZESPgjk" text="Coursera Princeton University - Merge Sort" %}
-* {% include href.html url="https://ko.wikipedia.org/wiki/%ED%95%A9%EB%B3%91_%EC%A0%95%EB%A0%AC" text="위키-합병정렬" %}
-* {% include href.html url="https://www.youtube.com/watch?v=N50-z_3m_O0" text="Youtube Channel lennypitt - recursion tree" %}
-* {% include href.html url="https://www.youtube.com/watch?v=4p1WqREIJq8" text="Youtube Channel Oresoft LWC - Recursion tree method - Example 1" %}
+* {% include href.html text="Java: MergeSort explained" url="https://www.youtube.com/watch?v=iMT7gTPpaqw"%}
+* {% include href.html text="Coursera Princeton University - Merge Sort" url="https://www.youtube.com/watch?v=Sk7IZESPgjk" %}
+* {% include href.html text="Youtube Channel lennypitt - recursion tree" url="https://www.youtube.com/watch?v=N50-z_3m_O0" %}
+* {% include href.html text="Youtube Channel Oresoft LWC - Recursion tree method - Example 1" url="https://www.youtube.com/watch?v=4p1WqREIJq8" %}
+* {% include href.html text="KahnAcademy - Analysis of merge sort" url="https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/analysis-of-merge-sort" %}
+* {% include href.html text="위키-합병정렬" url="https://ko.wikipedia.org/wiki/%ED%95%A9%EB%B3%91_%EC%A0%95%EB%A0%AC" %}
+
 
