@@ -70,6 +70,7 @@ paginate_path: '/blog/page:num/'
 plugins:
   - jekyll-paginate
   - jekyll-seo-tag
+  - jekyll-gist
 permalink: pretty
 markdown: kramdown
 highlighter: rouge

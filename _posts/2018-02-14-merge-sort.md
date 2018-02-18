@@ -46,50 +46,8 @@ merge() 메소드가 동작하는 과정은 아래와 같다.
 <br/>
 
 ### 구현
-```javascript
-public class MergeSort {
-    // 병합하면서 정렬한다
-    private static void merge(Comparable[] a, Comparable[] aux, int lo, int mid, int hi){
-        // 주어진 배열 a 의 특정 범위를 보조배열 aux 의 특정 범위에 할당해햐 하기 때문에 Arrays.copyRange() 를 쓸 수 없다
-        for (int k = lo; k <= hi; k++){
-            aux[k] = a[k];
-        }
-        int i = lo, j = mid+1;
-        for (int k = lo; k <= hi; k++){
-            if		(i > mid) 			  a[k] = aux[j++];
-            else if (j > hi) 			  a[k] = aux[i++];
-            else if (less(aux[j],aux[i])) a[k] = aux[j++];
-            else						  a[k] = aux[i++];
-        }
-    }
-
-    private static boolean less(Comparable v, Comparable w) {
-        return v.compareTo(w) < 0;
-    }
-
-    private static void mergeSort(Comparable[] a, Comparable[] aux, int lo, int hi) {
-        if(hi <= lo) return;            // 쪼갤 수 있는 범위를 벗어나면 return
-        int mid = lo + (hi - lo)/2;     // 중간 인덱스
-        mergeSort(a, aux, lo, mid);        // 왼쪽 반을 또 쪼갬
-        mergeSort(a, aux, mid+1, hi);  // 오른쪽 반을 또 쪼갬
-        merge(a, aux, lo, mid, hi);     // 병합
-    }
-
-    public static void sort(Comparable[] a){
-        Comparable[] aux = new Comparable[a.length];        // 보조 배열 하나 생성. 재귀호출 밖에서 해줘야함.
-        mergeSort(a, aux, 0, a.length-1);              // 재귀적으로 배열을 쪼갠다.
-    }
-
-    public static void main(String[] args) {
-        Integer[] arr = {2, 3, 14, 10, 8, 1, 12, 9};
-        System.out.println(Arrays.toString(arr));
-
-        sort(arr);
-
-        System.out.println(Arrays.toString(arr));
-    }
-}
-```
+{% include href.html text="github 에서 보기" url="https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/algorithms/sort/MergeSort.java" %}
+{% gist 560ee4d39880d216704f22fe8e20d531 %}
 
 <br/>
 
