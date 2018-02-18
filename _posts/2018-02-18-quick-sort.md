@@ -8,7 +8,8 @@ tags: [algorithms, sorting, java]
 ---
 
 ### 개요
-Quick sort 파티셔닝 설명 및 구현 예제
+* Quick sort 파티셔닝 설명 및 구현 예제
+* {% include href.html text="코드 보기" url="https://github.com/yaboong/datastructures-algorithms-study/blob/master/src/cc/yaboong/algorithms/sort/QuickSort.java" %}
 
 <!--more-->
 
