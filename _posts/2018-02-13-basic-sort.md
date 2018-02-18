@@ -27,7 +27,8 @@ tags: [algorithms, sorting, java]
 
 <br/>
 
-**Bubble Sort 구현 예제**
+**Bubble Sort 구현 예제**<br/>
+두 번째 for loop 에서 arr.length - 1 이 아니라 <mark>arr.length - i</mark> 임에 주의하자. i 다. 아이. 영어 소문자 아이. i.
 {% gist d04c3739a03a41e949d4a02d380c2b7f %}
 
 <br/>
