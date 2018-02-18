@@ -28,27 +28,7 @@ tags: [algorithms, sorting, java]
 <br/>
 
 **Bubble Sort 구현 예제**
-```javascript
-public class BubbleSort {
-    public static void bubbleSort(int[] arr) {
-        int temp = 0;
-        for(int i = 0; i < arr.length; i++) {
-            for(int j= 1 ; j < arr.length-i; j++) {
-                if(arr[j]<arr[j-1]) {
-                    temp = arr[j-1];
-                    arr[j-1] = arr[j];
-                    arr[j] = temp;
-                }
-            }
-        }
-        System.out.println(Arrays.toString(arr));
-    }
-
-    public static void main(String[] args) {
-        bubbleSort(new int[]{10, 9, 8, 7, 6, 5, 4, 3, 2, 1});
-    }
-}
-```
+{% gist d04c3739a03a41e949d4a02d380c2b7f %}
 
 <br/>
 
@@ -71,34 +51,7 @@ for loop 을 처음부터 끝까지 반드시 두번 반복해야 하므로 항�
 <br/>
 
 **Selection Sort 구현 예제**
-```javascript
-public class SelectionSort {
-    public static void selectionSort(Comparable[] arr){
-        int N = arr.length;
-        for (int i = 0; i < N; i++){
-            int min = i;
-            for (int j = i+1; j < N; j++)
-                if (less(arr[j], arr[min])) min = j;
-            exch(arr, i, min);
-        }
-        System.out.println(Arrays.toString(arr));
-    }
-
-    private static boolean less(Comparable v, Comparable w){
-        return v.compareTo(w) < 0;
-    }
-
-    private static void exch(Comparable[] a, int i, int j){
-        Comparable swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
-    }
-
-    public static void main(String[] args) {
-        selectionSort(new Integer[]{10, 9, 8, 7, 6, 5, 4, 3, 2, 1});
-    }
-}
-```
+{% gist b1810eaf0ce37b8e763c86826fe83bd7 %}
 
 
 
@@ -106,6 +59,10 @@ public class SelectionSort {
 
 ### Insertion Sort - 삽입정렬
 배열의 모든 요소를 앞에서부터 차례대로 이미 정렬된 배열 부분과 비교하여, 자신의 위치를 찾아 삽입함으로써 정렬을 완성하는 알고리즘이다.
+* 배열의 모든 요소를 앞에서부터 차례대로 -> <mark>for(int i = 0; i < N; i++)</mark>
+    * i 는 평범하게 0 ~ length-1 까지 하나씩 돈다
+* 이미 정렬된 배열 부분과 비교하여 -> <mark>for(int j = i; j > 0; j--)</mark>
+    * 각 i 를 기준으로 (j = i 로 할당해주고) j 의 왼쪽에 있는녀석들을 차례대로 스캔하면서 (j 를 감소시키면서 ) j-1 이 j 보다 작으면 둘의 위치를 바꾼다. 그렇지 않은 경우, 그 왼쪽 녀석들은 이미 정렬이 되어있는 것이므로 멈추고, 다음 i 에 대해 진행한다.
 
 최악의 경우 (오름차순으로 정렬하려는데 내림차순으로 정렬되어 있는 경우) for loop 을 처음부터 끝까지 두번 반복하게 되어 O(n<sup>2</sup>) 이 되지만 그렇지 않은 경우 두번째 반복문을 도중에 멈추기 때문에 일반적으로 선택정렬이나 버블정렬에 비해 빠르다.
 
@@ -116,33 +73,6 @@ public class SelectionSort {
 <br/>
 
 **Insertion Sort 구현 예제**
-```javascript
-public class InsertionSort {
-    public static void insertionSort(Comparable[] arr){
-        int N = arr.length;
-        for(int i = 0; i < N; i++){
-            for(int j = i; j > 0; j--){
-                if(less(arr[j], arr[j-1])) exch(arr, j, j-1);
-                else break;
-            }
-        }
-        System.out.println(Arrays.toString(arr));
-    }
-
-    private static boolean less(Comparable v, Comparable w){
-        return v.compareTo(w) < 0;
-    }
-
-    private static void exch(Comparable[] a, int i, int j){
-        Comparable swap = a[i];
-        a[i] = a[j];
-        a[j] = swap;
-    }
-
-    public static void main(String[] args) {
-        insertionSort(new String[]{"G", "F", "E", "D", "C", "B", "A"});
-    }
-}
-```
+{% gist 4d7feb990ee9cdcb1171f9de503c3a05 %}
 
 <br/>
