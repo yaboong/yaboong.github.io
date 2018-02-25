@@ -75,6 +75,7 @@ marked, edgeTo 배열은 Graph 클래스의 생성자에서 노드의 갯수에 
 
 ### 응용 - Depth First Paths
 DFS 를 응용해서 임의의 노드 source -> destination 로 가는 길이 있는지 찾는 <mark>pathFromTo(source, destination)</mark> 메소드를 만들어 보자.
+(DFS 를 응용해서 path 가 있는지 없는지 알아보는 것이지 최단거리를 구하는 방법은 아니다)
 
 **pathFromTo(source, destination)** 에서 source = 0, destination = 3 인 경우
 * 주어진 그래프에 dfs 를 한번 돌린다
