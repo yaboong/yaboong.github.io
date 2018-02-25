@@ -74,6 +74,8 @@ plugins:
 permalink: pretty
 markdown: kramdown
 highlighter: rouge
+exclude:
+  - node_modules
 
 # Google Analytics
 google_analytics: UA-113745841-1
