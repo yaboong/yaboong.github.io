@@ -164,6 +164,17 @@ X, Y, Z 에 대해 X->Y 이고 Y->Z 이면 X->Z 가 성립한다. 이를 Z 가 X
 {% include image_caption.html caption="학생, 학부 릴레이션" title="학생, 학부 릴레이션" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/etc/relation-student-and-department.png" %}
 </div>
 
+> 제 3 정규형을 만족하면 이상현상이 없어질까?
+
+그렇지 않다. 
+
+지금까지 살펴본 세가지 릴레이션에서는 기본키가 될 수 있는 후보키가 하나 밖에 없었다.
+하지만 후보키를 여러개 가지고 있는 릴레이션에서는 제3정규형을 만족하더라도 이상현상이 생길 수 있다.
+
+이를 해결하기 위한 정규형이 보이스-코드 정규형 (BCNF; Boyce-Codd Normal Form)이다. 
+제3정규형보다 조금 더 엄격한 제약조건을 가지기 때문에 Strong 3NF 라고도 한다.
+
+다음 포스팅에서 BCNF에 대해 알아본다.
 
 <br/>
 
