@@ -105,7 +105,7 @@ pre {
 
 pre:before {
     background-color: $gallery;
-    content: "\f121";
+    //content: "\f121";
     font-family: 'fontawesome' !important;
     font-size: 14px;
     font-style: normal;
@@ -573,3 +573,44 @@ green     #859900  operators, other keywords
         transform:          translateY(0);
     }
 }
+
+
+
+
+
+/* custom css */
+code, tt {
+    margin: 0 2px;
+    padding: 0 5px;
+    white-space: nowrap;
+    border: 1px solid #eaeaea;
+    background-color: #f8f8f8;
+    border-radius: 3px; }
+
+pre code {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    border: none;
+    background: transparent; }
+
+.highlight pre {
+    background-color: #f8f8f8;
+    border: 1px solid #cccccc;
+    font-size: 13px;
+    line-height: 19px;
+    overflow: auto;
+    padding: 6px 10px;
+    border-radius: 3px; }
+
+pre {
+    background-color: #f8f8f8;
+    border: 1px solid #cccccc;
+    font-size: 16px;
+    line-height: 21px;
+    overflow: auto;
+    padding: 6px 10px;
+    border-radius: 3px; }
+pre code, pre tt {
+    background-color: transparent;
+    border: none; }
