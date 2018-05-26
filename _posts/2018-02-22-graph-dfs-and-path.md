@@ -2,7 +2,7 @@
 layout: post
 title: "Depth-First Search & Path"
 date: 2018-02-22
-banner_image: /banner/algorithms-banner.jpg"
+banner_image: algorithms-banner.jpg
 categories: [algorithms]
 tags: [algorithms, graph, java, depth-first-search]
 ---

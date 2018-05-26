@@ -2,7 +2,7 @@
 layout: post
 title: "데이터베이스 정규화 - 1NF, 2NF, 3NF"
 date: 2018-03-09
-banner_image: /banner/db.png"
+banner_image: db.png
 categories: [database]
 tags: [database, normalization]
 ---

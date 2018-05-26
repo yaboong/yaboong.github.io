@@ -3,7 +3,7 @@ layout: post
 comments: true
 title: "Dynamic Programming 기초1 - Fibonacci"
 date: 2018-02-05
-banner_image: /banner/algorithms-banner.jpg"
+banner_image: algorithms-banner.jpg
 categories: [algorithms]
 tags: [dynamic-programming, java]
 ---

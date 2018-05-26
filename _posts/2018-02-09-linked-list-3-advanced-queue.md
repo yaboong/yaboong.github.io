@@ -2,7 +2,7 @@
 layout: post
 title: "LinkedList Queue - Java"
 date: 2018-02-09
-banner_image: /banner/ds-new.jpg"
+banner_image: ds-new.jpg
 categories: [data-structures]
 tags: [data-structures, linked-list, queue, java]
 ---

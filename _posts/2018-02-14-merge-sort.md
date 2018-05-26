@@ -2,7 +2,7 @@
 layout: post
 title: "Merge Sort - 합병정렬"
 date: 2018-02-14
-banner_image: /banner/algorithms-banner.jpg"
+banner_image: algorithms-banner.jpg
 categories: [algorithms]
 tags: [algorithms, sorting, java]
 ---

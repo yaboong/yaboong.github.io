@@ -2,7 +2,7 @@
 layout: post
 title: "AWS EC2 에 Jenkins 서버 구축하기"
 date: 2018-04-29
-banner_image: /banner/jenkins.jpg"
+banner_image: jenkins.jpg
 categories: [jenkins]
 tags: [jenkins, aws]
 ---

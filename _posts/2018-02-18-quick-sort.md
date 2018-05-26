@@ -2,7 +2,7 @@
 layout: post
 title: "Quick Sort - 퀵정렬"
 date: 2018-02-18
-banner_image: /banner/algorithms-banner.jpg"
+banner_image: algorithms-banner.jpg
 categories: [algorithms]
 tags: [algorithms, sorting, java]
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: "Counting Sort - 계수정렬"
 date: 2018-03-20
-banner_image: /banner/algorithms-banner.jpg"
+banner_image: algorithms-banner.jpg
 categories: [algorithms]
 tags: [algorithms, sorting, java]
 ---

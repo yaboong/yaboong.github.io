@@ -2,7 +2,7 @@
 layout: post
 title: "Jenkins 로 빌드 자동화하기 1 - GitHub 에 push 되면 자동 빌드하도록 구성"
 date: 2018-05-14
-banner_image: /banner/jenkins-github.jpg"
+banner_image: jenkins-github.jpg
 categories: [jenkins]
 tags: [jenkins, devops]
 ---

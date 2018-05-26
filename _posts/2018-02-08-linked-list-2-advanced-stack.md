@@ -2,7 +2,7 @@
 layout: post
 title: "LinkedList Stack - Java"
 date: 2018-02-08
-banner_image: /banner/ds-new.jpg"
+banner_image: ds-new.jpg
 categories: [data-structures]
 tags: [data-structures, linked-list, stack, java]
 ---

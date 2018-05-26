@@ -2,7 +2,7 @@
 layout: post
 title: "프로젝트에 있는 코드 줄 수 계산해보기"
 date: 2018-03-30
-banner_image: /banner/programming-banner.jpg"
+banner_image: programming-banner.jpg
 categories: [for-fun]
 tags: [for-fun, python]
 ---

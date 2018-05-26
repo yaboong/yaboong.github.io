@@ -47,6 +47,7 @@ author_image: /images/yaboong.jpeg
 # Sidebar Add banner
 banner_url: "https://github.com/yaboong"
 banner_image: images/yaboong.jpeg
+banner_prefix: "https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/banner/"
 
 # Sidebar newsletter widget - add your form action url for MailChimp signup form here
 #mailchimp_url: "//justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117"

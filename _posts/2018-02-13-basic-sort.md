@@ -2,7 +2,7 @@
 layout: post
 title: "Basic Sorting Algorithms - Bubble, Selection, Insertion Sort"
 date: 2018-02-13
-banner_image: /banner/algorithms-banner.jpg"
+banner_image: algorithms-banner.jpg
 categories: [algorithms]
 tags: [algorithms, sorting, java]
 ---

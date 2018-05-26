@@ -2,7 +2,7 @@
 layout: post
 title: "Min Heap & Heap Sort - Java"
 date: 2018-02-10
-banner_image: /banner/ds-new.jpg"
+banner_image: ds-new.jpg
 categories: [data-structures]
 tags: [data-structures, heap, array, java, sorting]
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: "Binary Search Tree (BST) - Java"
 date: 2018-02-12
-banner_image: /banner/ds-new.jpg"
+banner_image: ds-new.jpg
 categories: [data-structures]
 tags: [data-structures, linked-list, tree, binary-search-tree, java]
 ---

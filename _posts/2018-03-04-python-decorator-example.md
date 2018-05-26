@@ -2,7 +2,7 @@
 layout: post
 title: "파이썬 데코레이터"
 date: 2018-03-04
-banner_image: /banner/python.png"
+banner_image: python.png
 categories: [python]
 tags: [python]
 ---
