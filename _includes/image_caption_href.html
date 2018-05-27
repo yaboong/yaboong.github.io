@@ -1,6 +1,9 @@
-<figure class="caption">
+
+
+
+<figure class="caption" style="text-align:center;">
     <a href="{{ include.imageurl }}" target="_blank">
-        <img src="{{ include.imageurl }}" alt="{{ include.title }}"/>
+        <img src="{{ include.imageurl }}" alt="{{ include.title }}" style="height:{{ include.height }}; width:{{ include.width }}"/>
     </a>
     {% if include.caption %}
     <figcaption class="caption-text">{{ include.caption }}</figcaption>
