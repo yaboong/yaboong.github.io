@@ -10,6 +10,8 @@ tags: [java, memory-management]
 ### 개요
 * Stack 과 Heap 영역 각 역할에 대해 알아본다.
 * 간단한 코드예제와 함께 실제 코드에서 어떻게 Stack 과 Heap 영역이 사용되는지 살펴본다.
+* Wrapper Class 와 Immutable Object 에 대해서도 살짝 알아본다.
+* Garbage Collection 이 무엇인지도 아주 살짝 알아본다.
 <!--more-->
 
 
@@ -102,7 +104,7 @@ argument 변수는 4 로 초기화 되었지만, 함수의 실행결과인 6 이
 
 <br/>
  
-##### Heap
+#### Heap
 이제 heap 영역에 대해서 알아보자.
 * Heap 영역에는 주로 긴 생명주기를 가지는 데이터들이 저장된다. (대부분의 오브젝트는 크기가 크고, 서로 다른 코드블럭에서 공유되는 경우가 많다) 
 * 애플리케이션의 모든 메모리 중 stack 에 있는 데이터를 제외한 부분이라고 보면 된다.
@@ -122,13 +124,13 @@ public class Main {
 
 <mark>int port = 4000;</mark> 에 의해서 기존처럼 stack 에 4000 이라는 값이 port 라는 변수명으로 할당되어 스택의 상태는 아래와 같이 된다.
  
-{% include image_caption2_href.html height="270px" width="700px" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-1.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-1.png" %}
 
 하지만 String 은 Object 를 상속받아 구현되었으므로 Polymorphism(다형성) 에 의해 Object 타입이라고 할 수 있다.
 따라서 String 은 heap 영역에 할당되고 stack 에 host 라는 이름으로 생성된 변수는 heap 에 있는 "localhost" 라는 스트링을 레퍼런스 하게 된다.
 그림으로 표현하면 아래와 같다.
 
-{% include image_caption2_href.html height="270px" width="700px" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-2.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-2.png" %}
 
 기본적인 stack 과 heap 영역에 대한 이해는 끝났으므로, 조금 더 복잡한 예제코드와 함께 각 영역의 메모리 할당과 해제가 어떻게 일어나는지 살펴보자.
 
@@ -164,7 +166,7 @@ List<String> listArgument = new ArrayList<>();
 생성하려는 오브젝트를 저장할 수 있는 충분한 공간이 heap 에 있는지 먼저 찾은 다음, 빈 List 를 참조하는 listArgument 라는 로컬변수를 스택에 할당한다.
 결과는 아래와 같다.
 
-{% include image_caption2_href.html height="300px" width="700px" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-3.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-3.png" %}
   
 다음으로,
 ```java
@@ -175,7 +177,7 @@ listArgument.add("yaboong");
 이때 새롭게 생성된 문자열인 "yaboong" 을 위한 변수는 stack 에 할당되지 않는다. List 내부의 인덱스에 의해 하나씩 add() 된 데이터에 대한 레퍼런스 값을 갖게 된다.
 그림으로 표현하면 아래와 같다.
 
-{% include image_caption2_href.html height="300px" width="700px" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-4.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-4.png" %}
 
 다음으로,
 ```java
@@ -184,7 +186,7 @@ listArgument.add("github");
 가 실행되면 List 에서 레퍼런스 하는 문자열이 하나 더 추가된다.
 그림으로 표현하면 아래와 같다.
  
-{% include image_caption2_href.html height="300px" width="700px" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-5.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-5.png" %}
 
 다음으로,
 ```java
@@ -196,7 +198,7 @@ print(listArgument);
 <mark>print(List&lt;String&gt; listParam)</mark> 메소드에서는 listParam 이라는 참조변수로 인자를 받게 되어있다.
 따라서 print() 함수호출에 따른 메모리의 변화는 아래와 같다.
 
-{% include image_caption2_href.html height="300px" width="700px" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-6.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-6.png" %}
 
 listParam 이라는 참조변수가 새롭게 stack 에 할당되어 기존 List 를 참조하게 되는데,
 기존에 인자인 listArgument 가지고 있던 값(List 에 대한 레퍼런스)을 그대로 listParam 이 가지게 되는 것이다.
@@ -213,7 +215,7 @@ System.out.println(value);
 
 위 코드가 실행되고, 함수가 종료되기 직전의 stack 과 heap 은 아래와 같다. 
 
-{% include image_caption2_href.html height="300px" width="700px" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-7.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-7.png" %}
 
 이제 함수가 닫는 중괄호 <mark>}</mark> 에 도달하여 종료되면 print() 함수의 지역변수는 모두 stack 에서 pop 되어 사라진다.
 이때, List 는 Object 타입이므로 지역변수가 모두 stack 에서 pop 되더라도 heap 영역에 그대로 존재한다.
@@ -225,15 +227,94 @@ print(listArgument);
 
 위 함수호출이 종료된 시점에서 스택과 힙 영역은 아래와 같다.
 
-{% include image_caption2_href.html height="300px" width="700px" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-8.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-8.png" %}
 
 Object 타입의 데이터, 즉 heap 영역에 있는 데이터는 함수호출 전의 작업과 함수 내부에서의 작업이 모두 한 곳에서 이루어지는 것을 볼 수 있다.
 
 <br/>
 
-##### Garbage Collection 살짝 겉핥아보기
-마지막으로 살펴본 코드에서 print() 함수를 실행한 후, listArgument 변수에 새로운 List 를 할당했다고 생각해보자.
-코드는 아래와 같다. 마지막으로 살펴본 코드의 main() 함수에서 <mark>listArgument = new ArrayList&lt;&gt;();</mark> 만 추가되었다.
+> 이쯤되면 아래 코드는 어떤 결과를 보여줄지 궁금할 때다.
+
+<br/>
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Integer a = 10;
+        System.out.println("Before: " + a);
+        changeInteger(a);
+        System.out.println("After: " + a);
+    }
+
+    public static void changeInteger(Integer param) {
+        param += 10;
+    }
+}
+```
+
+<br/>
+
+> 뭐냐.. 당연히 20 이 나오겠지 ㅡ,.ㅡa
+
+<br/>
+
+지금까지 정리한 내용을 기초해서 실행순서대로 살펴보면,
+* Integer 는 Object 타입이므로, 첫 구문인 <mark>Integer a = 10;</mark> 에서 10 은 heap 영역에 할당되고, 10 을 가리키는 레퍼런스변수 a 가 스택에 할당된다.
+* 함수에 인자를 넘겨줄때에 파라미터는 copied value 를 넘겨받는다. 
+* 그러므로, <mark>changeInteger(a);</mark> 에 의해, param 이라는 레퍼런스 변수가 스택에 할당되고, 이 param 은 main() 함수에서 a 를 가리키던 곳을 똑같이 가리키고 있다.
+* main() 함수에서 레퍼런스하던 a 와 같은 곳을 param 이 가리키고 있으므로 param 에 10 을 더하면, changeInteger() 함수가 종료되고 a 의 값을 출력했을 때 바뀐 값이 출력될 것이다. 
+
+<br/>
+
+> 뭐냐... 20 이 아니다... 값이 안바뀐다... 헛배웠다...?
+
+<br/>
+
+값이 바뀌지 않는 이유는 아래 코드를 생각해보면 된다. String 은 불변객체(immutable) 로써 어떤 연산을 수행할때마다 기존 오브젝트를 변경하는 것이 아니라 새로운 오브젝트를 생성하는 것이라고 알고 있을 것이다.
+
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        String s = "hello";
+        changeString(s);
+        System.out.println(s);
+    }
+    public static void changeString(String param) {
+        param += " world";
+    }
+}
+```
+
+changeString() 내부동작만 살펴보면,
+* main() 메소드 s 가 레퍼런스하는 "hello" 오브젝트를 param 에 복사하면서 changeString() 메소드가 시작된다.
+* <mark>param += " world";</mark> 를 실행하는 것은 heap 에 "hello world" 라는 스트링 오브젝트가 새롭게 할당되는 작업이다. 
+* 기존에 "hello" 오브젝트를 레퍼런스하고 있던 param 으로 새롭게 생성된 스트링 오브젝트인 "hello world" 를 레퍼런스 하도록 만드는 것이다.
+* changeString() 함수가 종료되면, 새롭게 생성된 "hello world" 오브젝트를 레퍼런스 하는 param 이라는 변수는 스택에서 pop 되므로 어느것도 레퍼런스 하지 않는 상태가 된다.
+* (아래에서 간략히 살펴보겠지만) 이런 경우 "hello world" 오브젝트는 garbage 로 분류된다. 
+
+그러므로, changeString() 메소드를 수행하고 돌아가도 기존에 "hello" 를 레퍼런스하고 있던 s 변수의 값은 그대로이다.
+이게 Immutable Object 의 기능이다.
+
+자바에서 Wrapper class 에 해당하는 Integer, Character, Byte, Boolean, Long, Double, Float, Short 클래스는 모두 Immutable 이다.
+그래서 heap 에 있는 같은 오브젝트를 레퍼런스 하고 있는 경우라도, 새로운 연산이 적용되는 순간 새로운 오브젝트가 heap 에 새롭게 할당된다.
+
+처음에는 왜 이렇게 되는거지? 의문을 가지다가 Integer 클래스의 구현을 보니 final 이라는 키워드가 붙어있었다. 이 final 때문인가? 싶었는데, 아니다.
+클래스에 붙어있는 final 은 값을 바꾸지 못하도록 하는 역할이 아닌, 상속을 제한하는 목적으로 붙이는 키워드이다.
+
+Integer 클래스를 까보면 내부에서 사용하는 실제 값인 value 라는 변수가 있는데,
+이 변수는 <mark>private final int value;</mark> 로 선언 되어있다.
+즉, 생성자에 의해 생성되는 순간에만 초기화되고 변경불가능한 값이 된다.
+이것 때문에 Wrapper class 들도 String 처럼 Immutable 한 오브젝트가 되는 것이다.
+
+
+
+<br/>
+
+#### Garbage Collection 살짝 겉핥아보기
+이제 아래 코드를 한번 살펴보면서 그놈의 garbage collection 이 뭔지 살짝만 알아보자.
+listArgument 변수에 새로운 List 를 할당했다고 생각해보자.
+코드는 아래와 같다.
 ```java
 import java.util.ArrayList;
 import java.util.List;
@@ -260,7 +341,7 @@ public class Main {
 main() 함수의 마지막 줄에서 listArgument 에 새로운 ArrayList 를 할당하는 코드를 추가하였다.
 위와 같이 실행한 경우 stack 과 heap 영역은 아래와 같이 될 것이다.
 
-{% include image_caption2_href.html height="300px" width="700px" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-9.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-9.png" %}
 
 Heap 영역을 잘 보면, 기존에 사용했던 listArgument 참조변수는 새롭게 생성한 빈 List 를 참조하고 있다.
 기존에 listArgument 가 참조했던 "yaboong", "github", "io" 를 가진 ArrayList 를 참조하고 있는 변수는 어느 stack 에서도 찾아볼 수 없다.
@@ -271,8 +352,12 @@ Garbage Collection 정책과 방식에는 여러가지가 있지만 이 포스�
 
 Garbage Collection 이 일어난 후의 stack 과 heap 영역은 아래와 같을 것이다.
 
-{% include image_caption2_href.html height="300px" width="700px" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-10.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-10.png" %}
 
+
+<br/>
+
+다음 포스팅에서는 garbage collection 에 대해 조금 더 깊이있게 파보고 내용을 정리해봐야겠다.
 
 <br/>
 
