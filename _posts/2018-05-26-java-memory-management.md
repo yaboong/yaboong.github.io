@@ -126,8 +126,8 @@ public class Main {
  
 {% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-1.png" %}
 
-하지만 String 은 Object 를 상속받아 구현되었으므로 Polymorphism(다형성) 에 의해 Object 타입이라고 할 수 있다.
-따라서 String 은 heap 영역에 할당되고 stack 에 host 라는 이름으로 생성된 변수는 heap 에 있는 "localhost" 라는 스트링을 레퍼런스 하게 된다.
+String 은 Object 를 상속받아 구현되었으므로 (Object 타입은 최상위 부모클래스다, Polymorphism 에 의해 Object 타입으로 레퍼런스 가능하다) 
+String 은 heap 영역에 할당되고 stack 에 host 라는 이름으로 생성된 변수는 heap 에 있는 "localhost" 라는 스트링을 레퍼런스 하게 된다.
 그림으로 표현하면 아래와 같다.
 
 {% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-2.png" %}
@@ -229,7 +229,8 @@ print(listArgument);
 
 {% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-8.png" %}
 
-Object 타입의 데이터, 즉 heap 영역에 있는 데이터는 함수호출 전의 작업과 함수 내부에서의 작업이 모두 한 곳에서 이루어지는 것을 볼 수 있다.
+Object 타입의 데이터, 즉 heap 영역에 있는 데이터는 <mark>함수 내부에서 파라미터로 copied value 를 받아서 변경하더라도 
+함수호출이 종료된 시점에 변경내역이 반영되는 것</mark>을 볼 수 있다.
 
 <br/>
 
@@ -254,7 +255,7 @@ public class Main {
 
 <br/>
 
-> 뭐냐.. 당연히 20 이 나오겠지 ㅡ,.ㅡa
+> Integer 도 Object 를 상속받아 구현되었으니... Object 타입이고... 당연히 20 이 나오겠지 ㅡ,.ㅡa
 
 <br/>
 
@@ -294,13 +295,13 @@ changeString() 내부동작만 살펴보면,
 * (아래에서 간략히 살펴보겠지만) 이런 경우 "hello world" 오브젝트는 garbage 로 분류된다. 
 
 그러므로, changeString() 메소드를 수행하고 돌아가도 기존에 "hello" 를 레퍼런스하고 있던 s 변수의 값은 그대로이다.
-이게 Immutable Object 의 기능이다.
+Immutable Object 는 불변객체로써, 값이 변하지 않는다. 변경하는 연산이 수행되면 변경하는 것 처럼 보이더라도 실제 메모리에는 새로운 객체가 할당되는 것이다.
 
 자바에서 Wrapper class 에 해당하는 Integer, Character, Byte, Boolean, Long, Double, Float, Short 클래스는 모두 Immutable 이다.
 그래서 heap 에 있는 같은 오브젝트를 레퍼런스 하고 있는 경우라도, 새로운 연산이 적용되는 순간 새로운 오브젝트가 heap 에 새롭게 할당된다.
 
 처음에는 왜 이렇게 되는거지? 의문을 가지다가 Integer 클래스의 구현을 보니 final 이라는 키워드가 붙어있었다. 이 final 때문인가? 싶었는데, 아니다.
-클래스에 붙어있는 final 은 값을 바꾸지 못하도록 하는 역할이 아닌, 상속을 제한하는 목적으로 붙이는 키워드이다.
+클래스에 붙어있는 final 은 값을 바꾸지 못하도록 하는 역할이 아닌, <mark>상속을 제한하는 목적으로 붙이는 제어자이다.</mark>
 
 Integer 클래스를 까보면 내부에서 사용하는 실제 값인 value 라는 변수가 있는데,
 이 변수는 <mark>private final int value;</mark> 로 선언 되어있다.
@@ -312,9 +313,58 @@ Integer 클래스를 까보면 내부에서 사용하는 실제 값인 value 라
 <br/>
 
 #### Garbage Collection 살짝 겉핥아보기
-이제 아래 코드를 한번 살펴보면서 그놈의 garbage collection 이 뭔지 살짝만 알아보자.
-listArgument 변수에 새로운 List 를 할당했다고 생각해보자.
-코드는 아래와 같다.
+이제 간단한 코드를 살펴보면서 garbage collection 이 뭔지 살짝만 알아보자.
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        String url = "https://";
+        url += "yaboong.github.io";
+        System.out.println(url);
+    }
+}
+```
+
+위 코드에서 
+
+```java
+String url = "https://";
+```
+
+구문이 실행된 뒤 스택과 힙은 아래와 같다.
+
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-11.png" %}
+
+다음 구문인 
+
+```java
+url += "yaboong.github.io";
+```
+
+문자열 더하기 연산이 수행되는 과정에서, (String 은 불변객체이므로) 기존에 있던 <mark>"https://"</mark> 스트링에 <mark>"yaboong.github.io"</mark> 를 덧붙이는 것이 아니라, 
+문자열에 대한 더하기 연산이 수행된 결과가 새롭게 heap 영역에 할당된다.
+그 결과를 그림으로 표현하면 아래와 같다.
+
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-12.png" %}
+
+Stack 에는 새로운 변수가 할당되지 않는다.
+문자열 더하기 연산의 결과인 <mark>"https://yaboong.github.io"</mark> 가 새롭게 heap 영역에 생성되고, 기존에 <mark>"https://"</mark> 를 레퍼런스 하고 있던 url 변수는
+새롭게 생성된 문자열을 레퍼런스 하게 된다.
+
+> 기존의 <mark>"https://"</mark> 라는 문자열을 레퍼런스 하고 있는 변수는 아무것도 없다.
+
+JVM 의 Garbage Collector 는 Unreachable Object 를 우선적으로 메모리에서 제거하여 메모리 공간을 확보한다.
+Unreachable Object 란 Stack 에서 도달할 수 없는 Heap 영역의 객체를 말하는데, 지금의 예제에서 <mark>"https://"</mark> 문자열과 같은 경우가 되겠다.
+아주 간단하게 이야기해서 이런 경우에 Garbage Collection 이 일어나게 되는 것이다.  
+
+Garbage Collection 이 일어난 후의 메모리 상태는 아래와 같을 것이다.
+
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-13.png" %}
+
+Garbage Collection 정책과 방식에는 여러가지가 있지만 이 포스팅에서는 다루지 않겠다.
+
+비슷한 예제를 하나 더 살펴보자.
+
 ```java
 import java.util.ArrayList;
 import java.util.List;
@@ -337,18 +387,15 @@ public class Main {
 }
 ```
 
-물론 좋은 코드는 아니다. 하지만 또 설명을 위해 일단 진행한다.
-main() 함수의 마지막 줄에서 listArgument 에 새로운 ArrayList 를 할당하는 코드를 추가하였다.
-위와 같이 실행한 경우 stack 과 heap 영역은 아래와 같이 될 것이다.
+위 코드에서는 listArgument 라는 변수에 두번의 할당작업이 일어난다. 위와 같이 실행한 경우 stack 과 heap 영역은 아래와 같이 될 것이다.
 
 {% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-9.png" %}
 
-Heap 영역을 잘 보면, 기존에 사용했던 listArgument 참조변수는 새롭게 생성한 빈 List 를 참조하고 있다.
+기존에 사용했던 listArgument 참조변수는 새롭게 생성한 빈 List 를 레퍼런스 한다.
+세개의 String 오브젝트는 List 내부의 인덱스에 의해 레퍼런스 되고 있지만 stack 에서는 Unreachable 한 영역에 있다.
 기존에 listArgument 가 참조했던 "yaboong", "github", "io" 를 가진 ArrayList 를 참조하고 있는 변수는 어느 stack 에서도 찾아볼 수 없다.
 
-아주 간단하게 이야기해서, 이런 경우에 Garbage Collection 이 일어나게 된다.
-JVM 의 Garbage Collector 는 어디에서도 참조되고 있지 않은 heap 영역의 Object 들을 가장 우선적으로 제거하여 메모리 공간을 확보한다.
-Garbage Collection 정책과 방식에는 여러가지가 있지만 이 포스팅에서는 다루지 않겠다.
+앞서 본 경우와 비슷하게 이런 경우에도 기존의 List 오브젝트와, List 오브젝트가 힙 내부에서 레퍼런스하고 있는 String 오브젝트 모두 garbage 로 분류된다.
 
 Garbage Collection 이 일어난 후의 stack 과 heap 영역은 아래와 같을 것이다.
 
