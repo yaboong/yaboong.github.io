@@ -255,7 +255,7 @@ public class Main {
 
 <br/>
 
-> Integer 도 Object 를 상속받아 구현되었으니... Object 타입이고... 당연히 20 이 나오겠지 ㅡ,.ㅡa
+> Integer 도 Object 를 상속받아 구현되었으니... Object 타입이고...<br/>당연히 20 이 나오겠지 ㅡ,.ㅡa
 
 <br/>
 
@@ -357,6 +357,16 @@ JVM 의 Garbage Collector 는 Unreachable Object 를 우선적으로 메모리�
 Unreachable Object 란 Stack 에서 도달할 수 없는 Heap 영역의 객체를 말하는데, 지금의 예제에서 <mark>"https://"</mark> 문자열과 같은 경우가 되겠다.
 아주 간단하게 이야기해서 이런 경우에 Garbage Collection 이 일어나게 되는 것이다.  
 
+Garbage Collection 과정은 <mark>Mark and Sweep</mark> 이라고도 한다. 
+JVM의 Garbage Collector 가 스택의 모든 변수를 스캔하면서 각각 어떤 오브젝트를 레퍼런스 하고 있는지 찾는과정이 Mark 다. 
+오브젝트가 레퍼런스하고 있는 오브젝트 또한 marking 한다.
+첫번째 단계인 marking 작업을 위해 모든 스레드는 중단되는데 이를 stop the world 라고 부르기도 한다. (System.gc() 를 생각없이 호출하면 안되는 이유이기도 하다) 
+
+그리고 나서 mark 되어있지 않은 모든 오브젝트들을 힙에서 제거하는 과정이 Sweep 이다.
+  
+Garbage Collection 이라고 하면 garbage 들을 수집할 것 같지만 실제로는 garbage 를 수집하여 제거하는 것이 아니라,
+garbage 가 아닌 것을 따로 mark 하고 그 외의 것은 모두 지우는 것이다. 만약 힙에 garbage 만 가득하다면 제거 과정은 즉각적으로 이루어진다.
+
 Garbage Collection 이 일어난 후의 메모리 상태는 아래와 같을 것이다.
 
 {% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-13.png" %}
@@ -404,7 +414,7 @@ Garbage Collection 이 일어난 후의 stack 과 heap 영역은 아래와 같�
 
 <br/>
 
-다음 포스팅에서는 garbage collection 에 대해 조금 더 깊이있게 파보고 내용을 정리해봐야겠다.
+다음 포스팅에서는 Garbage Collection 에 대해 조금 더 깊이있게 파보고 내용을 정리해봐야겠다.
 
 <br/>
 
