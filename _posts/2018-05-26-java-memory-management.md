@@ -219,7 +219,7 @@ System.out.println(value);
 
 이제 함수가 닫는 중괄호 <mark>}</mark> 에 도달하여 종료되면 print() 함수의 지역변수는 모두 stack 에서 pop 되어 사라진다.
 이때, List 는 Object 타입이므로 지역변수가 모두 stack 에서 pop 되더라도 heap 영역에 그대로 존재한다.
-즉, 함수호출시 레퍼런스 값을 복사하여 가지고 있던 listParam 만 스택에서 사라지고 나머지는 모두 그대로인 상태로 함수호출이 종료된다.
+즉, 함수호출시 레퍼런스 값을 복사하여 가지고 있던 listParam 과 함수내부의 지역변수인 value 만 스택에서 사라지고 나머지는 모두 그대로인 상태로 함수호출이 종료된다.
 
 ```java
 print(listArgument);
@@ -288,7 +288,7 @@ public class Main {
 ```
 
 changeString() 내부동작만 살펴보면,
-* main() 메소드 s 가 레퍼런스하는 "hello" 오브젝트를 param 에 복사하면서 changeString() 메소드가 시작된다.
+* main() 메소드의 s 변수가 레퍼런스하는 "hello" 오브젝트를 param 에 복사하면서 changeString() 메소드가 시작된다.
 * <mark>param += " world";</mark> 를 실행하는 것은 heap 에 "hello world" 라는 스트링 오브젝트가 새롭게 할당되는 작업이다. 
 * 기존에 "hello" 오브젝트를 레퍼런스하고 있던 param 으로 새롭게 생성된 스트링 오브젝트인 "hello world" 를 레퍼런스 하도록 만드는 것이다.
 * changeString() 함수가 종료되면, 새롭게 생성된 "hello world" 오브젝트를 레퍼런스 하는 param 이라는 변수는 스택에서 pop 되므로 어느것도 레퍼런스 하지 않는 상태가 된다.
@@ -359,7 +359,7 @@ Unreachable Object 란 Stack 에서 도달할 수 없는 Heap 영역의 객체�
 
 Garbage Collection 과정은 <mark>Mark and Sweep</mark> 이라고도 한다. 
 JVM의 Garbage Collector 가 스택의 모든 변수를 스캔하면서 각각 어떤 오브젝트를 레퍼런스 하고 있는지 찾는과정이 Mark 다. 
-오브젝트가 레퍼런스하고 있는 오브젝트 또한 marking 한다.
+Reachable 오브젝트가 레퍼런스하고 있는 오브젝트 또한 marking 한다.
 첫번째 단계인 marking 작업을 위해 모든 스레드는 중단되는데 이를 stop the world 라고 부르기도 한다. (System.gc() 를 생각없이 호출하면 안되는 이유이기도 하다) 
 
 그리고 나서 mark 되어있지 않은 모든 오브젝트들을 힙에서 제거하는 과정이 Sweep 이다.
@@ -371,7 +371,7 @@ Garbage Collection 이 일어난 후의 메모리 상태는 아래와 같을 것
 
 {% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-13.png" %}
 
-Garbage Collection 정책과 방식에는 여러가지가 있지만 이 포스팅에서는 다루지 않겠다.
+Garbage Collection 정책과 방식에는 여러가지가 있지만 (아직 공부를 덜해서) 이 포스팅에서는 다루지 않겠다.
 
 비슷한 예제를 하나 더 살펴보자.
 
