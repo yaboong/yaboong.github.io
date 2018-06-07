@@ -8,6 +8,7 @@ tags: [java, memory-management]
 ---
 
 ### 개요
+* Java 에서 메모리 관리는 어떻게 이루어지는지 알아보기 위함.
 * Stack 과 Heap 영역 각 역할에 대해 알아본다.
 * 간단한 코드예제와 함께 실제 코드에서 어떻게 Stack 과 Heap 영역이 사용되는지 살펴본다.
 * Wrapper Class 와 Immutable Object 에 대해서도 살짝 알아본다.
