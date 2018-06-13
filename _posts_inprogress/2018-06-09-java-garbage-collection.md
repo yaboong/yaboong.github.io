@@ -11,6 +11,9 @@ tags: [java, memory-management, garbage-collection]
 * Java 가비지 컬렉션에 대해서 공부한 내용을 정리해본다.
 * Java 에서 메모리 관리는 어떻게 이루어지는지 이해하고 있으면 좋다.
 * {% include href.html text="Java Memory Management" url="https://yaboong.github.io/java/2018/05/26/java-memory-management/" %} 를 먼저 읽는 것을 추천한다.
+* 모니터링 툴 VisualVM 과 VisualGC 에 대해 알아본다.
+* Heap 영역은 세부적으로 어떻게 구성이 되는지 살펴보고, 각 영역의 역할에 대해 간략하게 알아본다.
+* Heap Dump 를 통해 Memory Leak 에 대한 추적은 어떻게 가능한지 알아본다.
 <!--more-->
 
 
@@ -118,7 +121,147 @@ System.gc() 를 호출하여 명시적으로 가비지 컬렉션이 일어나도
 
 {% include image_caption_href.html title="System.gc()" caption="https://docs.oracle.com/javase/8/docs/api/" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_gc-1.png" %}
 
+> System.gc() 호출하는게 하면 안되는 짓이라는데 한번 해보자.
 
+아무것도 하지 않고 시간만 측정하는 코드다.
+
+```java
+public class GCTimeCheck {
+    public static void main(String[] args) {
+        long startTime = System.nanoTime();
+        long endTime = System.nanoTime();
+        System.out.println(endTime - startTime + "ns");
+    }
+}
+``` 
+
+내 피씨에서는 275ns 가 나온다. 275 나노초면 0.000000275초의 시간이다. 아무것도 하는게 없는 코드니까 당연히 엄청 빠르다.
+이제 startTime, endTime 사이에 System.gc() 를 심어보자. 
+
+* 가비지 컬렉션이 수행되는지 보려면 jvm 옵션으로 <mark>-verbose:gc</mark> 를 주면 된다.
+* 어떤 가비지 컬렉터를 사용하고 있는지 보기위해 jvm 옵션으로 <mark>-XX:+PrintCommandLineFlags</mark> 도 주고 시작하자.
+* IntelliJ 라면 Edit Configurations -> VM options -> <mark>-verbose:gc -XX:+PrintCommandLineFlags</mark> 를 입력하면 된다.
+
+```java
+public class GCTimeCheck {
+    public static void main(String[] args) {
+        long startTime = System.nanoTime();
+        System.gc();
+        long endTime = System.nanoTime();
+        System.out.println(endTime - startTime + "ns");
+    }
+}
+```
+
+실행결과는 아래와 같다.
+
+```bash
+-XX:InitialHeapSize=134217728 -XX:MaxHeapSize=2147483648 -XX:+PrintCommandLineFlags -XX:+PrintGC -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
+[GC (System.gc())  2673K->536K(125952K), 0.0013911 secs]
+[Full GC (System.gc())  536K->428K(125952K), 0.0048825 secs]
+6959381ns
+```
+
+첫번째 라인은 <mark>-XX:+PrintCommandLineFlag</mark> 에 의해 출력된 값들이고,
+두번째 세번째 라인은 <mark>-verbose:gc</mark> 옵션을 주어 가비지 컬렉션이 일어날때 자동출력된 부분이다.
+
+첫번째 라인의 마지막을 보면 <mark>-XX:+UseParallelGC</mark> 옵션이 있는데 <mark>ParallelGC</mark> 라는 가비지 컬렉터를 사용하고 있다는 것이다.
+
+어쨌든 실행시간에 대한 결과를 보면 6959381 나노초가 나온다. 0.006959381 초의 시간이다. JVM 옵션을 모두 제거하고 돌려도 비슷한 시간이 나온다.
+System.gc() 를 호출하기 전에 275 나노초, 호출하면 6959381 나노초. 
+아무역할도 하지 않는 코드로 단순히 산술적 비교를 하는 것이 무의미할 수도 있지만, 호출하면 안될 것 같다는 위험성은 느껴진다. 
+
+<br/>
+
+### System.gc() 소스까보기
+System.gc() 를 타고 들어가면 아래와 같이 생겼다.
+
+```java
+public static void gc() {
+    Runtime.getRuntime().gc();
+}
+```
+
+Runtime.getRuntime().gc() 를 타고 들어가면, 
+
+```java
+public native void gc();
+```
+이게 끝이다.
+
+native 라는 키워드가 붙은 메소드는 자바가 아닌 다른 프로그래밍 언어로 쓰여진 메소드를 말한다. 
+JVM 이 C 언어 로 쓰여졌으니까 아마 C 언어로 작성되었을 것 같다.
+어쨌든 자바의 영역을 벗어나니까 일단 넘어가자.
+
+<br/>
+
+
+### 가비지 컬렉션 눈으로 확인하기
+OutOfMemoryError 를 빨리내기 위해서 jvm 옵션으로 <mark>-Xmx16m -verbose:gc</mark> 를 주고 시작하자.
+-Xmx 는 힙영역의 최대 사이즈 를 설정하는 것이다. 16MB 로 설정했다.
+
+코드는 아래와 같다.
+
+```java
+public class ListGCTest {
+    public static void main(String[] args) throws Exception {
+        List li = new ArrayList<Integer>();
+        int i = 1;
+        while (true) {
+            if (i % 100 == 0) {
+                Thread.sleep(100);
+            }
+            for (int d=0; d<100; d++)  li.add(d);
+            i++;
+        }
+    }
+}
+```
+
+실행 결과는 아래와 같다.
+
+```
+[GC (Allocation Failure)  3656K->1145K(15872K), 0.0033858 secs]
+[Full GC (Ergonomics)  13590K->5166K(15872K), 0.3319230 secs]
+[GC (Allocation Failure)  5166K->5166K(15872K), 0.0071300 secs]
+[Full GC (Allocation Failure) Exception in thread "main" java.lang.OutOfMemoryError: Java heap space
+	at java.util.Arrays.copyOf(Arrays.java:3210)
+	at java.util.Arrays.copyOf(Arrays.java:3181)
+	at java.util.ArrayList.grow(ArrayList.java:261)
+	at java.util.ArrayList.ensureExplicitCapacity(ArrayList.java:235)
+	at java.util.ArrayList.ensureCapacityInternal(ArrayList.java:227)
+	at java.util.ArrayList.add(ArrayList.java:458)
+	at gc.test.ListGCTest.main(ListGCTest.java:15)
+ 5166K->5147K(15872K), 0.3608906 secs]
+```
+
+실행결과를 보면 가비지 컬렉션 작업을 몇번 반복하다가 결국 OutOfMemoryError 를 뱉으며 프로그램이 죽어버린다.
+그 이유는 while 루프 밖에서 ArrayList 를 생성하고 무한루프를 도는 곳에서 계속해서 데이터를 추가하기 때문이다.
+위에서, 가비지 컬렉션의 대상이 되는 오브젝트는 <mark>Unreachable</mark> 오브젝트라고 했다.
+그런데 무한루프의 외부에서 선언한 ArrayList 는 무한루프가 도는 동안 레퍼런스가 끊이지 않기 때문에, 가비지 컬렉션 작업이 진행되어도 힙에 모든 데이터가 계속 남아있게 된다. 
+즉, 가비지 컬렉션 작업이 아무 의미가 없는 것이나 마찬가지다.
+
+Thread.sleep() 하는 부분에서 li 변수에 새로운 ArrayList 를 생성하도록 해보자.
+코드는 아래와 같다.
+
+```java
+public class ListGCTest {
+    public static void main(String[] args) throws Exception {
+        List li = new ArrayList<Integer>();
+        int i = 1;
+        while (true) {
+            if (i % 100 == 0) {
+                li = new ArrayList<Integer>();  // 새로운 List 를 li 변수에 할당한다.
+                Thread.sleep(100);
+            }
+            for (int d=0; d<100; d++) {
+                li.add(d);
+            }
+            i++;
+        }
+    }
+}
+```
 
 
 <br/>
@@ -129,4 +272,5 @@ System.gc() 를 호출하여 명시적으로 가비지 컬렉션이 일어나도
 * {% include href.html text="Integrating Native Methods into Java Programs" url="http://journals.ecs.soton.ac.uk/java/tutorial/native/index.html" %}
 * {% include href.html text="Java 8 Docs" url="https://docs.oracle.com/javase/8/docs/api/" %}
 * {% include href.html text="[Naver D2] Java Garbage Collection" url="https://d2.naver.com/helloworld/1329" %}
+* {% include href.html text="Minor GC vs Major GC vs Full GC – Plumbr" url="https://plumbr.io/blog/garbage-collection/minor-gc-vs-major-gc-vs-full-gc" %}
 
