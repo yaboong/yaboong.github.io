@@ -13,10 +13,10 @@ tags: [scala, functional-programming]
 
 ## CH3
 * p78 배열을 생성하는 방법 두가지
-    ```
+    ```scala
     new Array[String](3)
     ```
-    ```
+    ```scala
     Array("a", "b", "c") 
     ```
 * Array 에서는 팩토리메소드 apply 호출.
@@ -24,7 +24,7 @@ tags: [scala, functional-programming]
 * Array 에 있는 apply, update 메소드
 * 임의의 개수 인자 받기 \* 사용
 * List 에서
-    ```
+    ```scala
     val twoThree = List(2, 3)
     val oneTwoThree = 1 :: twoThree
     ```
@@ -38,7 +38,7 @@ tags: [scala, functional-programming]
         * :: 함수를 호출하기 위해서는 리스트 타입이 있어야 하는데, 이를 위해 스칼라에서는 Nil 을 List 클래스의 멤버로 둔 것이다.
 <!--more-->
 * List, Tuple, Set, Map
-    ```
+    ```scala
     val set = scala.collection.immutable.Set    // 변경불가
     val set = scala.collection.mutable.Set      // mutable 이라서 변경가능
     var set = scala.collection.immutable.Set    // immutable 이지만 var로 재할당 하기때문에 변경가능

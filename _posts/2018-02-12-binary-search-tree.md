@@ -58,7 +58,7 @@ BST 에서는 root 보다 큰 노드는 오른쪽으로, 작은 노드는 왼쪽
 비교하는 과정에서 BST 의 규칙에 맞게, 삽입하려는 노드가 더 작으면 왼쪽 자식쪽으로 내려가고 더 크면 오른쪽 자식쪽으로 내려가서 null 이 되는 부분에 새로운 노드를 삽입한다.
 어떻게 되든 기존 트리의 중간에 새로운 노드가 삽입되는 경우는 없다.
 
-```javascript
+```java
 public void addNode(int key) {
     if (findNode(key) != null) return;  // 이미 존재하면 그냥 리턴
 
@@ -98,7 +98,7 @@ public void addNode(int key) {
 
 ##### 탐색
 특정 값을 가진 노드의 탐색도 삽입과 비슷한 과정을 거친다.
-```javascript
+```java
 public Node findNode(int key) {
     // 트리가 비었을 때
     if (root == null) return null;
@@ -134,7 +134,7 @@ public Node findNode(int key) {
 
 코드는 단순하다.
 
-```javascript
+```java
 public void inOrderTraverse(Node focusNode) {
     if (focusNode != null) {
         inOrderTraverse(focusNode.leftChild);
@@ -207,7 +207,7 @@ public void postOrderTraverse(Node focusNode) {
 **코드**
 대체노드를 찾는 메소드를 <mark>getRightMinNode()</mark> 라고 이름 붙였고, 이 메소드 안에서 대체노드의 부모의 left child 를 null 로 만들어 줌으로써 대체노드의 위치도 삭제시켜준다. 
 
-```javascript
+```java
 public boolean deleteNode(int key) {
     // focusNode 와 parent 가 같을 수 있는 경우는 찾으려는 key 가 root 인 경우
     Node focusNode = root;

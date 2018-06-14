@@ -36,7 +36,7 @@ Array 는 같은 타입을 가진 여러 요소들은 한 곳에 저장하기 �
 Array 는 연속적인 memory block 으로, array 에 처음 접근할 때 전체 array 가 cache 에 로드된다. 첫 액세스 이후로는 공간 지역성이 생기는 것이다.
  
  
-```javascript
+```java
 Address        Contents            | Address           Contents 
 aaaa 0000       data[0]            | aaaa 1000         l_data 
                                .......
@@ -65,13 +65,13 @@ Java 의 ArrayList 는 AbstractList 를 상속받고 List 인터페이스를 구
 
 ArrayList.java 코드를 열어보면 default size 는 10 인 것을 알 수 있다.
 
-```javascript
+```java
 private static final int DEFAULT_CAPACITY = 10;
 ```
 
 ArrayList 에서 새로운 element 를 추가하는 메소드는 add() 로, 두 가지 방식의 오버로딩 된 메소드가 정의되어 있다.
 
-```javascript
+```java
 /**
  * Appends the specified element to the end of this list.
  *
@@ -109,7 +109,7 @@ public void add(int index, E element) {
 
 방금 언급한 <mark>어떤 작업</mark> 에서 <mark>ensureCapacityInternal()</mark> 메소드가 사이즈 조절을 담당한다.
 
-```javascript
+```java
 private void ensureCapacityInternal(int minCapacity) {
     if (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) {
         minCapacity = Math.max(DEFAULT_CAPACITY, minCapacity);
@@ -132,7 +132,7 @@ private void ensureExplicitCapacity(int minCapacity) {
 현재 data 를 담고 있는 array 의 length 가 full 이면 grow() 라는 함수를 호출해서 size 를 늘린다.
 
 <mark>grow()</mark> 함수로 가보면
-```javascript
+```java
 /**
  * Increases the capacity to ensure that it can hold at least the
  * number of elements specified by the minimum capacity argument.

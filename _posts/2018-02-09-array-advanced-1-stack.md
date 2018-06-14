@@ -33,7 +33,7 @@ Stack 에 대한 개념은 [여기](https://yaboong.github.io/data-structures/20
 타입을 동적으로 받아 생성할 수 있도록 제너릭스를 사용할 것이다. 
 이 때 타입은 Comparable 인터페이스를 구현한 타입들에 한에서만 받을 수 있도록 한다.
 
-```javascript
+```java
 public class ArrayOfStack<T extends Comparable<T>>{
     private static final int DEFAULT_CAPACITY = 1;
     private T[] stack;
@@ -65,7 +65,7 @@ Stack 의 기본 크기는 1로 시작한다. Stack 의 크기에 따라서 arra
 * pop 하다가 데이터의 개수가 현재 stack size 의 1/4 로 줄어들면 stack size 를 반으로 줄인다.
 * resize() 호출 시 파라미터로 size 값을 어떻게 넘겨준다.
 
-```javascript
+```java
 private void resize(int newCapacity){
     stack = Arrays.copyOf(stack, newCapacity);
 }
@@ -80,7 +80,7 @@ private void resize(int newCapacity){
 
 N 은 항상 마지막 element 의 index 보다 1 크기 때문에 가능하다.
 
-```javascript
+```java
 public void push(T item){
     if(isFull()) resize(2*stack.length);
     stack[N++] = item;
@@ -94,7 +94,7 @@ public void push(T item){
 * 방금 반환한 값의 index 를 null 로 만들어서 빈공간으로 채운다.
 * Element 개수가 stack size 의 1/4 이 되었다면 stack 을 기존 size 의 반으로 줄여준다.
 
-```javascript
+```java
 public T pop(){
     if (!isEmpty()) {
         T item = stack[--N];

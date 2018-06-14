@@ -55,7 +55,7 @@ tags: [data-structures, linked-list, java]
 Node 클래스는 LinkedList 객체 내부적으로만 조작할 수 있도록 하기 위해 private 제어자를 둔다. 
 Node 클래스는 다음 값을 가리킬 레퍼런스 변수 next 와 자신의 값 data 를 가진다.
 
-```javascript
+```java
 class LinkedList {
     Node head;
     
@@ -79,7 +79,7 @@ class LinkedList {
 * current.next = "추가할 노드" 지정해주면 끝이다.
 
 구현은 아래와 같다.
-```javascript
+```java
 public void append(int data) {
     Node appendNode = new Node(data);
 
@@ -101,7 +101,7 @@ public void append(int data) {
 
 ##### prepend()
 prepend 메소드 구현은 단순하다. 구현은 아래와 같다.
-```javascript
+```java
 public void prepend(int data) {
     Node newHead = new Node(data);
     newHead.next = head;
@@ -131,7 +131,7 @@ public void prepend(int data) {
 <mark>그림2</mark> current.next 는 지우려는 node 를 가리키고 있었을 것이고, 지우려는 node 의 다음 node 는 current.next.next 로 표현할 수 있다.
 그러므로 <mark>current.next = current.next.next</mark> 를 해주면 지우려는 node 이전의 node (current) 가 지우려는 node 다음 node (current.next.next) 와 연결되어 지우려는 노드는 연결에서 disconnect 된다.
 
-```javascript
+```java
 public boolean deleteWithValue(int data) {
     Node current = head; // head 부터 시작한다
 
@@ -177,7 +177,7 @@ AbstractSequentialList 를 상속받고 List 인터페이스를 구현한 클래
 아래와 같은 방법으로 Queue 로 사용할 수 있다.
 
 ##### built-in LinkedList class 를 사용한 Queue
-```javascript
+```java
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -205,7 +205,7 @@ Built-in LinkedList 소스를 까보면 linkLast(), linkBefore() 메소드에서
 하지만 built-in LinkedList 에는 first, last, prev, next 네 가지의 참조변수가 있다.
 
 
-```javascript
+```java
 /**
  * Links e as last element.
  */

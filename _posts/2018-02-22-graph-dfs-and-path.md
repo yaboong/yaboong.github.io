@@ -50,7 +50,7 @@ edgeTo[] 배열은 어떤 임의의 노드를 처음 방문할 때 어느 노드
 ### 구현 - Java
 DFS 의 구현은 생각보다 간단하다.
 
-```javascript
+```java
 public void dfs(int v) {
     marked[v] = true;
     System.out.println(v);
@@ -98,7 +98,7 @@ DFS 를 응용해서 임의의 노드 source -> destination 로 가는 길이 �
 <br/>
 
 ### Depth First Paths 구현 - Java
-```javascript
+```java
 private boolean hasPathTo(int v) { return marked[v]; }
 
 public Iterable<Integer> pathFromTo(int src, int dest) {
@@ -115,7 +115,7 @@ public Iterable<Integer> pathFromTo(int src, int dest) {
 <br/>
 
 ### 실행 예제
-```javascript
+```java
 public static void main(String[] args) {
     Graph g = new Graph(13);
 

@@ -13,7 +13,7 @@ tags: [python]
 
 Udacity 에서 {% include href.html text="Designing RESTful APIs" url="https://www.udacity.com/course/designing-restful-apis--ud388" %}
 강의를 듣다가  
-```javascript
+```python
 @app.route('/token')
 @auth.login_required
 def get_auth_token():

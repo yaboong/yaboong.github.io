@@ -24,7 +24,7 @@ Stack 은 새로운 값을 어디에 넣을지 지정하지 않으며 push 하�
 </div> 
 
 Linked list 로 표현하면 head 에 추가하고 head 를 반환한다고 생각하면 된다.
-```javascript
+```java
 5 -> 4 -> 3 -> 2 -> 1
 ```
 의 linked list stack 에서는 5 가 head 이고, 6을 push (추가) 할 경우 <mark><strong>6</strong> -> 5 -> 4 -> 3 -> 2 -> 1</mark> 로 6이 새로운 head 가 된다.
@@ -38,7 +38,7 @@ Stack 의 기본 메서드인 push(), pop() 만 구현해 보자.
 
 
 ##### LinkedListStack, Node class 생성 
-```javascript
+```java
 public class LinkedListStack<E extends Comparable<E>> {
     private Node head = null;
 
@@ -63,7 +63,7 @@ head 는 null 로 초기화 해 두고, 내부적으로만 사용할 Node class 
 * 기존의 head 를 잠시 다른 녀석으로 가리키게 해 두고
 * 새로운 head 를 만든다
 * 새로운 head 가 기존의 head 를 가리키게 한다
-```javascript
+```java
 public void push(E item) {
     Node oldHead = head;   // 기존의 head 를 잠시 다른 녀석으로 가리키게 해 두고
     head = new Node();     // 새로운 head 를 만든다
@@ -77,7 +77,7 @@ public void push(E item) {
 * 현재 head 의 item 을 반환하고
 * head 다음 node 를 head 로 만들어 준다
 
-```javascript
+```java
 public E pop() {
     if(!isEmpty()){         // stack 이 비어있지 않으면
         E item = head.item; // 현재 head 의 item 을 반환하고

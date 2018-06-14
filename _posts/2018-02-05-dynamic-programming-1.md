@@ -27,7 +27,7 @@ tags: [dynamic-programming, java]
 
 nth value = (n-1)th + (n-2)th 의 방식으로 전개되는 수열이다. 재귀함수로 구현할 수 있다.
 
-```javascript
+```java
 private static long fibSimple(int n) {
     return (n < 2) ? n : fib(n-1) + fib(n-2);
 }
@@ -63,7 +63,7 @@ Memoization 을 사용했을 때의 recursion tree 는 아래 그림과 같다.
 <img src="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/ds/fib-call-tree-2.svg"/>
 </div>
 
-```javascript
+```java
 private static long fibMemoization(int n, long[] memo) {
     if (memo[n] != 0) return memo[n]; // 기록해 둔 것이 있으면 사용
     memo[n] = (n == 1 || n == 2) ? 1 : fibMemoization(n-1, memo) + fibMemoization(n-2, memo); // 기록해 둔 것이 없으면 계산하고 기록
@@ -80,7 +80,7 @@ Memoization 을 사용하는 호출의 경우 상수시간이 걸리고, 첫번�
 
 풀이방법은 간단하다. 1st, 2nd, 3rd element 는 직접 지정해주고, 4th element 부터는 array[n-1] + array[n-2] 를 계산한다.
 
-```javascript
+```java
 private static long fibBottomUp(int n) {
     long[] bottomUp = new long[n+1];
     bottomUp[1] = 1;
@@ -95,7 +95,7 @@ private static long fibBottomUp(int n) {
 #### Comparison
 위 세가지 방법을 thread 에서 동시에 실행 시키고 execution time 을 milliseconds 단위로 측정해 보았다.
 
-```javascript
+```java
 public class Fibonacci {
     public static void main(String[] args) throws Exception {
         int N = 50;

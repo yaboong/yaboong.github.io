@@ -38,7 +38,7 @@ Queue 의 기본 메서드인 enqueue(), dequeue() 만 구현해 보자.
 
 
 ##### LinkedListQueue, Node class 생성 
-```javascript
+```java
 public class LinkedListQueue<E extends Comparable<E>> {
     private Node head, tail;
 
@@ -63,7 +63,7 @@ PriorityQueue 를 구현할 때 사용했었다. 일단은 Queue 구현과는 �
 * queue 가 비어있으면 head = tail 로 head 와 tail 이 같은 node 를 가리키게 한다
 * queue 가 비어있지 않으면 기존 tail 의 next = 새로운 tail 로 해주면 된다
 
-```javascript
+```java
 // 데이터의 추가는 tail 에 한다 (들어온 순서대로 줄을 세우는 셈)
 public void enqueue(E item){
     Node oldlast = tail;        // 기존의 tail 을 잠시 보관해두고
@@ -81,7 +81,7 @@ public void enqueue(E item){
 * 기존 head 다음 node (혹은 null) 를 head 로 설정해준다
 * <mark>어딘가</mark> 를 반환
 
-```javascript
+```java
 // 데이터 꺼내는 작업은 head 에서 한다 (먼저 들어왔던 데이터부터 꺼낸다)
 public E dequeue(){
     // 비어있는 경우

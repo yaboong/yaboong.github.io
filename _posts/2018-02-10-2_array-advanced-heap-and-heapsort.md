@@ -113,7 +113,7 @@ Heap 에는 min heap 과 max heap 이 있는데, min heap 에서는 부모노드
 
 ##### 생성자
 
-```javascript
+```java
 public class MinHeap <T extends Comparable<T>> {
     private static final int DEFAULT_CAPACITY = 10;
     private int capacity;
@@ -148,7 +148,7 @@ public class MinHeap <T extends Comparable<T>> {
 * 자바 build-in PriorityQueue 클래스에서 이런식으로 비트연산을 사용했길래 나도 따라해봤다.
 * 1-bit right shift 는 나누기 2 한 것과 같고, 1-bit left shift 는 곱하기 2 한 것과 같은데 비트연산이 더 빠르다. 
 
-```javascript
+```java
 private void buildMinHeap() {
     for (int i = (size >>> 1) - 1; i >= 0; i--) {
         heapifyDown(i);
@@ -165,7 +165,7 @@ private void buildMinHeap() {
 * <mark>hasLeftChild()</mark> 와 <mark>hasRightChild</mark> 부분이 잘 이해 되지 않을 수 있다.
 * 자식 노드의 index 가 size 보다 작으면 자식노드가 존재하는 것으로 구현을 했다. 존재하는 모든 노드의 index 는 size 보다는 작아야 하기 때문이다.
 
-```javascript
+```java
 private int getLeftChildIndex(int parentIndex) { return (parentIndex << 1) + 1; }
 private int getRightChildIndex(int parentIndex) { return (parentIndex << 1) + 2; }
 private int getParentIndex(int childIndex) { return (childIndex - 1) >> 1; }
@@ -208,7 +208,7 @@ private static boolean less(Comparable v, Comparable w){ return v.compareTo(w) <
 * 부모노드와 자식노드의 위치 swap
 * 반복
 
-```javascript
+```java
 private void heapifyUp(int index) {                                     
     while (hasParent(index) && less(items[index], parent(index))) {      
         int parentIndex = getParentIndex(index);                        
@@ -232,7 +232,7 @@ poll() 호출로 root 노드가 반환되면 마지막 노드를 root 에 위치
 * swap
 * 반복
 
-```javascript
+```java
 private void heapifyDown(int index) {                                               
     while (hasLeftChild(index)) {                                                                    
         int smallerChildIndex = getLeftChildIndex(index);                           
@@ -253,7 +253,7 @@ private void heapifyDown(int index) {
 ##### peek()
 * Root 노드의 값이 무엇인지 확인만 하고 끝
 
-```javascript
+```java
 public T peek() {
     if (size == 0) throw new IllegalStateException();
     return items[0];
@@ -269,7 +269,7 @@ public T peek() {
 * 마지막 노드 삭제
 * heapifyDown()
 
-```javascript
+```java
 public T poll() {
     if (size == 0) throw new IllegalStateException();   
     T item = items[0];                                  
@@ -286,7 +286,7 @@ public T poll() {
 * 새로운 노드 추가하고 size 1 증가 시킴
 * 방금 추가한 마지막 노드를 재배치 시킴
 
-```javascript
+```java
 public void add(T item) {
     ensureExtraCapacity();      
     items[size++] = item;       
@@ -330,7 +330,7 @@ Min Heap 의 경우 가장 작은 값을 N번 동안 마지막으로 보낼 것�
 위에 구현한 Min Heap 을 이용하면 heapsort 메소드는 굉장히 간단하다.
 Min Heap 을 생성할 때 buildMinHeap() 으로 Heapify 해 주었으므로 나머지 작업만 해 주면 된다.
 
-```javascript
+```java
 public T[] heapSort() {
     for (int i=size - 1; i >= 0; i--) {
         T max = poll();
@@ -354,7 +354,7 @@ poll() 메소드는 worst case 때 O(log n) 이 되는데 heapsort 에서는 pol
 Comparable 인터페이스를 구현하는 것은 간단하다. compareTo() 메소드만 정의해주면 된다.
 compareTo() 메소드는 작으면 -1, 크면 1, 같으면 0 을 반환하는 메소드로 이에 맞게만 정의해주면 된다.
 
-```javascript
+```java
 class Product implements Comparable<Product> {
     String name;
     int price;
@@ -381,7 +381,7 @@ class Product implements Comparable<Product> {
 이제 min heap 에서 less() 메소드로 객체간 값을 비교할 때 이 compareTo() 메소드를 사용하여 비교하게 된다.
 위와 같이 정의한 클래스로 아래와 같이 사용할 수 있다. (최근에 알파스캔 모니터를 사서... ㅎㅎㅎ)
 
-```javascript
+```java
 Product[] arrayOfProduct = {
     new Product("알파스캔 24형 AOC 2470", 137440),
     new Product("알파스캔 2481 IPS", 176640),
