@@ -10,7 +10,7 @@ tags: [java, memory-management, garbage-collection]
 ### 개요
 * Java 가비지 컬렉션에 대해서 공부한 내용을 정리해본다.
 * Java 에서 메모리 관리는 어떻게 이루어지는지 이해하고 있으면 좋다.
-* {% include href.html text="Java Memory Management" url="https://yaboong.github.io/java/2018/05/26/java-memory-management/" %} 를 먼저 읽는 것을 추천한다.
+* {% include href.html text="Java Memory Management - Stack and Heap" url="https://yaboong.github.io/java/2018/05/26/java-memory-management/" %} 를 먼저 읽는 것을 추천한다.
 * 모니터링 툴 VisualVM 과 VisualGC 플러그인에 대해 알아본다.
 * Metaspace, Young/Old Generation 에 대해 알아본다.
 * 가비지 컬렉션 프로세스에 대해 알아본다.
@@ -49,7 +49,7 @@ JVM 은 C 로 쓰여진 또 다른 프로그램인데, 오브젝트가 필요해
 
 > Heap 영역의 오브젝트 중 stack 에서 도달 불가능한 (Unreachable) 오브젝트들은 가비지 컬렉션의 대상이 된다.
 
-무슨말인지 정확히 이해되지 않는다면, {% include href.html text="Java Memory Management" url="https://yaboong.github.io/java/2018/05/26/java-memory-management/" %} 를 먼저 읽는 것을 추천한다.
+무슨말인지 정확히 이해되지 않는다면, {% include href.html text="Java Memory Management - Stack and Heap" url="https://yaboong.github.io/java/2018/05/26/java-memory-management/" %} 를 먼저 읽는 것을 추천한다.
 
 <br/>
 
