@@ -13,6 +13,7 @@ tags: [java, memory-management, garbage-collection]
 * {% include href.html text="Java Memory Management" url="https://yaboong.github.io/java/2018/05/26/java-memory-management/" %} 를 먼저 읽는 것을 추천한다.
 * 모니터링 툴 VisualVM 과 VisualGC 플러그인에 대해 알아본다.
 * Metaspace, Young/Old Generation 에 대해 알아본다.
+* 가비지 컬렉션 프로세스에 대해 알아본다.
 <!--more-->
 
 
