@@ -12,8 +12,7 @@ tags: [java, memory-management, garbage-collection]
 * Java 에서 메모리 관리는 어떻게 이루어지는지 이해하고 있으면 좋다.
 * {% include href.html text="Java Memory Management" url="https://yaboong.github.io/java/2018/05/26/java-memory-management/" %} 를 먼저 읽는 것을 추천한다.
 * 모니터링 툴 VisualVM 과 VisualGC 플러그인에 대해 알아본다.
-* Heap 영역은 세부적으로 어떻게 구성이 되는지 살펴보고, 각 영역의 역할에 대해 간략하게 알아본다.
-* Heap Dump 를 통해 Memory Leak 에 대한 추적은 어떻게 가능한지 알아본다.
+* Metaspace, Young/Old Generation 에 대해 알아본다.
 <!--more-->
 
 
@@ -411,7 +410,7 @@ S0, S1 으로 표시되는 영역이 Survivor Space 0, 1 이다.
 
 
 
-###### 가비지 컬렉션 프로세스
+#### 가비지 컬렉션 프로세스
 
  
 1. 새로운 오브젝트는 Eden 영역에 할당된다. 두개의 Survivor Space 는 비워진 상태로 시작한다.
