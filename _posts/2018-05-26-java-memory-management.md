@@ -352,11 +352,11 @@ Stack 에는 새로운 변수가 할당되지 않는다.
 문자열 더하기 연산의 결과인 <mark>"https://yaboong.github.io"</mark> 가 새롭게 heap 영역에 생성되고, 기존에 <mark>"https://"</mark> 를 레퍼런스 하고 있던 url 변수는
 새롭게 생성된 문자열을 레퍼런스 하게 된다.
 
-> 기존의 <mark>"https://"</mark> 라는 문자열을 레퍼런스 하고 있는 변수는 아무것도 없다.
+> 기존의 <mark>"https://"</mark> 라는 문자열을 레퍼런스 하고 있는 변수는 아무것도 없으므로 <mark>Unreachable</mark> 오브젝트가 된다.
 
 JVM 의 Garbage Collector 는 Unreachable Object 를 우선적으로 메모리에서 제거하여 메모리 공간을 확보한다.
 Unreachable Object 란 Stack 에서 도달할 수 없는 Heap 영역의 객체를 말하는데, 지금의 예제에서 <mark>"https://"</mark> 문자열과 같은 경우가 되겠다.
-아주 간단하게 이야기해서 이런 경우에 Garbage Collection 이 일어나게 되는 것이다.  
+아주 간단하게 이야기해서 이런 경우에 Garbage Collection 이 일어나면 Unreachable 오브젝트들은 메모리에서 제거된다.
 
 Garbage Collection 과정은 <mark>Mark and Sweep</mark> 이라고도 한다. 
 JVM의 Garbage Collector 가 스택의 모든 변수를 스캔하면서 각각 어떤 오브젝트를 레퍼런스 하고 있는지 찾는과정이 Mark 다. 
