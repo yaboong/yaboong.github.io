@@ -207,14 +207,12 @@ OutOfMemoryError 를 빨리내고, GC 를 확인하기 위해서 jvm 옵션으�
 ```java
 public class ListGCTest {
     public static void main(String[] args) throws Exception {
-        List li = new ArrayList<Integer>();
-        int i = 1;
-        while (true) {
+        List<Integer> li = IntStream.range(1, 100).boxed().collect(Collectors.toList());
+        for (int i=1; true; i++) {
             if (i % 100 == 0) {
                 Thread.sleep(100);
             }
-            for (int d=0; d<100; d++)  li.add(d);
-            i++;
+            IntStream.range(0, 100).forEach(li::add);
         }
     }
 }
@@ -261,19 +259,14 @@ Thread.sleep() 하는 부분에서 li 변수에 새로운 ArrayList 를 생성�
 
 ```java
 public class ListGCTest {
-    public static void main(String[] args) throws Exception {
-        List li = new ArrayList<Integer>();
-        int i = 1;
-        while (true) {
-            System.out.print(i + " ");
+    public static void main(String[] args)throws Exception {
+        List<Integer> li = IntStream.range(1, 100).boxed().collect(Collectors.toList());
+        for (int i=1; true; i++) {
             if (i % 100 == 0) {
-                li = new ArrayList<Integer>();  // 새로운 List 를 li 변수에 할당한다.
+                li = new ArrayList<>();
                 Thread.sleep(100);
             }
-            for (int d=0; d<100; d++) {
-                li.add(d);
-            }
-            i++;
+            IntStream.range(0, 100).forEach(li::add);
         }
     }
 }
@@ -444,18 +437,14 @@ S0, S1 으로 표시되는 영역이 Survivor Space 0, 1 이다.
 
 ```java
 public class ListGCTest {
-    public static void main(String[] args) throws Exception {
-        List li = new ArrayList<Integer>();
-        int i = 1;
-        while (true) {
+    public static void main(String[] args)throws Exception {
+        List<Integer> li = IntStream.range(1, 100).boxed().collect(Collectors.toList());
+        for (int i=1; true; i++) {
             if (i % 50 == 0) {
 //                li = new ArrayList<Integer>();  // 새로운 List 를 li 변수에 할당한다.
                 Thread.sleep(200);
             }
-            for (int d=0; d<100; d++) {
-                li.add(d);
-            }
-            i++;
+            IntStream.range(0, 100).forEach(li::add);
         }
     }
 }
@@ -477,18 +466,14 @@ VisualVM 그래프를 보면, Eden 영역이 활발하게 생성되는 것이 �
 
 ```java
 public class ListGCTest {
-    public static void main(String[] args) throws Exception {
-        List li = new ArrayList<Integer>();
-        int i = 1;
-        while (true) {
+    public static void main(String[] args)throws Exception {
+        List<Integer> li = IntStream.range(1, 100).boxed().collect(Collectors.toList());
+        for (int i=1; true; i++) {
             if (i % 50 == 0) {
-                li = new ArrayList<Integer>();  // 새로운 List 를 li 변수에 할당한다.
+                li = new ArrayList<>();
                 Thread.sleep(200);
             }
-            for (int d=0; d<100; d++) {
-                li.add(d);
-            }
-            i++;
+            IntStream.range(0, 100).forEach(li::add);
         }
     }
 }
