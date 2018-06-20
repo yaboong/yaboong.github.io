@@ -155,7 +155,7 @@ public class GCTimeCheck {
 
 실행결과는 아래와 같다.
 
-```bash
+```
 -XX:InitialHeapSize=134217728 -XX:MaxHeapSize=2147483648 -XX:+PrintCommandLineFlags -XX:+PrintGC -XX:+UseCompressedClassPointers -XX:+UseCompressedOops -XX:+UseParallelGC 
 [GC (System.gc())  2673K->536K(125952K), 0.0013911 secs]
 [Full GC (System.gc())  536K->428K(125952K), 0.0048825 secs]
@@ -274,7 +274,7 @@ public class ListGCTest {
 
 실행결과는 아래와 같다. 루프 횟수는 `....` 으로 표시했다.
 
-```bash
+```
 1 2 3 4 5 6 7 8 9  .... 1259 1260 1261 1262 [GC (Allocation Failure)  4059K->520K(15872K), 0.0020576 secs]
 1263 1264 1265 1266 .... 3559 3560 3561 3562 [GC (Allocation Failure)  4587K->528K(15872K), 0.0015161 secs]
 3563 3564 3565 3566 .... 5859 5860 5861 5862 [GC (Allocation Failure)  4588K->536K(15872K), 0.0008102 secs]
