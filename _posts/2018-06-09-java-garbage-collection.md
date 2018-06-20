@@ -560,6 +560,8 @@ G1 GC 에 대한 자세한 내용은 {% include href.html text="[Oracle] Getting
 * {% include href.html text="Integrating Native Methods into Java Programs" url="http://journals.ecs.soton.ac.uk/java/tutorial/native/index.html" %}
 * {% include href.html text="Java 8 Docs" url="https://docs.oracle.com/javase/8/docs/api/" %}
 
+<br/>
+
 ### 다운로드 링크
 * {% include href.html text="Visul VM Download" url="https://visualvm.github.io/download.html" %}
 * {% include href.html text="Javassist 3.12.1.GA" url="https://mvnrepository.com/artifact/javassist/javassist/3.12.1.GA" %}
