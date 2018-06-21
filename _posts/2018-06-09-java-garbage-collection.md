@@ -309,7 +309,7 @@ Java 9 부터는 {% include href.html text="Graal Visual VM" url="https://visual
 {% include image_caption2_href.html caption="Visual VM" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_gc-2.png" %}
 
 Visual VM 을 실행하면 위와같은 화면을 볼 수 있다. 왼쪽에 있는 프로세스들에 대한 모니터링이 가능하다. 
-하지만 지금은 가비지 컬렉션인 어떻게 이루어지는지 보기 위해 heap 영역을 좀더 세부적으로 모니터링 하고 싶다.
+하지만 지금은 가비지 컬렉션이 어떻게 이루어지는지 보기 위해 heap 영역을 좀더 세부적으로 모니터링 하고 싶다.
 그러기 위해서 VisualGC 라는 플러그인이 필요한데, 상단 메뉴에서 Tool > Plugins > Available Plugins 로 가서 Visual GC 를 체크한 후 Install 을 클릭한다.
 
 {% include image_caption2_href.html caption="Visual GC Plugin" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_gc-3.png" %}
@@ -527,7 +527,7 @@ Concurrent Low Pause Collector 라고도 불리는 CMS 컬렉터는 `-XX:+UseCon
 
 CMS 컬렉터는 young generation 에 대한 가비지 컬렉션시 Parallel GC 와 같은 알고리즘을 사용하는데, `-XX:ParallelCMSThreads=<N>` 옵션으로 스레드 개수를 설정할 수 있다.
 
-일반적으로 CMS 컬렉터는 살아있는 오브젝트들에 대한 compact 작업을 수행하지 않으므로, 메모리의 파편화(Fragmentation) 이 문제가 된다면 더 큰 힙사이즈를 할당해야 한다.
+일반적으로 CMS 컬렉터는 살아있는 오브젝트들에 대한 compact 작업을 수행하지 않으므로, 메모리의 파편화(Fragmentation) 가 문제가 된다면 더 큰 힙사이즈를 할당해야 한다.
 
 <br/>
 
