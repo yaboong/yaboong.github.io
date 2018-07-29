@@ -96,6 +96,11 @@ $ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 아래와 같은 화면이 나오면 Jenkins 를 사용할 준비는 끝.
 {% include image_caption2_href.html imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/jenkins/jenkins-logged-in.png" %}
 
+추가로, 혹시 jenkins 서버에 git 이 설치되어있지 않다면 아래 명령어로 git 은 설치되어있는지 확인해주면 나중에 편하다.
+```
+$ sudo yum install git
+``` 
+
 
 이제 써보즈아~~~~~~~~~~~
 
