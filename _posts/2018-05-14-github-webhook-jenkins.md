@@ -82,6 +82,8 @@ Passphrase 는 제일 처음 단계에서 ssh-keygen 수행시 입력한 passphr
 
 그리고 나서 Add 버튼을 누르고, Credentials 에 본인이 방금 등록한 것을 선택해주면 오류메시지가 사라진다.
 
+(그래도 사라지지 않는다면 jenkins 서버에 git 이 설치되어 있는지 확인)
+
 <br/>
 
 
