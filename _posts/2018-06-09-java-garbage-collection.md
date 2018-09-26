@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Java Memory Management - Garbage Collection"
+title: "자바 메모리 관리 - 가비지 컬렉션"
 date: 2018-06-09
 banner_image: java-banner.png
 categories: [java]
@@ -10,7 +10,7 @@ tags: [java, memory-management, garbage-collection]
 ### 개요
 * Java 가비지 컬렉션에 대해서 공부한 내용을 정리해본다.
 * Java 에서 메모리 관리는 어떻게 이루어지는지 이해하고 있으면 좋다.
-* {% include href.html text="Java Memory Management - Stack and Heap" url="https://yaboong.github.io/java/2018/05/26/java-memory-management/" %} 를 먼저 읽는 것을 추천한다.
+* {% include href.html text="자바 메모리 관리 - 스택 & 힙" url="https://yaboong.github.io/java/2018/05/26/java-memory-management/" %} 를 먼저 읽는 것을 추천한다.
 * 모니터링 툴 VisualVM 과 VisualGC 플러그인에 대해 알아본다.
 * Metaspace, Young/Old Generation 에 대해 알아본다.
 * 가비지 컬렉션 프로세스에 대해 알아본다.

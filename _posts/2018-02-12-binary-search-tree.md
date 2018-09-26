@@ -217,7 +217,7 @@ public boolean deleteNode(int key) {
 
     // while 문이 끝나고 나면 focusNode 는 삭제될 노드를 가리키고, parent 는 삭제될 노드의 부모노드를 가리키게 되고, 삭제될 노드가 부모노드의 left 인지 right 인지에 대한 정보를 가지게 된다
     while(focusNode.key != key) {
-        parent = focusNode;
+        parent = focusNode; // 삭제할 노드를 찾는 과정중(while문)에서 focusNode 는 계속해서 바뀌고 parent 노드는 여기서 기억해둔다
 
         if(key < focusNode.key) {
             isLeftChild = true;             // 지우려는 노드가 왼쪽에 있는 노드냐 기록용

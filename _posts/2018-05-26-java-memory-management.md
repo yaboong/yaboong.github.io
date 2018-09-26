@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Java Memory Management - Stack and Heap"
+title: "자바 메모리 관리 - 스택 & 힙"
 date: 2018-05-26
 banner_image: java-banner.png
 categories: [java]

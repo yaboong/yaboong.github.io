@@ -31,6 +31,7 @@ tags: [algorithms, sorting, java]
 두 번째 for loop 에서 arr.length - 1 이 아니라 <mark>arr.length - i</mark> 임에 주의하자. i 다. 아이. 영어 소문자 아이. i.<br/>
 바깥쪽 for loop 이 한번 실행 될 때마다 인접한 두 요소를 비교하여 큰 값은 오른쪽으로, 작은 값은 왼쪽으로 보낸다. 
 그 결과, 가장 마지막 인덱스에는 주어진 배열에서 가장 큰 값이 위치하게 되기 때문에 정렬이 된 것으로 볼 수 있으므로 <mark>arr.length - i</mark> 를 해주어서 매번 바깥쪽 for loop 이 실행될 때마다 마지막 인덱스는 탐색에서 제외시켜 주는 것이다.
+length-i 는 정렬된 엘리먼트가 채워지는 칸이라고 생각하면 된다.
 {% gist d04c3739a03a41e949d4a02d380c2b7f %}
 
 <br/>
