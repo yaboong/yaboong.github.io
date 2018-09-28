@@ -25,8 +25,8 @@ tags: [design-pattern, java, oop]
 
 ### 서론
 싱글톤 패턴은 간단하니 금방 끝내고 다른거 공부해야지 하는 마음으로 여기저기 찾아다니다 보니... 
-같은 싱글톤이라도 정말 다양한 구현방법들이 있었다. 역시 DZone.
-다양한 싱글톤 패턴의 구현을 알아보자.
+같은 싱글톤이라도 정말 다양한 구현방법들이 있었다.
+다양한 싱글톤 패턴의 구현을 알아보자. 이 글의 거의 모든 내용은 DZone 의 {% include href.html text="All About the Singleton" url="https://dzone.com/articles/all-about-the-singleton" %} 을 참고하였다.
 
 <br/>
 
