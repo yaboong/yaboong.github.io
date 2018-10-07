@@ -40,16 +40,18 @@ DZone 의 설명중 잘못된 설명이라 생각하는 것은 고치고, 설명
 
 <br/> 
 
-#### Eager Initialization (Early Loading)
+### Eager Initialization (Early Loading)
 EagerSingleton 클래스가 로드될 때 EagerSingleton 인스턴스가 생성된다.
 싱글톤 패턴을 구현하는 가장 간단한 방법이지만 클라이언트에서 사용하지 않더라도 인스턴스는 항상 생성된다는 것이 단점이라고 설명한다.
 
 ```java
 public class EagerSingleton {
     private static EagerSingleton instance = new EagerSingleton();
+    
     // private constructor
     private EagerSingleton() {
     }
+    
     public static EagerSingleton getInstance() {
         return instance;
     }
@@ -59,36 +61,18 @@ public class EagerSingleton {
 (Dzone 의 {% include href.html text="All About the Singleton" url="https://dzone.com/articles/all-about-the-singleton" %}
  에서는 Eager Initialization 에서 싱글톤 인스턴스를 레퍼런스하는 변수에 volatile 을 붙였는데, 필요없는 것 같아서 뺐다.)
 
-> 클라이언트에서 사용하지 않더라도 인스턴스는 항상 생성된다는 것이 단점이다.
-
-라는 부분이 다른 많은 궁금증들을 불러일으켰다.
+**"클라이언트에서 사용하지 않더라도 인스턴스는 항상 생성된다는 것이 단점이다."** 라는 부분이 다른 많은 궁금증들을 불러일으켰다.
 
 * 인스턴스가 언제 생성되길래 사용하지 않더라도 항상 생성되는 거지?
 * EagerSingleton 클래스가 로드될 때 EagerSingleton 인스턴스가 생성된다면, 클래스 로딩은 언제 일어나는거지?
 * 클래스 로딩과 클래스 초기화의 차이는 뭘까?
 
-해답을 찾기위해
-* {% include href.html text="When are static variables initialized?" url="https://stackoverflow.com/questions/8704423/when-are-static-variables-initialized" %}
-* {% include href.html text="What is Static Variable Class method and keyword in Java - Example Tutorial" url="https://javarevisited.blogspot.com/2011/11/static-keyword-method-variable-java.html" %}
-* {% include href.html text="Java Language Specification" url="https://docs.oracle.com/javase/specs/jls/se8/html/jls-12.html" %}
-* {% include href.html text="클래스로더 1, 동적인 클래스 로딩과 클래스로더" url="http://javacan.tistory.com/entry/1" %}
-* {% include href.html text="Difference between loading a class and instantiating it" url="https://stackoverflow.com/questions/17693828/difference-between-loading-a-class-and-instantiating-it" %}
-* {% include href.html text="When a class is loaded and initialized in JVM - Java" url="https://javarevisited.blogspot.com/2012/07/when-class-loading-initialization-java-example.html#ixzz2ZHoZKA48" %}
-* {% include href.html text="Is Java class loader guaranteed to not load classes that aren't used?" url="https://stackoverflow.com/questions/3487888/is-java-class-loader-guaranteed-to-not-load-classes-that-arent-used" %}
+해답을 찾기위해 이것저것 많이도 읽어봤지만 가장 도움된 글은 {% include href.html text="이 글" url="https://javarevisited.blogspot.com/2012/07/when-class-loading-initialization-java-example.html#ixzz2ZHoZKA48" %}인데, 
+한줄로 내가 필요한 내용만 요약하면 아래와 같다. 
 
-이것저것 많이도 읽어봤지만 가장 도움된 글은 
-* {% include href.html text="When a class is loaded and initialized in JVM - Java" url="https://javarevisited.blogspot.com/2012/07/when-class-loading-initialization-java-example.html#ixzz2ZHoZKA48" %}
-이 글인데, 내용 중 일부를 보면
+> static 초기화가 필요한 경우 클래스가 로드되고, 로드된 클래스는 계속해서 메모리에 남아있을 수 있다.
 
-> If Class is loaded before its actually being used, it can sit inside before being initialized. 
-I believe this may vary from JVM to JVM. 
-<strong>While its guaranteed by JLS that a class will be loaded when there is a need of static initialization.</strong>
-
-라는 부분이 있다. (참고로, JLS 는 Java Language Specification 으로 Oracle 에서 작성한 문서이다)
-
-static 초기화가 필요한 경우 클래스가 로드되고, 로드된 클래스는 계속해서 메모리에 남아있을 수 있다는 것이 가장 중요한 내용이다.
-
-클라이언트에서 사용하지 않더라도 인스턴스는 항상 생성된다는 것이 단점이었는데, (<mark>EagerSingleton</mark> 클래스를 포함하는 애플리케이션은)
+Eager Initialization 은 클라이언트에서 사용하지 않더라도 인스턴스는 항상 생성된다는 것이 단점이었는데, (<mark>EagerSingleton</mark> 클래스를 포함하는 애플리케이션은)
 static 제어자에 의해 EagerSingleton 클래스는 항상 로드되고, instance 라는 이름의 static 변수에 <mark>EagerSingleton</mark> 인스턴스가 생성되어 할당된다는 것이다.
 
 그런데, 위 코드만으로는 EagerSingleton.getInstance() 를 호출하지 않는 경우 인스턴스가 생성되지 않는다. EagerSingleton 클래스에 getInstance() 메소드 하나만 존재하기 때문이다.
@@ -96,6 +80,9 @@ static 제어자에 의해 EagerSingleton 클래스는 항상 로드되고, inst
 getInstance() 를 호출하지 않아도 <mark>EagerSingleton</mark> 클래스의 인스턴스는 생성된다.
 다른 static 메소드에 의해 <mark>EagerSingleton</mark> 클래스가 로드되기 때문이다.
 
+<br/>
+
+###### 클래스 로딩 확인해보기
 확인해보려면, 위 코드에 static 으로 선언된 메소드(m() 이라고하자)를 만든다. 실행을 위한 클래스의 main 메소드에는 EagerSingleton.m() 을 호출하는 코드를 넣는다.
 EagerSingleton.getInstance() 는 어디에도 삽입하지 않는다.
 그리고나서 JVM 옵션으로 ```-verbose:class``` 를 주고 실행하면 로딩되는 클래스들을 모두 출력하는데, EagerSingleton 클래스가 로딩되는 것을 확인할 수 있다.
@@ -105,49 +92,29 @@ EagerSingleton.getInstance() 는 어디에도 삽입하지 않는다.
 ```
 
 지금까지 살펴본 것 처럼 Eager Initialization 은 싱글톤 인스턴스를 클라이언트에서 사용하지 않더라도 인스턴스는 항상 생성될 수 있다는 단점을 가진 방법이다.
+{% include href.html text="여기" url="https://medium.com/exploring-code/digesting-singleton-design-pattern-in-java-5d434f4f322" %}
+에서는 아래와 같이 말한다.
 
-(이하 작성중...앞으로 작성할 내용들)
-* 단점 세부내용으로 이 내용 삽입. This might be a considerable issue if your singleton class in creating a database connection or creating a socket. This may cause the memory leak problem.
-* 이 단점을 해결할 수 있는 방법이 당연히 있다. (Lazy -> synchronized -> critical section synchronized -> double check)
-* 이거보기전에 Static Block 방법을 보고가자 ~ 예외처리 가능한 방법
-* Lazy 스레드 세이프하지 않다
-* 메소드에 synchronized 사용한다. -> 비효율적이다. 첫번째 오브젝트를 생성할때에만 필요한 것인데, 이렇게 메소드에 synchronized 를 붙이면 여러개의 스레드에서 getInstance 를 할때마다 lock 이 걸린다.
-* critical section 에만 synchronized 사용한다. -> double check (Dzone 의 Thread-Safe Singletons 부분의 OR 에 있는 코드는 스레드세이프하지 않다.)
-* double check 에서 가장 중요한 것은 volatile 이다. (volatile 은 main memory 로부터 읽어오도록 하는 것.)
-* 이는 main memory 와 스레드의 working memory 와 큰 연관이있다.
-    * https://docs.oracle.com/javase/specs/jvms/se6/html/Threads.doc.html (read, load, store, write 정리하고 사진 찍어논거)
-    * https://javarevisited.blogspot.com/2014/05/double-checked-locking-on-singleton-in-java.html
-    * https://javarevisited.blogspot.com/2011/06/volatile-keyword-java-example-tutorial.html
-* 맨 마지막에 싱글톤 예제로 Runtime 클래스.
+> This might be a considerable issue if your singleton class in creating a database connection or creating a socket. 
+This may cause the memory leak problem.
 
+싱글톤 클래스를 이용하여 데이터베이스 연결이나 소켓을 만드는 경우 메모리 누수 문제로 연결될 위험이 있다고 이야기 한다.
 
-
-
-
-
-
-
-
-
-
-
-
-- Java Runtime 클래스도 싱글톤인데, volatile 이 없다. 
-> An application cannot create its own instance of this class.
-
-때문인것 같다.
-
-
-
-
+이 단점을 보완할 수 있는 싱글톤패턴을 구현하는 다른 방법들이 당연히 있다.
+그 방법들을 살펴보기 전에 <mark>Static Block Initialization</mark> 을 간단하게 살펴보고 넘어가자.
 
 <br/>
 
-#### Static Block Initialization
+
+### Static Block Initialization
+Static Block Initialization 은 Eager Initialization 과 유사하다. 
+다만, 인스턴스가 static block 내에거 만들어지고, static block 안에서 예외처리를 할 수 있다는 점이 다르다.
+
 ```java
 public class StaticBlockSingleton {
     private static StaticBlockSingleton instance;
     private StaticBlockSingleton(){}
+    
     //static block initialization for exception handling
     static{
         try{
@@ -162,19 +129,20 @@ public class StaticBlockSingleton {
 }
 ```
 
-
-
-
-
 <br/>
 
-#### Lazy Initialization
+### Lazy Initialization
+자 이제 Lazy Initialization 을 보자. 이는 Eager Initialization 의 단점을 보완한 방법이다.
+생성자는 private 으로 클래스 내부에서만 호출할 수 있고, 객체생성은 <mark>getInstance()</mark> 메소드를 이용해서만 가능하다.
+
 ```java
 public class LazyInitializedSingleton {
     private static LazyInitializedSingleton instance;
-    private LazyInitializedSingleton(){}
+    
+    private LazyInitializedSingleton() {}
+    
     public static LazyInitializedSingleton getInstance(){
-        if(instance == null){
+        if(Objects.isNull(instance)) {
             instance = new LazyInitializedSingleton();
         }
         return instance;
@@ -182,62 +150,113 @@ public class LazyInitializedSingleton {
 }
 ```
 
+<mark>getInstance()</mark> 의 호출에서는 인스턴스를 레퍼런스하는 변수 instance 가 null 인 경우에만 인스턴스를 생성하므로 싱글톤패턴에 부합하며,
+getInstance()의 호출 이외에는 인스턴스를 생성하지 않기 때문에 인스턴스가 필요한 경우에만 인스턴스가 생성되게 함으로써 Eager Initialization 의 담점을 보완했다.
 
-
-
-
-<br/>
-
-#### Thread-Safe Singletons
-```java
-public class ThreadSafeSingleton {
-    private static ThreadSafeSingleton instance;
-    private ThreadSafeSingleton(){}
-    public static synchronized ThreadSafeSingleton getInstance(){
-        if(instance == null){
-            instance = new ThreadSafeSingleton();
-        }
-        return instance;
-    }
-}
-```
-
-또는 
-
-```java
-public class ThreadSafeSingleton {
-    private static ThreadSafeSingleton instance;
-    private ThreadSafeSingleton(){}
-    public static ThreadSafeSingleton getInstance(){
-        if(instance == null){
-            synchronized (ThreadSafeSingleton.class) {
-            instance = new ThreadSafeSingleton();
-          }
-        }
-        return instance;
-    }
-}
-```
-
-
-
-
+하지만 위 코드만으로는 스레드 세이프하지 않다.
+멀티 스레드 환경에서 아직 싱글톤 인스턴스를 생성하지 않은 상태(instance null 인 상황) 라고 가정하자. 
+이 상태에서 여러개 스레드가 동시에 getInstance() 를 호출하고, 동시에 instance 의 null 체크를 하는 상황이라면 여러개 스레드가 모두 instance 가 null 이라고 판단하게 되고,
+그 결과 여러개의 인스턴스가 생성되므로 싱글톤이 아니다.
 
 <br/>
 
-#### Double-Checked Locking
+
+### Thread-Safe Singleton
+스레드 세이프하게 만들려면 간단하다. getInstance() 앞에 <mark>synchronized</mark> 만 붙여주면 된다.
+하지만 이는 비효율적이다. synchronized 를 메소드에 사용하게되면, 해당 메소드를 호출할때마다 다른 스레드에서 접근할 수 없게 되기 때문이다.
+바람직한 방법은 <mark>Double Checked Locking Pattern</mark> 을 사용하는 것이다.
+
+<br/>
+
+### Double Checked Locking
+이 방법은 critical section 에만 synchronized 를 사용하는 것이다. 
+{% include href.html text="[Javarevisited] Double Checked Locking on Singleton Class in Java" url="https://javarevisited.blogspot.com/2014/05/double-checked-locking-on-singleton-in-java.html#axzz5TDnUaIpM" %} 글을 많이 참고했다.
+
+코드를 보면 null 체크를 synchronized 블록 밖에서 한번, 안에서 한번 하도록 되어있다.
+밖에서 하는 체크는 이미 인스턴스가 생성된 경우 빠르게 인스턴스를 리턴하기 위함이고,
+안에서 하는 체크는 인스턴스가 생성되지 않은 경우 단 한개의 인스턴스만 생성되도록 보장하기 위함이다. 
+안에서 체크하는 부분이 없으면 두개의 스레드가 동시에 접근할 때 그냥 순차적으로 인스턴스를 생성하도록 하는 수준 밖에 되지 않기 때문에, synchronized 블록의 안팎으로 null 체크를 해줘야한다. 
+
 ```java
-public static ThreadSafeSingleton getInstanceUsingDoubleLocking(){
-    if(instance == null){
-        synchronized (ThreadSafeSingleton.class) {
-            if(instance == null){
-                instance = new ThreadSafeSingleton();
+public class DoubleCheckedSingleton {
+    private static volatile DoubleCheckedSingleton instance = null;
+
+    private DoubleCheckedSingleton() {}
+
+    public static DoubleCheckedSingleton getInstance() {
+        if (Objects.isNull(instance)) {
+            synchronized (DoubleCheckedSingleton.class) {
+                if (Objects.isNull(instance)) {
+                    instance = new DoubleCheckedSingleton();
+                }
             }
         }
+        return instance;
     }
-    return instance;
 }
 ```
+
+표면적으로는 완벽해 보인다. 하지만 조금 더 깊이있는 이해를 위해서는 '뭐지?' 하고 그냥 지나치기 쉬운 <mark>volatile</mark> 에 대한 이해가 필요하다.
+
+<br/>
+
+##### volatile
+한참 여기저기 자료를 찾아보다가 volatile 을 이해하는데 큰 도움이 된 글이다.
+* {% include href.html text="[Oracle] Threads and Locks" url="https://docs.oracle.com/javase/specs/jvms/se6/html/Threads.doc.html" %}
+* {% include href.html text="[Javarevisited] How Volatile in Java works?" url="https://javarevisited.blogspot.com/2011/06/volatile-keyword-java-example-tutorial.html" %}
+
+먼저, volatile 을 제대로 이해하기 위해서는 Main Memory 와 Working Memory 에 대한 이해가 필요하다.
+아래 그림을 함께 보자.
+
+{% include image_caption2.html title="Java Memory" caption="Java Memory" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-volatile-working-emory-main-memory.png" %}
+
+그림을 보면 메인 메모리가 있고, 스레드마다 Working Memory 가 있는 것을 볼 수 있다.
+그림에는 Load/Save 로 단순하게 표현되어 있는데, 메인메모리 <-> Working Memory 간의 데이터 이동과정은 아래와 같이 세부적으로 표현할 수 있다.
+
+| **ACTION** | **사용** | **하는 일** |
+|--------|-------------|-----------------------------------------------------------------------------------------------------------|
+| **read** | Main Memory | 변수의 master copy 의 컨텐츠를 (나중에 load 연산에서 사용하기 위해) 스레드의 working memory 로 보냄.|
+| **load** | Thread | read 에 의해 메인메모리에서 전달된 값을 스레드에 있는 변수의 working copy 에 넣는다.|
+| **use** | Thread | 스레드에 있는 변수의 working copy 를 스레드 execution engine 에 보냄.|
+| **assign** | Thread | 스레드 execution engine 의 값을 스레드에 있는 변수의 working copy 로 보냄.|
+| **store** | Thread | 스레드에 있는 변수의 working copy 를 (나중에 write 연산에서 사용하기 위해) 메인 메모리에 전달한다.|
+| **write** | Main Memory | store 에 의해 스레드의 working memory 로부터 전달된 값을 메인메모리에 있는 변수의 master copy 에 넣는다.|
+ 
+메인메모리에서 스레드로 값을 가져와 사용할 때에는 <mark>read -> load -> use</mark> 순서로 진행되며,
+스레드에 있는 값을 메인메모리로 가져올 때에는 <mark>assign -> store -> write</mark> 순서로 진행된다.
+
+이렇게 메인메모리와 스레드의 Working 메모리 간에 데이터의 이동이 있기 때문에 싱글톤 패턴 구현시 인스턴스를 레퍼런스하는 변수에 volatile 을 사용해줘야 한다.
+
+<br/> 
+
+##### volatile 을 사용하지 않는 Double Checked Locking 방법에서 일어날 수 있는 문제 와 해결
+volatile 을 사용하지 않는 경우 아래와 같은 시나리오를 생각해 볼 수 있다.
+* 첫번째 스레드가 instance 를 생성하고 synchronized 블록을 벗어남.
+* 두번째 스레드가 synchronized 블록에 들어와서 null 체크를 하는 시점에서,
+* 첫번째 스레드에서 생성한 instance 가 working memory 에만 존재하고 main memory 에는 존재하지 않을 경우
+* 또는, main memory 에 존재하지만 두번째 스레드의 working memory 에 존재하지 않을 경우
+* 즉, 메모리간 동기화가 완벽히 이루어지지 않은 상태라면
+* 두번째 스레드는 인스턴스를 또 생성하게 된다.
+
+그래서 volatile 을 사용하는데 volatile 로 선언된 변수는 아래와 같은 기능을 한다.
+* 각 스레드가 해당 변수의 값을 메인 메모리에서 직접 읽어온다.
+* volatile 변수에 대한 각 write 는 즉시 메인 메모리로 플러시 된다.
+* 스레드가 변수를 캐시하기로 결정하면 각 read/write 시 메인 메모리와 동기화 된다.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -275,80 +294,6 @@ public enum EnumSingleton {
 ```
 
 
-
-
-
-<br/>
-
-#### Using Reflection to Destroy Singleton Patterns
-```java
-public class ReflectionSingletonTest {
-    public static void main(String[] args) {
-        EagerInitializedSingleton instanceOne = EagerInitializedSingleton.getInstance();
-        EagerInitializedSingleton instanceTwo = null;
-        try {
-            Constructor[] constructors = EagerInitializedSingleton.class.getDeclaredConstructors();
-            for (Constructor constructor : constructors) {
-                //Below code will destroy the singleton pattern
-                constructor.setAccessible(true);
-                instanceTwo = (EagerInitializedSingleton) constructor.newInstance();
-                break;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.out.println(instanceOne.hashCode());
-        System.out.println(instanceTwo.hashCode());
-    }
-}
-```
-
-
-
-
-
-<br/>
-
-#### Serialization and Singleton
-```java
-public class SerializedSingleton implements Serializable{
-    private static final long serialVersionUID = -7604766932017737115L;
-    private SerializedSingleton(){}
-    private static class SingletonHelper{
-        private static final SerializedSingleton instance = new SerializedSingleton();
-    }
-    public static SerializedSingleton getInstance(){
-        return SingletonHelper.instance;
-    }
-}
-```
-
-테스트
-
-```java
-public class SingletonSerializedTest {
-    public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
-        SerializedSingleton instanceOne = SerializedSingleton.getInstance();
-        ObjectOutput out = new ObjectOutputStream(new FileOutputStream(
-                "filename.ser"));
-        out.writeObject(instanceOne);
-        out.close();
-        //deserailize from file to object
-        ObjectInput in = new ObjectInputStream(new FileInputStream(
-                "filename.ser"));
-        SerializedSingleton instanceTwo = (SerializedSingleton) in.readObject();
-        in.close();
-        System.out.println("instanceOne hashCode="+instanceOne.hashCode());
-        System.out.println("instanceTwo hashCode="+instanceTwo.hashCode());
-    }
-}
-```
-
-
-
-
-
-<br/>
  
 
 
@@ -356,4 +301,23 @@ public class SingletonSerializedTest {
 
 ### 참고한 자료
 * {% include href.html text="[DZone] All About the Singleton" url="https://dzone.com/articles/all-about-the-singleton" %}
+* {% include href.html text="[DZone] Java Multi-threading: Volatile Variables, Happens-before Relationship, and Memory Consistency" url="https://dzone.com/articles/java-multi-threading-volatile-variables-happens-be-1" %}
 * {% include href.html text="[Oracle] 12.4. Initialization of Classes and Interfaces" url="https://docs.oracle.com/javase/specs/jls/se8/html/jls-12.html#jls-12.4" %}
+* {% include href.html text="[Oracle] Threads and Locks" url="https://docs.oracle.com/javase/specs/jvms/se6/html/Threads.doc.html" %}
+* {% include href.html text="[Oracle] Java Language Specification" url="https://docs.oracle.com/javase/specs/jls/se8/html/jls-12.html" %}
+* {% include href.html text="[Javarevisited] When a class is loaded and initialized in JVM - Java" url="https://javarevisited.blogspot.com/2012/07/when-class-loading-initialization-java-example.html#ixzz2ZHoZKA48" %}
+* {% include href.html text="[Javarevisited] 10 Singleton Pattern Interview Questions in Java - Answered" url="https://javarevisited.blogspot.com/2011/03/10-interview-questions-on-singleton.html" %}
+* {% include href.html text="[Javarevisited] How Volatile in Java works?" url="https://javarevisited.blogspot.com/2011/06/volatile-keyword-java-example-tutorial.html" %}
+* {% include href.html text="[Javarevisited] What is Static Variable Class method and keyword in Java - Example Tutorial" url="https://javarevisited.blogspot.com/2011/11/static-keyword-method-variable-java.html" %}
+* {% include href.html text="[Javarevisited] Double Checked Locking on Singleton Class in Java" url="https://javarevisited.blogspot.com/2014/05/double-checked-locking-on-singleton-in-java.html#axzz5TDnUaIpM" %}
+* {% include href.html text="[StackOverflow] When are static variables initialized?" url="https://stackoverflow.com/questions/8704423/when-are-static-variables-initialized" %}
+* {% include href.html text="[StackOverflow] Difference between loading a class and instantiating it" url="https://stackoverflow.com/questions/17693828/difference-between-loading-a-class-and-instantiating-it" %}
+* {% include href.html text="[StackOverflow] Is Java class loader guaranteed to not load classes that aren't used?" url="https://stackoverflow.com/questions/3487888/is-java-class-loader-guaranteed-to-not-load-classes-that-arent-used" %}
+* {% include href.html text="클래스로더 1, 동적인 클래스 로딩과 클래스로더" url="http://javacan.tistory.com/entry/1" %}
+* {% include href.html text="Digesting Singleton Design Pattern in Java" url="https://medium.com/exploring-code/digesting-singleton-design-pattern-in-java-5d434f4f322" %}
+
+
+- 맨 마지막에 싱글톤 예제로 Runtime 클래스.
+- Java Runtime 클래스도 싱글톤인데, volatile 이 없다. 
+> An application cannot create its own instance of this class.
+때문인것 같다.
