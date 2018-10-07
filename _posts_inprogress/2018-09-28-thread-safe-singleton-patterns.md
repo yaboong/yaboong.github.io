@@ -10,6 +10,7 @@ tags: [design-pattern, java, oop]
 ### 개요
 * 싱글톤 패턴의 다양한 구현 방법을 알아본다.
 * Thread Safe 한 싱글톤 패턴의 구현도 포함한다.
+* volatile 과 memory consistency 도 조금 알아본다.
 * 구현
     * Eager Initialization (Early Loading)
     * Static Block Initialization
@@ -92,13 +93,6 @@ EagerSingleton.getInstance() 는 어디에도 삽입하지 않는다.
 ```
 
 지금까지 살펴본 것 처럼 Eager Initialization 은 싱글톤 인스턴스를 클라이언트에서 사용하지 않더라도 인스턴스는 항상 생성될 수 있다는 단점을 가진 방법이다.
-{% include href.html text="여기" url="https://medium.com/exploring-code/digesting-singleton-design-pattern-in-java-5d434f4f322" %}
-에서는 아래와 같이 말한다.
-
-> This might be a considerable issue if your singleton class in creating a database connection or creating a socket. 
-This may cause the memory leak problem.
-
-싱글톤 클래스를 이용하여 데이터베이스 연결이나 소켓을 만드는 경우 메모리 누수 문제로 연결될 위험이 있다고 이야기 한다.
 
 이 단점을 보완할 수 있는 싱글톤패턴을 구현하는 다른 방법들이 당연히 있다.
 그 방법들을 살펴보기 전에 <mark>Static Block Initialization</mark> 을 간단하게 살펴보고 넘어가자.
@@ -314,7 +308,6 @@ public enum EnumSingleton {
 * {% include href.html text="[StackOverflow] Difference between loading a class and instantiating it" url="https://stackoverflow.com/questions/17693828/difference-between-loading-a-class-and-instantiating-it" %}
 * {% include href.html text="[StackOverflow] Is Java class loader guaranteed to not load classes that aren't used?" url="https://stackoverflow.com/questions/3487888/is-java-class-loader-guaranteed-to-not-load-classes-that-arent-used" %}
 * {% include href.html text="클래스로더 1, 동적인 클래스 로딩과 클래스로더" url="http://javacan.tistory.com/entry/1" %}
-* {% include href.html text="Digesting Singleton Design Pattern in Java" url="https://medium.com/exploring-code/digesting-singleton-design-pattern-in-java-5d434f4f322" %}
 
 
 - 맨 마지막에 싱글톤 예제로 Runtime 클래스.
