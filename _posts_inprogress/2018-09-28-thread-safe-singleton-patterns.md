@@ -77,6 +77,9 @@ Eager Initialization 은 클라이언트에서 사용하지 않더라도 인스�
 static 제어자에 의해 EagerSingleton 클래스는 항상 로드되고, instance 라는 이름의 static 변수에 <mark>EagerSingleton</mark> 인스턴스가 생성되어 할당된다는 것이다.
 
 그런데, 위 코드만으로는 EagerSingleton.getInstance() 를 호출하지 않는 경우 인스턴스가 생성되지 않는다. EagerSingleton 클래스에 getInstance() 메소드 하나만 존재하기 때문이다.
+좀 더 정확하게 말하면, EagerSingleton 클래스가 사용되는 경우가 getInstance() 밖에 없으므로, getInstance() 호출 외에는 EagerSingleton 이 사용될 수가 없다.
+사용되지 않는 클래스는 로드되지 않는다. 따라서, 클래스가 로드되지 않으면 static 초기화도 진행되지 않는다.
+ 
 만약 <mark>EagerSingleton</mark> 클래스에 다른 static 메소드가 존재하고, 이 다른 메소드가 getInstance() 가 호출되기 전에 어딘가에서 호출된다면, 
 getInstance() 를 호출하지 않아도 <mark>EagerSingleton</mark> 클래스의 인스턴스는 생성된다.
 다른 static 메소드에 의해 <mark>EagerSingleton</mark> 클래스가 로드되기 때문이다.
@@ -84,7 +87,7 @@ getInstance() 를 호출하지 않아도 <mark>EagerSingleton</mark> 클래스�
 <br/>
 
 ###### 클래스 로딩 확인해보기
-확인해보려면, 위 코드에 static 으로 선언된 메소드(m() 이라고하자)를 만든다. 실행을 위한 클래스의 main 메소드에는 EagerSingleton.m() 을 호출하는 코드를 넣는다.
+확인해보려면, 위 코드에 static 으로 선언된 메소드(doNothing() 이라고하자)를 만든다. 실행을 위한 클래스의 main 메소드에는 EagerSingleton.doNothing() 을 호출하는 코드를 넣는다.
 EagerSingleton.getInstance() 는 어디에도 삽입하지 않는다.
 그리고나서 JVM 옵션으로 ```-verbose:class``` 를 주고 실행하면 로딩되는 클래스들을 모두 출력하는데, EagerSingleton 클래스가 로딩되는 것을 확인할 수 있다.
 
@@ -145,9 +148,9 @@ public class LazyInitializedSingleton {
 ```
 
 <mark>getInstance()</mark> 의 호출에서는 인스턴스를 레퍼런스하는 변수 instance 가 null 인 경우에만 인스턴스를 생성하므로 싱글톤패턴에 부합하며,
-getInstance()의 호출 이외에는 인스턴스를 생성하지 않기 때문에 인스턴스가 필요한 경우에만 인스턴스가 생성되게 함으로써 Eager Initialization 의 담점을 보완했다.
+getInstance()의 호출 이외에는 인스턴스를 생성하지 않기 때문에 인스턴스가 필요한 경우에만 인스턴스가 생성되게 함으로써 Eager Initialization 의 단점을 보완했다.
 
-하지만 위 코드만으로는 스레드 세이프하지 않다.
+하지만 위 코드는 스레드 세이프하지 않다.
 멀티 스레드 환경에서 아직 싱글톤 인스턴스를 생성하지 않은 상태(instance null 인 상황) 라고 가정하자. 
 이 상태에서 여러개 스레드가 동시에 getInstance() 를 호출하고, 동시에 instance 의 null 체크를 하는 상황이라면 여러개 스레드가 모두 instance 가 null 이라고 판단하게 되고,
 그 결과 여러개의 인스턴스가 생성되므로 싱글톤이 아니다.
@@ -158,6 +161,8 @@ getInstance()의 호출 이외에는 인스턴스를 생성하지 않기 때문�
 ### Thread-Safe Singleton
 스레드 세이프하게 만들려면 간단하다. getInstance() 앞에 <mark>synchronized</mark> 만 붙여주면 된다.
 하지만 이는 비효율적이다. synchronized 를 메소드에 사용하게되면, 해당 메소드를 호출할때마다 다른 스레드에서 접근할 수 없게 되기 때문이다.
+우리가 원하는 것은 싱글톤으로 인스턴스가 하나만 생성되게 하는 것이지, 메소드 호출시마다 락을 걸어 성능을 저하시키려는 것이 아니다.
+일단 하나의 인스턴스만 생성되고 나면 그 다음부터는 synchronized 가 필요없다. 
 바람직한 방법은 <mark>Double Checked Locking Pattern</mark> 을 사용하는 것이다.
 
 <br/>
@@ -219,12 +224,17 @@ public class DoubleCheckedSingleton {
 메인메모리에서 스레드로 값을 가져와 사용할 때에는 <mark>read -> load -> use</mark> 순서로 진행되며,
 스레드에 있는 값을 메인메모리로 가져올 때에는 <mark>assign -> store -> write</mark> 순서로 진행된다.
 
-이렇게 메인메모리와 스레드의 Working 메모리 간에 데이터의 이동이 있기 때문에 싱글톤 패턴 구현시 인스턴스를 레퍼런스하는 변수에 volatile 을 사용해줘야 한다.
+이렇게 메인메모리와 스레드의 Working 메모리 간에 데이터의 이동이 있기 때문에 메인메모리와 Working 메모리간에 동기화가 진행되는 동안 빈틈이 생기게 된다. 
+따라서, 싱글톤 패턴 구현시 인스턴스를 레퍼런스하는 변수에 volatile 을 사용해줘야 한다. (jdk5 이상에서만 유효하다)
+
+volatile 로 선언된 변수는 아래와 같은 기능을 하기 때문이다.
+* 각 스레드가 해당 변수의 값을 메인 메모리에서 직접 읽어온다.
+* volatile 변수에 대한 각 write 는 즉시 메인 메모리로 플러시 된다.
+* 스레드가 변수를 캐시하기로 결정하면 각 read/write 시 메인 메모리와 동기화 된다.
 
 <br/> 
 
-##### volatile 을 사용하지 않는 Double Checked Locking 방법에서 일어날 수 있는 문제 와 해결
-volatile 을 사용하지 않는 경우 아래와 같은 시나리오를 생각해 볼 수 있다.
+##### volatile 을 사용하지 않는 Double Checked Locking 방법에서 일어날 수 있는 문제
 * 첫번째 스레드가 instance 를 생성하고 synchronized 블록을 벗어남.
 * 두번째 스레드가 synchronized 블록에 들어와서 null 체크를 하는 시점에서,
 * 첫번째 스레드에서 생성한 instance 가 working memory 에만 존재하고 main memory 에는 존재하지 않을 경우
@@ -232,60 +242,124 @@ volatile 을 사용하지 않는 경우 아래와 같은 시나리오를 생각�
 * 즉, 메모리간 동기화가 완벽히 이루어지지 않은 상태라면
 * 두번째 스레드는 인스턴스를 또 생성하게 된다.
 
-그래서 volatile 을 사용하는데 volatile 로 선언된 변수는 아래와 같은 기능을 한다.
-* 각 스레드가 해당 변수의 값을 메인 메모리에서 직접 읽어온다.
-* volatile 변수에 대한 각 write 는 즉시 메인 메모리로 플러시 된다.
-* 스레드가 변수를 캐시하기로 결정하면 각 read/write 시 메인 메모리와 동기화 된다.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <br/>
 
+
 #### Bill Pugh Solution
+다음으로, Bill Pugh Solution 을 살펴보자.
+BillPughSingleton.getInstance() 를 호출하면 BillPughSingleton 클래스가 로드된다.
+static 인 getInstance() 메소드 내부에는 SingletonHelper.INSTANCE 가 있는데 이 또한 static 이므로 SingletonHelper 클래스가 로드된다.
+static 변수인 INSTANCE 변수에 BillPughSingleton() 생성자가 호출되어 인스턴스가 할당된다.
+
+* Double Checked 코드와 비교했을때 구현이 간단하다. 
+* Lazy Loading 이 가능하다. 클래스가 로드될 때 인스턴스가 생성되므로, getInstance() 를 호출하기 전에는 클래스도 로드되지 않고 인스턴스도 생성되지 않는다.
+* 스레드 세이프하다. 클래스가 로드될때 인스턴스가 생성되므로 멀티 스레드 환경에서도 안전하게 사용가능하다.
+ 
 ```java
 public class BillPughSingleton {
+    
     private BillPughSingleton(){}
+    
     private static class SingletonHelper{
         private static final BillPughSingleton INSTANCE = new BillPughSingleton();
     }
+    
     public static BillPughSingleton getInstance(){
         return SingletonHelper.INSTANCE;
     }
 }
 ```
 
+혹시 나같이 쓸데 없는게 궁금한 사람들을 위해 클래스 로딩에 대한설명을 조금 덧붙인다. 
+아까 Eager Initialization 에서, 클래스가 어디선가 사용되면 클래스가 로드된다고 했다. (jdk8 이후에서는 Meta Space, 이전에는 PermGen 에 로드됨)
+조금 더 덧붙이자면, 인스턴스화 되어 사용될 수도 있고, static 필드에 대한 호출로 사용될수도 있다.
+즉, 클래스에 static 필드가 있고 static 필드에 대한 접근이 이루어지면 클래스가 로드된다. 
 
-
+BillPughSingleton 클래스에도 doNothing() 이라는 아무것도 하지 않는 static 메소드를 선언하고, 이에대한 호출을 하면 BillPughSingleton 클래스가 로드되는 것을 확인할 수 있다. (jvm 옵션에 -verbose:class 주고 실행)
+이때 doNothing() 만 호출해서는 SingletonHelper 클래스는 로드되지 않는 것도 확인할 수 있다.
+만약 getInstance() 호출로 SingletonHelper 클래스에 대한 사용이 이루어지는 코드를 삽입하면 SingletonHelper 클래스가 로드되는 것을 확인할 수 있다.
 
 
 <br/>
 
-#### Enum Singleton
+> 그런데... 이 모든것을 파괴해버릴 수 있는 녀석이 있다. Reflection 이다.
+
+<br/>
+
+#### Reflection 을 이용해 Singleton 부숴버리기
+예제 코드에서는 Bill Pugh Solution 을 사용했지만, 그 어떤 형태의 싱글톤이라도 Reflection 의 setAccessible(true) 를 사용하면 모든 private 생성자, 메소드에 접근이 가능해진다.
+Reflection 에 대한 자세한 설명은 
+{% include href.html text="여기" url="https://www.concretepage.com/java/how-to-access-all-private-fields-methods-and-constructors-using-java-reflection-with-example" %}
+에 잘 되어있다.
+
 ```java
-public enum EnumSingleton {
-    INSTANCE;
-    public void someMethod(String param) {
-        // some class member
+import singleton.BillPughSingleton;
+import java.lang.reflect.Constructor;
+
+public class SingletonDestroyer {
+    public static void main(String[] args) throws Exception {
+        BillPughSingleton instanceOne = BillPughSingleton.getInstance();
+        System.out.println(instanceOne.toString());
+
+        Constructor[] constructors = BillPughSingleton.class.getDeclaredConstructors();
+        for (Constructor constructor : constructors) {
+            constructor.setAccessible(true); // singleton breaker
+            System.out.println(constructor.newInstance().toString());
+            break;
+        }
     }
 }
 ```
+
+```setAccessible(true)``` 를 하면 끝난다. newInstance() 메소드를 통해 (직접 생성자를 호출하는 것이므로) 계속해서 다른 인스턴스를 생성할 수 있다.
+
+이 문제에 대한 해결방법은 Enum 을 이용해서 싱글톤을 구현하는 것이다.
+
+<br/>
+
+
+
+#### Enum Singleton
+Enum 을 사용한 싱글톤의 구현은 아래와 같다. 엄청 간단하다.
+
+```java
+public enum EnumSingleton {
+    INSTANCE;
+}
+```
+
+메소드를 추가하고 싶으면 아래와 같이 사용 가능하다.
+
+```java
+public enum EnumSingleton {
+    INSTANCE;
+    
+    public void someMethod(String param) {
+        
+    }
+}
+```
+
+Enum 을 사용한 싱글톤 패턴은 Lazy Loading 이 아니라는 단점을 가지지만 강력한 세가지 장점이 있다.
+1. 구현이 쉽다.
+2. Serialization 을 알아서 다룬다.
+3. 스레드 세이프하다.
+
+구현이 쉬운것은 제외하고 2번 3번에 대해서만 조금 더 자세히 살펴보자.
+
+###### Serialization 을 알아서 다룬다.
+기존의 싱글톤 패턴을 구현한 클래스들은 Serializable 인터페이스를 구현하는 경우, 또 싱글톤 패턴이 파괴된다.
+
+------------ 이부분은 dzone 이랑 javarevisited 자료 같이봐.
+
+```java
+//readResolve to prevent another instance of Singleton
+private Object readResolve(){
+    return INSTANCE;
+}
+```
+
+
 
 
  
@@ -304,10 +378,15 @@ public enum EnumSingleton {
 * {% include href.html text="[Javarevisited] How Volatile in Java works?" url="https://javarevisited.blogspot.com/2011/06/volatile-keyword-java-example-tutorial.html" %}
 * {% include href.html text="[Javarevisited] What is Static Variable Class method and keyword in Java - Example Tutorial" url="https://javarevisited.blogspot.com/2011/11/static-keyword-method-variable-java.html" %}
 * {% include href.html text="[Javarevisited] Double Checked Locking on Singleton Class in Java" url="https://javarevisited.blogspot.com/2014/05/double-checked-locking-on-singleton-in-java.html#axzz5TDnUaIpM" %}
+* {% include href.html text="[Javarevisited] Java Enum Tutorial: 10 Examples of Enum in Java" url="https://javarevisited.blogspot.com/2011/08/enum-in-java-example-tutorial.html" %}
 * {% include href.html text="[StackOverflow] When are static variables initialized?" url="https://stackoverflow.com/questions/8704423/when-are-static-variables-initialized" %}
 * {% include href.html text="[StackOverflow] Difference between loading a class and instantiating it" url="https://stackoverflow.com/questions/17693828/difference-between-loading-a-class-and-instantiating-it" %}
 * {% include href.html text="[StackOverflow] Is Java class loader guaranteed to not load classes that aren't used?" url="https://stackoverflow.com/questions/3487888/is-java-class-loader-guaranteed-to-not-load-classes-that-arent-used" %}
+* {% include href.html text="How to Access All Private Fields, Methods and Constructors using Java Reflection with Example" url="https://www.concretepage.com/java/how-to-access-all-private-fields-methods-and-constructors-using-java-reflection-with-example" %}
 * {% include href.html text="클래스로더 1, 동적인 클래스 로딩과 클래스로더" url="http://javacan.tistory.com/entry/1" %}
+
+
+
 
 
 - 맨 마지막에 싱글톤 예제로 Runtime 클래스.
