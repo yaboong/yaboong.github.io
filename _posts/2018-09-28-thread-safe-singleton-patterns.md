@@ -11,16 +11,17 @@ tags: [design-pattern, java, oop]
 * 싱글톤 패턴의 다양한 구현 방법을 알아본다.
 * Thread Safe 한 싱글톤 패턴의 구현도 포함한다.
 * volatile 과 memory consistency 도 조금 알아본다.
-* 구현
+* 순서요약
     * Eager Initialization (Early Loading)
     * Static Block Initialization
     * Lazy Initialization
-    * Thread-Safe Singletons
+    * Thread Safety
     * Double-Checked Locking
     * Bill Pugh Solution
-    * Enum Singleton
-    * Using Reflection to Destroy Singleton Patterns
-    * Serialization and Singleton
+    * Reflection 을 이용해 싱글톤 부숴버리기
+    * Enum 싱글톤
+    * 싱글톤과 직렬화
+    * 싱글톤 패턴의 실제 사용 예
 <!--more-->
 
 
@@ -225,7 +226,7 @@ public class DoubleCheckedSingleton {
 스레드에 있는 값을 메인메모리로 가져올 때에는 <mark>assign -> store -> write</mark> 순서로 진행된다.
 
 이렇게 메인메모리와 스레드의 Working 메모리 간에 데이터의 이동이 있기 때문에 메인메모리와 Working 메모리간에 동기화가 진행되는 동안 빈틈이 생기게 된다. 
-따라서, 싱글톤 패턴 구현시 인스턴스를 레퍼런스하는 변수에 volatile 을 사용해줘야 한다. (jdk5 이상에서만 유효하다)
+따라서, Double Checked Locking 으로 싱글톤 패턴 구현시 인스턴스를 레퍼런스하는 변수에 volatile 을 사용해줘야 한다. (jdk5 이상에서만 유효하다)
 
 volatile 로 선언된 변수는 아래와 같은 기능을 하기 때문이다.
 * 각 스레드가 해당 변수의 값을 메인 메모리에서 직접 읽어온다.
@@ -245,7 +246,7 @@ volatile 로 선언된 변수는 아래와 같은 기능을 하기 때문이다.
 <br/>
 
 
-#### Bill Pugh Solution
+### Bill Pugh Solution
 다음으로, Bill Pugh Solution 을 살펴보자.
 BillPughSingleton.getInstance() 를 호출하면 BillPughSingleton 클래스가 로드된다.
 static 인 getInstance() 메소드 내부에는 SingletonHelper.INSTANCE 가 있는데 이 또한 static 이므로 SingletonHelper 클래스가 로드된다.
@@ -286,7 +287,7 @@ BillPughSingleton 클래스에도 doNothing() 이라는 아무것도 하지 않�
 
 <br/>
 
-#### Reflection 을 이용해 Singleton 부숴버리기
+### Reflection 을 이용해 Singleton 부숴버리기
 예제 코드에서는 Bill Pugh Solution 을 사용했지만, 그 어떤 형태의 싱글톤이라도 Reflection 의 setAccessible(true) 를 사용하면 모든 private 생성자, 메소드에 접근이 가능해진다.
 Reflection 에 대한 자세한 설명은 
 {% include href.html text="여기" url="https://www.concretepage.com/java/how-to-access-all-private-fields-methods-and-constructors-using-java-reflection-with-example" %}
@@ -319,7 +320,7 @@ public class SingletonDestroyer {
 
 
 
-#### Enum Singleton
+### Enum Singleton
 Enum 을 사용한 싱글톤의 구현은 아래와 같다. 엄청 간단하다.
 
 ```java
@@ -342,29 +343,154 @@ public enum EnumSingleton {
 
 Enum 을 사용한 싱글톤 패턴은 Lazy Loading 이 아니라는 단점을 가지지만 강력한 세가지 장점이 있다.
 1. 구현이 쉽다.
-2. Serialization 을 알아서 다룬다.
-3. 스레드 세이프하다.
+2. Enum 은 태생자체가 스레드 세이프하게 구현되었다. (그렇다고 Enum 내부에 사용자가 구현하는 메소드들도 스레드 세이프가 보장되는 것은 아니다.)
+3. 직렬화/역직렬화 에 대한 처리가 필요없다.
 
-구현이 쉬운것은 제외하고 2번 3번에 대해서만 조금 더 자세히 살펴보자.
+직렬화/역직렬화 에 대해서만 조금 더 자세히 살펴보자.
 
-###### Serialization 을 알아서 다룬다.
-기존의 싱글톤 패턴을 구현한 클래스들은 Serializable 인터페이스를 구현하는 경우, 또 싱글톤 패턴이 파괴된다.
-
------------- 이부분은 dzone 이랑 javarevisited 자료 같이봐.
-
+기존의 싱글톤 패턴을 구현한 클래스들은 Serializable 인터페이스를 구현(implements) 하는 경우, 싱글톤 패턴이 파괴된다.
+아래 클래스는 EagerSingleton 클래스와 같은데, Serializable 인터페이스를 구현하는 부분만 추가했다.
+ 
 ```java
-//readResolve to prevent another instance of Singleton
-private Object readResolve(){
-    return INSTANCE;
+public class SerializedEagerSingleton implements Serializable {
+
+    private static final long serialVersionUID = 3368531508195651477L;
+
+    private static SerializedEagerSingleton instance = new SerializedEagerSingleton();
+
+    private SerializedEagerSingleton() {
+    }
+
+    public static SerializedEagerSingleton getInstance() {
+        return instance;
+    }
 }
 ```
 
+위 클래스를 사용해보자.
 
+```java
+import java.io.*;
 
+public class ClientSerializedSingleton {
+    public static void main(String[] args) 
+    throws FileNotFoundException, IOException, ClassNotFoundException {
+        SerializedEagerSingleton serializedInstance = SerializedEagerSingleton.getInstance();
+        ObjectOutput out = new ObjectOutputStream(new FileOutputStream("output.txt"));
+        out.writeObject(serializedInstance);
+        out.close();
+        
+        // 역직렬화
+        ObjectInput in = new ObjectInputStream(new FileInputStream("output.txt"));
+        SerializedEagerSingleton deSerializedInstance = (SerializedEagerSingleton) in.readObject();
+        in.close();
+        
+        System.out.println(serializedInstance.hashCode());
+        System.out.println(deSerializedInstance.hashCode());
+    }
+}
+```
 
+ClientSerializedSingleton 의 main() 메소드를 실행해보면, 마지막에 두 인스턴스의 해시코드가 다르게 출력되는 것을 볼 수 있을 것이다.
+Serializable 인터페이스를 구현한 클래스는 역직렬화가 진행될때 readObject() 를 호출하면서 새로운 인스턴스를 생성하기 때문이다.
+
+이를 해결하기 위해서, Serializable 클래스에 readResolve() 메소드를 추가해주면 된다. 기존 SerializedEagerSingleton 클래스에서 readResolve() 메소드만 추가되었다.
+
+```java
+import java.io.Serializable;
+
+public class SerializedEagerSingleton implements Serializable {
+
+    private static final long serialVersionUID = 3368531508195651477L;
+
+    private static SerializedEagerSingleton instance = new SerializedEagerSingleton();
+
+    private SerializedEagerSingleton() {
+    }
+
+    public static SerializedEagerSingleton getInstance() {
+        return instance;
+    }
+
+    // 추가
+    private Object readResolve() {
+        return getInstance();
+    }
+}
+```
+
+{% include href.html text="[DZone] All About the Singleton" url="https://dzone.com/articles/all-about-the-singleton" %}
+글에서는 "state 를 가지는 싱글톤 클래스의 경우 transient 로 만들어줘야 하기 때문에 조금 더 복잡해질 수 있다" 라고 하는데 왜 그런지는 조금 더 공부해보면서 
+readObject(), readResolve(), 직렬화에 대해서도 더 공부해봐야겠다. 
+
+이런저런 복잡하게 고려해주어야 할 사항들이 많지만 Enum 을 사용해서 싱글톤 패턴을 구현하면 이러한 것들을 모두 신경쓸 필요가 없다.
+
+```java
+import java.io.*;
+
+public class ClientSerializedSingleton {
+    public static void main(String[] args) throws FileNotFoundException, IOException, ClassNotFoundException {
+        EnumSingleton serializedInstance = EnumSingleton.INSTANCE; // Singleton 패턴 구현에 Enum 사용 
+        ObjectOutput out = new ObjectOutputStream(new FileOutputStream("output.txt"));
+        out.writeObject(serializedInstance);
+        out.close();
+        
+        // 역직렬화
+        ObjectInput in = new ObjectInputStream(new FileInputStream("output.txt"));
+        EnumSingleton deSerializedInstance = (EnumSingleton) in.readObject(); // Singleton 패턴 구현에 Enum 사용
+        in.close();
+        System.out.println(serializedInstance.hashCode());
+        System.out.println(deSerializedInstance.hashCode());
+    }
+}
+```
+
+위 코드는 SerializedEagerSingleton 클래스를 사용하는 경우 인스턴스가 두개 생성되는 것을 확인했을때와 같은 코드인데,
+싱글톤 인스턴스 생성에 EnumSingleton 을 사용했을 뿐이다.
+
+EnumSingleton 은 아주 기본적인 처음상태 그대로이지만 직렬화, 역직렬화 모두 인스턴스의 해시코드가 같은 것을 확인할 수 있다.
+
+Enum 과 직렬화에 대한 부연설명은 {% include href.html text="[Oracle] 1.12 Serialization of Enum Constants" url="https://docs.oracle.com/javase/8/docs/platform/serialization/spec/serial-arch.html#a6469" %} 에 잘 되어 있다.
+(아직 더 공부하지 않아서 링크만 박아두는 비겁한 필자...)
  
+<br/>
 
+### 싱글톤 패턴의 실제 사용 예
+Java 의 Runtime 클래스가 싱글톤으로 구현된 대표적인 클래스이다.
 
+```java
+public class Runtime {
+    private static Runtime currentRuntime = new Runtime();
+
+    /**
+     * Returns the runtime object associated with the current Java application.
+     * Most of the methods of class <code>Runtime</code> are instance
+     * methods and must be invoked with respect to the current runtime object.
+     *
+     * @return  the <code>Runtime</code> object associated with the current
+     *          Java application.
+     */
+    public static Runtime getRuntime() {
+        return currentRuntime;
+    }
+
+    /** Don't let anyone else instantiate this class */
+    private Runtime() {}
+    
+    ... 이하생략
+}
+```
+
+Eager Singleton 방식으로 구현되어 있음을 볼 수 있다.
+{% include href.html text="[DZone] All About the Singleton" url="https://dzone.com/articles/all-about-the-singleton" %} 글을 보면 instance 변수에 volatile 이 붙어있는데,
+Runtime 클래스의 구현을 보고 volatile 이 필요없다고 생각해서 이 글에 있는 Eager Initialization 예제 코드에는 volatile 을 빼버렸다.
+
+<br/>
+
+### 마무리
+싱글톤 패턴을 간단하게 정리하려다가 빡세게 자바공부를 하고 가는 것 같아 뿌듯하다.
+직렬화에 대한 공부를 좀 해야 할 것 같은데... 어디서 어떻게 사용되는 것이 최선인지 구체적인 사용사례를 먼저 찾아봐야겠다...
+ 
 <br/>
 
 ### 참고한 자료
@@ -373,6 +499,9 @@ private Object readResolve(){
 * {% include href.html text="[Oracle] 12.4. Initialization of Classes and Interfaces" url="https://docs.oracle.com/javase/specs/jls/se8/html/jls-12.html#jls-12.4" %}
 * {% include href.html text="[Oracle] Threads and Locks" url="https://docs.oracle.com/javase/specs/jvms/se6/html/Threads.doc.html" %}
 * {% include href.html text="[Oracle] Java Language Specification" url="https://docs.oracle.com/javase/specs/jls/se8/html/jls-12.html" %}
+* {% include href.html text="[Oracle] Interface Serializable" url="https://docs.oracle.com/javase/8/docs/api/java/io/Serializable.html" %}
+* {% include href.html text="[Oracle] Class ObjectInputStream, readObject()" url="https://docs.oracle.com/javase/8/docs/api/java/io/ObjectInputStream.html" %}
+* {% include href.html text="[Oracle] 1.12 Serialization of Enum Constants" url="https://docs.oracle.com/javase/8/docs/platform/serialization/spec/serial-arch.html#a6469" %}
 * {% include href.html text="[Javarevisited] When a class is loaded and initialized in JVM - Java" url="https://javarevisited.blogspot.com/2012/07/when-class-loading-initialization-java-example.html#ixzz2ZHoZKA48" %}
 * {% include href.html text="[Javarevisited] 10 Singleton Pattern Interview Questions in Java - Answered" url="https://javarevisited.blogspot.com/2011/03/10-interview-questions-on-singleton.html" %}
 * {% include href.html text="[Javarevisited] How Volatile in Java works?" url="https://javarevisited.blogspot.com/2011/06/volatile-keyword-java-example-tutorial.html" %}
@@ -382,14 +511,7 @@ private Object readResolve(){
 * {% include href.html text="[StackOverflow] When are static variables initialized?" url="https://stackoverflow.com/questions/8704423/when-are-static-variables-initialized" %}
 * {% include href.html text="[StackOverflow] Difference between loading a class and instantiating it" url="https://stackoverflow.com/questions/17693828/difference-between-loading-a-class-and-instantiating-it" %}
 * {% include href.html text="[StackOverflow] Is Java class loader guaranteed to not load classes that aren't used?" url="https://stackoverflow.com/questions/3487888/is-java-class-loader-guaranteed-to-not-load-classes-that-arent-used" %}
+* {% include href.html text="[StackOverflow] How thread-safe is enum in java?" url="https://stackoverflow.com/questions/2531873/how-thread-safe-is-enum-in-java" %}
 * {% include href.html text="How to Access All Private Fields, Methods and Constructors using Java Reflection with Example" url="https://www.concretepage.com/java/how-to-access-all-private-fields-methods-and-constructors-using-java-reflection-with-example" %}
 * {% include href.html text="클래스로더 1, 동적인 클래스 로딩과 클래스로더" url="http://javacan.tistory.com/entry/1" %}
 
-
-
-
-
-- 맨 마지막에 싱글톤 예제로 Runtime 클래스.
-- Java Runtime 클래스도 싱글톤인데, volatile 이 없다. 
-> An application cannot create its own instance of this class.
-때문인것 같다.
