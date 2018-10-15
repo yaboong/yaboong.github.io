@@ -60,7 +60,7 @@ Adapter 가 Adaptee 를 감싸고 있는 것 때문에 Wrapper 패턴이라고�
 ### 참고한 자료
 * {% include href.html text="[javarevisited] Adapter Design Pattern in Java with Example" url="https://javarevisited.blogspot.com/2016/08/adapter-design-pattern-in-java-example.html?m=1" %}
 * {% include href.html text="[위키] 어댑터 패턴" url="https://ko.wikipedia.org/wiki/어댑터_패턴" %}
-* {% include href.html text="" url="" %}
+* {% include href.html text="[Coursera] 2.1.6 - Adapter Pattern" url="https://www.coursera.org/lecture/design-patterns/2-1-6-adapter-pattern-RRZST" %}
 * {% include href.html text="" url="" %}
 * {% include href.html text="" url="" %}
 * {% include href.html text="" url="" %}
