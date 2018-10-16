@@ -9,7 +9,9 @@ tags: [design-pattern, java, oop]
 
 ### 개요
 * 어댑터 패턴에 대해서 알아본다.
-* Rectangle, Bird,   
+* {% include href.html text="Coursera 의 디자인패턴 강의" url="https://www.coursera.org/lecture/design-patterns/2-1-6-adapter-pattern-RRZST" %}
+를 기반으로 작성했다.
+* Rectangle vs LegacyRectangle, Duck vs Turkey 같은 터무니 없는 예제가 아닌 조금 더 실질적인 예제를 사용해본다.
 * JDK 에 사용된 어댑터 패턴을 살펴본다.
 <!--more-->
 
