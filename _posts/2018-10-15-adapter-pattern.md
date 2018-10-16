@@ -9,6 +9,8 @@ tags: [design-pattern, java, oop]
 
 ### 개요
 * 어댑터 패턴에 대해서 알아본다.
+* Rectangle, Bird,   
+* JDK 에 사용된 어댑터 패턴을 살펴본다.
 <!--more-->
 
 
@@ -49,7 +51,7 @@ Adapter 가 Adaptee 를 감싸고 있는 것 때문에 Wrapper 패턴이라고�
 
 <br/>
 
-### 어댑터 패턴 사용예시 1
+### 어댑터 패턴 사용예제
 Coursera 의 디자인 패턴 강의 중 어댑터 패턴에 나오는 예제를 조금 수정해서 구현해 보려한다.
 이해를 돕기위해 어댑터 패턴의 설명에 불필요하다고 생각하는 메소드와 코드는 제거했다.
 
@@ -215,7 +217,8 @@ public BufferedReader(Reader in) {
 public final static InputStream in = null;
 ```
 
-이 둘을 연결시켜 주는 어댑터가 <mark>InputStreamReader</mark> 클래스이다.
+자바의 InputStream 은 바이트 스트림을 읽어들인다. 하지만, BufferedReader 는 캐릭터인풋 스트림을 읽어들인다.
+둘은 호환되지 않는다. 하지만, 이 둘을 연결시켜 주는 어댑터가 <mark>InputStreamReader</mark> 클래스이다.
 UML 로 보면 아래와 같은 구조다.
 
 {% include image_caption_href.html title="Adapter Pattern used in JDK" caption="Adapter Pattern used in JDK" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/diagram/adapter-pattern-4.png" %}
@@ -251,4 +254,5 @@ System.in 을 <mark>InputStreamReader</mark> 인스턴스 생성시 넘겨주는
 ### 참고한 자료
 * {% include href.html text="[Coursera - University of Alberta] Design Patterns 2.1.6 - Adapter Pattern" url="https://www.coursera.org/lecture/design-patterns/2-1-6-adapter-pattern-RRZST" %}
 * {% include href.html text="[HowToDoInJava] Adapter Design Pattern in Java" url="https://howtodoinjava.com/design-patterns/structural/adapter-design-pattern-in-java/" %}
+* {% include href.html text="[JENKOV.COM] Java IO: InputStream" url="http://tutorials.jenkov.com/java-io/inputstream.html" %}
 
