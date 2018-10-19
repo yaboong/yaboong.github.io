@@ -129,7 +129,7 @@ public class OrderFulfillment implements IOrder {
         for (Item item: order.getItemList()) {
             for (Warehouse warehouse: warehouses) {
                 if (warehouse.currentInventory(item) != 0) {
-                    warehouse.handleOrder();
+                    warehouse.fulfillOrder();
                 }
             }
         }
