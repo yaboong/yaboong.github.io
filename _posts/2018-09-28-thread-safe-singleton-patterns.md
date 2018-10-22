@@ -106,7 +106,7 @@ EagerSingleton.getInstance() 는 어디에도 삽입하지 않는다.
 
 ### Static Block Initialization
 Static Block Initialization 은 Eager Initialization 과 유사하다. 
-다만, 인스턴스가 static block 내에거 만들어지고, static block 안에서 예외처리를 할 수 있다는 점이 다르다.
+다만, 인스턴스가 static block 내에서 만들어지고, static block 안에서 예외처리를 할 수 있다는 점이 다르다.
 
 ```java
 public class StaticBlockSingleton {
