@@ -28,6 +28,15 @@ tags: [spring-cloud, spring-cloud-config]
 
 MSA 에서는 수많은 애플리케이션들이 생겨나게 되는데, 수많은 애플리케이션들의 설정파일을 한곳에서 중앙집중관리를 할 수 있도록 해주는 것이 장점인 것 같다.
 
+<br/>
+
+### TL;DR (Too Long; Didn't Read)
+바로 예제 돌려보고 시작하길 원하는 사람은 아래 Repository 를 참고하면 된다.
+* {% include href.html text="[Github] spring-cloud-config-server" url="https://github.com/yaboong/spring-cloud-config-server" %}
+* {% include href.html text="[Github] spring-cloud-config-client" url="https://github.com/yaboong/spring-cloud-config-client" %}
+
+<br/>
+
 ###### 잡생각
 ```
 MSA(Micro Service Architecture: 마이크로 서비스 아키텍처) 
@@ -42,11 +51,11 @@ Spring Cloud Netflix 도 하나씩 사용해봐야겠다.
 자바진영에서는 Spring Cloud Netflix 를 많이 사용하는 것 같다.
 
 MSA 를 공부하다보니... 최근(?)에 화두가 되는 
-* Docker / Kubernetes
+* CI / CD / Docker / Kubernetes
 * ELK(ElasticSearch Logstash Kibana)
-* REST API
+* TDD
 * Spring Cloud / Spring Boot 
-등등 다양한 기술들이 왜 그렇게 화두가 되는지 이제서야 아주 아주 아 조금 알 것 같다. 
+등등 다양한 기술들이 왜 그렇게 화두가 되는지 이제 아주 아주 아~~주 조금 알 것 같다. 
 ```
  
 
