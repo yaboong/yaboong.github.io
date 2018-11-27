@@ -65,8 +65,8 @@ MSA 를 공부하다보니... 최근(?)에 화두가 되는
 총 3가지를 만들 것이다.
 
 1. Github Repository 에 설정파일 저장
-2. Spring Cloud Config Server (이하 Config Server)
-3. Spring Cloud Config Client (이하 Config Client)
+2. Spring Cloud Config Server (이하 Config Server) - 설정파일 배달부
+3. Spring Cloud Config Client (이하 Config Client) - 설정파일 사용자
 
 클라이언트 앱이 기동할 때 사용하는 설정파일은 Config Server 에서 돌려준 설정파일을 사용할 것인데,
 Config Server 에서 돌려줄 설정파일이 Github Repository 에 세팅해 둔 설정파일이 되도록 할 것이다.
