@@ -272,7 +272,7 @@ GenericArrayList 가 가지는 elementData 도 <mark>new T[5]</mark> 와 같이 
 **static 변수에도 제네릭을 사용할 수 없다.** static 변수는 인스턴스에 종속되지 않는 클래스변수로써 모든 인스턴스가 공통된 저장공간을 공유하게 되는 변수이다.
 
 static 변수에 제네릭을 사용하려면, 
-GenericArrayList<Integer> 에서는 Integer 타입으로, GenericArrayList<String> 에서는 String 타입으로 사용될 수 있어야 하는데
+GenericArrayList\<Integer\> 에서는 Integer 타입으로, GenericArrayList\<String\> 에서는 String 타입으로 사용될 수 있어야 하는데
 하나의 공유변수가, 생성되는 인스턴스에 따라 타입이 바뀐다는 개념 자체가 말이 안되는 것이다. 그래서 static 변수에는 제네릭을 사용할 수 없다.
 
 하지만, (아래에서 살펴보겠지만) **static 메서드에는 제네릭을 사용할 수 있다.**
