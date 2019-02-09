@@ -31,10 +31,10 @@ public void ifPresent(Consumer<? super T> consumer) {
 }
 ```
 
-이놈이다. 
+이놈이다.
 
 ```Consumer<? super T>``` 는 대체 뭐하는 놈일까 궁금해졌다. 항상 그냥 지나치다가 이번에는 좀 짚고 넘어가야겠다 싶어서 다시 공부해보았다.
-이번 포스팅에서는 저놈이 뭐하는 놈인지 설명하지는 않고, 저놈이 뭐 하는 놈인지 이해하기 위한 배경지식을 쌓는 포스팅이다. 
+이번 포스팅에서는 저놈이 뭐하는 놈인지 설명하지는 않고, 저놈이 뭐 하는 놈인지 이해하기 위한 배경지식을 쌓는 포스팅이다.
 
 <br/>
 
@@ -46,7 +46,7 @@ JDK1.5 에 처음 도입되었다.
 * 제네릭(Generic)은 클래스 내부에서 사용할 데이터 타입을 외부에서 지정하는 기법을 의미한다. -- 생활코딩
 * 지네릭스는 다양한 타입의 객체들을 다루는 메서드나 컬렉션 클래스에 컴파일 시의 타입체크를 해주는 기능이다. -- 자바의 정석
 
-대충 읽어보면 뭔가 타입에 대한 정보를 동적으로 넘겨줄 수 있고, 런타임시에 발생할 수 있는 오류를 컴파일 타임에 발견할 수 있도록 하는 것 같다. 
+대충 읽어보면 뭔가 타입에 대한 정보를 동적으로 넘겨줄 수 있고, 런타임시에 발생할 수 있는 오류를 컴파일 타임에 발견할 수 있도록 하는 것 같다.
 일단 이정도 이해하고 넘어가고 예제를 보면서 하나씩 뜯어보자.
 
 
@@ -76,7 +76,7 @@ public class SimpleArrayList {
         return elementData[idx];
     }
 }
-``` 
+```
 
 이제 이걸 사용해보자.
 
@@ -98,7 +98,7 @@ public class SimpleArrayListTest {
 
 컴파일도 잘 되고 잘 동작하는 것을 확인할 수 있다.
 
-add() 메소드는 파라미터로 Object 를 받기 때문에 어떤 데이터타입도 모두 받을 수 있다. 
+add() 메소드는 파라미터로 Object 를 받기 때문에 어떤 데이터타입도 모두 받을 수 있다.
 그러므로 list.get() 부분에서 형변환만 잘 시켜주면 어떤 데이터 타입이든 저장할 수 있다.
 add(50) 에 들어가게될 50이 스트링으로 들어가게 됐다고 가정해보면 코드는 아래와 같이 될 것이다.
 
@@ -118,21 +118,21 @@ public class SimpleArrayListTest {
 }
 ```
 
-add() 메서드는 Object 타입은 모두 받을 수 있으므로 String, Integer 모두 인자로 줄 수 있다. 
+add() 메서드는 Object 타입은 모두 받을 수 있으므로 String, Integer 모두 인자로 줄 수 있다.
 get() 메서드도 Object 타입을 반환하기 때문에 ```Integer value1 = (Integer) list.get(0);``` 이라는 코드에는 문법적으로 아무런 문제가 없다.
 
 실제로도 컴파일이 잘 되는데, 실행하면 런타임에 아래와 같은 오류가 발생하게 된다.
 
 ```
-Exception in thread "main" java.lang.ClassCastException: 
+Exception in thread "main" java.lang.ClassCastException:
     java.lang.String cannot be cast to java.lang.Integer
     at com.example.java.generics.basic.SimpleArrayListTest.main(SimpleArrayListTest.java:11)
 ```
 
 잘못된 타입캐스팅이 이루어졌다는 오류메시지이다. String 을 넣어놓고서 Integer 로 형변환했기 때문이다.
 
-(제네릭 없는 자바를 사용해보지는 않았지만) 위와같은 방식으로 사용하는 경우, 
-어떤 타입으로 형변환 할 수 있는지 조차 모호한 경우도 많기 때문에 잠재적인 오류를 가지고 있는 매우 좋지 않은 방식이다. 
+(제네릭 없는 자바를 사용해보지는 않았지만) 위와같은 방식으로 사용하는 경우,
+어떤 타입으로 형변환 할 수 있는지 조차 모호한 경우도 많기 때문에 잠재적인 오류를 가지고 있는 매우 좋지 않은 방식이다.
 
 <br/>
 
@@ -202,9 +202,9 @@ public class GenericArrayList<T> {
 }
 ```
 
-\<T\> 로 표현한 것이 제네릭이다. 
+\<T\> 로 표현한 것이 제네릭이다.
 GenericArrayList 는 객체를 생성할때 타입을 지정하면, 생성되는 오브젝트 안에서는 T 의 위치에 지정한 타입이 대체되어서 들어가는 것 처럼 컴파일러가 인식한다.
-좀 더 정확하게 말하면, Raw 타입 으로 사용하는데 컴파일러에 의해 필요한 곳에 형변환 코드가 추가된다. 
+좀 더 정확하게 말하면, Raw 타입 으로 사용하는데 컴파일러에 의해 필요한 곳에 형변환 코드가 추가된다.
 (List\<String\> 을 List 로만 쓰는 것이 Raw 타입으로 사용하는 것이다)  
 
 사용은 아래처럼 할 수 있다. 형변환이 필요없다는 것, 지정한 타입과 다른 타입의 참조변수를 선언하면 컴파일타임에 오류가 발생한다는 것이 중요포인트다.
@@ -219,7 +219,7 @@ class Test {
 
         int intValue1 = intList.get(0); // 형변환이 필요없다
         int intValue2 = intList.get(1); // 형변환이 필요없다
-        
+
         // String strValue = intList.get(0); // 컴파일에러
     }
 }
@@ -241,10 +241,10 @@ class Test {
         int var3 = (Integer)var1.get(1); // 형변환이 추가되었다
     }
 }
-``` 
+```
 
 GenericArrayList\<Integer\> 로 생성했던 타입파라미터가 사라지고, Raw 타입으로만 사용하는데, 값을 꺼내 쓰는 곳에 형변환 코드가 추가되었다.
-제네릭을 사용하면 컴파일러가 형변환을 알아서 진행한다는 것을 확인했다. 
+제네릭을 사용하면 컴파일러가 형변환을 알아서 진행한다는 것을 확인했다.
 
 <br/>
 
@@ -283,12 +283,12 @@ get() 호출시 T 타입으로 형변환 하는 코드를 삽입했다.
 GenericArrayList 가 가지는 elementData 도 <mark>new T[5]</mark> 와 같이 생성하면 get() 메서드에서 (T) 로 형변환 하는 작업을 안해도 될텐데 왜 한걸까?
 
 그 이유는 new 연산자 때문이다. new 연산자는 heap 영역에 충분한 공간이 있는지 확인한 후 메모리를 확보하는 역할을 한다.
-충분한 공간이 있는지 확인하려면 타입을 알아야한다. 
+충분한 공간이 있는지 확인하려면 타입을 알아야한다.
 그런데 컴파일 시점에 타입 T 가 무엇인지 알 수 없기 때문에 <mark>new T[5]</mark> 와 같이 **제네릭으로 배열을 생성할 수는 없다.**
 
 **static 변수에도 제네릭을 사용할 수 없다.** static 변수는 인스턴스에 종속되지 않는 클래스변수로써 모든 인스턴스가 공통된 저장공간을 공유하게 되는 변수이다.
 
-static 변수에 제네릭을 사용하려면, 
+static 변수에 제네릭을 사용하려면,
 GenericArrayList\<Integer\> 에서는 Integer 타입으로, GenericArrayList\<String\> 에서는 String 타입으로 사용될 수 있어야 하는데
 하나의 공유변수가, 생성되는 인스턴스에 따라 타입이 바뀐다는 개념 자체가 말이 안되는 것이다. 그래서 static 변수에는 제네릭을 사용할 수 없다.
 
@@ -306,7 +306,7 @@ static 메서드에는 제네릭을 사용할 수 있다고 했는데 왜 그런
 
 ###### 제네릭 메서드란
 
-제네릭 메서드를 정의할때는 리턴타입이 무엇인지와는 상관없이 내가 제네릭 메서드라는 것을 컴파일러에게 알려줘야한다. 
+제네릭 메서드를 정의할때는 리턴타입이 무엇인지와는 상관없이 내가 제네릭 메서드라는 것을 컴파일러에게 알려줘야한다.
 그러기 위해서 리턴타입을 정의하기 전에 제네릭 타입에 대한 정의를 반드시 적어야 한다.
 
 그리고 중요한 점이 제네릭 클래스가 아닌 일반 클래스 내부에도 제네릭 메서드를 정의할 수 있다.
@@ -321,8 +321,8 @@ static 메서드에는 제네릭을 사용할 수 있다고 했는데 왜 그런
 
 앞서 말한 것 처럼 static 변수의 경우에 제네릭을 사용하면 여러 인스턴스에서 어떤 타입으로 공유되어야 할지 지정할 수가 없어서 사용할 수 없다.
 static 변수는 값 자체가 공유되기 때문이다. 값 자체가 공유되려면 타입에 대한 정보도 있어야 한다.
- 
-하지만, static 메서드의 경우 메서드의 틀만 공유된다고 생각하면 된다. 
+
+하지만, static 메서드의 경우 메서드의 틀만 공유된다고 생각하면 된다.
 그리고 그 틀 안에서 지역변수처럼 타입 파라미터가 다양하게 오가는 형태로 사용될 수 있는 것이다.
 
 이는 static 메서드가 아닌 인스턴스 메서드의 경우에도 마찬가지다. 클래스에 정의된 타입 파라미터와는 전혀 별개로 제네릭 메서드는 자신만의 타입파라미터를 가진다.
@@ -342,7 +342,7 @@ public static void printFirstChar(T param) {
 
 허용되지 않는 가장 중요한 이유는 제네릭 메서드가 아니기 때문이다. 리턴 타입 앞에 제네릭에 대한 선언이 없다.
 
-클래스에 표시하는 &lt;T&gt; 는 인스턴스 변수라고 생각하면 된다. 인스턴스가 생성될때마다 지정되는 것이기 때문이다. 
+클래스에 표시하는 &lt;T&gt; 는 인스턴스 변수라고 생각하면 된다. 인스턴스가 생성될때마다 지정되는 것이기 때문이다.
 그러므로, static 메서드에서 인스턴스 변수로 여겨지는 타입 파라미터를 사용하고 있으므로 컴파일 에러가 발생한다.
 
 static 메서드에서 제네릭을 사용하려면 아래처럼 제네릭 메서드로 정의해야 한다.
@@ -361,7 +361,7 @@ printFirstChar() 제네릭 메서드를 GenericArrayList 에 정의해 주었다
 GenericArrayList.<String>printFirstChar("YABOONG");
 ```
 
-그런데 여기서 "YABOONG" 을 통해 인자의 타입이 String 인 것을 컴파일러가 추론할 수 있으므로 &lt;String&gt; 은 생략가능하다. 
+그런데 여기서 "YABOONG" 을 통해 인자의 타입이 String 인 것을 컴파일러가 추론할 수 있으므로 &lt;String&gt; 은 생략가능하다.
 대부분의 경우 타입추론이 가능하므로 아래와 같이 타입은 생략하고 호출할 수 있다.
 
 ```java
@@ -371,9 +371,9 @@ GenericArrayList.printFirstChar("YABOONG");
 <br/>
 
 ###### TIP
-<mark>printFirstChar(T param)</mark> 에서 param 변수의 타입은 T 로 아직 지정되지 않았음에도 <mark>param.charAt(0)</mark> 처럼 
+<mark>printFirstChar(T param)</mark> 에서 param 변수의 타입은 T 로 아직 지정되지 않았음에도 <mark>param.charAt(0)</mark> 처럼
 charAt() 메서드 호출이 가능한 이유는 <mark>&lt;T extends CharSequence&gt;</mark> 를 통해 CharSequence 인터페이스를 하위 클래스 타입만 받도록 제한했기 때문이다.
-CharSequence 인터페이의 하위 클래스 타입이 되려면 charAt() 을 포함하여 CharSequence 에 정의된 메서드들을 반드시 구현해야 한다.
+CharSequence 인터페이스의 하위 클래스 타입이 되려면 charAt() 을 포함하여 CharSequence 에 정의된 메서드들을 반드시 구현해야 한다.
 
 <br/>
 
@@ -394,4 +394,3 @@ CharSequence 인터페이의 하위 클래스 타입이 되려면 charAt() 을 �
 * {% include href.html text="[Oracle Javadoc] Generics" url="https://docs.oracle.com/javase/tutorial/java/generics/index.html" %}
 * {% include href.html text="[Oracle Javadoc] Why Use Generics?" url="https://docs.oracle.com/javase/tutorial/java/generics/why.html" %}
 * {% include href.html text="[도서] 자바의 정석" url="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788994492032&orderClick=LAG&Kc=" %}
-
