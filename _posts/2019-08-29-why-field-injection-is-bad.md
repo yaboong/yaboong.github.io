@@ -19,12 +19,12 @@ tags: [spring]
 
 ### 서론
 의존관계 주입을 받을때는 아무생각없이 당연하게 <mark>@Autowired</mark> 를 사용한 필드주입 방식을 사용해왔다.
-그런데 어느날 갑자기(?) 인텔리제이에서 경고메시지를 보여준다는 것을 보게 되었다.
+그런데 어느날 갑자기(?) 인텔리제이에서 경고메시지를 보여준다는 것을 보게 되었다. 항상 경고는 표시되고 있었겠지만 무시하다가 갑자기 궁금해졌다.
 필드인젝션을 사용하고 있는 <mark>@Autowired</mark> 에 하이라이트 표시가 되면서 나오는 경고메시지는
 
-> Field injection is not recommended ... Always use constructor based dependency injection in your beans
+> Field injection is not recommended ... **Always** use constructor based dependency injection in your beans
 
-왜~~~~~~~~~~~~~~~????
+왜~~~~~~~~~~~~~~~???? 심지어 <mark>Always</mark> 라네
 
 <br/>
 
@@ -193,17 +193,21 @@ public class Controller {
 ```
 final 의 장점은 누군가가 Controller 내부에서 service 객체를 바꿔치기 할 수 없다는 점이다. (그럴일은 잘 없겠지만 그래도 ^^;)
 
-스프링에서 Field Injection 은 수정자를 통한 주입과 같은 방법으로 이루어진다.
+스프링에서 필드주입은 수정자를 통한 주입과 유사한 방식으로 이루어진다.
 이제 슬슬 생성자 주입의 장점이 보이기 시작한다.
 
 <br/>
 
-### Field Injection vs Constructor Injection
-스프링에서 Field Injection 과 Constructor Injection 을 살펴보자.
-Field Injection 은 수정자를 통한 주입과 같은 방식으로 이루어지기 때문에,
-<mark>수정자를 통한 주입의 단점은 Field Injection 을 사용할 때의 단점과 같다.</mark>
+### 스프링에서의 DI 방법 세가지
+스프링에서는 수정자 주입, 생성자 주입과 더불어 필드 주입이란걸 할 수 있다.
+필드 주입은 수정자를 통한 주입과 유사한 방식으로 이루어지기 때문에,
+<mark>수정자를 통한 주입의 단점은 Field Injection 을 사용할 때의 단점을 그대로 가진다.</mark>
 
-뒤에서도 쓰기 위해서 예제코드를 Student, Course 관련된 내용으로 변경했다.
+더불어, 수정자 주입은 스프링 컨테이너가 아닌 외부에서 수정자를 호출해서 주입할 수 있는 방법이라도 열려있지만,
+필드주입은 스프링 컨테이너 말고는 외부에서 주입할 수 있는 방법이 없다.
+
+아래는 각 DI 방법에 대한 간단한 예제다.
+뒤에서도 쓰기 위해서 예제를 Student, Course 관련된 내용으로 변경했다.
 
 **Field Injection**
 ```java
@@ -221,6 +225,25 @@ public class StudentServiceImpl implements StudentService {
 }
 ```
 
+**Setter based Injection**
+```java
+@Service
+public class StudentServiceImpl implements StudentService {
+
+    private CourseService courseService;
+
+    @Autowired
+    public void setCourseService(CourseService courseService) {
+        this.courseService = courseService;
+    }
+
+    @Override
+    public void studentMethod() {
+        courseService.courseMethod();
+    }
+}
+```
+
 **Constructor based Injection**
 ```java
 @Service
@@ -228,6 +251,7 @@ public class StudentServiceImpl implements StudentService {
 
     private final CourseService courseService;
 
+    @Autowired
     public StudentServiceImpl(CourseService courseService) {
         this.courseService = courseService;
     }
