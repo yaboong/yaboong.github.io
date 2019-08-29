@@ -8,12 +8,12 @@ tags: [spring]
 ---
 
 ### 개요
-* Dependency Injection (의존관계 주입)
+* Dependency Injection (의존관계 주입) 이란
   * Setter Based Injection (수정자를 통한 주입)
   * Constructor based Injection (생성자를 통한 주입)
-* Field Injection vs Constructor Injection
-* 순환참조 방지 가능
-* 테스트 코드 작성이 용이함
+* 스프링에서 사용할 수 있는 DI 방법 세가지
+* 생성자 주입을 이용한 순환참조 방지
+* 생성자 주입이 테스트 코드 작성하기 좋은 이유
 
 <!--more-->
 
@@ -273,9 +273,10 @@ public class StudentServiceImpl implements StudentService {
 
 <br/>
 
-### 순환참조 방지
+### 생성자 주입을 이용한 순환참조 방지
 개발하다보면 여러 서비스들 간에 의존관계가 생기게 되는 경우가 있다.
-이 예제에서는 CourseService 에서 StudentService 에 의존하고, StudentService 가 CourseService 에 의존하는 경우를 볼 것이다.
+이 예제에서는 CourseService 에서 StudentService 에 의존하고,
+StudentService 가 CourseService 에 의존하는 경우를 볼 것이다.
 
 **Field Injection 의 경우**
 ```java
@@ -319,7 +320,8 @@ public class StudentServiceImpl implements StudentService {
 ```
 
 이 상황은 StudentServiceImple 의 studentMethod() 는 CourseServiceImpl 의 courseMethod() 를 호출하고,
-CourseServiceImpl 의 courseMethod() 는 StudentServiceImple 의 studentMethod() 를 호출하고 있는 상황이다. 서로서로 주거니 받거니 호출을 반복하면서 끊임없이 호출하다가 결국 <mark>StackOverflowError</mark> 를 발생시키고 죽는다.
+CourseServiceImpl 의 courseMethod() 는 StudentServiceImple 의 studentMethod() 를 호출하고 있는 상황이다.
+서로서로 주거니 받거니 호출을 반복하면서 끊임없이 호출하다가 결국 <mark>StackOverflowError</mark> 를 발생시키고 죽는다.
 
 ```
 2019-08-28 00:14:56.042 ERROR 46104 --- [nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Handler dispatch failed; nested exception is java.lang.StackOverflowError] with root cause
@@ -345,6 +347,7 @@ public class CourseServiceImpl implements CourseService {
 
     private final StudentService studentService;
 
+    @Autowired
     public CourseServiceImpl(StudentService studentService) {
         this.studentService = studentService;
     }
@@ -362,6 +365,7 @@ public class StudentServiceImpl implements StudentService {
 
     private final CourseService courseService;
 
+    @Autowired
     public StudentServiceImpl(CourseService courseService) {
         this.courseService = courseService;
     }
@@ -407,9 +411,13 @@ new CourseServiceImpl(new StudentServiceImpl(new CourseServiceImpl(new ...)))
 ### 테스트 코드 작성하기 좋다
 아직 테스트 코드를 열심히 짜보거나 하지는 않았지만, 요즘 테스트 코드의 중요성을 깨닫고 공부를 하고 있는 중이다. (참 일찍도 깨달았다 미련한 것)
 
-<mark>CourserServiceImpl</mark> 이 가진 메소드들에 대해서 단위테스트를 수행하고 싶은 경우, field injection 을 사용해서 작성된 클래스라면 단위테스트시 의존관계를 가지는 객체를 생성해서 주입할 수가 없다. **할 수 있는 방법이 없다!** 스프링의 IoC 컨테이너가 다 생성해서 주입해 주는 방식이고 외부로 노출되어 있는 것이 하나도 없기 때문이다. 그래서 의존관계를 가지고 있는 메소드의 단위테스트를 작성하면 (courseMethod() 같은) <mark>NullPointerException</mark> 이 발생한다.
+<mark>CourserServiceImpl</mark> 이 가진 메소드들에 대해서 단위테스트를 수행하고 싶은 경우,
+field injection 을 사용해서 작성된 클래스라면 단위테스트시 의존관계를 가지는 객체를 생성해서 주입할 수가 없다.
+**할 수 있는 방법이 없다!** 스프링의 IoC 컨테이너가 다 생성해서 주입해 주는 방식이고 외부로 노출되어 있는 것이 하나도 없기 때문이다.
+그래서 의존관계를 가지고 있는 메소드의 단위테스트를 작성하면 (courseMethod() 같은) <mark>NullPointerException</mark> 이 발생한다.
 
-하지만, constructor based injection 을 사용해 작성된 클래스라면 <mark>CourseServiceImpl</mark> 객체를 생성할 때 원하는 구현체를 넘겨주면 되기 때문에 테스트하기도 편하다.
+하지만, constructor based injection 을 사용해 작성된 클래스라면 <mark>CourseServiceImpl</mark> 객체를 생성할 때
+원하는 구현체를 넘겨주면 되고, 구현체를 넘겨주지 않은 경우에는 객체생성 자체가 불가능하기 때문에 테스트하기도 편하다.
 
 <br/>
 
