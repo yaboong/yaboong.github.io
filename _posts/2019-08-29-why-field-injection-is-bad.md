@@ -191,7 +191,7 @@ public class Controller {
     }
 }
 ```
-final 의 장점은 누군가가 Controller 내부에서 service 객체를 바꿔치기 할 수 없다는 점이다. (그럴일은 잘 없겠지만 그래도 ^^;)
+final 의 장점은 누군가가 Controller 내부에서 service 객체를 바꿔치기 할 수 없다는 점이다.
 
 스프링에서 필드주입은 수정자를 통한 주입과 유사한 방식으로 이루어진다.
 이제 슬슬 생성자 주입의 장점이 보이기 시작한다.
