@@ -54,13 +54,13 @@ banner_prefix: "https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-reso
 
 # Social links in the site footer
 #twitter_username: "username"
-facebook_username: "yabooong"
-googleplus_username: "u/0/101688448325229683345"
+# facebook_username: "yabooong"
+# googleplus_username: "u/0/101688448325229683345"
 github_username: "yaboong"
 #codepen_username: "username"
 #dribbble_uername: "username"
 #medium_username: "@username"
-instagram_username: "yaboooong"
+# instagram_username: "yaboooong"
 #pinterest_username: "username"
 #linkedin_username: "username"
 #weibo_username: "username"
