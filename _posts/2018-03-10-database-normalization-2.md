@@ -56,9 +56,7 @@ A, B, C 속성만 사용해서 예제를 만들어보자.
 
 {% include image_caption.html text="BCNF 위반" caption="BCNF 위반 예제" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/etc/bcnf-violation-ex.png" %}
 
-키로 사용될 수 있는 속성은 {Student, Course} 혹은 {Course, Instructor} 가 될 수 있다.
-이 중에서 {Student, Course} 를 기본키로 선정했다.
-
+{Student, Course} 를 기본키로 선정한 경우 
 3NF 까지 만족하지만 BCNF 를 만족하지 않는 경우에도 삽입이상, 갱신이상, 삭제이상이 생길 수 있다.
 
 **삽입이상**<br/>
