@@ -20,7 +20,7 @@ tags: [data-structures, linked-list, java]
 
 ### Singly Linked List
 <div style="text-align:center">
-{% include image_caption.html imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/ds/linked-list-1.png" title="linked-list" caption="Singly Linked List" %}
+{% include image_caption.html imageurl="/yaboong-blog-static-resources/ds/linked-list-1.png" title="linked-list" caption="Singly Linked List" %}
 </div>
 
 얼핏 보면 array 와 비슷하게 생긴 자료구조가 linked list 이다. 박스 같이 생긴 하나하나를 node 라고 부르고, 각 node 는 다음 node 의 참조값을 가지고 있다. 
@@ -118,14 +118,14 @@ public void prepend(int data) {
 * head 를 제외한 나머지. 그림 참고.
 
 <div style="text-align:center">
-{% include image_caption.html imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/ds/linked-list-delete-1.png" title="linked-list-detele-1" caption="그림1" %}
+{% include image_caption.html imageurl="/yaboong-blog-static-resources/ds/linked-list-delete-1.png" title="linked-list-detele-1" caption="그림1" %}
 </div>
 
 
 <mark>그림1</mark> 지우려는 노드가 value 로 표시된 노드라면, node 하나씩 탐색 중 current.next.data 가 현재 지우려는 값과 일치 할 것이다. 
 
 <div style="text-align:center">
-{% include image_caption.html imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/ds/linked-list-delete-2.png" title="linked-list-detele-2" caption="그림2" %}
+{% include image_caption.html imageurl="/yaboong-blog-static-resources/ds/linked-list-delete-2.png" title="linked-list-detele-2" caption="그림2" %}
 </div>
 
 <mark>그림2</mark> current.next 는 지우려는 node 를 가리키고 있었을 것이고, 지우려는 node 의 다음 node 는 current.next.next 로 표현할 수 있다.
@@ -246,7 +246,7 @@ void linkBefore(E e, Node<E> succ) {
 
 
 <div style="text-align:center">
-{% include image_caption.html imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/ds/doubly-linked-list.png " title="doubly-linked-list" caption="Doubly Linked List" %}
+{% include image_caption.html imageurl="/yaboong-blog-static-resources/ds/doubly-linked-list.png " title="doubly-linked-list" caption="Doubly Linked List" %}
 </div>
 
 
