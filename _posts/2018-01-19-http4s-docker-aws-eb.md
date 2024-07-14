@@ -84,7 +84,7 @@ object HelloWorldServer extends StreamApp[IO] with Http4sDsl[IO] {
 
 #### Run
 name 에 입력한 경로로 가서 `sbt run` 을 실행시켜서 아래와 같은 화면이 나오면 제대로 실행 된 것이다.
-![](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/http4s/http4s-sbt-run.png)
+![](/yaboong-blog-static-resources/http4s/http4s-sbt-run.png)
 
 localhost:8080/hello/yourname 으로 접속하면 잘 도는 걸 확인할 수 있다.
 
@@ -282,7 +282,7 @@ deploy 를 하더라도 eb 에서 docker image 를 가져올 수 없다. aws-ela
 
 > https://your-env-name.your-region.elasticbeanstalk.com/hello/anything
 
-![](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/http4s/aws-eb-docker-deploy-complete.png)
+![](/yaboong-blog-static-resources/http4s/aws-eb-docker-deploy-complete.png)
 
 
 #### 뭘 좀 더 해볼까

@@ -38,7 +38,7 @@ private static long fibSimple(int n) {
 Recursive 하게 짠 fib() 함수는 아래와 같은 방식으로 호출이 일어난다.
 
 <div style="text-align:center">
-<img src="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/ds/fib-call-tree-1.svg"/>
+<img src="/yaboong-blog-static-resources/ds/fib-call-tree-1.svg"/>
 </div>
 
 n=5 일 때 벌써 함수 호출을 15번이나 해야 한다. n이 작을때는 문제 없지만 n이 커졌을 때 2가지 문제점을 발견할 수 있다.
@@ -47,7 +47,7 @@ n=5 일 때 벌써 함수 호출을 15번이나 해야 한다. n이 작을때는
 * 느리다. 
     * <mark>O(2<sup>n</sup>)</mark> 의 시간 복잡도를 가진다.
     
-![https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/etc/time-complexity-graph.png](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/etc/time-complexity-graph.png)
+![/yaboong-blog-static-resources/etc/time-complexity-graph.png](/yaboong-blog-static-resources/etc/time-complexity-graph.png)
 
 O(2<sup>n</sup>) 의 시간 복잡도를 가지는 알고리즘은 factorial 다음으로 최악의 성능을 가진다. Input 이 크다면 반드시 피해야 하는 방법이다.
 
@@ -60,7 +60,7 @@ fib(5) 를 구하기 위해 fib(3) 은 2회, fib(2) 는 3회, fib(1) 은 5회...
 Memoization 을 사용했을 때의 recursion tree 는 아래 그림과 같다. 
 
 <div style="text-align:center">
-<img src="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/ds/fib-call-tree-2.svg"/>
+<img src="/yaboong-blog-static-resources/ds/fib-call-tree-2.svg"/>
 </div>
 
 ```java
