@@ -23,7 +23,7 @@ tags: [spring, kafka]
 * 백그라운드에서 무한루프를 돌면서 polling 을 하고 있는데, 노드별로 비동기로 fetch 요청을 보내기 때문이다.
 * spring kafka 2.3 버전이후부터 제공되는 ContainerProperties 의 `idleBetweenPolls` 값으로 해결할 수 있다.
 * KafkaMessageListenerContainer 내부 콜 시퀀스 다이어그램
-{% include image_caption_href.html title="KafkaMessageListenerContainer funcation call sequence" caption="KafkaMessageListenerContainer funcation call sequence" imageurl="https://yaboong-blog-static-resources.s3.ap-northeast-2.amazonaws.com/kafka/kafka-message-listener-container-function-call-sequence.png" %}
+{% include image_caption_href.html title="KafkaMessageListenerContainer funcation call sequence" caption="KafkaMessageListenerContainer funcation call sequence" imageurl="/yaboong-blog-static-resources/kafka/kafka-message-listener-container-function-call-sequence.png" %}
 
 <br/>
 <br/>
@@ -135,7 +135,7 @@ kafka-producer-perf-test.sh --topic log-topic-local --num-records 15000 --record
 
 ### 결과
 
-{% include image_caption_href.html title="kafka-producer-perf-test 결과" caption="kafka-producer-perf-test 결과" imageurl="https://yaboong-blog-static-resources.s3.ap-northeast-2.amazonaws.com/kafka/broker-1ea-perf-test.png" %}
+{% include image_caption_href.html title="kafka-producer-perf-test 결과" caption="kafka-producer-perf-test 결과" imageurl="/yaboong-blog-static-resources/kafka/broker-1ea-perf-test.png" %}
 
 첫 호출건과 마지막 호출건은 5000개 가 다 채워지지 않을 수 있다.
 약간 밀리기는 하지만 어쩔수 없고, 의도했던 10초에 한번씩 Listener 메서드가 호출되어 배치처럼 동작하는 것을 확인할 수 있다.
@@ -143,7 +143,7 @@ kafka-producer-perf-test.sh --topic log-topic-local --num-records 15000 --record
 <br/>
 
 ### 개발용 카프카 붙여서해보자
-{% include image_caption_href.html title="kafka-producer-perf-test 결과" caption="kafka-producer-perf-test 결과" imageurl="https://yaboong-blog-static-resources.s3.ap-northeast-2.amazonaws.com/kafka/broker-3ea-cluster-perf-test.png" %}
+{% include image_caption_href.html title="kafka-producer-perf-test 결과" caption="kafka-producer-perf-test 결과" imageurl="/yaboong-blog-static-resources/kafka/broker-3ea-cluster-perf-test.png" %}
 
 > 얼레??? 10초 간격으로 호출되기는 했지만 Listener 메서드가 3번씩 호출된다.
 
@@ -177,30 +177,30 @@ producer 에서 key 를 줘서 던지면 같은 key 를 가지는 메시지는 �
 KafkaMessageListenerContainer 로 가면 run() 메서드가 있는데, 여기에서 무한루프 while 문이 실행되어 설정값에 설정한 대로 주기적으로 poll 해오는 곳이다.
 while 문 내에서 실행되는 pollAndInvoke() 안에서 중요한 모든 일들이 일어난다고 봐도 된다. (아래)
 
-{% include image_caption_href.html title="KafkaMessageListenerContainer.run()" caption="KafkaMessageListenerContainer.run()" imageurl="https://yaboong-blog-static-resources.s3.ap-northeast-2.amazonaws.com/kafka/step-1-kafka-listener.png" %}
+{% include image_caption_href.html title="KafkaMessageListenerContainer.run()" caption="KafkaMessageListenerContainer.run()" imageurl="/yaboong-blog-static-resources/kafka/step-1-kafka-listener.png" %}
 
 (아래) pollAndInvoke() 메서드 내부를 들여다 보면, doPoll() 메서드로 records 를 가져와서 invokeListener(records) 를 통해서 넘겨주면 @KafkaListener 가 호출된다.
 이부분이 무한루프 안에서 연쇄적으로 호출되어서 리스너 호출이 브로커 개수만큼 일어나는 것 같다.  
 
-{% include image_caption_href.html title="KafkaMessageListenerContainer.pollAndInvoke()" caption="KafkaMessageListenerContainer.pollAndInvoke()" imageurl="https://yaboong-blog-static-resources.s3.ap-northeast-2.amazonaws.com/kafka/step-2-poll-and-invoke.png" %}
+{% include image_caption_href.html title="KafkaMessageListenerContainer.pollAndInvoke()" caption="KafkaMessageListenerContainer.pollAndInvoke()" imageurl="/yaboong-blog-static-resources/kafka/step-2-poll-and-invoke.png" %}
 
 invokeListener() 는 구동시점에 @KafkaListener 로 등록된 메서드를 호출하는 것 외에 딱히 하는건 없으니, doPoll() 안에서 무슨일이 벌어지는지 확인할 필요가 있다.
 
 #### 2. KafkaMessageListenerContainer.doPoll()
 subBatchPerPartition 설정은 디폴트가 false 이므로 else 로 가게 되어, KafkaConsumer 의 poll() 을 호출한다.
 (poll timeout 은 별도 설정하지 않으면 ConsumerProperties.DEFAULT_POLL_TIMEOUT 인 5000ms 가 적용된다)
-{% include image_caption_href.html title="KafkaMessageListenerContainer.doPoll()" caption="KafkaMessageListenerContainer.doPoll()" imageurl="https://yaboong-blog-static-resources.s3.ap-northeast-2.amazonaws.com/kafka/step-3-doPoll.png" %}
+{% include image_caption_href.html title="KafkaMessageListenerContainer.doPoll()" caption="KafkaMessageListenerContainer.doPoll()" imageurl="/yaboong-blog-static-resources/kafka/step-3-doPoll.png" %}
 
 #### 3. KafkaConsumer.poll() 
 이 안에서는 poll timeout 으로 지정한 시간만큼 루프를 돌면서 pollForFetches(timer) 를 호출한다.  
 (등록한 인터셉터로 records 를 넘기는 것도 볼 수 있다)
-{% include image_caption_href.html title="KafkaConsumer.poll()" caption="KafkaConsumer.poll()" imageurl="https://yaboong-blog-static-resources.s3.ap-northeast-2.amazonaws.com/kafka/step-4-poll.png" %}
+{% include image_caption_href.html title="KafkaConsumer.poll()" caption="KafkaConsumer.poll()" imageurl="/yaboong-blog-static-resources/kafka/step-4-poll.png" %}
 
 #### <span style="color:red">4. KafkaConsumer.pollForFetches(timer) - 핵심</span>
 **<mark>리스너가 왜 노드 개수만큼 호출되는지에 대한 원인을 찾아볼 수 있는 함수</mark>**이다. 
 이 메서드가 하는 일은 동기적으로 생각하면 간단하다. fetch 요청을 보내고, fetch 된 데이터가 있으면 반환하는 게 전부다. 
 
-{% include image_caption_href.html title="KafkaConsumer.pollForFetches(timer)" caption="KafkaConsumer.pollForFetches(timer)" imageurl="https://yaboong-blog-static-resources.s3.ap-northeast-2.amazonaws.com/kafka/step-5-poll-for-fetches.png" %}
+{% include image_caption_href.html title="KafkaConsumer.pollForFetches(timer)" caption="KafkaConsumer.pollForFetches(timer)" imageurl="/yaboong-blog-static-resources/kafka/step-5-poll-for-fetches.png" %}
 
 
 그런데 비동기로 구성되어 있어서 좀 헷갈린다. 비동기적으로 동작하기 위해서 내부적으로 2개의 큐를 이용한다. 
@@ -231,13 +231,13 @@ return 하면 **doPoll()** 을 호출했던 곳으로 쭉쭉쭉 리턴하게 되
 
 #### 해결방법
 spring kafka 2.3 이상 버전이라면 ContainerProperties 에 <mark>idleBetweenPolls</mark> 값을 주어서 해결할 수 있다.
-{% include image_caption_href.html title="ContainerProperties.idleBetweenPolls" caption="ContainerProperties.idleBetweenPolls" imageurl="https://yaboong-blog-static-resources.s3.ap-northeast-2.amazonaws.com/kafka/container-properties-idle-between-polls.png" %}
+{% include image_caption_href.html title="ContainerProperties.idleBetweenPolls" caption="ContainerProperties.idleBetweenPolls" imageurl="/yaboong-blog-static-resources/kafka/container-properties-idle-between-polls.png" %}
 
 run() 메서드 무한루프 내에서 실행되는 <mark>pollAndInvoke()</mark> 메서드는 <mark>doPoll()</mark> 을 호출하기 전에 `idleBetweenPollIfNecessary()` 라는 함수를 먼저 호출한다.
-{% include image_caption_href.html title="pollAndInvoke()" caption="pollAndInvoke()" imageurl="https://yaboong-blog-static-resources.s3.ap-northeast-2.amazonaws.com/kafka/poll-and-invoke-idle-between-polls.png" %}
+{% include image_caption_href.html title="pollAndInvoke()" caption="pollAndInvoke()" imageurl="/yaboong-blog-static-resources/kafka/poll-and-invoke-idle-between-polls.png" %}
 
 `idleBetweenPollIfNecessary()` 는 이렇게 생겼다.
-{% include image_caption_href.html title="idleBetweenPollIfNecessary()" caption="idleBetweenPollIfNecessary()" imageurl="https://yaboong-blog-static-resources.s3.ap-northeast-2.amazonaws.com/kafka/idle-between-poll-if-necessary.png" %}
+{% include image_caption_href.html title="idleBetweenPollIfNecessary()" caption="idleBetweenPollIfNecessary()" imageurl="/yaboong-blog-static-resources/kafka/idle-between-poll-if-necessary.png" %}
 <mark>idleBetweenPolls</mark> 값이 0보다 크면 설정한 값만큼 스레드를 sleep 하여 루프의 진행을 멈추도록 한다. 
 이 메서드는 doPoll() 메서드 이전에 호출이 되기 때문에 completedFetches 큐에 데이터가 채워질때마다 리턴하는 것을 block 함으로써,
 fetch 시간동안 기다려서 노드별로 fetch 해온 데이터를 completedFetches 큐에 모두 쌓은다음, idleBetweenPolls 시간이 종료되면 한번에 return 하게 된다.
@@ -257,7 +257,7 @@ idleBetweenPolls = Math.min(
 #### Call Sequence Diagram
 지금까지 설명한 과정을 시퀀스 다이어그램으로 표현하면 아래와 같다. 
 
-{% include image_caption_href.html title="KafkaMessageListenerContainer funcation call sequence" caption="KafkaMessageListenerContainer funcation call sequence" imageurl="https://yaboong-blog-static-resources.s3.ap-northeast-2.amazonaws.com/kafka/kafka-message-listener-container-function-call-sequence.png" %}
+{% include image_caption_href.html title="KafkaMessageListenerContainer funcation call sequence" caption="KafkaMessageListenerContainer funcation call sequence" imageurl="/yaboong-blog-static-resources/kafka/kafka-message-listener-container-function-call-sequence.png" %}
 
 지금까지 과정을 다시한번 돌아볼겸 시퀀스 다이어그램 기준으로 다시 설명해보면
 
