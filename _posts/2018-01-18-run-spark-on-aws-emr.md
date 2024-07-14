@@ -19,26 +19,26 @@ tags: [spark, aws, emr, clustering]
 <!--more-->
 ### AWS EMR cluster 생성
 
-![](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/spark/blog-get-new-cluster.png)
+![](/yaboong-blog-static-resources/spark/blog-get-new-cluster.png)
 
 위와 같이 클러스터를 생성한다. r3.xlarge 로 5대를 생성했기 때문에.. 빨리 돌려보고 종료시켜야 한다. 켜져 있는 시간만큼 비용이 청구되기 때문에 요금 폭탄 맞을 수도 있다.
 EMR cluster list 에서 sunday-count-cluster 를 클릭해서 들어가면 아래와 같은 화면을 볼 수 있다.
 
-![](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/spark/cluster-list-summary.png)
+![](/yaboong-blog-static-resources/spark/cluster-list-summary.png)
  
 말 그대로 요약이고, 마스터 노드에 스파크 애플리케이션을 배포할 것이기 때문에 마스터 노드에 대한 정보를 보자. 하드웨어 탭을 누르면 아래와 같이
 마스터 1대, 슬레이브 노드 4대의 인스턴스로 구성 된 것을 볼 수 있다.
 
-![](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/spark/cluster-list-hardware.png)
+![](/yaboong-blog-static-resources/spark/cluster-list-hardware.png)
 
 ### Security Group 설정
 마스터 인스턴스에 ssh 로 접속해서 코드를 받을 것이므로, 내가 사용하는 IP 로 ssh 액세스를 할 수 있도록 보안그룹을 세팅해줘야 한다.
 
-![](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/spark/master-ec2.png)
+![](/yaboong-blog-static-resources/spark/master-ec2.png)
 
 마스터 인스턴스로 가면 위와 같은 화면이 나오는데, 보안그룹에 ElasticMapReduce-master 를 클릭해서 아래와 같이 보안그룹을 설정 해 줘야 한다.
  
-![](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/spark/master-security-group-ssh.png)
+![](/yaboong-blog-static-resources/spark/master-security-group-ssh.png)
 
 ssh 22 번 포트에 대해 내 IP 로 접속가능 하도록 인바운드를 세팅해준다. 이제 마스터 노드에서 코드를 받아 emr 에서 spark 를 돌려볼 준비가 됐다.
  
@@ -60,7 +60,7 @@ Exception in thread "main" org.apache.hadoop.security.AccessControlException: Pe
 
 접속하면 다음과 같이 까리한 EMR 이 나온다.
 
-![](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/spark/master-ssh-access.png)
+![](/yaboong-blog-static-resources/spark/master-ssh-access.png)
 
 
 ### 코드 받아와서 돌려보기
