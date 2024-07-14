@@ -196,7 +196,7 @@ spark 를 사용한 것 만으로 98 초로 실행 시간이 줄어들었다.
 
 시키지도 않았는데 뭔 UI 를 시작했단다. 궁금해서 http://127.0.0.1:4040 로 들어가 보니 아래와 같이
 
-![](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/spark/spark-ui-screenshot.png)
+![]({{ site.baseurl }}/spark/spark-ui-screenshot.png)
 
 모니터링 할 수 있는 UI 를 제공한다. spark 가 돌고 있는 동안에만 접속 가능하다.
 지금까지는 로컬에서 standalone 으로만 돌려봤는데 다음 번에는 [AWS EMR(Elastic Map Reduce)](https://aws.amazon.com/ko/emr/) 를 사용해서 같은 코드를 멀티 클러스터링으로 분산처리 해서 돌려볼 것이다.
