@@ -47,11 +47,11 @@ Scalatra 에 적응해 보려고 회의실 예약 시스템을 간단하게 만�
 
 ### Benchmarks
 
-![](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/etc/web-framework-comparison-1.png)
+![]({{ site.baseurl }}/yaboong-blog-static-resources/etc/web-framework-comparison-1.png)
 ...(중략)
-![](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/etc/web-framework-comparison-3.png)
+![]({{ site.baseurl }}/yaboong-blog-static-resources/etc/web-framework-comparison-3.png)
 ...(중략)
-![](https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/etc/web-framework-comparison-2.png)
+![]({{ site.baseurl }}/yaboong-blog-static-resources/etc/web-framework-comparison-2.png)
 
 C++ 나 Java 가 많은 것을 보고 살짝 놀랐다. C++ 도 쓸 수 있구나.
 
