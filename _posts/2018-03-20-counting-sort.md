@@ -41,7 +41,7 @@ tags: [algorithms, sorting, java]
 
 누적합을 기반으로 aux 배열에 원소를 이동하며 정렬할 때, 기존 배열 a의 가장 큰 인덱스에서 작은 인덱스로 (오른쪽에서 왼쪽으로) 진행해야 안정 정렬이 가능하다.
 
-{% include image_caption2.html caption="counting sort is stable" title="counting sort is stable" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/algo/counting-sort-stable.png" %}
+{% include image_caption2.html caption="counting sort is stable" title="counting sort is stable" imageurl="/yaboong-blog-static-resources/algo/counting-sort-stable.png" %}
 
 오른쪽에서 왼쪽으로 진행했다면 위와 같은 형태로 정렬이 되기 때문에 기존 배열의 순서를 해치지 않는다.
 

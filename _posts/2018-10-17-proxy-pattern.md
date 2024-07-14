@@ -46,7 +46,7 @@ Google Docs 같은 것이 대표적인 예시이다.
 <br/>
 
 ### 프록시 패턴 Overview
-{% include image_caption_href.html title="Proxy" caption="Proxy and Real Subject" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/diagram/proxy-pattern-1.png" %}
+{% include image_caption_href.html title="Proxy" caption="Proxy and Real Subject" imageurl="/yaboong-blog-static-resources/diagram/proxy-pattern-1.png" %}
 
 위 그림과 같이 프록시 클래스는 주체 클래스를 감싸면서 클라이언트의 요청을 주체 클래스에게 위임하거나 리다이렉트한다.
 프록시 클래스는 주체 클래스 경량화된 버전으로 사용되기 때문에 항상 모든 요청을 위임하는 것은 아니고, 보다 실질적인 (or 독립적인) 요청들을 주체 클래스에 위임하는 것이다.
@@ -67,7 +67,7 @@ Google Docs 같은 것이 대표적인 예시이다.
 이 경우는 Protection Proxy 로써 프록시 패턴이 사용되는 경우라고 할 수 있다.
 Warehouse(창고) 로 전달되는 요청을 프록시에서 걸러서 보냄으로써 Warehouse 에 처리할 수 없는 요청이 가지 않도록 막을 수 있다.
     
-{% include image_caption_href.html title="Proxy" caption="Proxy and Real Subject" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/diagram/proxy-pattern-2.png" %}
+{% include image_caption_href.html title="Proxy" caption="Proxy and Real Subject" imageurl="/yaboong-blog-static-resources/diagram/proxy-pattern-2.png" %}
 
 
 <br/>

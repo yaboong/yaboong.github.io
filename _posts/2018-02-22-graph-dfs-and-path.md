@@ -22,7 +22,7 @@ tags: [algorithms, graph, java, depth-first-search]
 그래프 또는 트리의 탐색에는 크게 깊이우선탐색, 너비우선탐색 두가지 방법이 있다. 탐색이라하면 각 vertex 들을 한번씩만 거치고 모든 vertex 를 순회하는 것을 말한다.
 이번 포스팅에서 볼 내용은 깊이우선탐색 (DFS) 이다. 
 
-{% include image_caption2.html caption="graph representation" title="graph" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/algo/graph-adj-list.png" %} 
+{% include image_caption2.html caption="graph representation" title="graph" imageurl="/yaboong-blog-static-resources/algo/graph-adj-list.png" %} 
 
 그래프는 인접리스트를 이용해 위와같이 표현할 수 있다.
 

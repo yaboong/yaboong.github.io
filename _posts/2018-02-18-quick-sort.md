@@ -35,7 +35,7 @@ tags: [algorithms, sorting, java]
 삽입정렬, 합병정렬과의 비교
 
 <div style="text-align:center">
-{% include image_caption.html caption="삽입정렬 합병정렬 퀵정렬 비교" title="삽입정렬 합병정렬 퀵정렬 비교" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/algo/quicksort-comparison.png" %}
+{% include image_caption.html caption="삽입정렬 합병정렬 퀵정렬 비교" title="삽입정렬 합병정렬 퀵정렬 비교" imageurl="/yaboong-blog-static-resources/algo/quicksort-comparison.png" %}
 </div>
 
 > Good algorithms are better than supercomputers. <br/>

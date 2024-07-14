@@ -22,7 +22,7 @@ tags: [java, memory-management]
 Java 메모리 영역중 stack 과 heap 영역이 내가 짠 코드에서는 어떻게 작동하는지, 실제 어떤 데이터들이 garbage 로 분류되는지에 대해서는 몰랐다. 
 Stack 과 heap 영역의 사용에 초점을 맞춰서 정리해보았다. Heap 영역도 더 세분화되어 구분되지만 garbage collection 에 대한 포스팅에서 다루어 봐야겠다.
 
-{% include image_caption_href.html caption="Image from 'https://dzone.com/articles/java-memory-management'" title="java memory management - stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/javamemory-stack-and-heap-dzone.jpg" %}
+{% include image_caption_href.html caption="Image from 'https://dzone.com/articles/java-memory-management'" title="java memory management - stack and heap" imageurl="/yaboong-blog-static-resources/java/javamemory-stack-and-heap-dzone.jpg" %}
 
 
 #### Stack
@@ -69,7 +69,7 @@ int argument = 4;
 에 의해 스택에 argument 라는 변수명으로 공간이 할당되고, argument 변수의 타입은 원시타입이므로 이 공간에는 실제 4 라는 값이 할당된다. 
 현재 스택의 상태는 아래와 같다.
 
-{% include image_caption_href.html height="358px" width="200px" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_stack-1.png" %} 
+{% include image_caption_href.html height="358px" width="200px" imageurl="/yaboong-blog-static-resources/java/java-memory-management_stack-1.png" %} 
 
 다음으로, 
 ```java
@@ -81,7 +81,7 @@ argument = someOperation(argument);
 scope 가 바뀌면서 기존의 argument 라는 값은 scope 에서 벗어나므로 사용할 수 없다.
 이때 인자로 넘겨받은 값은 파라미터인 param 에 복사되어 전달되는데, param 또한 원시타입이므로 stack 에 할당된 공간에 값이 할당된다.
 현재 스택의 상태는 아래와 같다.
-{% include image_caption_href.html height="400px" width="200px" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_stack-2.png" %}
+{% include image_caption_href.html height="400px" width="200px" imageurl="/yaboong-blog-static-resources/java/java-memory-management_stack-2.png" %}
 
 다음으로,
 ```java
@@ -89,13 +89,13 @@ int tmp = param * 3;
 int result = tmp / 2;
 ```
 에 의해 같은 방식으로 스택에 값이 할당되며 현재 스택의 상태는 아래와 같다.
-{% include image_caption_href.html height="420px" width="200px" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_stack-3.png" %}
+{% include image_caption_href.html height="420px" width="200px" imageurl="/yaboong-blog-static-resources/java/java-memory-management_stack-3.png" %}
 
 다음으로,
 닫는괄호 <mark>}</mark> 가 실행되어 <mark>someOperation()</mark> 함수호출이 종료되면 호출함수 scope 에서 사용되었던 모든 지역변수들은 stack 에서 pop 된다.
 함수가 종료되어 지역변수들이 모두 pop 되고, 함수를 호출했던 시점으로 돌아가면 스택의 상태는 아래와 같이 변한다.
 
-{% include image_caption_href.html height="420px" width="200px" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_stack-4.png" %}
+{% include image_caption_href.html height="420px" width="200px" imageurl="/yaboong-blog-static-resources/java/java-memory-management_stack-4.png" %}
 
 argument 변수는 4 로 초기화 되었지만, 함수의 실행결과인 6 이 기존 argument 변수에 재할당된다. 
 물론 함수호출에서 사용되었던 지역변수들이 모두 pop 되기 전에 재할당 작업이 일어날 것이다.
@@ -125,13 +125,13 @@ public class Main {
 
 <mark>int port = 4000;</mark> 에 의해서 기존처럼 stack 에 4000 이라는 값이 port 라는 변수명으로 할당되어 스택의 상태는 아래와 같이 된다.
  
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-1.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-1.png" %}
 
 String 은 Object 를 상속받아 구현되었으므로 (Object 타입은 최상위 부모클래스다, Polymorphism 에 의해 Object 타입으로 레퍼런스 가능하다) 
 String 은 heap 영역에 할당되고 stack 에 host 라는 이름으로 생성된 변수는 heap 에 있는 "localhost" 라는 스트링을 레퍼런스 하게 된다.
 그림으로 표현하면 아래와 같다.
 
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-2.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-2.png" %}
 
 기본적인 stack 과 heap 영역에 대한 이해는 끝났으므로, 조금 더 복잡한 예제코드와 함께 각 영역의 메모리 할당과 해제가 어떻게 일어나는지 살펴보자.
 
@@ -167,7 +167,7 @@ List<String> listArgument = new ArrayList<>();
 생성하려는 오브젝트를 저장할 수 있는 충분한 공간이 heap 에 있는지 먼저 찾은 다음, 빈 List 를 참조하는 listArgument 라는 로컬변수를 스택에 할당한다.
 결과는 아래와 같다.
 
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-3.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-3.png" %}
   
 다음으로,
 ```java
@@ -178,7 +178,7 @@ listArgument.add("yaboong");
 이때 새롭게 생성된 문자열인 "yaboong" 을 위한 변수는 stack 에 할당되지 않는다. List 내부의 인덱스에 의해 하나씩 add() 된 데이터에 대한 레퍼런스 값을 갖게 된다.
 그림으로 표현하면 아래와 같다.
 
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-4.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-4.png" %}
 
 다음으로,
 ```java
@@ -187,7 +187,7 @@ listArgument.add("github");
 가 실행되면 List 에서 레퍼런스 하는 문자열이 하나 더 추가된다.
 그림으로 표현하면 아래와 같다.
  
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-5.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-5.png" %}
 
 다음으로,
 ```java
@@ -199,7 +199,7 @@ print(listArgument);
 <mark>print(List&lt;String&gt; listParam)</mark> 메소드에서는 listParam 이라는 참조변수로 인자를 받게 되어있다.
 따라서 print() 함수호출에 따른 메모리의 변화는 아래와 같다.
 
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-6.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-6.png" %}
 
 listParam 이라는 참조변수가 새롭게 stack 에 할당되어 기존 List 를 참조하게 되는데,
 기존에 인자인 listArgument 가지고 있던 값(List 에 대한 레퍼런스)을 그대로 listParam 이 가지게 되는 것이다.
@@ -216,7 +216,7 @@ System.out.println(value);
 
 위 코드가 실행되고, 함수가 종료되기 직전의 stack 과 heap 은 아래와 같다. 
 
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-7.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-7.png" %}
 
 이제 함수가 닫는 중괄호 <mark>}</mark> 에 도달하여 종료되면 print() 함수의 지역변수는 모두 stack 에서 pop 되어 사라진다.
 이때, List 는 Object 타입이므로 지역변수가 모두 stack 에서 pop 되더라도 heap 영역에 그대로 존재한다.
@@ -228,7 +228,7 @@ print(listArgument);
 
 위 함수호출이 종료된 시점에서 스택과 힙 영역은 아래와 같다.
 
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-8.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-8.png" %}
 
 Object 타입의 데이터, 즉 heap 영역에 있는 데이터는 <mark>함수 내부에서 파라미터로 copied value 를 받아서 변경하더라도 
 함수호출이 종료된 시점에 변경내역이 반영되는 것</mark>을 볼 수 있다.
@@ -334,7 +334,7 @@ String url = "https://";
 
 구문이 실행된 뒤 스택과 힙은 아래와 같다.
 
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-11.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-11.png" %}
 
 다음 구문인 
 
@@ -346,7 +346,7 @@ url += "yaboong.github.io";
 문자열에 대한 더하기 연산이 수행된 결과가 새롭게 heap 영역에 할당된다.
 그 결과를 그림으로 표현하면 아래와 같다.
 
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-12.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-12.png" %}
 
 Stack 에는 새로운 변수가 할당되지 않는다.
 문자열 더하기 연산의 결과인 <mark>"https://yaboong.github.io"</mark> 가 새롭게 heap 영역에 생성되고, 기존에 <mark>"https://"</mark> 를 레퍼런스 하고 있던 url 변수는
@@ -370,7 +370,7 @@ garbage 가 아닌 것을 따로 mark 하고 그 외의 것은 모두 지우는 
 
 Garbage Collection 이 일어난 후의 메모리 상태는 아래와 같을 것이다.
 
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-13.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-13.png" %}
 
 Garbage Collection 정책과 방식에는 여러가지가 있지만 (아직 공부를 덜해서) 이 포스팅에서는 다루지 않겠다.
 
@@ -400,7 +400,7 @@ public class Main {
 
 위 코드에서는 listArgument 라는 변수에 두번의 할당작업이 일어난다. 위와 같이 실행한 경우 stack 과 heap 영역은 아래와 같이 될 것이다.
 
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-9.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-9.png" %}
 
 기존에 사용했던 listArgument 참조변수는 새롭게 생성한 빈 List 를 레퍼런스 한다.
 세개의 String 오브젝트는 List 내부의 인덱스에 의해 레퍼런스 되고 있지만 stack 에서는 Unreachable 한 영역에 있다.
@@ -410,7 +410,7 @@ public class Main {
 
 Garbage Collection 이 일어난 후의 stack 과 heap 영역은 아래와 같을 것이다.
 
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-10.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-10.png" %}
 
 
 <br/>

@@ -76,7 +76,7 @@ String url = "https://";
 
 구문이 실행된 뒤 스택과 힙은 아래와 같다.
 
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-11.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-11.png" %}
 
 다음 구문인 
 
@@ -88,7 +88,7 @@ url += "yaboong.github.io";
 문자열에 대한 더하기 연산이 수행된 결과가 새롭게 heap 영역에 할당된다.
 그 결과를 그림으로 표현하면 아래와 같다.
 
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-12.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-12.png" %}
 
 Stack 에는 새로운 변수가 할당되지 않는다.
 문자열 더하기 연산의 결과인 <mark>"https://yaboong.github.io"</mark> 가 새롭게 heap 영역에 생성되고, 기존에 <mark>"https://"</mark> 를 레퍼런스 하고 있던 url 변수는
@@ -112,7 +112,7 @@ garbage 가 아닌 것을 따로 mark 하고 그 외의 것은 모두 지우는 
 
 Garbage Collection 이 일어난 후의 메모리 상태는 아래와 같을 것이다.
 
-{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_heap-13.png" %}
+{% include image_caption2_href.html height="30%" width="100%" caption="stack and heap" imageurl="/yaboong-blog-static-resources/java/java-memory-management_heap-13.png" %}
 
 <br/>
 
@@ -120,7 +120,7 @@ Garbage Collection 이 일어난 후의 메모리 상태는 아래와 같을 것
 System.gc() 를 호출하여 명시적으로 가비지 컬렉션이 일어나도록 코드를 삽입할 수 있지만, 모든 스레드가 중단되기 때문에 코드단에서 호출하는 짓은 하면 안된다. 
 자바 도큐먼트를 보면 gc() 메소드에 대한 설명은 아래와 같다.
 
-{% include image_caption_href.html title="System.gc()" caption="https://docs.oracle.com/javase/8/docs/api/" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_gc-1.png" %}
+{% include image_caption_href.html title="System.gc()" caption="https://docs.oracle.com/javase/8/docs/api/" imageurl="/yaboong-blog-static-resources/java/java-memory-management_gc-1.png" %}
 
 > System.gc() 호출하는게 하면 안되는 짓이라는데 한번 해보자.
 
@@ -306,13 +306,13 @@ public class ListGCTest {
 Java 9 부터는 {% include href.html text="Graal Visual VM" url="https://visualvm.github.io/graal.html" %} 으로 바뀌었다고 한다.
 이 글은 Java 8 을 기준으로 작성되었으므로 Java 9 을 사용한다면 Graal Visual VM 을 사용할 수 있다.
 
-{% include image_caption2_href.html caption="Visual VM" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_gc-2.png" %}
+{% include image_caption2_href.html caption="Visual VM" imageurl="/yaboong-blog-static-resources/java/java-memory-management_gc-2.png" %}
 
 Visual VM 을 실행하면 위와같은 화면을 볼 수 있다. 왼쪽에 있는 프로세스들에 대한 모니터링이 가능하다. 
 하지만 지금은 가비지 컬렉션이 어떻게 이루어지는지 보기 위해 heap 영역을 좀더 세부적으로 모니터링 하고 싶다.
 그러기 위해서 VisualGC 라는 플러그인이 필요한데, 상단 메뉴에서 Tool > Plugins > Available Plugins 로 가서 Visual GC 를 체크한 후 Install 을 클릭한다.
 
-{% include image_caption2_href.html caption="Visual GC Plugin" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_gc-3.png" %}
+{% include image_caption2_href.html caption="Visual GC Plugin" imageurl="/yaboong-blog-static-resources/java/java-memory-management_gc-3.png" %}
 
 Visual GC 플러그인을 설치하면 힙의 각 영역별로 세부적인 모니터링이 가능하다.
 
@@ -364,7 +364,7 @@ Metaspace 를 제한하기 위해 vm 옵션으로 `-XX:MaxMetaspaceSize=128m` �
 VisualVM 의 VisualGC 탭으로 들어가면 아래와 같은 화면을 볼 수 있다. 
 java.lang.OutOfMemoryError: Metaspace 에러로 인해 프로그램이 죽은 상태의 캡처본이다.
 
-{% include image_caption2_href.html caption="java.lang.OutOfMemoryError: Metaspace" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_gc-5.png" %}
+{% include image_caption2_href.html caption="java.lang.OutOfMemoryError: Metaspace" imageurl="/yaboong-blog-static-resources/java/java-memory-management_gc-5.png" %}
 
 Metaspace 의 크기가 128MB 에 도달하면 `OutOfMemoryError: Metaspace` 오류를 뱉으며 죽는 것을 확인할 수 있다. 
 ```
@@ -397,7 +397,7 @@ Caused by: java.lang.OutOfMemoryError: Metaspace
 ##### 2. Heap - Old & Young (Eden, Survivor)
 위 모니터링 화면에서 Spaces 부분을 보면 다섯개의 영역으로 나누어져 있는 것을 볼 수 있다. <mark>Metaspace, Old, Eden, S0, S1</mark> 총 다섯개 영역이다.
 
-{% include image_caption2_href.html caption="http://www.waitingforcode.com/off-heap/on-heap-off-heap-storage/read" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_gc-6.png" %}
+{% include image_caption2_href.html caption="http://www.waitingforcode.com/off-heap/on-heap-off-heap-storage/read" imageurl="/yaboong-blog-static-resources/java/java-memory-management_gc-6.png" %}
 
 Heap 은 <mark>Young Generation, Old Generation</mark> 으로 크게 두개의 영역으로 나누어 지고, Young Generation 은 또다시 <mark>Eden, Survivor Space 0, 1</mark> 로 세분화 되어진다.
 S0, S1 으로 표시되는 영역이 Survivor Space 0, 1 이다.
@@ -507,7 +507,7 @@ Survivor Space 에서 Old Generation 으로의 Promotion 과정도 미미하게 
 Mark-Compact collection method 란, 새로운 메모리 할당을 빠르게 하기 위해서 기존의 메모리에 있던 오브젝트들을 힙의 시작위치로 옮겨 놓는 방법이다.
 창고에서 필요없는 물건들을 버린 후, 창고에 물건을 차곡차곡 쌓기위해 창고안을 정리하는 것이라 생각할 수 있다. 
 아래 그림을 참고하면 이해가 쉽다.
-{% include image_caption2_href.html caption="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-memory-management_gc-7.png" %}
+{% include image_caption2_href.html caption="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html" imageurl="/yaboong-blog-static-resources/java/java-memory-management_gc-7.png" %}
 
 <br/>
 

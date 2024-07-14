@@ -40,7 +40,7 @@ $ cat /var/lib/jenkins/.ssh/id_rsa.pub
 
 자신의 GitHub private 저장소에서 <mark>Settings > Deploy keys</mark> 에서 복사한 공개키를 등록해준다. 
 
-{% include image_caption2_href.html caption="deploy keys" title="deploy keys" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/jenkins/github-deploy-keys.png" %}
+{% include image_caption2_href.html caption="deploy keys" title="deploy keys" imageurl="/yaboong-blog-static-resources/jenkins/github-deploy-keys.png" %}
 
 
 <br/>
@@ -51,14 +51,14 @@ Webhook 은 웹상의 Trigger 같은 존재다. GitHub 의 지정한 브랜치�
 
 <mark>Settings > Integrations & services > Add service</mark> 에서 jenkins 로 검색해서 나오는 <mark>Jenkins (GitHub plugin)</mark> 을 등록한다.
 
-{% include image_caption2_href.html caption="Add Service from GitHub Repository Setting" title="Add Service from GitHub Repository Setting" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/jenkins/github-jenkins-webhook-setting.png" %}
+{% include image_caption2_href.html caption="Add Service from GitHub Repository Setting" title="Add Service from GitHub Repository Setting" imageurl="/yaboong-blog-static-resources/jenkins/github-jenkins-webhook-setting.png" %}
 
 다음 화면에서 아래와같이 <mark>http://YOUR-JENKINS-SERVER/github-webhook/</mark> 을 Jenkins hook url 로 지정해주고 Active 에 체크한다.
 나의 경우 http://build.oyabun.cc:8080/github-webhook/ 으로 등록했다.
 
 참고한 다른 글들에서 마지막 / 를 빼면 안된다고 하는데 빼고 해보지는 않았다. (굳이 뺄 이유가.. ^^;)
 
-{% include image_caption2_href.html caption="Jenkins Webhook" title="Jenkins Webhook" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/jenkins/github-jenkins-webhook-setting-2.png" %}
+{% include image_caption2_href.html caption="Jenkins Webhook" title="Jenkins Webhook" imageurl="/yaboong-blog-static-resources/jenkins/github-jenkins-webhook-setting-2.png" %}
 
 <br/>
 
@@ -70,12 +70,12 @@ Webhook 은 웹상의 Trigger 같은 존재다. GitHub 의 지정한 브랜치�
 ##### 2-1. GitHub Credentials
 소스 코드 관리 탭에서 GitHub Repository 의 Clone with SSH 항목을 복사해서 Repositoy URL 에 입력한다.
 
-{% include image_caption2_href.html caption="소스 코드 관리 탭" title="소스 코드 관리 탭" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/jenkins/jenkins-project-setting-3.png" %}
+{% include image_caption2_href.html caption="소스 코드 관리 탭" title="소스 코드 관리 탭" imageurl="/yaboong-blog-static-resources/jenkins/jenkins-project-setting-3.png" %}
 
 입력만 하면 위와같이 <span style="color:red">Failed to connect to repository : ... </span> 오류가 난다. 접근권한이 없음을 의미하는데, 처음에 설정해 둔 private key 를 설정해줘야 한다.
 오류 메시지 바로 아래 Credentials 항목 Add 버튼을 눌러 아래와 같이 세팅해준다.
 
-{% include image_caption2_href.html caption="Add GitHub Credential" title="Add GitHub Credential" imageurl="	https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/jenkins/jenkins-github-credentials-add.png" %}
+{% include image_caption2_href.html caption="Add GitHub Credential" title="Add GitHub Credential" imageurl="/yaboong-blog-static-resources/jenkins/jenkins-github-credentials-add.png" %}
 
 Username 은 깃헙 계정명이고, ID 는 Jenkins 에서 사용할 이 Credential 에 대한 식별자이다.
 Passphrase 는 제일 처음 단계에서 ssh-keygen 수행시 입력한 passphrase 를 적어주면 된다.
@@ -89,7 +89,7 @@ Passphrase 는 제일 처음 단계에서 ssh-keygen 수행시 입력한 passphr
 
 ##### 2-2. 빌드 유발
 빌드 유발 탭에서는 <mark>GitHub hook trigger for GITScm polling</mark> 를 선택해준다. 말 그대로 GitHub 의 hook trigger 를 받으면 빌드를 하겠다는 것이다.
-{% include image_caption2_href.html caption="빌드 유발 탭" title="빌드 유발 탭" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/jenkins/jenkins-build-type-setting.png" %}
+{% include image_caption2_href.html caption="빌드 유발 탭" title="빌드 유발 탭" imageurl="/yaboong-blog-static-resources/jenkins/jenkins-build-type-setting.png" %}
 	
 <br/>
 
@@ -99,32 +99,32 @@ Build 탭에서 Execute shell 에 테스트용 문구를 하나 넣어준다.
 이 예제에서는 GitHub 의 Webhook 으로 Jenkins 에서 자동 빌드를 할 수 있도록 설정하는 것이 목적이므로, 실제 빌드 스크립트가 아닌 간단한 스크립트를 적어준다.
 나중에 로그로 확인할 것이다.
 
-{% include image_caption2_href.html caption="Build Command" title="Build Command" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/jenkins/jenkins-build-command.png" %}
+{% include image_caption2_href.html caption="Build Command" title="Build Command" imageurl="/yaboong-blog-static-resources/jenkins/jenkins-build-command.png" %}
 
 <br/>
 
 ### 3. 테스트
 이제 모든 설정은 끝났으니 소스를 push 해서 Jenkins 에서 빌드를 수행하는지 확인해보자.
 
-{% include image_caption2_href.html caption="Git Push" title="Git Push" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/jenkins/jenkins-git-push-example.png" %}
+{% include image_caption2_href.html caption="Git Push" title="Git Push" imageurl="/yaboong-blog-static-resources/jenkins/jenkins-git-push-example.png" %}
 
 소스를 변경하고 Commit and Push 를 했더니,
 
-{% include image_caption2_href.html caption="빌드 대기 목록" title="빌드 대기 목록" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/jenkins/jenkins-build-queue-1.png" %}
+{% include image_caption2_href.html caption="빌드 대기 목록" title="빌드 대기 목록" imageurl="/yaboong-blog-static-resources/jenkins/jenkins-build-queue-1.png" %}
 
 왼쪽 네비게이션 바 아래 빌드 대기 목록에 my-first-jenkins 가 뜬다. Push 만 했지 Jenkins 관리화면에서는 아무것도 안했음에도 알아서 빌드작업을 수행한다.
 
 그리고 잠시 기다리니까 빌드 실행 상태 창에 진행상황과 함께 #1 으로 my-first-jenkins 프로젝트가 뜬다. (아래 그림)
 
-{% include image_caption2_href.html caption="빌드 실행 상태" title="빌드 실행 상태" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/jenkins/jenkins-build-queue-2.png" %}
+{% include image_caption2_href.html caption="빌드 실행 상태" title="빌드 실행 상태" imageurl="/yaboong-blog-static-resources/jenkins/jenkins-build-queue-2.png" %}
 
 모두 끝나고 페이지를 새로고침 해주면, 원래 회색이었던 아이콘이 아래와 같이 파란색 공모양으로 변하고 최근 성공에 빌드넘버가 #1 으로 표시된다.
 
-{% include image_caption2_href.html caption="빌드 완료" title="빌드 완료" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/jenkins/jenkins-build-job-done.png" %}
+{% include image_caption2_href.html caption="빌드 완료" title="빌드 완료" imageurl="/yaboong-blog-static-resources/jenkins/jenkins-build-job-done.png" %}
 
 해당 프로젝트의 Console Output 으로 가보면,
 
-{% include image_caption2_href.html caption="Console Output" title="Console Output" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/jenkins/jenkins-build-job-log.png" %}
+{% include image_caption2_href.html caption="Console Output" title="Console Output" imageurl="/yaboong-blog-static-resources/jenkins/jenkins-build-job-log.png" %}
 
 아까 빌드 스크립트에 작성했던 <mark>GitHub hook trigger is working</mark> 명령이 수행된 것을 확인할 수 있고, Finished: SUCCESS 로 빌드가 성공적으로 이루어졌음을 알리는 로그도 함께 출력 되었다.
 

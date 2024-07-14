@@ -41,7 +41,7 @@ Trivial FD 는 Y 가 X 의 부분집합인 경우를 말한다. A->A 이거나 A
 그래서 BCNF 에 대한 정의를 실용적인 말로 바꾸면 <mark>"모든 결정자가 KEY 인 경우 <strong>BCNF</strong> 이다"</mark> 
 라고 할 수 있겠다. BCNF 를 위반하는 릴레이션은 이론적으로는 아래와 같은 구조를 가지게 된다. (A, B 가 키)
 
-{% include image_caption2.html text="BCNF를 위반하는 경우" caption="BCNF를 위반하는 경우" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/etc/bcnf-violate.png" %}
+{% include image_caption2.html text="BCNF를 위반하는 경우" caption="BCNF를 위반하는 경우" imageurl="/yaboong-blog-static-resources/etc/bcnf-violate.png" %}
 
 위 릴레이션은 1NF 는 만족한다는 가정하에,
 * 기본키가 아닌 모든 속성이 기본키에 완전 함수 종속이므로 2NF 를 만족한다.
@@ -54,7 +54,7 @@ A, B, C 속성만 사용해서 예제를 만들어보자.
 
 ### BCNF 를 위반하는 사례
 
-{% include image_caption.html text="BCNF 위반" caption="BCNF 위반 예제" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/etc/bcnf-violation-ex.png" %}
+{% include image_caption.html text="BCNF 위반" caption="BCNF 위반 예제" imageurl="/yaboong-blog-static-resources/etc/bcnf-violation-ex.png" %}
 
 {Student, Course} 를 기본키로 선정한 경우 
 3NF 까지 만족하지만 BCNF 를 만족하지 않는 경우에도 삽입이상, 갱신이상, 삭제이상이 생길 수 있다.
@@ -88,7 +88,7 @@ BCNF 를 위반하는 릴레이션에 대한 분해과정은 아래와 같다.
 
 분해한 두 개의 릴레이션에서 기존 릴레이션에서 결정자역할을 했던 속성을 키로 해준다. 그러면 BCNF 까지 만족시키는 릴레이션 두 개가 생기게 된다.
 
-{% include image_caption.html text="BCNF를 만족하는 두개의 릴레이션으로 분해" caption="BCNF를 만족하는 두개의 릴레이션으로 분해" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/etc/bcnf-violation-resolved.png" %}
+{% include image_caption.html text="BCNF를 만족하는 두개의 릴레이션으로 분해" caption="BCNF를 만족하는 두개의 릴레이션으로 분해" imageurl="/yaboong-blog-static-resources/etc/bcnf-violation-resolved.png" %}
 
 <br/>
 

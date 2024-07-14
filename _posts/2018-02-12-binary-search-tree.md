@@ -19,7 +19,7 @@ tags: [data-structures, linked-list, tree, binary-search-tree, java]
 
 ### Tree 란
 아래와 같은 모양을 가지는 데이터 구조다. 아래 그림은 이진트리이지만 자식 노드는 여러개가 되어도 상관없다. 다만 Binary Search Tree (BST) 에는 이름 그대로 이진트리 형태로 구성된다.
-{% include image_caption.html imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/ds/bst-1.png" title="tree" caption="tree" %}
+{% include image_caption.html imageurl="/yaboong-blog-static-resources/ds/bst-1.png" title="tree" caption="tree" %}
 
 BST 에서는 root 보다 큰 노드는 오른쪽으로, 작은 노드는 왼쪽으로 가게 되는데, 만약 정렬된 데이터를 순차적으로 BST 에 삽입하게 된다면 사향트리가 된다. 그러면 Linked List 와 똑같은 형태가 되어 트리의 장점을 취하기 어렵다.
 

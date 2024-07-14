@@ -34,7 +34,7 @@ Template Method lets subclasses redefine certain steps of an algorithm without c
 <br/>
 
 ### 간단한 예제
-{% include image_caption.html title="Template Method Pattern UML" caption="Template Method Pattern UML" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/diagram/template-method-pattern.png" %}
+{% include image_caption.html title="Template Method Pattern UML" caption="Template Method Pattern UML" imageurl="/yaboong-blog-static-resources/diagram/template-method-pattern.png" %}
 위와 같은 구조의 템플릿 메소드 패턴 적용에 대한 코드이다.
 ###### AbstractClass.java
 ```java

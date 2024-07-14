@@ -28,7 +28,7 @@ tags: [design-pattern, java, oop]
 
 구조를 보면 아래와 같다.
 
-{% include image_caption_href.html title="Adapter Pattern" caption="[그림1] Coursera Design Pattern 강의 중" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/diagram/adapter-pattern-1.png" %}
+{% include image_caption_href.html title="Adapter Pattern" caption="[그림1] Coursera Design Pattern 강의 중" imageurl="/yaboong-blog-static-resources/diagram/adapter-pattern-1.png" %}
 
 **Client** <br/>써드파티 라이브러리나 외부시스템을 사용하려는 쪽이다. 
 
@@ -45,7 +45,7 @@ Target Interface 를 구현하며, 클라이언트는 Target Interface 를 통�
 
 ### 어댑터 패턴 호출 과정
 
-{% include image_caption_href.html title="Adapter Pattern" caption="[그림2]Adapter Pattern Sequence Diagram" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/diagram/adapter-pattern-2.png" %}
+{% include image_caption_href.html title="Adapter Pattern" caption="[그림2]Adapter Pattern Sequence Diagram" imageurl="/yaboong-blog-static-resources/diagram/adapter-pattern-2.png" %}
 
 클라이언트에서는 Target Interface 를 호출하는 것 처럼 보인다.
 하지만 클라이언트의 요청을 전달받은 (Target Interface 를 구현한) Adapter 는 자신이 감싸고 있는 Adaptee 에게 실질적인 처리를 위임한다.
@@ -60,7 +60,7 @@ Coursera 의 디자인 패턴 강의 중 어댑터 패턴에 나오는 예제를
 위에서 Client, Target Interface, Adapter, Adaptee 가 나오는 다이어그램을 그대로 구현한 코드다.
 UML 을 그려보면 아래와 같다.
 
-{% include image_caption_href.html title="Coursera Design Pattern 강의 중" caption="[그림3] Coursera Design Pattern 강의 중" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/diagram/adapter-pattern-3.png" %}
+{% include image_caption_href.html title="Coursera Design Pattern 강의 중" caption="[그림3] Coursera Design Pattern 강의 중" imageurl="/yaboong-blog-static-resources/diagram/adapter-pattern-3.png" %}
  
 헷갈리지 않도록 위 그림과 코드에 사용되는 클래스들을 간단히 설명하면,
 
@@ -223,7 +223,7 @@ public final static InputStream in = null;
 둘은 호환되지 않는다. 하지만, 이 둘을 연결시켜 주는 어댑터가 <mark>InputStreamReader</mark> 클래스이다.
 UML 로 보면 아래와 같은 구조다.
 
-{% include image_caption_href.html title="Adapter Pattern used in JDK" caption="Adapter Pattern used in JDK" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/diagram/adapter-pattern-4.png" %}
+{% include image_caption_href.html title="Adapter Pattern used in JDK" caption="Adapter Pattern used in JDK" imageurl="/yaboong-blog-static-resources/diagram/adapter-pattern-4.png" %}
 
 
 <mark>BufferedReader</mark> 클래스는 <mark>Reader</mark> 클래스를 상속받는다. (Reader 클래스는 Readable 인터페이스를 구현한 추상클래스이다),

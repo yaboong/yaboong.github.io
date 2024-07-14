@@ -165,7 +165,7 @@ X, Y, Z 에 대해 X->Y 이고 Y->Z 이면 X->Z 가 성립한다. 이를 Z 가 X
 분리하여 이행적 종속 관계를 제거 한 학생 릴레이션과 학부 릴레이션은 아래와 같다.
 
 <div style="text-align:center">
-{% include image_caption.html caption="학생, 학부 릴레이션" title="학생, 학부 릴레이션" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/etc/relation-student-and-department.png" %}
+{% include image_caption.html caption="학생, 학부 릴레이션" title="학생, 학부 릴레이션" imageurl="/yaboong-blog-static-resources/etc/relation-student-and-department.png" %}
 </div>
 
 > 제 3 정규형을 만족하면 이상현상이 없어질까?

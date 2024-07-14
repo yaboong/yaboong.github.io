@@ -208,7 +208,7 @@ public class DoubleCheckedSingleton {
 먼저, volatile 을 제대로 이해하기 위해서는 Main Memory 와 Working Memory 에 대한 이해가 필요하다.
 아래 그림을 함께 보자.
 
-{% include image_caption2.html title="Java Memory" caption="Java Memory" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/java/java-volatile-working-emory-main-memory.png" %}
+{% include image_caption2.html title="Java Memory" caption="Java Memory" imageurl="/yaboong-blog-static-resources/java/java-volatile-working-emory-main-memory.png" %}
 
 그림을 보면 메인 메모리가 있고, 스레드마다 Working Memory 가 있는 것을 볼 수 있다.
 그림에는 Load/Save 로 단순하게 표현되어 있는데, 메인메모리 <-> Working Memory 간의 데이터 이동과정은 아래와 같이 세부적으로 표현할 수 있다.

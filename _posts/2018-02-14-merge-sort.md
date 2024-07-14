@@ -72,15 +72,15 @@ T(n) 을 T(n/2) + n 으로 표현 가능하다면 T(n/2) 는 아래와 같이 �
 <br/>
 각각의 점화식을 트리구조로 표현해보면 아래와 같다.
 
-{% include image_caption.html caption="Recurrence Relation Tree" title="recurrence-relation-tree" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/algo/mergesort-recurrence-tree-1.png" %}
+{% include image_caption.html caption="Recurrence Relation Tree" title="recurrence-relation-tree" imageurl="/yaboong-blog-static-resources/algo/mergesort-recurrence-tree-1.png" %}
 
 위 그림에서 T(n) 을 표현한 트리에서 T(n/2)을 T(n/2) 을 표현한 트리로 대치시키고, T(n/2) 을 표현한 트리에서 T(n/4) 을 표현한 트리로 계속해서 대치시켜 나가면 아래와 같은 트리를 그릴 수 있다.  
 
-{% include image_caption.html caption="Recurrence Tree" title="recurrence-tree" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/algo/mergesort-recurrence-tree-2.png" %}
+{% include image_caption.html caption="Recurrence Tree" title="recurrence-tree" imageurl="/yaboong-blog-static-resources/algo/mergesort-recurrence-tree-2.png" %}
 
 트리의 각 레벨에서 노드의 개수와, 각 레벨의 합을 구하면 아래와 같다.
 
-{% include image_caption.html caption="Recurrence Tree Level Sum" title="recurrence-tree-level-sum" imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/algo/mergesort-recurrence-tree-3.png" %}
+{% include image_caption.html caption="Recurrence Tree Level Sum" title="recurrence-tree-level-sum" imageurl="/yaboong-blog-static-resources/algo/mergesort-recurrence-tree-3.png" %}
 
 Level 0 에는 n이 1개 있고, level 1 에는 n/2 이 2개, level 2 에는 n/4 이 4개, ... , level h 에는 T(1) 이 2<sup>h</sup> 개 있다.
 T(1) = 1 로 표현 가능하므로 h = log<sub>2</sub>n 이라는 결과를 얻을 수 있다.
@@ -99,7 +99,7 @@ Coursera 강의에 재미있는 자료가 있었다. Merge sort 와 insertion so
 <mark>삽입정렬은 N 이 10억개면 317년이 걸린다.</mark>
 
 <div style="text-align:center">
-{% include image_caption.html imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/algo/mergesort-vs-insertionsort.png" title="mergesort-vs-insertionsort" caption="merge sort vs insertion sort" %}
+{% include image_caption.html imageurl="/yaboong-blog-static-resources/algo/mergesort-vs-insertionsort.png" title="mergesort-vs-insertionsort" caption="merge sort vs insertion sort" %}
 </div>
 
 

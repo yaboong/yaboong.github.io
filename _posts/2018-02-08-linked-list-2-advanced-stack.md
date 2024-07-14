@@ -20,7 +20,7 @@ Stack 은 새로운 값을 어디에 넣을지 지정하지 않으며 push 하�
 
 
 <div style="text-align:center">
-{% include image_caption.html imageurl="https://s3.ap-northeast-2.amazonaws.com/yaboong-blog-static-resources/ds/stack-1.png" title="stack" caption="stack" %}
+{% include image_caption.html imageurl="/yaboong-blog-static-resources/ds/stack-1.png" title="stack" caption="stack" %}
 </div> 
 
 Linked list 로 표현하면 head 에 추가하고 head 를 반환한다고 생각하면 된다.
