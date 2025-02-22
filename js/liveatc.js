@@ -1,28 +1,11 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    if (!window.FFmpeg || !window.FFmpeg.createFFmpeg) {
-        console.error("[YB ERR] FFmpeg library loading failed!");
-        return;
-    }
-
-
-    const { createFFmpeg } = window.FFmpeg;
-//    const ffmpeg = createFFmpeg({
-////        log: true,
-//        wasmPath: '/assets/ffmpeg/ffmpeg-core.js'
-//    });
-    const ffmpeg = createFFmpeg({
-        log: true,
-        corePath: '/assets/ffmpeg/ffmpeg-core.js',
-        mainName: 'ffmpeg',
-        wasmPath: '/assets/ffmpeg/ffmpeg-core.wasm',
-        worker: false
-    });
-
-
+    const ffmpeg = new window.FFmpegWASM.FFmpeg();
     await ffmpeg.load();
 
     const logContainer = document.getElementById("log-container");
-    ffmpeg.setLogger(({ type, message }) => {
+    logContainer.style.display = "none";
+
+    ffmpeg.on("log", ({ type, message }) => {
         const logMessage = document.createElement("div");
         logMessage.textContent = `[${type}] ${message}`;
         logContainer.appendChild(logMessage);
@@ -40,16 +23,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     dropArea.addEventListener("dragover", (event) => {
         event.preventDefault();
-//        dropArea.style.background = "#e0e0e0";
     });
 
     dropArea.addEventListener("dragleave", () => {
-//        dropArea.style.background = "#f0f0f0";
     });
 
     dropArea.addEventListener("drop", async (event) => {
         event.preventDefault();
-//        dropArea.style.background = "#f0f0f0";
         const files = event.dataTransfer.files;
         addFiles(files);
     });
@@ -90,7 +70,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         loadingIndicator.style.display = "block";
         logContainer.style.display = "block";
 
-
         let processedFiles = [];
 
         for (let i = 0; i < filesArray.length; i++) {
@@ -106,20 +85,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                 const outputMp3 = fileName.replace(".mp3", "_cleaned.mp3");
 
                 const fileData = new Uint8Array(await file.arrayBuffer());
-                ffmpeg.FS('writeFile', inputMp3, fileData);
+                ffmpeg.writeFile(inputMp3, fileData);
 
                 progress.style.width = "25%";
-                await ffmpeg.run("-i", inputMp3, "-acodec", "pcm_s16le", "-ar", "8000", "-ac", "1", tempWav);
+                await ffmpeg.exec(["-i", inputMp3, "-acodec", "pcm_s16le", "-ar", "8000", "-ac", "1", tempWav]);
 
                 progress.style.width = "50%";
-                await ffmpeg.run("-i", tempWav, "-af", "volume=2.0, silenceremove=start_periods=1:start_threshold=-40dB:start_silence=1.5:stop_threshold=-40dB:stop_silence=2:stop_periods=-1", cleanedWav);
+                await ffmpeg.exec(["-i", tempWav, "-af", "volume=2.0, silenceremove=start_periods=1:start_threshold=-40dB:start_silence=1.5:stop_threshold=-40dB:stop_silence=2:stop_periods=-1", cleanedWav]);
 
                 progress.style.width = "75%";
-                await ffmpeg.run("-i", cleanedWav, "-codec:a", "libmp3lame", "-b:a", "64k", "-ar", "8000", "-ac", "1", outputMp3);
+                await ffmpeg.exec(["-i", cleanedWav, "-codec:a", "libmp3lame", "-b:a", "64k", "-ar", "8000", "-ac", "1", outputMp3]);
 
                 progress.style.width = "100%";
 
-                const processedData = ffmpeg.FS('readFile', outputMp3);
+                const processedData = ffmpeg.readFile(outputMp3);
                 const audioBlob = new Blob([processedData.buffer], { type: "audio/mpeg" });
 
                 listItem.innerHTML = "";
