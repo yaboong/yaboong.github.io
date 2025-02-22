@@ -80,3 +80,12 @@ exclude:
 
 # Google Analytics
 google_analytics: UA-113745841-1
+
+# for ffmpeg
+include:
+  - assets
+  - _pages
+webrick:
+  headers:
+    Cross-Origin-Opener-Policy: same-origin
+    Cross-Origin-Embedder-Policy: require-corp

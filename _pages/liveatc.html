@@ -1,0 +1,63 @@
+---
+layout: post
+title: YB's LiveATC Processor
+permalink: /liveatc
+---
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiveATC MP3 Processor</title>
+</head>
+<body>
+<h2>LiveATC MP3 변환</h2>
+
+<form id="ffmpegForm">
+    <label>공항 코드:</label>
+    <input type="text" id="airport_code" required><br><br>
+
+    <label>파일 접두사:</label>
+    <input type="text" id="file_prefix" required><br><br>
+
+    <label>날짜 (YYYYMMDD):</label>
+    <input type="text" id="input_date" required pattern="\d{8}"><br><br>
+
+    <label>시작 시간 (0-23):</label>
+    <input type="number" id="start_hour" min="0" max="23" required><br><br>
+
+    <label>종료 시간 (0-23):</label>
+    <input type="number" id="end_hour" min="0" max="23" required><br><br>
+
+    <button type="button" onclick="processLiveATC()">MP3 다운로드 및 변환</button>
+</form>
+
+<p id="status"></p>
+<a id="downloadLink" style="display:none">변환된 MP3 다운로드</a>
+
+<script src="/assets/ffmpeg/ffmpeg.min.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+    if (!window.FFmpeg || !window.FFmpeg.createFFmpeg) {
+        console.error("FFmpeg 라이브러리가 로드되지 않았습니다.");
+        return;
+    }
+
+    const { createFFmpeg } = window.FFmpeg;
+    const ffmpeg = createFFmpeg({
+        log: true,
+        wasmPath: '/assets/ffmpeg/ffmpeg-core.js'  // FFmpeg 0.10.0 버전에서는 corePath 대신 wasmPath 사용
+    });
+
+    console.log("FFmpeg 인스턴스 생성 완료:", ffmpeg);
+    await ffmpeg.load();
+    console.log("FFmpeg 로드 완료!");
+});
+
+</script>
+
+</body>
+</html>
