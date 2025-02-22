@@ -12,7 +12,7 @@ permalink: /liveatc
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiveATC MP3 Silence Remover</title>
+    <title>LiveATC MP3 Processor</title>
     <script src="/assets/ffmpeg/ffmpeg.min.js"></script>
     <script src="/js/liveatc.js"></script>
     <style>
@@ -71,7 +71,7 @@ permalink: /liveatc
             display: block;
             height: 100%;
             width: 0;
-            background: #63b3ed;
+            background: #8260e5;
             transition: width 0.4s ease;
         }
         #file-input {
@@ -86,7 +86,7 @@ permalink: /liveatc
         #file-label, #process-button {
             display: inline-block;
             padding: 10px 20px;
-            background: #63b3ed;
+            background: #8260e5;
             color: white;
             border-radius: 6px;
             cursor: pointer;
@@ -103,7 +103,7 @@ permalink: /liveatc
             display: none;
             font-size: 16px;
             font-weight: bold;
-            color: #63b3ed;
+            color: #8260e5;
             margin-top: 10px;
         }
         .hidden {
@@ -111,7 +111,7 @@ permalink: /liveatc
         }
         .button {
             padding: 8px 16px;
-            background: #63b3ed;
+            background: #8260e5;
             color: white;
             border: none;
             border-radius: 6px;
@@ -121,6 +121,21 @@ permalink: /liveatc
         }
         .button:hover {
             background: #4299e1;
+        }
+        #log-container {
+            width: 75%;
+            height: 150px;
+            margin: 20px auto;
+            padding: 10px;
+            background: #1e1e1e;
+            color: #ddd;
+            font-family: monospace;
+            font-size: 12px;
+            text-align: left;
+            overflow-y: auto;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            display: none;
         }
     </style>
 </head>
@@ -139,5 +154,6 @@ permalink: /liveatc
 <div id="control-buttons">
     <button id="download-all-button" class="button hidden">Download All</button>
 </div>
+<div id="log-container"></div>
 </body>
 </html>

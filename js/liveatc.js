@@ -13,6 +13,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     await ffmpeg.load();
     console.log("FFmpeg 로드 완료!");
 
+    const logContainer = document.getElementById("log-container");
+    ffmpeg.setLogger(({ type, message }) => {
+        const logMessage = document.createElement("div");
+        logMessage.textContent = `[${type}] ${message}`;
+        logContainer.appendChild(logMessage);
+        logContainer.scrollTop = logContainer.scrollHeight;
+    });
+
     const dropArea = document.getElementById("drop-area");
     const fileInput = document.getElementById("file-input");
     const fileList = document.getElementById("file-list");
@@ -72,6 +80,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         processButton.style.display = "none";
         document.getElementById("file-label").style.display = "none";
         loadingIndicator.style.display = "block";
+        logContainer.style.display = "block";
+
 
         let processedFiles = [];
 
