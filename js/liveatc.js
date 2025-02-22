@@ -13,9 +13,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const ffmpeg = createFFmpeg({
         log: true,
         corePath: '/assets/ffmpeg/ffmpeg-core.js',
-        mainName: 'ffmpeg', // 기본 싱글스레드 버전 사용
-        wasmPath: '/assets/ffmpeg/ffmpeg-core.wasm' // WebAssembly 경로 추가
+        mainName: 'ffmpeg',
+        wasmPath: '/assets/ffmpeg/ffmpeg-core.wasm',
+        worker: false
     });
+
 
     await ffmpeg.load();
 
