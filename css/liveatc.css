@@ -68,7 +68,7 @@ body {
 #file-label, #process-button {
     display: inline-block;
     padding: 10px 20px;
-    background: #4299e1;
+    background: #21b4eb;
     color: white;
     border-radius: 6px;
     cursor: pointer;
@@ -93,7 +93,7 @@ body {
 }
 .button {
     padding: 8px 16px;
-    background: #4299e1;
+    background: #21b4eb;
     color: white;
     border: none;
     border-radius: 6px;
