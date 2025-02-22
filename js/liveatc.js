@@ -1,17 +1,16 @@
 document.addEventListener("DOMContentLoaded", async () => {
     if (!window.FFmpeg || !window.FFmpeg.createFFmpeg) {
-        console.error("FFmpeg 라이브러리가 로드되지 않았습니다.");
+        console.error("[YB ERR] FFmpeg library loading failed!");
         return;
     }
 
     const { createFFmpeg } = window.FFmpeg;
     const ffmpeg = createFFmpeg({
-        log: true,
+//        log: true,
         wasmPath: '/assets/ffmpeg/ffmpeg-core.js'
     });
 
     await ffmpeg.load();
-    console.log("FFmpeg 로드 완료!");
 
     const logContainer = document.getElementById("log-container");
     ffmpeg.setLogger(({ type, message }) => {
@@ -32,16 +31,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     dropArea.addEventListener("dragover", (event) => {
         event.preventDefault();
-        dropArea.style.background = "#e0e0e0";
+//        dropArea.style.background = "#e0e0e0";
     });
 
     dropArea.addEventListener("dragleave", () => {
-        dropArea.style.background = "#f0f0f0";
+//        dropArea.style.background = "#f0f0f0";
     });
 
     dropArea.addEventListener("drop", async (event) => {
         event.preventDefault();
-        dropArea.style.background = "#f0f0f0";
+//        dropArea.style.background = "#f0f0f0";
         const files = event.dataTransfer.files;
         addFiles(files);
     });
@@ -129,7 +128,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 processedFiles.push({ name: outputMp3, blob: audioBlob });
             } catch (error) {
-                console.error("파일 처리 중 오류 발생:", error);
+                console.error("[YB ERR] Error while processing file:", error);
             }
         }
 

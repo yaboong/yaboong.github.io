@@ -1,0 +1,121 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+    background: #1a1a1a;
+    color: #e0e0e0;
+}
+#drop-area {
+    border: 2px dashed #aaa;
+    padding: 20px;
+    text-align: center;
+    margin: 20px auto;
+    width: 70%;
+    cursor: pointer;
+    border-radius: 10px;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#drop-area p {
+    margin-bottom: 5px;
+}
+#file-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 10px;
+    width: 100%;
+}
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f4f7f9;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 90%;
+}
+.progress-bar {
+    width: 100px;
+    height: 6px;
+    background: #555;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+.progress-bar span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: #8260e5;
+    transition: width 0.4s ease;
+}
+#file-input {
+    display: none;
+}
+#file-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+#file-label, #process-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #4299e1;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+#file-label:hover, #process-button:hover {
+    background: #8260e5;
+}
+#process-button {
+    display: none;
+}
+#loading-indicator {
+    display: none;
+    font-size: 16px;
+    font-weight: bold;
+    color: #8260e5;
+    margin-top: 10px;
+}
+.hidden {
+    display: none;
+}
+.button {
+    padding: 8px 16px;
+    background: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+.button:hover {
+    background: #8260e5;
+}
+#log-container {
+    width: 75%;
+    height: 150px;
+    margin: 20px auto;
+    padding: 10px;
+    background: #1e1e1e;
+    color: #ddd;
+    font-family: monospace;
+    font-size: 12px;
+    text-align: left;
+    overflow-y: auto;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    display: none;
+}
