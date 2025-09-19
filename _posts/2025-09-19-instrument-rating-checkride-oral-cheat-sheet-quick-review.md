@@ -489,4 +489,3 @@ tags: [aviation-theory]
   - ↑maneuverable(↓stable), stall↓, TOL roll↓, cruise effi↑fuel↑
   - less stable, more likely to pitch up, less elevator force is needed
 
-## 14 CFR Aggregations
