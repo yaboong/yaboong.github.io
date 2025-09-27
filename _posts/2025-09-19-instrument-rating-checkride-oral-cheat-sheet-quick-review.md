@@ -133,7 +133,7 @@ tags: [aviation-theory]
 - **mountain wave**: strong w. blow perpendicular to mountain, severe turb, lenticular/rotor cl.
 - **factors affecting wind**: 
   - pressure diff [diff↑→wind↑]
-  - coriolis force: earth’s rotation, deflect wind/air right Norther Hem., poles↑equator:0
+  - coriolis force: earth’s rotation, deflect wind/air right Northern Hem., poles↑equator:0
   - friction btwn air/surface: slows down wind→coriolis force↓→wind flow across isobars at slight angle toward low pressure (surface wind slower & turb. than winds aloft)
   - gravity: vertical air movements (downbursts/microbursts)
 - **isobar**: connect points equal pressure, closer→pressure gradient↑→wind↑
@@ -467,7 +467,7 @@ tags: [aviation-theory]
   - **DA(DH)**: precision, above rwy threshold
   - **MDA(MDH)**: non-precision, above wy threshold, visual references
   - **MCA**: route & direction, must cross higher than MCA, flying to higher MEA, X flag
-  - **MTA**: obs cir (v/l) turns over fixes
+  - **MTA**: obs clr (v/l) turns over fixes
   - **MRA**: lowest alt for nav signal. R flag
   - **MEA**: nav signal reception & obstacle clearance (along airway), MEA GAP
   - **МОСА**: obstacle clearance (could be lower than MEA), guarantees VOR signal within 22NM(25SM) of station, * sign
