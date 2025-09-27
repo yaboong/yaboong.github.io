@@ -467,7 +467,7 @@ tags: [aviation-theory]
   - **DA(DH)**: precision, above rwy threshold
   - **MDA(MDH)**: non-precision, above wy threshold, visual references
   - **MCA**: route & direction, must cross higher than MCA, flying to higher MEA, X flag
-  - **MTA**: obs clr (v/l) turns over fixes
+  - **MTA**: obstacle clearance (vertical/lateral) turns over fixes
   - **MRA**: lowest alt for nav signal. R flag
   - **MEA**: nav signal reception & obstacle clearance (along airway), MEA GAP
   - **МОСА**: obstacle clearance (could be lower than MEA), guarantees VOR signal within 22NM(25SM) of station, * sign
