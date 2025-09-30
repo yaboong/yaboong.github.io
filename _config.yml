@@ -80,6 +80,7 @@ plugins:
   - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-gist
+  - jekyll-sitemap
 permalink: pretty
 markdown: kramdown
 highlighter: rouge
