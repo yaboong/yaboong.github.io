@@ -5,6 +5,7 @@ layout: default
     <div class="inner">
         <main class="site-main"> 
             {% for post in paginator.posts %}
+            {% unless post.unlisted %}
             <article class="post">
                 <header class="entry-header"> 
                     <div class="entry-header-wrap">
@@ -33,6 +34,7 @@ layout: default
                 </footer><!-- .entry-footer -->
                 {% endif %}
             </article><!-- .post -->
+            {% endunless %}
             {% endfor %}
             {% if paginator.total_pages > 1 %}
             <nav class="pagination">
