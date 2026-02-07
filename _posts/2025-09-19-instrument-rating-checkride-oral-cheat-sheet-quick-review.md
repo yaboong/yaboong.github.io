@@ -76,7 +76,7 @@ tags: [aviation-theory]
 - **GRABCARD**: generator or alternator/2way-radio/altimeter(sensitive)/ball(slip-skid)/clock/attitude-ind./rate-of-turn/directional-gyro(heading ind.)
 
 <details>
-<summary>▶ (click) <u>Operating With Inoperative Items (91.213)</u></summary> 
+<summary><u>Operating With Inoperative Items (91.213)</u></summary> 
 {% include image_caption_href.html title="Operating With Inoperative Items (91.213)" caption="Operating With Inoperative Items (91.213)" imageurl="/yaboong-blog-static-resources/aviation/MEL.png" %}
 </details>
 
@@ -380,17 +380,17 @@ tags: [aviation-theory]
     - Enroute: RNP 2.0 (2 NM accuracy 95% of the flight time)
 
 <details>
-<summary>▶ (click) <u>Localizer</u></summary> 
+<summary><u>Localizer</u></summary> 
 {% include image_caption_href.html title="Localizer" caption="Localizer" imageurl="/yaboong-blog-static-resources/aviation/localizer.png" %}
 </details>
 
 <details>
-<summary>▶ (click) <u>Glide Slope</u></summary> 
+<summary><u>Glide Slope</u></summary> 
 {% include image_caption_href.html title="Glide Slope" caption="Glide Slope" imageurl="/yaboong-blog-static-resources/aviation/glide-slope.png" %}
 </details>
 
 <details>
-<summary>▶ (click) <u>Marker Beacon</u></summary> 
+<summary><u>Marker Beacon</u></summary> 
 {% include image_caption_href.html title="Marker Beacon" caption="Marker Beacon" imageurl="/yaboong-blog-static-resources/aviation/marker-beacon.png" %}
 </details>
 
@@ -437,17 +437,17 @@ tags: [aviation-theory]
   - LNAV/VNAV: non-WAAS ok, GPS + baro-VNAV based → temperature error  
 
 <details>
-<summary>▶ (click) <u>Approach Chart</u></summary> 
+<summary><u>Approach Chart</u></summary> 
 {% include image_caption_href.html title="Approach Chart" caption="Approach Chart" imageurl="/yaboong-blog-static-resources/aviation/approach-chart.png" %}
 </details>
 
 <details>
-<summary>▶ (click) <u>RVR</u></summary> 
+<summary><u>RVR</u></summary> 
 {% include image_caption_href.html title="RVR" caption="RVR" imageurl="/yaboong-blog-static-resources/aviation/rvr.png" %}
 </details>
 
 <details>
-<summary>▶ (click) <u>Approach Lighting System</u></summary> 
+<summary><u>Approach Lighting System</u></summary> 
 {% include image_caption_href.html title="Approach Lighting System" caption="Approach Lighting System" imageurl="/yaboong-blog-static-resources/aviation/ALS.png" %}
 </details>
 

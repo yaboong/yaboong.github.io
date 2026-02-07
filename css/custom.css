@@ -1,0 +1,27 @@
+/* details 기본 화살표를 노션 스타일로 변경 */
+details > summary {
+  list-style: none;
+  cursor: pointer;
+  outline: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* 닫혔을 때 (▶) */
+details > summary::before {
+  content: "▶";
+  display: inline-block;
+  width: 1.2em;
+  font-size: 0.8em;
+  color: #37352f;
+  transition: transform 0.2s;
+}
+
+/* 열렸을 때 (▼) */
+details[open] > summary::before {
+  transform: rotate(90deg); /* 90도 회전해서 아래를 보게 함 */
+}
+
+
