@@ -75,8 +75,7 @@ tags: [aviation-theory]
 - **FLAPS**: fuses or circuit-breaker/landing-light/anti-collision/position(navigation)/source of electricity
 - **GRABCARD**: generator or alternator/2way-radio/altimeter(sensitive)/ball(slip-skid)/clock/attitude-ind./rate-of-turn/directional-gyro(heading ind.)
 
-<details>
-<summary><u>Operating With Inoperative Items (91.213)</u></summary> 
+<details><summary><u>Operating With Inoperative Items (91.213)</u></summary> 
 {% include image_caption_href.html title="Operating With Inoperative Items (91.213)" caption="Operating With Inoperative Items (91.213)" imageurl="/yaboong-blog-static-resources/aviation/MEL.png" %}
 </details>
 
@@ -379,18 +378,15 @@ tags: [aviation-theory]
     - Terminal & Departure: RNP 1.0 (1 NM accuracy 95% of the flight time)
     - Enroute: RNP 2.0 (2 NM accuracy 95% of the flight time)
 
-<details>
-<summary><u>Localizer</u></summary> 
+<details><summary><u>Localizer</u></summary> 
 {% include image_caption_href.html title="Localizer" caption="Localizer" imageurl="/yaboong-blog-static-resources/aviation/localizer.png" %}
 </details>
 
-<details>
-<summary><u>Glide Slope</u></summary> 
+<details><summary><u>Glide Slope</u></summary> 
 {% include image_caption_href.html title="Glide Slope" caption="Glide Slope" imageurl="/yaboong-blog-static-resources/aviation/glide-slope.png" %}
 </details>
 
-<details>
-<summary><u>Marker Beacon</u></summary> 
+<details><summary><u>Marker Beacon</u></summary> 
 {% include image_caption_href.html title="Marker Beacon" caption="Marker Beacon" imageurl="/yaboong-blog-static-resources/aviation/marker-beacon.png" %}
 </details>
 
@@ -436,18 +432,15 @@ tags: [aviation-theory]
   - LPV: requires WAAS, GPS based, no temperature error
   - LNAV/VNAV: non-WAAS ok, GPS + baro-VNAV based → temperature error  
 
-<details>
-<summary><u>Approach Chart</u></summary> 
-{% include image_caption_href.html title="Approach Chart" caption="Approach Chart" imageurl="/yaboong-blog-static-resources/aviation/approach-chart.png" %}
+<details><summary><u>Approach Chart</u></summary>
+{% include image_caption_href.html title="Approach Chart" caption="Approach Chart" imageurl="/yaboong-blog-static-resources/aviation/approach-chart.png" %}'
 </details>
 
-<details>
-<summary><u>RVR</u></summary> 
+<details><summary><u>RVR</u></summary> 
 {% include image_caption_href.html title="RVR" caption="RVR" imageurl="/yaboong-blog-static-resources/aviation/rvr.png" %}
 </details>
 
-<details>
-<summary><u>Approach Lighting System</u></summary> 
+<details><summary><u>Approach Lighting System</u></summary> 
 {% include image_caption_href.html title="Approach Lighting System" caption="Approach Lighting System" imageurl="/yaboong-blog-static-resources/aviation/ALS.png" %}
 </details>
 
