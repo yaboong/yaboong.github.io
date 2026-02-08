@@ -14,7 +14,11 @@ tags: [traffic-pattern, Aeronautical-Information-Manual, AIM]
 
 <!--more-->
 
-<br/>
+
+> ⚠️ This content is for educational and informational purposes only. 
+It does not constitute legal advice or an official FAA guideline.
+Always refer to the latest FAR/AIM and official regulations for actual flight operations.
+The author assumes no liability for errors or omissions in the content.
 
 ### TL;DR;
 * Effective: August 7, 2025

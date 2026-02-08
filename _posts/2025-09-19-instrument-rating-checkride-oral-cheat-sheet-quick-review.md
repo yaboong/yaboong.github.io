@@ -15,6 +15,11 @@ tags: [aviation-theory]
 
 <!--more-->
 
+> ⚠️ This content is for educational and informational purposes only. 
+It does not constitute legal advice or an official FAA guideline.
+Always refer to the latest FAR/AIM and official regulations for actual flight operations.
+The author assumes no liability for errors or omissions in the content.
+
 ## Qualifications
 - **requirements**: AME (age/medical/english) TWEET (training-ground&flight/written/endorsement/experience/training-instrument)
 - **privilege**: PPL privilege + can fly ***IR required**
