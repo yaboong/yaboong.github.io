@@ -31,7 +31,7 @@ Here is a raw debrief of what happened during my night flight and what I learned
 - **Situation**: Contacted Approach after departure, cleared to climb and maintain 5,000ft
 - **RPM gauge anomaly**: While climbing through 2,300’ (approx. 3NM Northeast of 7B2), I noticed an anomaly on the RPM gauge. 
 Despite being at full throttle and mixture, the needle was bouncing erratically between 1,000 and 1,500 RPM.
-- **Immediate Assessment**: Fuel tanks full (switched to left), mixture/throttle full, fuel pump ON. 
+- **Immediate Assessment**: check fuel tanks, engine gauges, full mixture/throttle, fuel pump ON. 
 No abnormal engine sounds, no smells, airspeed and altitude remained stable.
 
 ## What Went Well (The Good)
