@@ -173,18 +173,27 @@ In this scenario, a **Part 135 Air Carrier Certificate** is required, and the op
 - They are the most prominent example of **holding out** to the **general public**, providing **scheduled** transportation services to anyone willing to purchase a ticket.
 
 ## Gray Area Cases (Not Mentioned in the Table)
-- **Case 1: A corporate jet pilot flying the CEO’s family to the Bahamas**
-    - This is **not Part 91** operation because the flight is **not incidental to business**. 
-    - Since the flight's purpose is personal rather than business-related, it should technically fall under **Part 135** standards.
-- **Case 2: If 'L' is the lessor, 'P' is the pilot, and 'C' is the client—can 'L' lease the plane to 'C' and also recommend 'P'?**
-    - **No.** The moment the lessor recommends a pilot, the arrangement is viewed as a **Wet Lease**. 
-    - This brings it into the **Part 135** category, and without an Operating Certificate, it becomes an "illegal charter."
-- **Case 3: 'L' leases the plane to 'C' without recommending a pilot, but 'C' already knows 'P' and hires them independently.**
-    - While the end result looks the same as the previous case, it can be operated under **Part 91** because 'L' provided no information about 'P'. 
-    - There must be **absolutely no professional link or connection** between the aircraft provider and the pilot provider.
-- **Case 4: Can a company provide a business jet via a wet lease but let the client keep Operational Control?**
-    - **No.** It is a fundamental legal principle that the moment a **Wet Lease** agreement is made, **Operational Control** (the responsibility for flight safety) shifts to the service provider. 
-    - Therefore, the provider must hold a **Part 135 (or 121) Operating Certificate**.
-- **Case 5: Are there cases of providing a wet lease under Part 91/125 (Private Carriage) while also "holding out"?**
-    - **Legally, this cannot exist.** However, companies like **Executive Jet Management (EJM)** appear to operate this way. 
-    - The reason they can is that they actually hold the necessary **Part 135 certificates**, allowing them to legally bridge that gap.
+> **Case 1: A corporate jet pilot flying the CEO’s family to the Bahamas**
+
+- This is **not Part 91** operation because the flight is **not incidental to business**. 
+- Since the flight's purpose is personal rather than business-related, it should technically fall under **Part 135** standards.
+
+> **Case 2: If 'L' is the lessor, 'P' is the pilot, and 'C' is the client—can 'L' lease the plane to 'C' and also recommend 'P'?**
+
+- **No.** The moment the lessor recommends a pilot, the arrangement is viewed as a **Wet Lease**. 
+- This brings it into the **Part 135** category, and without an Operating Certificate, it becomes an "illegal charter."
+
+> **Case 3: 'L' leases the plane to 'C' without recommending a pilot, but 'C' already knows 'P' and hires them independently.**
+
+- While the end result looks the same as the previous case, it can be operated under **Part 91** because 'L' provided no information about 'P'. 
+- There must be **absolutely no professional link or connection** between the aircraft provider and the pilot provider.
+
+> **Case 4: Can a company provide a business jet via a wet lease but let the client keep Operational Control?**
+
+- **No.** It is a fundamental legal principle that the moment a **Wet Lease** agreement is made, **Operational Control** (the responsibility for flight safety) shifts to the service provider. 
+- Therefore, the provider must hold a **Part 135 (or 121) Operating Certificate**.
+
+> **Case 5: Are there cases of providing a wet lease under Part 91/125 (Private Carriage) while also "holding out"?**
+
+- **Legally, this cannot exist.** However, companies like **Executive Jet Management (EJM)** appear to operate this way. 
+- The reason they can is that they actually hold the necessary **Part 135 certificates**, allowing them to legally bridge that gap.
