@@ -104,6 +104,8 @@ In the video below, I’ll show you three scenarios:
 2. **Wind 180@20kts** & **No Correction**: What happens to your circle when you hold a steady 45° bank without accounting for the wind. 
 3. **Wind 180@20kts** & **With Correction**: My experimental results on how to achieve that "constant radius" while staying **within the 60° ACS limit**.
 
+{% include youtube.html id="pjVw_VWNGiI" %}
+
 ### Rule of Thumb (based on GS)
 - **GS < 80**: Use a **30° bank**. (Don’t go much lower than this, or the radius gets too wide.)
 - **GS = 90–95**: Stick to the **45° baseline**.
@@ -130,12 +132,3 @@ To maintain your target speed, you need to relax the elevator—less back pressu
 It might not be perfect, but it gets the job done.
 {% include image_caption_href.html title="Track Log on Google Earth (Side View)" caption="Track Log on Google Earth (Side View)" imageurl="/posts_image/2026-02-13/tracklog-google-earth-side.png" %}
 {% include image_caption_href.html title="Track Log on Google Earth (Top View)" caption="Track Log on Google Earth (Top View)" imageurl="/posts_image/2026-02-13/tracklog-google-earth-top.png" %}
-
-
-## Videos
-### Wind Calm
-{% include youtube.html id="pjVw_VWNGiI" start="7" %}
-### 180@20kts (No Wind Correction)
-{% include youtube.html id="pjVw_VWNGiI" start="123" %}
-### 180@20kts (Wind Correction)
-{% include youtube.html id="pjVw_VWNGiI" start="247" %}
