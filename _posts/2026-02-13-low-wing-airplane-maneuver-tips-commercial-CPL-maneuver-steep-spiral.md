@@ -126,6 +126,12 @@ When **GS decreases** (**Headwind**):
 If you keep the same pitch, the **nose will rise** and your **airspeed will drop**. 
 To maintain your target speed, you need to relax the elevator—less back pressure (or even a slight forward pressure)—to keep the nose down.
 
+### Track Log
+It might not be perfect, but it gets the job done.
+{% include image_caption_href.html title="Track Log on Google Earth (Side View)" caption="Track Log on Google Earth (Side View)" imageurl="/posts_image/2026-02-13/tracklog-google-earth-side.png" %}
+{% include image_caption_href.html title="Track Log on Google Earth (Top View)" caption="Track Log on Google Earth (Top View)" imageurl="/posts_image/2026-02-13/tracklog-google-earth-top.png" %}
+
+
 ## Videos
 ### Wind Calm
 {% include youtube.html id="pjVw_VWNGiI" start="7" %}
