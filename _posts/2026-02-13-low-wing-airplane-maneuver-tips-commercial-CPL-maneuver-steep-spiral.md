@@ -76,7 +76,8 @@ As always in aviation, **everything happens in a flash**.
 There are so many variables changing at once that if you miss a small correction window, the whole maneuver can fall apart before you know it.
 
 ## Airplane Flying Handbook
-> Update: This section has been updated based on feedback from a reader. Thanks to "_SeoulCitizen_"!
+> Update: This section has been updated based on feedback from a reader. <br/>
+Thanks to "_SeoulCitizen_"! (See what's updated: {% include href.html url="https://github.com/yaboong/yaboong.github.io/commit/ee0d373c7cab7bb43412ef58e41884075e2b8601" text="ee0d373" %})
 
 Let’s look at what the **FAA Airplane Flying Handbook (AFH)** says about the **Steep Spiral**.
 
