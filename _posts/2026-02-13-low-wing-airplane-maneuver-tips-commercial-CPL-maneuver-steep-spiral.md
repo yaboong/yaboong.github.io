@@ -75,7 +75,34 @@ You have to account for these changes constantly.
 As always in aviation, **everything happens in a flash**. 
 There are so many variables changing at once that if you miss a small correction window, the whole maneuver can fall apart before you know it.
 
-## So, How Do We Fix This?
+## Airplane Flying Handbook
+> Update: This section has been updated based on feedback from a reader. Thanks to "_SeoulCitizen_"!
+
+Let’s look at what the **FAA Airplane Flying Handbook (AFH)** says about the **Steep Spiral**.
+
+{% include image_caption_href.html title="Airplane Flying Handbook 10-3" caption="Airplane Flying Handbook 10-3" imageurl="/posts_image/2026-02-13/AFH-10-3-steep-spiral.png" %}
+
+The handbook uses key phrases such as 
+"_rapidly dissipating substantial amounts of altitude_", "_remaining over a selected spot_", and "_useful during an emergency landing._" 
+While these describe the maneuver's purpose, the execution details can still feel a bit vague.
+
+Specifically, the handbook mentions the following regarding the setup:
+{% include image_caption_href.html title="Airplane Flying Handbook 10-4" caption="Airplane Flying Handbook 10-4" imageurl="/posts_image/2026-02-13/AFH-10-4-steep-spiral-setup.png" %}
+
+> Although "_gliding_" is mentioned multiple times (e.g., "_gliding turn_" "_gliding speed is established_"), 
+I don't believe this implies the entire maneuver must be flown strictly at the best glide speed (Vg).
+
+Since the text says "_once the proper airspeed is attained, the pitch should be lowered and the airplane rolled..._" after mentioning the initial glide setup, 
+I interpret "_gliding speed_" as part of the **initial entry procedure rather than a strict requirement to maintain that exact airspeed throughout the entire steep spiral.**
+
+#### How Steep is "Steep"?
+How exactly do we define a "**steep**" turn? The **Airplane Flying Handbook** provides a very clear definition (_thanks again to "SeoulCitizen" for pointing this out_).
+{% include image_caption_href.html title="Airplane Flying Handbook 3-12" caption="Airplane Flying Handbook 3-12" imageurl="/posts_image/2026-02-13/AFH-3-12-turn-bank-degree.png" %}
+According to the **AFH**, "_turns are divided into three classes: shallow, medium, and steep_" where 
+"_Steep turns—result from a degree of **bank of approximately 45° or more.**_"
+Therefore, for a maneuver to be called a **Steep Spiral**, it must involve a bank angle of **at least approximately 45°**.
+
+## So, What Are the Exact Numbers?
 I’ve complained quite a bit, but that’s just because I truly believe the Steep Spiral is one of the trickiest maneuvers out there.
 At the end of the day, the goal is to find the "sweet spot" for bank angle and airspeed, while figuring out how to handle wind correction. 
 I went through a lot of trial and error in X-Plane to find these numbers. 
@@ -91,6 +118,7 @@ And the reason why I didn't choose 100KIAS is, 100 is too close to the maximum m
 Therefore, I believe 90 KIAS is the sweet spot for a steep spiral.
 - **Safety**: It provides a much **better stall margin**, especially when you're pulling steep banks.
 - **Stability**: The aircraft feels more **stable** and **responsive** to control inputs, even if you encounter sudden gusts.
+{% include image_caption_href.html title="Airplane Flying Handbook 5-9" caption="Airplane Flying Handbook 5-9" imageurl="/posts_image/2026-02-13/AFH-5-9-AoA-60-bank-stall-speed-41-percent.png" %}
 
 #### Bank Angle Strategy: 45° as the Baseline
 Through my practice, I found that **45°** is a great **baseline**—but only if there’s **no wind**. 
