@@ -81,20 +81,32 @@ At the end of the day, the goal is to find the "sweet spot" for bank angle and a
 I went through a lot of trial and error in X-Plane to find these numbers. 
 >⚠️ Keep in mind, these aren’t absolute values—they will change depending on the situation.
 
-#### Why I chose 90-95 KIAS (and why Vg might not be ideal)
+#### Reasoning behind Airspeed: 90 KIAS (and why Vg might not be ideal)
 While some suggest using Best Glide Speed (Vg), I found it a bit risky for this maneuver. 
 In a PA-28-161, Vg is around 73 KIAS. 
 However, at a **60° bank**, your **stall speed increases by about 41%**. 
-If you're too slow, your stall margin becomes uncomfortably thin.
-That’s why I prefer **90-95 KIAS** (closer to the Va range of 88-111).
+**Vs1** for PA-28-161 is **51**, and if you maintain a 60° bank while maintaining Vg (73), you're gonna be only 1 knot above (51*1.41=72) the stall speed.
+That’s why I prefer **90 KIAS** (within the Va range of 88-111) to Vg.
+And the reason why I didn't choose 100KIAS is, 100 is too close to the maximum maneuvering speed 111, even though it depends on the weight of the aircraft.
+Therefore, I believe 90 KIAS is the sweet spot for a steep spiral.
 - **Safety**: It provides a much **better stall margin**, especially when you're pulling steep banks.
 - **Stability**: The aircraft feels more **stable** and **responsive** to control inputs, even if you encounter sudden gusts.
 
-#### What about the Bank Angle?
+#### Bank Angle Strategy: 45° as the Baseline
 Through my practice, I found that **45°** is a great **baseline**—but only if there’s **no wind**. 
 To maintain a constant radius, you have to adjust based on your Ground Speed (GS):
 - Approaching **Tailwind**: Your **GS increases**. You need a **steeper bank** here, or your turn radius will balloon out, taking you away from your reference point.
 - Approaching **Headwind**: Your **GS decreases**. You need a **shallower bank** to prevent the circle from "pancaking" or getting too tight.
+
+#### Downwind Entry - Wouldn't Headwind be easier? 
+While a headwind entry might seem more "controlled" due to the slower initial ground speed (GS), it often leads to a common trap. 
+I eventually realized that starting from the downwind (tailwind) leg is the most strategic way to stay within ACS limits.
+- **The Problem with Headwind Entry**: Starting with a headwind requires a shallow bank initially. 
+However, as you turn toward the tailwind side, your GS increases rapidly.
+If the wind is strong, you may be forced to exceed a 60° bank just to maintain a constant radius—instantly busting the ACS limit
+- **The Logic of Tailwind Entry**: Entering downwind forces you to establish your **steepest bank angle at the very beginning**. 
+By "setting the ceiling" (up to 60°) when your GS is at its peak, the rest of the maneuver becomes a matter of gradually shallowing out the bank as you turn into the wind. 
+It eliminates the risk of needing "more bank than you have left" halfway through the turn.
 
 ## The Simulation (X-Plane)
 Since I can’t just go up and fly 50 times in the real world, I used X-Plane. 
