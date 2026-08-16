@@ -39,6 +39,8 @@ navigation:
   url: /categories
 - text: Tags
   url: /tags/
+- text: NavLog
+  url: /navlog/
 
 # The shortname for your Disqus site to enable comments.
 # disqus: yaboong-github-io

@@ -37,12 +37,14 @@
             <a class="subscribe-button fa-feed square fill-horizontal" href="{{site.baseurl}}/feed.xml"><span class="screen-reader-text">Subscribe</span></a>
         </div><!-- .inner -->
     </nav><!-- .site-navigation -->
+    {% unless page.hide_hero %}
     <header class="site-header">
         <div class="inner">
             <h1 class="site-title"><a class="logo-text" href="{{ site.baseurl }}/">{{site.title}}</a></h1>
             <p class="site-description">{{site.tagline}}</p>
         </div><!-- .inner -->
     </header>
+    {% endunless %}
     {{content}}
     {% include footer.html %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
