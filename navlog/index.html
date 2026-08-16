@@ -57,7 +57,10 @@ hide_hero: true
     max-width:1180px;margin:0 auto;padding:18px 18px 12px;
     display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;
   }
-  .brand{display:flex;align-items:baseline;gap:12px}
+  .brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;row-gap:4px}
+  @media screen and (max-width:480px){
+    header.top .brand h1{font-size:20px}
+  }
   .brand h1{
     font-size:22px;font-weight:800;letter-spacing:.06em;margin:0;
   }
