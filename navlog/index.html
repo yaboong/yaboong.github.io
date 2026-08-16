@@ -288,14 +288,23 @@ hide_hero: true
     font-family:var(--mono);font-size:14px;font-weight:400;color:var(--ink);
   }
   table.nav td.leg{min-width:200px}
-  table.nav th:nth-child(4),table.nav td:nth-child(4){min-width:52px}
-  table.nav th:nth-child(5),table.nav td:nth-child(5){min-width:58px}
+  /* input columns (blue-outlined region): sized so full values never clip */
+  table.nav th:nth-child(3),table.nav td:nth-child(3){min-width:52px}  /* VOR */
+  table.nav th:nth-child(4),table.nav td:nth-child(4){min-width:68px}  /* CRS, e.g. "R-257" */
+  table.nav th:nth-child(5),table.nav td:nth-child(5){min-width:58px}  /* ALT */
+  table.nav th:nth-child(6),table.nav td:nth-child(6){min-width:46px}  /* Dist */
+  table.nav th:nth-child(7),table.nav td:nth-child(7){min-width:56px}  /* MC */
+  table.nav th:nth-child(8),table.nav td:nth-child(8){min-width:56px}  /* Var */
+  table.nav th:nth-child(10),table.nav td:nth-child(10){min-width:60px} /* TAS */
+  table.nav th:nth-child(11),table.nav td:nth-child(11){min-width:52px} /* Wind Dir, e.g. "307" */
   table.nav td.leg .cell-in{text-align:left;padding-left:10px}
   table.nav td.in{background:#fff;border-left:1px solid var(--line)}
   table.nav td.leg.in{border-left:1px solid var(--nav-border)}
   table.nav td.in + td.calc{border-left:1px solid var(--nav-border)}
   table.nav tbody tr:last-child td.in{border-bottom:1px solid var(--nav-border)}
-  table.nav td.calc{background:transparent;color:var(--slate);font-size:14px;font-weight:400;min-width:56px}
+  /* TC, WCA, GS, MH, CH, ETE, Fuel: narrower, these are short computed values */
+  table.nav td.calc{background:transparent;color:var(--slate);font-size:14px;font-weight:400;min-width:44px}
+  table.nav th:nth-child(18),table.nav td:nth-child(18){min-width:52px} /* ETE needs room for mm:ss */
   table.nav td .cell-in:focus{outline:2px solid var(--blue);outline-offset:-2px;border-radius:4px}
   table.nav tbody tr:hover td{background-color:#fcfdff}
   table.nav tbody tr:hover td.in{background-color:#fcfdff}
