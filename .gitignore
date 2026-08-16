@@ -5,3 +5,4 @@ _site
 _post_examples
 _posts_sample
 .jekyll-cache
+.DS_Store
