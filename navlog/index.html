@@ -94,6 +94,10 @@ hide_hero: true
   .btn-icon.accent:hover:not(:disabled){background:#4dc3f0;border-color:#4dc3f0;color:#fff}
   header.top .btn-icon.accent{background:var(--blue);border-color:var(--blue);color:#fff}
   header.top .btn-icon.accent:hover:not(:disabled){background:#4dc3f0;border-color:#4dc3f0;color:#fff}
+  .btn-icon.light{background:#fff;border-color:#fff;color:var(--blue)}
+  .btn-icon.light:hover:not(:disabled){background:#e3f6ff;border-color:#e3f6ff;color:var(--blue)}
+  header.top .btn-icon.light{background:#fff;border-color:#fff;color:var(--blue)}
+  header.top .btn-icon.light:hover:not(:disabled){background:#e3f6ff;border-color:#e3f6ff;color:var(--blue)}
   .doc-link{
     display:flex;align-items:center;gap:6px;padding:5px 7px;min-width:0;
     border:1px solid var(--line-strong);border-radius:8px;text-decoration:none;
@@ -495,7 +499,7 @@ hide_hero: true
   }
   .toast.show{opacity:1;transform:translate(-50%,-50%)}
 
-  /* ---- diagram modal ---- */
+  /* ---- modals (diagram / simple guide) ---- */
   .modal-overlay{
     display:none;position:fixed;inset:0;z-index:1000;
     align-items:center;justify-content:center;padding:24px;
@@ -507,7 +511,13 @@ hide_hero: true
     background:var(--panel);border-radius:14px;padding:14px;
     box-shadow:0 20px 60px rgba(0,0,0,.35);
   }
+  .modal-scroll{max-height:calc(90vh - 28px);overflow-y:auto}
   .modal-box img{display:block;max-width:100%;max-height:calc(90vh - 28px);border-radius:8px;object-fit:contain}
+  .modal-box.guide{max-width:min(720px,94vw);padding:22px}
+  .modal-box.guide .modal-scroll{max-height:calc(90vh - 44px)}
+  .modal-box.guide .grid.cols-4{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  @media screen and (max-width:520px){.modal-box.guide .grid.cols-4{grid-template-columns:1fr}}
+  .modal-title{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);margin:0 0 12px}
   .modal-close{
     position:absolute;top:-14px;right:-14px;padding:0;margin:0;
     -webkit-appearance:none;appearance:none;
@@ -750,38 +760,15 @@ hide_hero: true
       <button class="btn-icon" id="btnExportCsv" title="Export CSV">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       </button>
+      <button class="btn-icon light" id="btnGuide" title="Simple Guide">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      </button>
       <button class="btn-icon accent" id="btnDiagram" title="Show field relationship diagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
       </button>
       <button class="btn" id="btnSample">SAMPLE</button>
     </div>
   </div></header>
-
-  <!-- SIMPLE GUIDE -->
-  <section class="panel noprint collapsible" id="guidePanel">
-    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Simple Guide</h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
-    <div class="body">
-      <p class="poh-note">Small icons next to field labels tell you where that value comes from. Hover (or tap) any icon in the app for the full detail.</p>
-      <div class="grid cols-4">
-        <div class="guide-item">
-          <span class="ico">i</span>
-          <div><div class="guide-title">Info</div><p class="guide-desc">General explanation or definition for the field.</p></div>
-        </div>
-        <div class="guide-item">
-          <span class="ico poh">P</span>
-          <div><div class="guide-title">POH</div><p class="guide-desc">Look this up in your aircraft's Pilot Operating Handbook (POH).</p></div>
-        </div>
-        <div class="guide-item">
-          <span class="ico wx">W</span>
-          <div><div class="guide-title">Weather</div><p class="guide-desc">Pull this from a weather source — METAR/TAF, Winds Aloft, Prog Charts (e.g. ForeFlight, Aviation Weather).</p></div>
-        </div>
-        <div class="guide-item">
-          <span class="ico cal">C</span>
-          <div><div class="guide-title">Calculator</div><p class="guide-desc">Work this out on a flight computer (E6B/CX-3); this app also auto-calculates matching fields.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- POH -->
   <section class="panel noprint collapsible" id="pohPanel">
@@ -1171,7 +1158,39 @@ hide_hero: true
     <button class="modal-close" id="diagramClose" title="Close" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
-    <img id="diagramImg" src="/posts_image/2026-08-17/YB_NAVLOG_DIAGRAM.png" alt="NavLog field relationship diagram">
+    <div class="modal-scroll">
+      <img id="diagramImg" src="/posts_image/2026-08-17/YB_NAVLOG_DIAGRAM.png" alt="NavLog field relationship diagram">
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay noprint" id="guideOverlay">
+  <div class="modal-box guide" role="dialog" aria-modal="true" aria-label="Simple guide">
+    <button class="modal-close" id="guideClose" title="Close" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="modal-scroll">
+      <h2 class="modal-title">Simple Guide</h2>
+      <p class="poh-note">Small icons next to field labels tell you where that value comes from. Hover (or tap) any icon in the app for the full detail.</p>
+      <div class="grid cols-4">
+        <div class="guide-item">
+          <span class="ico">i</span>
+          <div><div class="guide-title">Info</div><p class="guide-desc">General explanation or definition for the field.</p></div>
+        </div>
+        <div class="guide-item">
+          <span class="ico poh">P</span>
+          <div><div class="guide-title">POH</div><p class="guide-desc">Look this up in your aircraft's Pilot Operating Handbook (POH).</p></div>
+        </div>
+        <div class="guide-item">
+          <span class="ico wx">W</span>
+          <div><div class="guide-title">Weather</div><p class="guide-desc">Pull this from a weather source — METAR/TAF, Winds Aloft, Prog Charts (e.g. ForeFlight, Aviation Weather).</p></div>
+        </div>
+        <div class="guide-item">
+          <span class="ico cal">C</span>
+          <div><div class="guide-title">Calculator</div><p class="guide-desc">Work this out on a flight computer (E6B/CX-3); this app also auto-calculates matching fields.</p></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -2152,16 +2171,18 @@ $("btnAddRow").onclick=()=>{ snapshot(true); addLeg(); };
 $("btnGen").onclick=generateNavlog;
 $("btnPrint").onclick=()=>{ generateNavlog(); prepareForPrint(); setTimeout(()=>window.print(),120); };
 
-/* ---------- diagram modal ---------- */
-(()=>{
-  const overlay=$("diagramOverlay");
+/* ---------- modals (diagram / simple guide) ---------- */
+function bindModal(triggerId, overlayId, closeId){
+  const overlay=$(overlayId);
   const openModal=()=>overlay.classList.add("show");
   const closeModal=()=>overlay.classList.remove("show");
-  $("btnDiagram").addEventListener("click",openModal);
-  $("diagramClose").addEventListener("click",closeModal);
+  $(triggerId).addEventListener("click",openModal);
+  $(closeId).addEventListener("click",closeModal);
   overlay.addEventListener("click",e=>{ if(e.target===overlay) closeModal(); });
   document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&overlay.classList.contains("show")) closeModal(); });
-})();
+}
+bindModal("btnDiagram","diagramOverlay","diagramClose");
+bindModal("btnGuide","guideOverlay","guideClose");
 
 /* ---------- collapsible panels ---------- */
 document.querySelectorAll(".panel.collapsible").forEach(panel=>{
