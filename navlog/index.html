@@ -117,12 +117,27 @@ hide_hero: true
   .poh-note{font-size:13px;color:var(--slate);margin:0 0 10px}
   #pohPanel .grid{gap:10px}
   @media screen and (max-width:720px){#pohPanel .grid{grid-template-columns:1fr !important}}
-  #guidePanel .grid{gap:10px}
-  @media screen and (max-width:720px){#guidePanel .grid{grid-template-columns:1fr !important}}
-  .guide-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--line-strong);border-radius:8px}
-  .guide-item .ico{flex-shrink:0;width:22px;height:22px;font-size:12px;margin-left:0;margin-top:1px;cursor:default}
-  .guide-title{font-size:12px;font-weight:800;color:var(--ink);margin:0 0 2px}
-  .guide-desc{font-size:11.5px;color:var(--slate);line-height:1.45;margin:0}
+  .section-help-body{font-size:13.5px;color:var(--ink);line-height:1.6}
+  .section-help-body p{margin:0 0 12px}
+  .section-help-body ul{margin:0 0 12px;padding-left:18px}
+  .section-help-body li{margin-bottom:6px;color:var(--slate)}
+  .section-help-body li strong{color:var(--ink)}
+  .section-help-body code{font-family:var(--mono);font-size:12px;background:#f0f2f5;border-radius:3px;padding:1px 5px;color:var(--ink)}
+  .section-help-body p:last-child,.section-help-body ul:last-child{margin-bottom:0}
+  .inline-ico{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
+    width:18px;height:18px;padding:0;margin:0 1px;border-radius:5px;vertical-align:-4px;
+    -webkit-appearance:none;appearance:none;outline:none;font:inherit}
+  .inline-ico svg{width:10px;height:10px}
+  .inline-ico.neutral{background:var(--panel);border:1px solid var(--line-strong);color:var(--slate)}
+  .inline-ico.doc{background:#fff;border:1.5px solid var(--blue);color:var(--blue)}
+  .inline-ico.accent{background:var(--blue);border:1px solid var(--blue);color:#fff}
+  .inline-ico.accent svg{width:11px;height:11px}
+  button.inline-ico{cursor:pointer}
+  button.inline-ico.doc:hover,button.inline-ico.doc:focus,button.inline-ico.doc:active{background:#e3f6ff;color:var(--blue)}
+  button.inline-ico.doc:focus-visible{box-shadow:0 0 0 2px var(--blue)}
+  .legend-swatch{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px;vertical-align:1px}
+  .inline-btn{display:inline-block;background:var(--blue);color:#fff;font-weight:700;font-size:11px;
+    padding:2px 8px;border-radius:6px;letter-spacing:.02em;vertical-align:1px}
 
   /* ---- panels ---- */
   .panel{
@@ -153,6 +168,16 @@ hide_hero: true
   .panel.collapsible.collapsed > .head{border-bottom:none;border-radius:14px}
   .panel.collapsible.collapsed > .head .chev{transform:rotate(-90deg)}
   .panel.collapsible.collapsed > .body{display:none}
+  .head-help{
+    display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
+    width:20px;height:20px;padding:0;margin:0;border-radius:5px;
+    -webkit-appearance:none;appearance:none;outline:none;
+    background:#fff;border:1.5px solid var(--blue);color:var(--blue);cursor:pointer;
+    transition:background .12s ease;
+  }
+  .head-help svg{width:11px;height:11px}
+  .head-help:hover,.head-help:focus,.head-help:active{background:#e3f6ff;color:var(--blue)}
+  .head-help:focus-visible{box-shadow:0 0 0 2px var(--blue)}
   .panel > .body{padding:16px}
 
   /* ---- field grid ---- */
@@ -746,14 +771,15 @@ hide_hero: true
       <span class="tail">CROSS&nbsp;COUNTRY&nbsp;PLANNER</span>
     </div>
     <div class="toolbar noprint">
+      <button class="btn" id="btnSample">SAMPLE</button>
+      <button class="btn-icon accent" id="btnReset" title="Clear">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
+      </button>
       <button class="btn-icon" id="btnUndo" title="Undo" disabled>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>
       </button>
       <button class="btn-icon" id="btnRedo" title="Redo" disabled>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14l5-5-5-5"/><path d="M20 9H9.5a5.5 5.5 0 0 0 0 11H13"/></svg>
-      </button>
-      <button class="btn-icon" id="btnReset" title="Clear">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
       </button>
       <button class="btn-icon" id="btnImportCsv" title="Import CSV">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
@@ -761,15 +787,28 @@ hide_hero: true
       <button class="btn-icon" id="btnExportCsv" title="Export CSV">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       </button>
-      <button class="btn-icon light" id="btnGuide" title="Simple Guide">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      <button class="btn-icon light" id="btnDiagram" title="Show field relationship diagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>
       </button>
-      <button class="btn-icon accent" id="btnDiagram" title="Show field relationship diagram">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
-      </button>
-      <button class="btn" id="btnSample">SAMPLE</button>
     </div>
   </div></header>
+
+  <!-- GUIDE -->
+  <section class="panel noprint collapsible" id="guidePanel">
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Guide</h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
+    <div class="body">
+      <div class="section-help-body">
+        <p>Work through the sections from top to bottom, one at a time — that's the fastest way to build a complete VFR cross-country plan without getting lost.</p>
+        <ul>
+          <li>The header's Diagram icon <button type="button" class="inline-ico doc" id="guideDiagramTrigger" title="Show field relationship diagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg></button> shows how the input values relate to each other (click it to open) — <span class="legend-swatch" style="background:#ff33ff"></span>Pink = POH, <span class="legend-swatch" style="background:#0000ff"></span>Blue = Weather, <span class="legend-swatch" style="background:#9a33ff"></span>Purple = Compute, matching the tooltip colors.</li>
+          <li><strong>Tooltips</strong> — <span class="ico poh" style="margin-left:0">P</span> check the POH (written against the PA-28-161), <span class="ico wx">W</span> pull the value from weather sources, <span class="ico cal">C</span> a value you need to compute yourself (usually with a CX-3 or E6B).</li>
+          <li>Click <span class="inline-btn">SAMPLE</span> in the header to see a filled-in example, or the eraser icon <span class="inline-ico accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg></span> to clear everything.</li>
+          <li>Every section has a document icon <span class="inline-ico doc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span> next to its header — click it for a detailed guide on how to use that section.</li>
+          <li><strong>Data storage</strong> — there's no permanent save, so you could lose everything you've entered. To keep a plan, use the export icon <span class="inline-ico neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span> to save it as a file on your device, and the import icon <span class="inline-ico neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></span> to load a saved file back in.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
   <!-- POH -->
   <section class="panel noprint collapsible" id="pohPanel">
@@ -814,7 +853,7 @@ hide_hero: true
 
   <!-- META DATA -->
   <section class="panel collapsible" id="metaPanel">
-    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Meta Data</h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Meta Data</h2><button class="head-help" data-help="meta" title="How to use this section" aria-label="How to use this section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div class="grid cols-5">
         <div class="field"><label>Date</label><input type="text" id="metaDate" readonly inputmode="none" autocomplete="off" placeholder="Select date"></div>
@@ -836,7 +875,7 @@ hide_hero: true
 
   <!-- CRUISE / POH -->
   <section class="panel collapsible" id="cruisePanel">
-    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Cruise Data</h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Cruise Data</h2><button class="head-help" data-help="cruise" title="How to use this section" aria-label="How to use this section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div class="grid">
         <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip">- VFR/IFR cruising altitude rule<br>- MEF (Maximum Elevation Figure)<br>- Airspace<br>- Wind (tailwind preferred)<br>- Cloud clearance<br>- Icing<br>- Turbulence<br>- Aircraft performance<br>- Terrain<br>- Oxygen requirement</span></span> Cruise ALT <span class="unit">ft</span></label><input id="alt" inputmode="decimal" placeholder="5500"></div>
@@ -857,6 +896,7 @@ hide_hero: true
     <div class="head">
       <span class="head-title" role="button" tabindex="0" aria-expanded="true">
         <h2>Navigation Data</h2>
+        <button class="head-help" data-help="nav" title="How to use this section" aria-label="How to use this section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button>
         <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
       </span>
     </div>
@@ -944,6 +984,7 @@ hide_hero: true
     <div class="head">
       <span class="head-title" role="button" tabindex="0" aria-expanded="true">
         <h2>Nav Log</h2>
+        <button class="head-help" data-help="navlog" title="How to use this section" aria-label="How to use this section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button>
         <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
       </span>
     </div>
@@ -954,7 +995,7 @@ hide_hero: true
 
   <!-- FUEL RESERVES -->
   <section class="panel collapsible" id="fuelPanel">
-    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Fuel<span class="head-unit">gallon</span></h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Fuel<span class="head-unit">gallon</span></h2><button class="head-help" data-help="fuel" title="How to use this section" aria-label="How to use this section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div class="totals">
         <div class="t"><div class="tl">Flight</div><div class="tv"><span id="fuelSumFlight">—</span><span class="u">gal</span></div></div>
@@ -977,6 +1018,7 @@ hide_hero: true
     <div class="head">
       <span class="head-title" role="button" tabindex="0" aria-expanded="true">
         <h2>Weight &amp; Balance</h2>
+        <button class="head-help" data-help="wb" title="How to use this section" aria-label="How to use this section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button>
         <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
       </span>
       <button class="btn ghost noprint" id="wbClear">Clear W&amp;B</button>
@@ -1061,7 +1103,7 @@ hide_hero: true
 
   <!-- TAKEOFF & LANDING DATA -->
   <section class="panel collapsible" id="tlPanel">
-    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Takeoff & Landing Performance</h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Takeoff & Landing Performance</h2><button class="head-help" data-help="tl" title="How to use this section" aria-label="How to use this section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div id="tlPrintView" class="tl-print-view"></div>
       <div class="tl-db-note">Airport DB updated Aug 14, 2026</div>
@@ -1166,32 +1208,14 @@ hide_hero: true
   </div>
 </div>
 
-<div class="modal-overlay noprint" id="guideOverlay">
-  <div class="modal-box guide" role="dialog" aria-modal="true" aria-label="Simple guide">
-    <button class="modal-close" id="guideClose" title="Close" aria-label="Close">
+<div class="modal-overlay noprint" id="sectionHelpOverlay">
+  <div class="modal-box guide" role="dialog" aria-modal="true" aria-labelledby="sectionHelpTitle">
+    <button class="modal-close" id="sectionHelpClose" title="Close" aria-label="Close">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
     <div class="modal-scroll">
-      <h2 class="modal-title">Simple Guide</h2>
-      <p class="poh-note">Small icons next to field labels tell you where that value comes from. Hover (or tap) any icon in the app for the full detail.</p>
-      <div class="grid cols-4">
-        <div class="guide-item">
-          <span class="ico">i</span>
-          <div><div class="guide-title">Info</div><p class="guide-desc">General explanation or definition for the field.</p></div>
-        </div>
-        <div class="guide-item">
-          <span class="ico poh">P</span>
-          <div><div class="guide-title">POH</div><p class="guide-desc">Look this up in your aircraft's Pilot Operating Handbook (POH).</p></div>
-        </div>
-        <div class="guide-item">
-          <span class="ico wx">W</span>
-          <div><div class="guide-title">Weather</div><p class="guide-desc">Pull this from a weather source — METAR/TAF, Winds Aloft, Prog Charts (e.g. ForeFlight, Aviation Weather).</p></div>
-        </div>
-        <div class="guide-item">
-          <span class="ico cal">C</span>
-          <div><div class="guide-title">Calculator</div><p class="guide-desc">Work this out on a flight computer (E6B/CX-3); this app also auto-calculates matching fields.</p></div>
-        </div>
-      </div>
+      <h2 class="modal-title" id="sectionHelpTitle"></h2>
+      <div id="sectionHelpBody" class="section-help-body"></div>
     </div>
   </div>
 </div>
@@ -2181,7 +2205,7 @@ function expandPanel(id){
 $("btnGen").onclick=()=>{ expandPanel("navlogPanel"); generateNavlog(); };
 $("btnPrint").onclick=()=>{ generateNavlog(); prepareForPrint(); setTimeout(()=>window.print(),120); };
 
-/* ---------- modals (diagram / simple guide) ---------- */
+/* ---------- modals (diagram / per-section help) ---------- */
 function bindModal(triggerId, overlayId, closeId){
   const overlay=$(overlayId);
   const openModal=()=>overlay.classList.add("show");
@@ -2192,7 +2216,95 @@ function bindModal(triggerId, overlayId, closeId){
   document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&overlay.classList.contains("show")) closeModal(); });
 }
 bindModal("btnDiagram","diagramOverlay","diagramClose");
-bindModal("btnGuide","guideOverlay","guideClose");
+$("guideDiagramTrigger").addEventListener("click",e=>{ e.preventDefault(); $("diagramOverlay").classList.add("show"); e.currentTarget.blur(); });
+
+const SECTION_HELP={
+  meta:{
+    title:"Meta Data",
+    body:`<p>Basic flight identification and your route — used elsewhere in the app to look up airport data and build exports.</p>
+    <ul>
+      <li><strong>Date / Time (UTC)</strong> — planned departure date and Zulu time. Time auto-formats as you type: <code>1600</code> becomes <code>16:00</code>.</li>
+      <li><strong>Departure / Destination / Alternate</strong> — ICAO/FAA airport codes (auto-uppercased). These drive the elevation and runway lookups used in Takeoff &amp; Landing Performance.</li>
+      <li><strong>Routes</strong> — GPS lat/lon waypoints (e.g. <code>42.31/-72.58</code>) separated by spaces, ordered from departure to destination. Needed for Generate Google Earth; leave it blank and the export falls back to a straight line between Departure and Destination.</li>
+    </ul>`
+  },
+  cruise:{
+    title:"Cruise Data",
+    body:`<p>Your planned cruise performance — used to automatically compute Pressure Altitude (PA) and Calibrated Airspeed (CAS).</p>
+    <ul>
+      <li><strong>Cruise ALT / Altimeter / OAT</strong> — from your flight plan, the current altimeter setting (inHg, 27.00–32.00), and outside air temperature. Together these calculate PA.</li>
+      <li><strong>GPH / RPM / TAS</strong> — read off your POH's cruise performance tables for the power setting you plan to fly.</li>
+      <li><strong>PA / CAS</strong> — calculated automatically once the fields above are filled in. You don't need to enter these yourself.</li>
+    </ul>`
+  },
+  nav:{
+    title:"Navigation Data",
+    body:`<p>Leg-by-leg route planning — the core table the rest of the nav log is built from.</p>
+    <ul>
+      <li>For each checkpoint, enter <strong>VOR / CRS / Altitude / Distance / Magnetic Course / Variation / Deviation / TAS / Wind</strong>, taken from your sectional chart, POH performance data, and weather briefing.</li>
+      <li><strong>TC, WCA, GS, MH, CH, ETE, Fuel</strong> are calculated automatically as you type.</li>
+      <li>Use <strong>+ Add Leg</strong> to insert more checkpoints, and drag the grip handle (⠿) to reorder rows.</li>
+      <li>Once your legs are filled in, press <strong>Generate Nav Log</strong> at the bottom to build the printable summary in the Nav Log section below.</li>
+    </ul>`
+  },
+  navlog:{
+    title:"Nav Log",
+    body:`<p>An auto-generated, printable nav log — there's nothing to type directly in this section.</p>
+    <ul>
+      <li>Built from your Navigation Data, Cruise Data, Fuel, and Meta Data entries.</li>
+      <li>Press <strong>Generate Nav Log</strong> (at the bottom of Navigation Data) any time you update your route to refresh this table.</li>
+      <li>Use <strong>Print / Download PDF</strong> at the bottom of the page for a kneeboard-ready copy.</li>
+    </ul>`
+  },
+  fuel:{
+    title:"Fuel",
+    body:`<p>Fuel planning and reserves for the flight.</p>
+    <ul>
+      <li><strong>Flight</strong> — pulled automatically from your Navigation Data leg fuel burn. No entry needed.</li>
+      <li><strong>Ground / Landing</strong> — allowances for engine start &amp; taxi, and traffic pattern / go-around.</li>
+      <li><strong>Legal Reserve</strong> — your regulatory minimum (14 CFR 91.151 for VFR, 91.167 for IFR).</li>
+      <li><strong>Personal Min</strong> — your own personal reserve minimum, if it's higher than the legal one.</li>
+    </ul>`
+  },
+  wb:{
+    title:"Weight & Balance",
+    body:`<p>Aircraft loading and center-of-gravity check.</p>
+    <ul>
+      <li>Pick your <strong>Aircraft</strong> type and <strong>Callsign</strong> — this sets the row layout and CG envelope used below.</li>
+      <li><strong>Basic Empty Weight</strong> — from your aircraft's current weight &amp; balance record, not the sample POH.</li>
+      <li>Enter the weight for each occupant/baggage row; <strong>Arm</strong> is fixed per aircraft and <strong>Moment</strong> is calculated for you.</li>
+      <li><strong>Fuel weight</strong> and <strong>Total Loaded Airplane</strong> come from your Fuel section entries automatically.</li>
+      <li>The CG graph plots your loaded CG against the aircraft's normal/utility envelope.</li>
+    </ul>`
+  },
+  tl:{
+    title:"Takeoff & Landing Performance",
+    body:`<p>Density altitude and runway performance at Departure, Destination, and Alternate.</p>
+    <ul>
+      <li><strong>Altimeter / OAT / Wind Dir / Wind Spd</strong> — from current weather (METAR/TAF) for each airport.</li>
+      <li><strong>Runway</strong> — pick from the airport's available runways; Length and Surface fill in automatically.</li>
+      <li><strong>PA, DA, Headwind, Crosswind</strong> are all calculated for you.</li>
+      <li><strong>Takeoff/Landing Distance</strong> — look these up in your POH's performance charts using the calculated density altitude.</li>
+    </ul>`
+  }
+};
+(()=>{
+  const overlay=$("sectionHelpOverlay");
+  const openHelp=key=>{
+    const info=SECTION_HELP[key];
+    if(!info) return;
+    $("sectionHelpTitle").textContent=info.title;
+    $("sectionHelpBody").innerHTML=info.body;
+    overlay.classList.add("show");
+  };
+  const closeHelp=()=>overlay.classList.remove("show");
+  document.querySelectorAll(".head-help").forEach(btn=>{
+    btn.addEventListener("click",e=>{ e.preventDefault(); e.stopPropagation(); openHelp(btn.dataset.help); btn.blur(); });
+  });
+  $("sectionHelpClose").addEventListener("click",closeHelp);
+  overlay.addEventListener("click",e=>{ if(e.target===overlay) closeHelp(); });
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape"&&overlay.classList.contains("show")) closeHelp(); });
+})();
 
 /* ---------- collapsible panels ---------- */
 document.querySelectorAll(".panel.collapsible").forEach(panel=>{
