@@ -737,10 +737,10 @@ hide_hero: true
     <div class="body">
       <div class="grid cols-5">
         <div class="field"><label>Date</label><input type="text" id="metaDate" readonly inputmode="none" autocomplete="off" placeholder="Select date"></div>
-        <div class="field"><label>Time <span class="unit">UTC</span></label><input id="metaTime" placeholder="HH:mm"></div>
-        <div class="field"><label>Departure</label><input id="metaDep" placeholder="7B2"></div>
-        <div class="field"><label>Destination</label><input id="metaDst" placeholder="KLCI"></div>
-        <div class="field"><label>Alternate</label><input id="metaAlt" placeholder=""></div>
+        <div class="field"><label>Time <span class="unit">UTC</span></label><input id="metaTime" inputmode="numeric" pattern="[0-9]*" maxlength="5" placeholder="HH:mm"></div>
+        <div class="field"><label>Departure</label><input id="metaDep" autocapitalize="characters" autocomplete="off" placeholder="7B2"></div>
+        <div class="field"><label>Destination</label><input id="metaDst" autocapitalize="characters" autocomplete="off" placeholder="KLCI"></div>
+        <div class="field"><label>Alternate</label><input id="metaAlt" autocapitalize="characters" autocomplete="off" placeholder=""></div>
       </div>
       <div class="field" style="margin-top:14px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
@@ -878,7 +878,7 @@ hide_hero: true
         <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip">Engine Start / Taxi</span></span> Ground</label><input id="fuelGround" inputmode="decimal" placeholder="2.0"></div>
         <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip">Traffic Pattern / Go-Around</span></span> Landing</label><input id="fuelLanding" inputmode="decimal" placeholder="2.0"></div>
         <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip"><a href="https://www.ecfr.gov/current/title-14/section-91.151" target="_blank" rel="noopener">14 CFR 91.151</a> (VFR) <br/>- day +30 min<br/>- night +45 min<br><a href="https://www.ecfr.gov/current/title-14/section-91.167" target="_blank" rel="noopener">14 CFR 91.167</a> (IFR)<br/>- dest, alter, +45 min</span></span> Legal Reserve</label><input id="fuelLegal" inputmode="decimal" placeholder="4.4"></div>
-        <div class="field"><label>Personal Minimum</label><input id="fuelPersonal" inputmode="decimal" placeholder="4.4"></div>
+        <div class="field"><label>Personal Min</label><input id="fuelPersonal" inputmode="decimal" placeholder="4.4"></div>
       </div>
       <div id="fuelPrintView" class="fuel-print-view"></div>
     </div>
@@ -1951,6 +1951,40 @@ function bindAll(){
   document.querySelectorAll('input[inputmode="numeric"]').forEach(el=>{
     el.addEventListener("beforeinput",e=>{if(e.data&&/[^0-9]/.test(e.data))e.preventDefault()});
     el.addEventListener("input",()=>{const v=el.value,c=v.replace(/[^0-9]/g,"");if(v!==c)el.value=c});
+  });
+  // Altimeter: typing 4 digits with no "." auto-inserts one (2992 -> 29.92); "." still typeable directly
+  ["altimeter","tl_dep_altimeter","tl_dst_altimeter","tl_alt_altimeter"].forEach(id=>{
+    $(id).addEventListener("input",()=>{
+      const el=$(id);
+      if(el.value.includes(".")) return;
+      const digits=el.value.replace(/[^0-9]/g,"");
+      if(digits.length===4) el.value=digits.slice(0,2)+"."+digits.slice(2);
+    });
+  });
+  // Time: digits only, auto-format HHmm -> HH:mm as the 4th digit is typed
+  (()=>{
+    const el=$("metaTime");
+    el.addEventListener("input",()=>{
+      const digits=el.value.replace(/[^0-9]/g,"").slice(0,4);
+      el.value = digits.length===4 ? digits.slice(0,2)+":"+digits.slice(2) : digits;
+    });
+    el.addEventListener("blur",()=>{
+      let digits=el.value.replace(/[^0-9]/g,"").slice(0,4);
+      if(digits.length===1||digits.length===2) digits=digits.padStart(2,"0")+"00";
+      else if(digits.length===3) digits="0"+digits;
+      el.value = digits ? digits.slice(0,2)+":"+digits.slice(2) : "";
+      if(!state.meta) state.meta={};
+      state.meta.time=el.value; save();
+    });
+  })();
+  // Departure/Destination/Alternate: letters & digits only, auto-uppercase
+  ["metaDep","metaDst","metaAlt"].forEach(id=>{
+    const el=$(id);
+    el.addEventListener("beforeinput",e=>{if(e.data&&/[^a-zA-Z0-9]/.test(e.data))e.preventDefault()});
+    el.addEventListener("input",()=>{
+      const v=el.value,c=v.replace(/[^a-zA-Z0-9]/g,"").toUpperCase();
+      if(v!==c) el.value=c;
+    });
   });
   META_FIELDS.forEach(([id,key])=>{
     $(id).addEventListener("input",()=>{ snapshot(); if(!state.meta) state.meta={}; state.meta[key]=$(id).value; save(); if(key==="dep"||key==="dst"||key==="alt") renderTL(); if(id==="metaRoute") autoResize($(id)); });
