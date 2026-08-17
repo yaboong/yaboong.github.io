@@ -760,13 +760,13 @@ hide_hero: true
       <div class="grid">
         <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip">- VFR/IFR cruising altitude rule<br>- MEF (Maximum Elevation Figure)<br>- Airspace<br>- Wind (tailwind preferred)<br>- Cloud clearance<br>- Icing<br>- Turbulence<br>- Aircraft performance<br>- Terrain<br>- Oxygen requirement</span></span> Cruise ALT <span class="unit">ft</span></label><input id="alt" inputmode="decimal" placeholder="5500"></div>
         <div class="field"><label><span class="ico rich wx" tabindex="0">W<span class="tip">Prog charts isobar (Aviation Weather)</span></span> Altimeter <span class="unit">inHg</span></label><input id="altimeter" inputmode="decimal" placeholder="29.92"><div class="err" id="altErr">Use inHg (27.00–32.00), not hPa/mb</div></div>
-        <div class="field"><label><span class="ico rich cal" tabindex="0">C<span class="tip">Pressure Altitude</span></span> PA <span class="unit">ft</span></label><input id="outPA" readonly tabindex="-1" placeholder="—" class="blue"></div>
+        <div class="field"><label><span class="ico rich cal" tabindex="0">C<span class="tip">Pressure Altitude<br><br>*required: Cruise Altitude/Altimeter</span></span> PA <span class="unit">ft</span></label><input id="outPA" readonly tabindex="-1" placeholder="—" class="blue"></div>
         <div class="field"><label><span class="ico rich wx" tabindex="0">W<span class="tip">Outside Air Temperature<br>- Winds Aloft (ForeFlight)<br>- Wind/temp data (Aviation Weather)</span></span> OAT <span class="unit">°C</span></label><input id="oat" inputmode="decimal" placeholder="9"></div>
         <div class="field"><label><span class="ico rich poh" tabindex="0">P<span class="tip">Fuel Consumption (Gallon Per Hour)<br>- POH 5-18 Engine Performance<br>- Best power 65% recommended</span></span> GPH</label><input id="gph" inputmode="decimal" placeholder="8.8"></div>
-        <div class="field"><label><span class="ico rich poh" tabindex="0">P<span class="tip">Revolution Per Minute<br>- Cruise power setting<br>- POH 5-18 Engine Performance<br>- Best power 65% recommended</span></span> RPM</label><input id="rpm" inputmode="numeric" placeholder="2450"></div>
-        <div class="field"><label><span class="ico rich poh" tabindex="0">P<span class="tip">True Airspeed<br>- POH 5-22 Best Power Cruise Performance<br>- 65% recommended</span></span> TAS <span class="unit">kt</span></label><input id="tas" inputmode="decimal" placeholder="105"></div>
-        <div class="field"><label><span class="ico rich cal" tabindex="0">C<span class="tip">Calibrated Airspeed<br>- Flight computer (CX3/E6B)</span></span> CAS <span class="unit">kt</span></label><input id="outCAS" readonly tabindex="-1" placeholder="—" class="blue"></div>
-        <div class="field"><label><span class="ico rich poh" tabindex="0">P<span class="tip">Indicated Airspeed<br>- POH 5-11 Airspeed System Calibration<br>- Convert CAS to IAS</span></span> IAS <span class="unit">kt</span></label><input id="ias" inputmode="decimal" placeholder="95"></div>
+        <div class="field"><label><span class="ico rich poh" tabindex="0">P<span class="tip">Cruise Power Setting<br>- POH 5-18 Engine Performance<br>- Best power 65% recommended<br><br>*required: Cruise OAT/PA</span></span> RPM</label><input id="rpm" inputmode="numeric" placeholder="2450"></div>
+        <div class="field"><label><span class="ico rich poh" tabindex="0">P<span class="tip">True Airspeed<br>- POH 5-22 Best Power Cruise Performance<br>- 65% recommended<br><br>*required: Cruise OAT/PA, Power setting</span></span> TAS <span class="unit">kt</span></label><input id="tas" inputmode="decimal" placeholder="105"></div>
+        <div class="field"><label><span class="ico rich cal" tabindex="0">C<span class="tip">Calibrated Airspeed<br>- Flight computer (CX3/E6B)<br><br>*required: Cruise OAT/PA/TAS</span></span> CAS <span class="unit">kt</span></label><input id="outCAS" readonly tabindex="-1" placeholder="—" class="blue"></div>
+        <div class="field"><label><span class="ico rich poh" tabindex="0">P<span class="tip">Indicated Airspeed<br>- POH 5-11 Airspeed System Calibration<br>- Convert CAS to IAS<br><br>*required: CAS</span></span> IAS <span class="unit">kt</span></label><input id="ias" inputmode="decimal" placeholder="95"></div>
       </div>
     </div>
   </section>
@@ -819,18 +819,16 @@ hide_hero: true
 
       <div class="nav-footnote">
         <div class="nav-footnote-col">
-          <h4><span class="ico rich poh" tabindex="0">P<span class="tip">POH 5-19 Climb Performance</span></span> On-course Checkpoint</h4>
+          <h4><span class="ico rich poh" tabindex="0">P<span class="tip">POH 5-19 Climb Performance<br><br>*required: Cruise OAT/PA</span></span> On-course Checkpoint</h4>
           <ul>
             <li>3–5 NM from Departure</li>
-            <li>POH 5-19 Climb Performance → fpm</li>
-            <li>fpm * ETE → ALT</li>
+            <li>Climb FPM * ETE → ALT</li>
           </ul>
         </div>
         <div class="nav-footnote-col">
-          <h4><span class="ico rich poh" tabindex="0">P<span class="tip">POH 5-20 Fuel, Time and Distance to Climb</span></span> ToC (Top of Climb)</h4>
+          <h4><span class="ico rich poh" tabindex="0">P<span class="tip">POH 5-20 Fuel, Time and Distance to Climb<br><br>*required: Cruise OAT/PA, Departure OAT/PA</span></span> ToC (Top of Climb)</h4>
           <ul>
             <li>Climb TAS: 79 kts</li>
-            <li>POH 5-20 Fuel, Time and Distance to Climb</li>
           </ul>
         </div>
         <div class="nav-footnote-col">
@@ -1046,11 +1044,11 @@ hide_hero: true
       </div>
       <div class="tl-dist-row">
         <div class="tl-dist-field">
-          <label><span class="ico rich poh" tabindex="0">P<span class="tip">POH 5-14 Normal Short Field Takeoff Distance - No Obstacle</span></span> Takeoff Distance <span class="u3">ft</span></label>
+          <label><span class="ico rich poh" tabindex="0">P<span class="tip">POH 5-14 Normal Short Field Takeoff Distance - No Obstacle<br><br>*required: OAT, Airport PA, Weight, Wind (head/tail)</span></span> Takeoff Distance <span class="u3">ft</span></label>
           <input id="tl_takeoffDist" inputmode="decimal">
         </div>
         <div class="tl-dist-field">
-          <label><span class="ico rich poh" tabindex="0">P<span class="tip">POH 5-32 Landing Performance</span></span> Landing Distance <span class="u3">ft</span></label>
+          <label><span class="ico rich poh" tabindex="0">P<span class="tip">POH 5-32 Landing Performance<br><br>*required: OAT, Airport PA, Wind (head/tail)</span></span> Landing Distance <span class="u3">ft</span></label>
           <input id="tl_landingDist" inputmode="decimal">
         </div>
       </div>
