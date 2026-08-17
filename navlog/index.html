@@ -121,6 +121,8 @@ hide_hero: true
   .section-help-body p{margin:0 0 12px}
   .section-help-body ul{margin:0 0 12px;padding-left:18px}
   .section-help-body li{margin-bottom:6px;color:var(--slate)}
+  .section-help-body li ul{margin:6px 0 0;padding-left:16px}
+  .section-help-body li ul li{margin-bottom:3px}
   .section-help-body li strong{color:var(--ink)}
   .section-help-body code{font-family:var(--mono);font-size:12px;background:#f0f2f5;border-radius:3px;padding:1px 5px;color:var(--ink)}
   .section-help-body p:last-child,.section-help-body ul:last-child{margin-bottom:0}
@@ -800,11 +802,23 @@ hide_hero: true
       <div class="section-help-body">
         <p>Work through the sections from top to bottom, one at a time — that's the fastest way to build a complete VFR cross-country plan without getting lost.</p>
         <ul>
-          <li>The header's Diagram icon <button type="button" class="inline-ico doc" id="guideDiagramTrigger" title="Show field relationship diagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg></button> shows how the input values relate to each other (click it to open) — <span class="legend-swatch" style="background:#ff33ff"></span>Pink = POH, <span class="legend-swatch" style="background:#0000ff"></span>Blue = Weather, <span class="legend-swatch" style="background:#9a33ff"></span>Purple = Compute, matching the tooltip colors.</li>
-          <li><strong>Tooltips</strong> — <span class="ico poh" style="margin-left:0">P</span> check the POH (written against the PA-28-161), <span class="ico wx">W</span> pull the value from weather sources, <span class="ico cal">C</span> a value you need to compute yourself (usually with a CX-3 or E6B).</li>
-          <li>Click <span class="inline-btn">SAMPLE</span> in the header to see a filled-in example, or the eraser icon <span class="inline-ico accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg></span> to clear everything.</li>
+          <li><strong>Header's Diagram </strong> <button type="button" class="inline-ico doc" id="guideDiagramTrigger" title="Show field relationship diagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg></button> icon: shows diagram for input values (click), colors match the tooltip colors below.
+            <ul>
+              <li><span class="legend-swatch" style="background:#ff33ff"></span>Pink = POH</li>
+              <li><span class="legend-swatch" style="background:#0000ff"></span>Blue = Weather</li>
+              <li><span class="legend-swatch" style="background:#9a33ff"></span>Purple = Compute</li>
+            </ul>
+          </li>
+          <li><strong>Tooltips</strong>: hover any of these icons (tap on mobile) for a detailed explanation of exactly where to pull that value from.
+            <ul>
+              <li><span class="ico poh" style="margin-left:0">P</span> check the POH (written against the PA-28-161)</li>
+              <li><span class="ico wx" style="margin-left:0">W</span> check the Weather</li>
+              <li><span class="ico cal" style="margin-left:0">C</span> Compute (CX-3/E6B)</li>
+            </ul>
+          </li>
+          <li><strong>Header's</strong> <span class="inline-btn">SAMPLE</span> icon: Load sample data, (click <span class="inline-ico accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg></span> to clear everything)</li>
+          <li><strong>Data storage</strong>: saved to this browser only, not a permanent or shared store — use export <span class="inline-ico neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span> / import <span class="inline-ico neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></span> to save or load a plan as a file.</li>
           <li>Every section has a document icon <span class="inline-ico doc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span> next to its header — click it for a detailed guide on how to use that section.</li>
-          <li><strong>Data storage</strong> — there's no permanent save, so you could lose everything you've entered. To keep a plan, use the export icon <span class="inline-ico neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span> to save it as a file on your device, and the import icon <span class="inline-ico neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></span> to load a saved file back in.</li>
         </ul>
       </div>
     </div>
