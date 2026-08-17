@@ -356,6 +356,7 @@ hide_hero: true
   .nav-footnote-col ul{margin:0;padding:0 0 0 13px;list-style:disc}
   .nav-footnote-col li{font-size:10.5px;color:var(--slate);line-height:1.7;font-family:var(--ui)}
   .nav-footnote-col code{font-family:var(--mono);font-size:10px;background:#f0f2f5;border-radius:3px;padding:1px 4px;color:var(--ink)}
+  .gen-navlog-row{display:flex;justify-content:center;margin-top:18px;padding-top:18px;border-top:1px solid var(--line)}
 
   /* ---- totals ---- */
   .totals{display:flex;gap:0;flex-wrap:wrap;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:0 0 18px}
@@ -931,6 +932,10 @@ hide_hero: true
           </ul>
         </div>
       </div>
+
+      <div class="gen-navlog-row noprint">
+        <button class="btn primary" id="btnGen">Generate Nav Log</button>
+      </div>
     </div>
   </section>
 
@@ -941,9 +946,6 @@ hide_hero: true
         <h2>Nav Log</h2>
         <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
       </span>
-      <div class="toolbar noprint">
-        <button class="btn primary" id="btnGen">Generate Nav Log</button>
-      </div>
     </div>
     <div class="body">
       <div id="navlogWrap"><p class="empty-note">Press “Generate Nav Log” to build a printable log here.</p></div>
@@ -2168,7 +2170,15 @@ $("csvFileInput").addEventListener("change",e=>{
   reader.readAsText(file,"utf-8");
 });
 $("btnAddRow").onclick=()=>{ snapshot(true); addLeg(); };
-$("btnGen").onclick=generateNavlog;
+function expandPanel(id){
+  const panel=$(id);
+  if(!panel||!panel.classList.contains("collapsible")) return;
+  panel.classList.remove("collapsed");
+  const title=panel.querySelector(".head .head-title");
+  if(title) title.setAttribute("aria-expanded","true");
+  store.set("navlogCollapsed_"+id,"0");
+}
+$("btnGen").onclick=()=>{ expandPanel("navlogPanel"); generateNavlog(); };
 $("btnPrint").onclick=()=>{ generateNavlog(); prepareForPrint(); setTimeout(()=>window.print(),120); };
 
 /* ---------- modals (diagram / simple guide) ---------- */
