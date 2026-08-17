@@ -14,6 +14,12 @@ It all started with one question
 
 <!--more-->
 
+## TL;DR;
+* On a **direct route**, it's often **hard** to find **good checkpoints** for VFR pilotage.
+* Planning a **non-direct route is perfectly fine** — even on the checkride.
+* A good mental picture for a low-wing, left-seat pilot: keep the **checkpoint ~2 NM off your left** and scan past it along the fuel cap.
+* A few extra minutes for more reliable visual references is a solid trade.
+
 ## Which route is actually right?
 ---
 {% include image_caption_href.html title="Direct - 6500ft" caption="Direct - 6500ft" imageurl="/posts_image/2026-08-16/route-7B2-KITH-6500-direct.png" %}
@@ -56,8 +62,6 @@ For a rough position check, up to about 5NM can still work.
 ---
 Finding a "good" checkpoint at reasonable spacing, in a reasonable position, at a reasonable distance, is genuinely hard. If I could always do that, I'd just fly the straight line. But I couldn't — and out in the actual airplane, hunting down the "well, this'll have to do" checkpoint I'd stuck onto a straight route was even harder. That's a big part of why navlog-based cross-country flying always frustrated me.
 
-If I went back to my PPL days and had to build a navigation log again, knowing that a small heading change could get me a much better checkpoint, I wouldn't insist on a perfectly straight route.
-
 ## Don't you not need to fly directly over the checkpoint anyway?
 ---
 True — you don't need to fly exactly over a checkpoint. In fact, in a low-wing airplane, the wing blocks your view straight down, so passing slightly to the side and looking down at an angle actually makes a checkpoint easier to identify than flying right over it. (A high-wing airplane has an open view straight down, so this isn't as much of an issue.)
@@ -67,15 +71,6 @@ If it's fine to pass slightly to the side, couldn't you just keep the straight r
 ## So how far away can a checkpoint be?
 ---
 2NM? Acceptable. 5NM? A little far. 8NM? There's no hard line, but past about 5NM it gets hard to judge drift, and unless visibility is 10+NM you risk wandering off course before you even notice. As above, staying within roughly 1-3 NM of the course, on it or to either side, is the sweet spot.
-
-## My method
----
-For a low-wing PA-28-161, when the terrain sits roughly 3,000-5,000 ft below my cruise altitude, I keep the checkpoint on my left and scan past it using the fuel cap as a reference point — that naturally settles me into about 2NM of spacing, which is my preferred distance.
-
-{% include image_caption_href.html title="Cruise 5500ft, Mt. Monadnock (3169ft) 2NM SE" caption="Cruise 5500ft, Mt. Monadnock (3169ft) 2NM SE" imageurl="/posts_image/2026-08-16/flight-view-mountain-2NM-cockpit.png" %}
-{% include image_caption_href.html title="Cruise 5500ft, KORE (556ft) 2NM SE" caption="Cruise 5500ft, KORE (556ft) 2NM SE" imageurl="/posts_image/2026-08-16/flight-view-KORE-2NM-cockpit.png" %}
-
-Keeping checkpoints on the left side of the course, at reasonable spacing, and as close to the course as possible is hard to pull off with a strictly straight route.
 
 ## Can't I just use a VOR even without GPS?
 ---
@@ -96,9 +91,21 @@ Also true. Dead Reckoning is navigation built on WCA, groundspeed, and ETE calcu
 So you shouldn't rely purely on pilotage, and you shouldn't rely purely on Dead Reckoning either. Dead Reckoning, true to its name, is a "reckoning", and whether you're actually tracking that guess correctly comes down to checking it against what's outside the window, which is pilotage. If all you bring to a checkride is a stack of Dead Reckoning calculations with no visual reference to confirm they're actually panning out, it's hard to show the examiner you're maintaining position awareness.
 
 
+## My method
+---
+For a low-wing PA-28-161, when the terrain sits roughly 3,000-5,000 ft below my cruise altitude, I keep the checkpoint on my left and scan past it using the fuel cap as a reference point — that naturally settles me into about 2NM of spacing, which is my preferred distance.
+
+Keeping checkpoints on the left side of the course, at reasonable spacing, and as close to the course as possible is hard to pull off with a strictly straight route.
+
+> If I went back to my PPL days and had to build a navigation log again, knowing that a small heading change could get me a much better checkpoint, I wouldn't insist on a perfectly straight route.
+
+{% include image_caption_href.html title="Cruise 5500ft, Mt. Monadnock (3169ft) 2NM SE" caption="Cruise 5500ft, Mt. Monadnock (3169ft) 2NM SE" imageurl="/posts_image/2026-08-16/flight-view-mountain-2NM-cockpit.png" %}
+{% include image_caption_href.html title="Cruise 5500ft, KORE (556ft) 2NM SE" caption="Cruise 5500ft, KORE (556ft) 2NM SE" imageurl="/posts_image/2026-08-16/flight-view-KORE-2NM-cockpit.png" %}
+
+
 ## So, in conclusion
 ---
-That's why, when I build a VFR pilotage navigation log, I plan a route around good checkpoints (not direct) even if it costs me a slight heading change, instead of insisting on a straight line.
+When I build a VFR pilotage navigation log, I plan a route around good checkpoints (not direct) even if it costs me a slight heading change, instead of insisting on a straight line.
 
 The actual scenario I drew on my Commercial checkride was 7B2 to KITH. Because of the mountainous terrain, I decided a straight-line route wouldn't let me place good, identifiable checkpoints at reasonable intervals. So instead of flying direct, I planned the route below, flew it on the checkride, and passed without any issues.
 
