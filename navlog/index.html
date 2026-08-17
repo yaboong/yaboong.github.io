@@ -109,6 +109,12 @@ hide_hero: true
   .poh-note{font-size:13px;color:var(--slate);margin:0 0 10px}
   #pohPanel .grid{gap:10px}
   @media screen and (max-width:720px){#pohPanel .grid{grid-template-columns:1fr !important}}
+  #guidePanel .grid{gap:10px}
+  @media screen and (max-width:720px){#guidePanel .grid{grid-template-columns:1fr !important}}
+  .guide-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border:1px solid var(--line-strong);border-radius:8px}
+  .guide-item .ico{flex-shrink:0;width:22px;height:22px;font-size:12px;margin-left:0;margin-top:1px;cursor:default}
+  .guide-title{font-size:12px;font-weight:800;color:var(--ink);margin:0 0 2px}
+  .guide-desc{font-size:11.5px;color:var(--slate);line-height:1.45;margin:0}
 
   /* ---- panels ---- */
   .panel{
@@ -691,11 +697,37 @@ hide_hero: true
     </div>
   </div></header>
 
+  <!-- SIMPLE GUIDE -->
+  <section class="panel noprint" id="guidePanel">
+    <div class="head"><h2>Simple Guide</h2></div>
+    <div class="body">
+      <p class="poh-note">Small icons next to field labels tell you where that value comes from. Hover (or tap) any icon in the app for the full detail.</p>
+      <div class="grid cols-4">
+        <div class="guide-item">
+          <span class="ico">i</span>
+          <div><div class="guide-title">Info</div><p class="guide-desc">General explanation or definition for the field.</p></div>
+        </div>
+        <div class="guide-item">
+          <span class="ico poh">P</span>
+          <div><div class="guide-title">POH</div><p class="guide-desc">Look this up in your aircraft's Pilot Operating Handbook (POH).</p></div>
+        </div>
+        <div class="guide-item">
+          <span class="ico wx">W</span>
+          <div><div class="guide-title">Weather</div><p class="guide-desc">Pull this from a weather source — METAR/TAF, Winds Aloft, Prog Charts (e.g. ForeFlight, Aviation Weather).</p></div>
+        </div>
+        <div class="guide-item">
+          <span class="ico cal">C</span>
+          <div><div class="guide-title">Calculator</div><p class="guide-desc">Work this out on a flight computer (E6B/CX-3); this app also auto-calculates matching fields.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- POH -->
   <section class="panel noprint" id="pohPanel">
     <div class="head"><h2>POH</h2></div>
     <div class="body">
-      <p class="poh-note">POH page references in this planner's tooltips (the <span class="ico poh">P</span> icon) are examples from the PA-28-161 (Piper Warrior II) POH — check your own aircraft's POH for the equivalent section.</p>
+      <p class="poh-note">POH page references in this planner's tooltips are examples from the PA-28-161 (Piper Warrior II) POH — check your own aircraft's POH for the equivalent section.</p>
       <div class="grid cols-4">
         <a class="doc-link" href="https://northamptonairport.com/wp-content/uploads/2016/10/POH-Piper-Warrior-II.pdf" target="_blank" rel="noopener">
           <span class="doc-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
