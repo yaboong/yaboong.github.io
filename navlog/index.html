@@ -125,6 +125,9 @@ hide_hero: true
   .section-help-body li ul li{margin-bottom:3px}
   .section-help-body li strong{color:var(--ink)}
   .section-help-body code{font-family:var(--mono);font-size:12px;background:#f0f2f5;border-radius:3px;padding:1px 5px;color:var(--ink)}
+  .section-help-body a{color:var(--blue)}
+  .section-help-body img{display:block;max-width:100%;border:1px solid var(--line);border-radius:8px;margin:0 0 10px}
+  .section-help-body img:last-child{margin-bottom:0}
   .section-help-body p:last-child,.section-help-body ul:last-child{margin-bottom:0}
   .inline-ico{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
     width:18px;height:18px;padding:0;margin:0 1px;border-radius:5px;vertical-align:-4px;
@@ -172,12 +175,12 @@ hide_hero: true
   .panel.collapsible.collapsed > .body{display:none}
   .head-help{
     display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
-    width:20px;height:20px;padding:0;margin:0;border-radius:5px;
+    height:20px;padding:0 6px;margin:0;border-radius:5px;
     -webkit-appearance:none;appearance:none;outline:none;
     background:#fff;border:1.5px solid var(--blue);color:var(--blue);cursor:pointer;
+    font-family:var(--ui);font-size:9px;font-weight:800;letter-spacing:.06em;
     transition:background .12s ease;
   }
-  .head-help svg{width:11px;height:11px}
   .head-help:hover,.head-help:focus,.head-help:active{background:#e3f6ff;color:var(--blue)}
   .head-help:focus-visible{box-shadow:0 0 0 2px var(--blue)}
   .panel > .body{padding:16px}
@@ -591,7 +594,7 @@ hide_hero: true
 
     /* hide UI chrome, incl. the blog's own site nav/footer */
     header.top,p.sub,.noprint,.ico,.th-ico-ph,.err,.toast,.print-btn-row,#dateCal,
-    .site-navigation,.site-footer{display:none !important}
+    .head-help,.site-navigation,.site-footer{display:none !important}
 
     /* ── Page 1: Nav Log (constrained width = smaller than kneeboard) ── */
     #navlogPanel{
@@ -800,9 +803,8 @@ hide_hero: true
     <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Guide</h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div class="section-help-body">
-        <p>Work through the sections from top to bottom, one at a time — that's the fastest way to build a complete VFR cross-country plan without getting lost.</p>
         <ul>
-          <li><strong>Header's Diagram </strong> <button type="button" class="inline-ico doc" id="guideDiagramTrigger" title="Show field relationship diagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg></button> icon: shows diagram for input values (click), colors match the tooltip colors below.
+          <li><strong>Input Order</strong>:  Enter data in the order shown. Click the <button type="button" class="inline-ico doc" id="guideDiagramTrigger" title="Show field relationship diagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg></button> in Header to see how the values relate. (colors match the tooltip colors below)
             <ul>
               <li><span class="legend-swatch" style="background:#ff33ff"></span>Pink = POH</li>
               <li><span class="legend-swatch" style="background:#0000ff"></span>Blue = Weather</li>
@@ -817,8 +819,9 @@ hide_hero: true
             </ul>
           </li>
           <li><strong>Header's</strong> <span class="inline-btn">SAMPLE</span> icon: Load sample data, (click <span class="inline-ico accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg></span> to clear everything)</li>
-          <li><strong>Data storage</strong>: saved to this browser only, not a permanent or shared store — use export <span class="inline-ico neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span> / import <span class="inline-ico neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></span> to save or load a plan as a file.</li>
-          <li>Every section has a document icon <span class="inline-ico doc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span> next to its header — click it for a detailed guide on how to use that section.</li>
+          <li><strong>Data Storage</strong>: saved to this browser only, not a permanent or shared store — use export <span class="inline-ico neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span> / import <span class="inline-ico neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></span> to save or load a plan as a file.</li>
+          <li><strong>Input Guide</strong>: every section has a <span class="head-help" style="cursor:default">GUIDE</span> button next to its header — click it for a detailed guide on how to use that section.</li>
+          <li>Click the title to collapse/expand completed sections. Try clicking this section's title area.</li>
         </ul>
       </div>
     </div>
@@ -867,7 +870,7 @@ hide_hero: true
 
   <!-- META DATA -->
   <section class="panel collapsible" id="metaPanel">
-    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Meta Data</h2><button class="head-help" data-help="meta" title="How to use this section" aria-label="How to use this section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Meta Data</h2><button class="head-help" data-help="meta" title="How to use this section" aria-label="How to use this section">GUIDE</button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div class="grid cols-5">
         <div class="field"><label>Date</label><input type="text" id="metaDate" readonly inputmode="none" autocomplete="off" placeholder="Select date"></div>
@@ -889,7 +892,7 @@ hide_hero: true
 
   <!-- CRUISE / POH -->
   <section class="panel collapsible" id="cruisePanel">
-    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Cruise Data</h2><button class="head-help" data-help="cruise" title="How to use this section" aria-label="How to use this section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Cruise Data</h2><button class="head-help" data-help="cruise" title="How to use this section" aria-label="How to use this section">GUIDE</button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div class="grid">
         <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip">- VFR/IFR cruising altitude rule<br>- MEF (Maximum Elevation Figure)<br>- Airspace<br>- Wind (tailwind preferred)<br>- Cloud clearance<br>- Icing<br>- Turbulence<br>- Aircraft performance<br>- Terrain<br>- Oxygen requirement</span></span> Cruise ALT <span class="unit">ft</span></label><input id="alt" inputmode="decimal" placeholder="5500"></div>
@@ -910,7 +913,7 @@ hide_hero: true
     <div class="head">
       <span class="head-title" role="button" tabindex="0" aria-expanded="true">
         <h2>Navigation Data</h2>
-        <button class="head-help" data-help="nav" title="How to use this section" aria-label="How to use this section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button>
+        <button class="head-help" data-help="nav" title="How to use this section" aria-label="How to use this section">GUIDE</button>
         <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
       </span>
     </div>
@@ -998,7 +1001,7 @@ hide_hero: true
     <div class="head">
       <span class="head-title" role="button" tabindex="0" aria-expanded="true">
         <h2>Nav Log</h2>
-        <button class="head-help" data-help="navlog" title="How to use this section" aria-label="How to use this section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button>
+        <button class="head-help" data-help="navlog" title="How to use this section" aria-label="How to use this section">GUIDE</button>
         <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
       </span>
     </div>
@@ -1009,7 +1012,7 @@ hide_hero: true
 
   <!-- FUEL RESERVES -->
   <section class="panel collapsible" id="fuelPanel">
-    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Fuel<span class="head-unit">gallon</span></h2><button class="head-help" data-help="fuel" title="How to use this section" aria-label="How to use this section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Fuel<span class="head-unit">gallon</span></h2><button class="head-help" data-help="fuel" title="How to use this section" aria-label="How to use this section">GUIDE</button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div class="totals">
         <div class="t"><div class="tl">Flight</div><div class="tv"><span id="fuelSumFlight">—</span><span class="u">gal</span></div></div>
@@ -1032,7 +1035,7 @@ hide_hero: true
     <div class="head">
       <span class="head-title" role="button" tabindex="0" aria-expanded="true">
         <h2>Weight &amp; Balance</h2>
-        <button class="head-help" data-help="wb" title="How to use this section" aria-label="How to use this section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button>
+        <button class="head-help" data-help="wb" title="How to use this section" aria-label="How to use this section">GUIDE</button>
         <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
       </span>
       <button class="btn ghost noprint" id="wbClear">Clear W&amp;B</button>
@@ -1117,7 +1120,7 @@ hide_hero: true
 
   <!-- TAKEOFF & LANDING DATA -->
   <section class="panel collapsible" id="tlPanel">
-    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Takeoff & Landing Performance</h2><button class="head-help" data-help="tl" title="How to use this section" aria-label="How to use this section"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Takeoff & Landing Performance</h2><button class="head-help" data-help="tl" title="How to use this section" aria-label="How to use this section">GUIDE</button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div id="tlPrintView" class="tl-print-view"></div>
       <div class="tl-db-note">Airport DB updated Aug 14, 2026</div>
@@ -1217,7 +1220,7 @@ hide_hero: true
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
     <div class="modal-scroll">
-      <img id="diagramImg" src="/posts_image/2026-08-17/YB_NAVLOG_DIAGRAM.png" alt="NavLog field relationship diagram">
+      <img id="diagramImg" src="/navlog/images/YB_NAVLOG_DIAGRAM.png" alt="NavLog field relationship diagram">
     </div>
   </div>
 </div>
@@ -2235,20 +2238,48 @@ $("guideDiagramTrigger").addEventListener("click",e=>{ e.preventDefault(); $("di
 const SECTION_HELP={
   meta:{
     title:"Meta Data",
-    body:`<p>Basic flight identification and your route — used elsewhere in the app to look up airport data and build exports.</p>
+    body:`
     <ul>
       <li><strong>Date / Time (UTC)</strong> — planned departure date and Zulu time. Time auto-formats as you type: <code>1600</code> becomes <code>16:00</code>.</li>
       <li><strong>Departure / Destination / Alternate</strong> — ICAO/FAA airport codes (auto-uppercased). These drive the elevation and runway lookups used in Takeoff &amp; Landing Performance.</li>
-      <li><strong>Routes</strong> — GPS lat/lon waypoints (e.g. <code>42.31/-72.58</code>) separated by spaces, ordered from departure to destination. Needed for Generate Google Earth; leave it blank and the export falls back to a straight line between Departure and Destination.</li>
-    </ul>`
+      <li><strong>Generate Google Earth</strong> button
+        <ul>
+          <li>Builds a Google Earth file (<code>*.kml</code>) so you can open your route in Google Earth.</li>
+          <li>Great for picking checkpoints or getting a rough sense of the terrain along your route.</li>
+        </ul>
+      </li>
+      <li>Conditions for <strong>Generate Google Earth</strong> to work
+        <ul>
+          <li>Required inputs: Departure, Destination, and Cruise Altitude (in the Cruise Data section below).</li>
+          <li>The KML can't be generated if Routes contains anything other than GPS coordinates — fixes, NAVAIDs, or airport codes (the departure/destination airport codes are the one exception; those are allowed).</li>
+          <li>Recommended format: <code>[Airport Code] [GPS Coordinates] [Airport Code]</code>. See the SAMPLE data for reference.</li>
+        </ul>
+      </li>
+      <li>Opening the downloaded <code>.kml</code> file in Google Earth
+        <ul>
+          <li>Go to <a href="https://earth.google.com/web" target="_blank" rel="noopener">earth.google.com/web</a>.</li>
+          <li>Bottom-left: Local KML editor &gt; Open KML from device.</li>
+          <li>Select the downloaded <code>.kml</code> file.</li>
+        </ul>
+      </li>
+      <li>Navigating in Google Earth
+        <ul>
+          <li>Move position: arrow keys.</li>
+          <li>Change view angle: Option (Mac) / Alt (Windows) + arrow keys.</li>
+          <li>Zoom: +/- buttons (or mouse scroll).</li>
+        </ul>
+      </li>
+    </ul>
+    <p><strong>Google Earth Examples</strong></p>
+    <a href="/navlog/images/google-earth-UMass.png" target="_blank" rel="noopener"><img src="/navlog/images/google-earth-UMass.png" alt="Google Earth example — UMass checkpoint"></a>
+    <a href="/navlog/images/google-earth-mount-monadnock.png" target="_blank" rel="noopener"><img src="/navlog/images/google-earth-mount-monadnock.png" alt="Google Earth example — Mount Monadnock checkpoint"></a>`
   },
   cruise:{
     title:"Cruise Data",
-    body:`<p>Your planned cruise performance — used to automatically compute Pressure Altitude (PA) and Calibrated Airspeed (CAS).</p>
-    <ul>
-      <li><strong>Cruise ALT / Altimeter / OAT</strong> — from your flight plan, the current altimeter setting (inHg, 27.00–32.00), and outside air temperature. Together these calculate PA.</li>
-      <li><strong>GPH / RPM / TAS</strong> — read off your POH's cruise performance tables for the power setting you plan to fly.</li>
-      <li><strong>PA / CAS</strong> — calculated automatically once the fields above are filled in. You don't need to enter these yourself.</li>
+    body:`<ul>
+      <li>Fill in the fields in the order they appear — top to bottom, left to right — and every value each calculation needs will already be entered by the time you get to it.</li>
+      <li>PA (Pressure Altitude) isn't calculated with the rule-of-thumb <code>Elevation + (29.92 − Altimeter) × 1000</code> — that's only an approximation. This app follows the same calculation method as the CX-3.</li>
+      <li>For where to pull each value from, check the tooltip icons: <span class="ico poh" style="margin-left:0">P</span> POH, <span class="ico wx">W</span> Weather, <span class="ico cal">C</span> Compute.</li>
     </ul>`
   },
   nav:{
