@@ -2799,9 +2799,7 @@ function setMetaDateDisplay(iso){
 
 $("btnKml").onclick=()=>{
   const altFt=num(state.cruise.alt);
-  const route=(state.meta&&state.meta.route||"").trim();
   if(Number.isNaN(altFt)){ toast("Cruise altitude required for KML export"); return; }
-  if(!route){ toast("Route required for KML export"); return; }
 
   function parseGPS(s){
     const parts=s.split("/");
@@ -2813,11 +2811,29 @@ $("btnKml").onclick=()=>{
     return {lat:latNum,lon:lonNum};
   }
 
-  const tokens=route.split(/\s+/).filter(Boolean);
-  if(tokens.length<2){ toast("Route must have at least a departure and destination"); return; }
+  const route=(state.meta&&state.meta.route||"").trim();
+  let depToken, dstToken, midTokens;
 
-  const depToken=tokens[0], dstToken=tokens[tokens.length-1];
-  const midTokens=tokens.slice(1,-1);
+  if(route){
+    const tokens=route.split(/\s+/).filter(Boolean);
+    if(tokens.every(t=>parseGPS(t)!==null)){
+      // route is coordinates only — auto-prepend Departure and append Destination from Meta Data
+      depToken=((state.meta&&state.meta.dep)||"").trim();
+      dstToken=((state.meta&&state.meta.dst)||"").trim();
+      if(!depToken||!dstToken){ toast("Enter Departure/Destination before generating Google Earth with a coordinates-only route"); return; }
+      midTokens=tokens;
+    } else {
+      // route already has dep/dst as the first/last token — everything between is GPS waypoints
+      if(tokens.length<2){ toast("Route must have at least a departure and destination"); return; }
+      depToken=tokens[0]; dstToken=tokens[tokens.length-1]; midTokens=tokens.slice(1,-1);
+    }
+  } else {
+    // no route entered — fall back to a straight dep→dst line from Meta Data
+    depToken=((state.meta&&state.meta.dep)||"").trim();
+    dstToken=((state.meta&&state.meta.dst)||"").trim();
+    if(!depToken||!dstToken){ toast("Enter Departure/Destination (or a Route) before generating Google Earth"); return; }
+    midTokens=[];
+  }
 
   const depApt=getAirport(depToken);
   const dstApt=getAirport(dstToken);
