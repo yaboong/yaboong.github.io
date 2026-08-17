@@ -674,7 +674,7 @@ hide_hero: true
 
   <header class="top"><div class="top-inner">
     <div class="brand">
-      <h1>NAV&nbsp;LOG&nbsp;GENERATOR</h1>
+      <h1>YB&nbsp;NAVLOG</h1>
       <span class="tail">CROSS&nbsp;COUNTRY&nbsp;PLANNER</span>
     </div>
     <div class="toolbar noprint">
@@ -686,6 +686,8 @@ hide_hero: true
       </button>
       <button class="btn" id="btnSample">LOAD SAMPLE</button>
       <button class="btn ghost" id="btnReset">Clear</button>
+      <button class="btn ghost" id="btnImportCsv">Import</button>
+      <button class="btn ghost" id="btnExportCsv">Export</button>
     </div>
   </div></header>
 
@@ -1062,7 +1064,7 @@ hide_hero: true
 </div>
 
 <div class="toast" id="toast"></div>
-<input type="file" id="fileInput" accept="application/json" style="display:none">
+<input type="file" id="csvFileInput" accept=".csv,text/csv" style="display:none">
 
 <script>
 "use strict";
@@ -1748,9 +1750,295 @@ function escapeAttr(s){ return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":
 let toastT;
 function toast(msg){ const t=$("toast"); t.textContent=msg; t.classList.add("show"); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove("show"),3000); }
 
+/* ---------- CSV export / import (spreadsheet-style layout, Excel-friendly) ---------- */
+function csvCell(v){
+  const s = (v===undefined||v===null) ? "" : String(v);
+  return /[",\r\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s;
+}
+function gridToCSV(grid){ return grid.map(row=>row.map(csvCell).join(",")).join("\r\n"); }
+function parseCSV(text){
+  const rows=[]; let row=[]; let field=""; let inQuotes=false;
+  for(let i=0;i<text.length;i++){
+    const c=text[i];
+    if(inQuotes){
+      if(c==='"'){ if(text[i+1]==='"'){ field+='"'; i++; } else inQuotes=false; }
+      else field+=c;
+    } else if(c==='"'){ inQuotes=true; }
+    else if(c===','){ row.push(field); field=""; }
+    else if(c==='\r'){ /* skip, \n handles the break */ }
+    else if(c==='\n'){ row.push(field); rows.push(row); row=[]; field=""; }
+    else field+=c;
+  }
+  row.push(field); rows.push(row);
+  while(rows.length && rows[rows.length-1].every(c=>String(c).trim()==="")) rows.pop();
+  return rows;
+}
+function gridSet(grid,r,c,v){ if(!grid[r]) grid[r]=[]; grid[r][c]=v; }
+function gridGet(grid,r,c){ return (grid[r]&&grid[r][c]!==undefined) ? grid[r][c] : ""; }
+function findLabelCell(grid,label){
+  const target=label.trim().toUpperCase();
+  for(let r=0;r<grid.length;r++){
+    const row=grid[r]||[];
+    for(let c=0;c<row.length;c++){ if(String(row[c]||"").trim().toUpperCase()===target) return {r,c}; }
+  }
+  return null;
+}
+
+const NAV_CSV_COLS=[
+  {h:"LEG",k:"name"},{h:"VOR",k:"vor"},{h:"CRS",k:"crs"},{h:"ALT",k:"alt"},{h:"DIST",k:"dist"},
+  {h:"MC",k:"mc"},{h:"VAR",k:"var"},{h:"DEV",k:"dev"},{h:"TAS",k:"tas"},
+  {h:"WIND DIR",k:"windDir"},{h:"WIND SPD",k:"windSpd"},
+  {h:"TC",calc:"tc"},{h:"WCA",calc:"wca"},{h:"GS",calc:"gs"},{h:"MH",calc:"mh"},{h:"CH",calc:"ch"},{h:"ETE",calc:"ete"},{h:"FUEL",calc:"fuel"}
+];
+const META_CSV_ROWS=[["DATE","date"],["TIME","time"],["DEPARTURE","dep"],["DESTINATION","dst"],["ALTERNATE","alt"],["ROUTE","route"]];
+const CRUISE_CSV_ROWS=[["CRUISE ALT",null],["ALTIMETER","altimeter"],["PA",null],["OAT","oat"],["GPH","gph"],["RPM","rpm"],["TAS","tas"],["CAS",null],["IAS","ias"]];
+const FUEL_CSV_ROWS=[["FLIGHT",null],["GROUND","fuelGround"],["LANDING","fuelLanding"],["LEGAL RESERVE","fuelLegal"],["PERSONAL MIN","fuelPersonal"]];
+const TL_CSV_COLS=["ELEV","ALTIMETER","PA","OAT","DA","WIND DIR","WIND SPD","RUNWAY","LENGTH","SURFACE","HEADWIND","CROSSWIND"];
+const TL_CSV_FIELD={ALTIMETER:"altimeter",OAT:"oat","WIND DIR":"windDir","WIND SPD":"windSpd",RUNWAY:"rwy"};
+const TL_ROW_LABEL={DEPARTURE:"dep",DESTINATION:"dst",ALTERNATE:"alt"};
+
+/* CRUISE_CSV_ROWS[0] ("CRUISE ALT") maps to cruise.alt — handled specially since key clashes with "alt" (alternate) elsewhere */
+function tlDerivedRow(col){
+  const c=state.tl[col]||{};
+  const code=((state.meta&&state.meta[col])||"").trim().toUpperCase();
+  const entry=code?getAirport(code):null;
+  const rwDetails=entry?parseRunways(entry[3]):{};
+  const rd=rwDetails[c.rwy||""];
+  const r=computeTL(c);
+  return {
+    elev:valOr(c.elev)||"—", altimeter:valOr(c.altimeter), pa:r.pa, oat:valOr(c.oat), da:r.da,
+    windDir:valOr(c.windDir), windSpd:valOr(c.windSpd), rwy:valOr(c.rwy),
+    length: rd?(rd.len?rd.len:"—"):"—", surface: rd?expandSurface(rd.surf):"—",
+    headwind:r.hw, crosswind:r.xw
+  };
+}
+function buildExportGrid(){
+  const grid=[];
+  gridSet(grid,0,0,"NAVIGATION DATA");
+  NAV_CSV_COLS.forEach((c,i)=>gridSet(grid,1,i,c.h));
+  const gph=num(state.cruise.gph);
+  state.legs.forEach((leg,li)=>{
+    const r=computeLeg(leg,gph);
+    NAV_CSV_COLS.forEach((c,i)=>gridSet(grid,2+li,i, c.calc ? r[c.calc] : valOr(leg[c.k])));
+  });
+
+  let col=NAV_CSV_COLS.length+1;
+  const metaCol=col;
+  gridSet(grid,0,metaCol,"META DATA");
+  const m=state.meta||{};
+  META_CSV_ROWS.forEach(([h,k],i)=>{ gridSet(grid,1+i,metaCol,h); gridSet(grid,1+i,metaCol+1,valOr(m[k])); });
+  col=metaCol+3;
+
+  const cruiseCol=col;
+  gridSet(grid,0,cruiseCol,"CRUISE DATA");
+  const cc=state.cruise||{}; const {pa,cas}=computeCruise();
+  CRUISE_CSV_ROWS.forEach(([h,k],i)=>{
+    gridSet(grid,1+i,cruiseCol,h);
+    let v;
+    if(h==="CRUISE ALT") v=valOr(cc.alt);
+    else if(h==="PA") v=Number.isNaN(pa)?"—":pa;
+    else if(h==="CAS") v=Number.isNaN(cas)?"—":cas;
+    else v=valOr(cc[k]);
+    gridSet(grid,1+i,cruiseCol+1,v);
+  });
+  col=cruiseCol+3;
+
+  const fuelCol=col;
+  gridSet(grid,0,fuelCol,"FUEL");
+  const others=state.others||{}; const ft=fuelTotals();
+  FUEL_CSV_ROWS.forEach(([h,k],i)=>{
+    gridSet(grid,1+i,fuelCol,h);
+    gridSet(grid,1+i,fuelCol+1, k ? valOr(others[k]) : round2(ft.flight).toFixed(2));
+  });
+  col=fuelCol+3;
+
+  const wbCol=col;
+  gridSet(grid,0,wbCol,"WEIGHT & BALANCE");
+  const w=state.wb||{};
+  const profile=AC_PROFILES[w.aircraft]||AC_PROFILES["PA-28-161"];
+  gridSet(grid,1,wbCol,"AIRCRAFT"); gridSet(grid,1,wbCol+1,valOr(w.aircraft));
+  gridSet(grid,2,wbCol,"CALLSIGN"); gridSet(grid,2,wbCol+1,valOr(w.nreg));
+  let wbRow=3;
+  gridSet(grid,wbRow,wbCol+1,"Weight (Lbs)"); gridSet(grid,wbRow,wbCol+2,"Arm Aft Datum (Inches)"); gridSet(grid,wbRow,wbCol+3,"Moment (In-Lbs)");
+  wbRow++;
+  gridSet(grid,wbRow,wbCol,"Basic Empty Weight");
+  gridSet(grid,wbRow,wbCol+1,valOr(w.bewW)); gridSet(grid,wbRow,wbCol+2,valOr(w.bewA)); gridSet(grid,wbRow,wbCol+3,valOr(w.bewM));
+  wbRow++;
+  const rows=w.rows||[];
+  const z=v=>Number.isNaN(v)?0:v;
+  let sumW=z(num(w.bewW)), sumM=z(num(w.bewM));
+  profile.rows.forEach((pr,i)=>{
+    const rw=num(rows[i]); const rm=Number.isNaN(rw)?NaN:rw*pr.armFixed;
+    gridSet(grid,wbRow,wbCol,pr.label);
+    gridSet(grid,wbRow,wbCol+1,valOr(rows[i]));
+    gridSet(grid,wbRow,wbCol+2,pr.armFixed);
+    gridSet(grid,wbRow,wbCol+3,Number.isNaN(rm)?"0.00":rm.toFixed(2));
+    sumW+=z(rw); sumM+=z(rm);
+    wbRow++;
+  });
+  const fuelW=(ft.anyFlight||ft.anyRes)?Math.ceil(ft.total*6):0;
+  const fuelM=fuelW*profile.fuelArm;
+  sumW+=fuelW; sumM+=fuelM;
+  gridSet(grid,wbRow,wbCol,`Fuel (${profile.fuelGalMax} Gallon Max)`);
+  gridSet(grid,wbRow,wbCol+1,fuelW); gridSet(grid,wbRow,wbCol+2,profile.fuelArm); gridSet(grid,wbRow,wbCol+3,fuelM.toFixed(2));
+  wbRow++;
+  const cg=sumW>0?sumM/sumW:NaN;
+  gridSet(grid,wbRow,wbCol,"Total Loaded Airplane");
+  gridSet(grid,wbRow,wbCol+1,sumW.toFixed(2)); gridSet(grid,wbRow,wbCol+2,Number.isNaN(cg)?"—":cg.toFixed(2)); gridSet(grid,wbRow,wbCol+3,sumM.toFixed(2));
+  col=wbCol+5;
+
+  const tlCol=col;
+  gridSet(grid,0,tlCol,"TAKEOFF & LANDING PERFORMANCE");
+  TL_CSV_COLS.forEach((h,i)=>gridSet(grid,1,tlCol+1+i,h));
+  TL_COLS.forEach((c,i)=>{
+    const d=tlDerivedRow(c);
+    gridSet(grid,2+i,tlCol,TL_LABELS[c]);
+    [d.elev,d.altimeter,d.pa,d.oat,d.da,d.windDir,d.windSpd,d.rwy,d.length,d.surface,d.headwind,d.crosswind]
+      .forEach((v,j)=>gridSet(grid,2+i,tlCol+1+j,v));
+  });
+  const tlAfterRow=2+TL_COLS.length+1;
+  gridSet(grid,tlAfterRow,tlCol,"TAKEOFF DISTANCE"); gridSet(grid,tlAfterRow,tlCol+1,valOr(state.tl.takeoffDist));
+  gridSet(grid,tlAfterRow+1,tlCol,"LANDING DISTANCE"); gridSet(grid,tlAfterRow+1,tlCol+1,valOr(state.tl.landingDist));
+
+  return grid;
+}
+function exportCSV(){
+  const grid=buildExportGrid();
+  const csv=gridToCSV(grid);
+  const m=state.meta||{};
+  const parts=[m.dep,m.dst,(m.date||"").replace(/-/g,"")].map(v=>String(v||"").trim()).filter(Boolean);
+  const filename=(parts.length?"YBNAVLOG-"+parts.join("-"):"YBNAVLOG")+".csv";
+  const blob=new Blob(["﻿"+csv],{type:"text/csv;charset=utf-8"});
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);
+  a.download=filename;
+  a.click(); URL.revokeObjectURL(a.href);
+  toast("CSV exported.");
+}
+function importKV(grid,sectionTitle,rowsDef,targetObj){
+  const t=findLabelCell(grid,sectionTitle);
+  if(!t) return false;
+  let any=false;
+  const maxR=Math.min(grid.length,t.r+rowsDef.length+6);
+  rowsDef.forEach(([h,k])=>{
+    if(!k) return;
+    for(let r=t.r+1;r<maxR;r++){
+      if(String(gridGet(grid,r,t.c)).trim().toUpperCase()===h){ targetObj[k]=gridGet(grid,r,t.c+1); any=true; break; }
+    }
+  });
+  return any;
+}
+function importCSV(text){
+  let grid;
+  try{ grid=parseCSV(text); }catch(e){ toast("Could not read CSV file."); return; }
+  const titles=["NAVIGATION DATA","META DATA","CRUISE DATA","FUEL","WEIGHT & BALANCE","TAKEOFF & LANDING PERFORMANCE"];
+  if(!titles.some(t=>findLabelCell(grid,t))){ toast('Not a recognized NavLog CSV (missing section headers).'); return; }
+  snapshot(true);
+
+  const navTitle=findLabelCell(grid,"NAVIGATION DATA");
+  if(navTitle){
+    const headerRow=navTitle.r+1;
+    const colMap={};
+    let c=navTitle.c;
+    while(c<(grid[headerRow]||[]).length && String(gridGet(grid,headerRow,c)).trim()!==""){
+      colMap[String(gridGet(grid,headerRow,c)).trim().toUpperCase()]=c; c++;
+    }
+    const legs=[];
+    let r=headerRow+1;
+    while(r<grid.length){
+      const rawFields=NAV_CSV_COLS.filter(x=>!x.calc);
+      const hasAny=rawFields.some(x=>colMap[x.h]!==undefined && String(gridGet(grid,r,colMap[x.h])).trim()!=="");
+      if(!hasAny) break;
+      const leg={};
+      rawFields.forEach(x=>{ if(colMap[x.h]!==undefined) leg[x.k]=gridGet(grid,r,colMap[x.h]); });
+      legs.push(leg); r++;
+    }
+    if(legs.length) state.legs=legs;
+  }
+
+  if(!state.meta) state.meta={};
+  importKV(grid,"META DATA",META_CSV_ROWS,state.meta);
+  if(!state.cruise) state.cruise={};
+  {
+    const t=findLabelCell(grid,"CRUISE DATA");
+    if(t){
+      const maxR=Math.min(grid.length,t.r+CRUISE_CSV_ROWS.length+6);
+      CRUISE_CSV_ROWS.forEach(([h,k])=>{
+        const key = h==="CRUISE ALT" ? "alt" : k;
+        if(!key) return;
+        for(let r=t.r+1;r<maxR;r++){
+          if(String(gridGet(grid,r,t.c)).trim().toUpperCase()===h){ state.cruise[key]=gridGet(grid,r,t.c+1); break; }
+        }
+      });
+    }
+  }
+  if(!state.others) state.others={};
+  importKV(grid,"FUEL",FUEL_CSV_ROWS,state.others);
+
+  const wbTitle=findLabelCell(grid,"WEIGHT & BALANCE");
+  if(wbTitle){
+    if(!state.wb) state.wb={};
+    for(let r=wbTitle.r+1;r<wbTitle.r+4;r++){
+      const label=String(gridGet(grid,r,wbTitle.c)).trim().toUpperCase();
+      if(label==="AIRCRAFT") state.wb.aircraft=gridGet(grid,r,wbTitle.c+1);
+      if(label==="CALLSIGN") state.wb.nreg=gridGet(grid,r,wbTitle.c+1);
+    }
+    const profile=AC_PROFILES[state.wb.aircraft]||AC_PROFILES["PA-28-161"];
+    let bewR=-1;
+    for(let r=wbTitle.r+1;r<Math.min(grid.length,wbTitle.r+10);r++){
+      if(String(gridGet(grid,r,wbTitle.c)).trim().toUpperCase()==="BASIC EMPTY WEIGHT"){ bewR=r; break; }
+    }
+    if(bewR>=0){
+      state.wb.bewW=gridGet(grid,bewR,wbTitle.c+1);
+      state.wb.bewA=gridGet(grid,bewR,wbTitle.c+2);
+      state.wb.bewM=gridGet(grid,bewR,wbTitle.c+3);
+      state.wb.rows=profile.rows.map((pr,i)=>gridGet(grid,bewR+1+i,wbTitle.c+1));
+    }
+  }
+
+  const tlTitle=findLabelCell(grid,"TAKEOFF & LANDING PERFORMANCE");
+  if(tlTitle){
+    if(!state.tl) state.tl=emptyTL();
+    const headerRow=tlTitle.r+1;
+    const colMap={};
+    let c=tlTitle.c+1;
+    while(c<(grid[headerRow]||[]).length && String(gridGet(grid,headerRow,c)).trim()!==""){
+      colMap[String(gridGet(grid,headerRow,c)).trim().toUpperCase()]=c; c++;
+    }
+    for(let r=headerRow+1;r<Math.min(grid.length,headerRow+6);r++){
+      const label=String(gridGet(grid,r,tlTitle.c)).trim().toUpperCase();
+      const key=TL_ROW_LABEL[label];
+      if(!key) continue;
+      if(!state.tl[key]) state.tl[key]={};
+      Object.keys(TL_CSV_FIELD).forEach(h=>{
+        if(colMap[h]===undefined) return;
+        state.tl[key][TL_CSV_FIELD[h]]=gridGet(grid,r,colMap[h]);
+      });
+    }
+    for(let r=headerRow+1;r<Math.min(grid.length,headerRow+12);r++){
+      const label=String(gridGet(grid,r,tlTitle.c)).trim().toUpperCase();
+      if(label==="TAKEOFF DISTANCE") state.tl.takeoffDist=gridGet(grid,r,tlTitle.c+1);
+      if(label==="LANDING DISTANCE") state.tl.landingDist=gridGet(grid,r,tlTitle.c+1);
+    }
+  }
+
+  renderAll();
+  save();
+  toast("CSV imported.");
+}
+
 /* ---------- toolbar ---------- */
 $("btnSample").onclick=()=>{ snapshot(true); state=defaultState(); save(); renderAll(); toast("Sample loaded"); };
 $("btnReset").onclick=()=>{ snapshot(true); state=emptyState(); save(); renderAll(); $("navlogWrap").innerHTML='<p class="empty-note">Press "Generate Nav Log" to build a printable log here.</p>'; toast("Cleared"); };
+$("btnExportCsv").onclick=exportCSV;
+$("btnImportCsv").onclick=()=>$("csvFileInput").click();
+$("csvFileInput").addEventListener("change",e=>{
+  const file=e.target.files[0];
+  if(!file) return;
+  const reader=new FileReader();
+  reader.onload=()=>{ importCSV(String(reader.result)); e.target.value=""; };
+  reader.readAsText(file,"utf-8");
+});
 $("btnAddRow").onclick=()=>{ snapshot(true); addLeg(); };
 $("btnGen").onclick=generateNavlog;
 $("btnPrint").onclick=()=>{ generateNavlog(); prepareForPrint(); setTimeout(()=>window.print(),120); };
