@@ -133,6 +133,18 @@ hide_hero: true
   .panel > .head h2 .head-unit{
     font-size:10px;font-weight:600;letter-spacing:.1em;color:var(--line-strong);margin-left:6px;
   }
+  .panel > .head .head-title{display:flex;align-items:center;gap:8px;flex:1;min-width:0}
+  .panel.collapsible > .head .head-title{cursor:pointer;user-select:none;outline:none;border-radius:6px}
+  .panel.collapsible > .head .head-title:hover .chev{color:var(--ink)}
+  .panel.collapsible > .head .head-title:hover h2{color:var(--ink)}
+  .panel.collapsible > .head .head-title:focus-visible{box-shadow:0 0 0 2px var(--blue)}
+  .panel.collapsible > .head .chev{
+    flex-shrink:0;display:inline-flex;width:20px;height:20px;color:var(--slate);transition:transform .15s ease;
+  }
+  .panel.collapsible > .head .chev svg{width:100%;height:100%}
+  .panel.collapsible.collapsed > .head{border-bottom:none;border-radius:14px}
+  .panel.collapsible.collapsed > .head .chev{transform:rotate(-90deg)}
+  .panel.collapsible.collapsed > .body{display:none}
   .panel > .body{padding:16px}
 
   /* ---- field grid ---- */
@@ -538,6 +550,11 @@ hide_hero: true
     section.panel>.head h2{font-size:7.5pt;font-weight:800;letter-spacing:.14em;color:#444}
     section.panel>.body{padding:0}
 
+    /* collapsible panels: always show full content on paper, regardless of on-screen collapsed state */
+    .panel.collapsible.collapsed>.body{display:block !important}
+    .panel.collapsible>.head .chev{display:none !important}
+    .panel.collapsible>.head .head-title{cursor:default}
+
     /* all inputs & selects → plain text */
     input,select{
       border:none !important;background:transparent !important;
@@ -698,8 +715,8 @@ hide_hero: true
   </div></header>
 
   <!-- SIMPLE GUIDE -->
-  <section class="panel noprint" id="guidePanel">
-    <div class="head"><h2>Simple Guide</h2></div>
+  <section class="panel noprint collapsible" id="guidePanel">
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Simple Guide</h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <p class="poh-note">Small icons next to field labels tell you where that value comes from. Hover (or tap) any icon in the app for the full detail.</p>
       <div class="grid cols-4">
@@ -724,10 +741,9 @@ hide_hero: true
   </section>
 
   <!-- POH -->
-  <section class="panel noprint" id="pohPanel">
-    <div class="head"><h2>POH</h2></div>
+  <section class="panel noprint collapsible" id="pohPanel">
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>POH</h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
-      <p class="poh-note">POH page references in this planner's tooltips are examples from the PA-28-161 (Piper Warrior II) POH — check your own aircraft's POH for the equivalent section.</p>
       <div class="grid cols-4">
         <a class="doc-link" href="https://northamptonairport.com/wp-content/uploads/2016/10/POH-Piper-Warrior-II.pdf" target="_blank" rel="noopener">
           <span class="doc-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
@@ -766,8 +782,8 @@ hide_hero: true
   </section>
 
   <!-- META DATA -->
-  <section class="panel" id="metaPanel">
-    <div class="head"><h2>Meta Data</h2></div>
+  <section class="panel collapsible" id="metaPanel">
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Meta Data</h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div class="grid cols-5">
         <div class="field"><label>Date</label><input type="text" id="metaDate" readonly inputmode="none" autocomplete="off" placeholder="Select date"></div>
@@ -788,8 +804,8 @@ hide_hero: true
   </section>
 
   <!-- CRUISE / POH -->
-  <section class="panel" id="cruisePanel">
-    <div class="head"><h2>Cruise Data</h2></div>
+  <section class="panel collapsible" id="cruisePanel">
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Cruise Data</h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div class="grid">
         <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip">- VFR/IFR cruising altitude rule<br>- MEF (Maximum Elevation Figure)<br>- Airspace<br>- Wind (tailwind preferred)<br>- Cloud clearance<br>- Icing<br>- Turbulence<br>- Aircraft performance<br>- Terrain<br>- Oxygen requirement</span></span> Cruise ALT <span class="unit">ft</span></label><input id="alt" inputmode="decimal" placeholder="5500"></div>
@@ -806,9 +822,12 @@ hide_hero: true
   </section>
 
   <!-- NAVIGATION DATA -->
-  <section class="panel">
+  <section class="panel collapsible" id="navPanel">
     <div class="head">
-      <h2>Navigation Data</h2>
+      <span class="head-title" role="button" tabindex="0" aria-expanded="true">
+        <h2>Navigation Data</h2>
+        <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+      </span>
     </div>
     <div class="body">
       <div class="totals">
@@ -886,9 +905,12 @@ hide_hero: true
   </section>
 
   <!-- NAVLOG OUTPUT -->
-  <section class="panel" id="navlogPanel">
+  <section class="panel collapsible" id="navlogPanel">
     <div class="head">
-      <h2>Nav Log</h2>
+      <span class="head-title" role="button" tabindex="0" aria-expanded="true">
+        <h2>Nav Log</h2>
+        <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+      </span>
       <div class="toolbar noprint">
         <button class="btn primary" id="btnGen">Generate Nav Log</button>
       </div>
@@ -899,8 +921,8 @@ hide_hero: true
   </section>
 
   <!-- FUEL RESERVES -->
-  <section class="panel" id="fuelPanel">
-    <div class="head"><h2>Fuel<span class="head-unit">gallon</span></h2></div>
+  <section class="panel collapsible" id="fuelPanel">
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Fuel<span class="head-unit">gallon</span></h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div class="totals">
         <div class="t"><div class="tl">Flight</div><div class="tv"><span id="fuelSumFlight">—</span><span class="u">gal</span></div></div>
@@ -919,9 +941,12 @@ hide_hero: true
   </section>
 
   <!-- WEIGHT & BALANCE -->
-  <section class="panel" id="wbPanel">
+  <section class="panel collapsible" id="wbPanel">
     <div class="head">
-      <h2>Weight &amp; Balance</h2>
+      <span class="head-title" role="button" tabindex="0" aria-expanded="true">
+        <h2>Weight &amp; Balance</h2>
+        <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
+      </span>
       <button class="btn ghost noprint" id="wbClear">Clear W&amp;B</button>
     </div>
     <div class="body">
@@ -1003,8 +1028,8 @@ hide_hero: true
   </section>
 
   <!-- TAKEOFF & LANDING DATA -->
-  <section class="panel" id="tlPanel">
-    <div class="head"><h2>Takeoff & Landing Performance</h2></div>
+  <section class="panel collapsible" id="tlPanel">
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Takeoff & Landing Performance</h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div id="tlPrintView" class="tl-print-view"></div>
       <div class="tl-db-note">Airport DB updated Aug 14, 2026</div>
@@ -2074,6 +2099,27 @@ $("csvFileInput").addEventListener("change",e=>{
 $("btnAddRow").onclick=()=>{ snapshot(true); addLeg(); };
 $("btnGen").onclick=generateNavlog;
 $("btnPrint").onclick=()=>{ generateNavlog(); prepareForPrint(); setTimeout(()=>window.print(),120); };
+
+/* ---------- collapsible panels ---------- */
+document.querySelectorAll(".panel.collapsible").forEach(panel=>{
+  const title=panel.querySelector(".head .head-title");
+  if(!title) return;
+  const key="navlogCollapsed_"+panel.id;
+  const setState=collapsed=>{
+    panel.classList.toggle("collapsed",collapsed);
+    title.setAttribute("aria-expanded",collapsed?"false":"true");
+  };
+  setState(store.get(key)==="1");
+  const toggle=()=>{
+    const collapsed=!panel.classList.contains("collapsed");
+    setState(collapsed);
+    store.set(key,collapsed?"1":"0");
+  };
+  title.addEventListener("click",toggle);
+  title.addEventListener("keydown",e=>{
+    if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggle(); }
+  });
+});
 
 /* ---------- print helpers ---------- */
 function buildTLPrintView(){
