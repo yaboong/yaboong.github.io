@@ -515,8 +515,10 @@ hide_hero: true
   table.tl th.tl-sm{width:62px}
   table.tl th.tl-md{width:76px}
   table.tl th,table.tl td{border:1px solid var(--line);padding:5px 6px;text-align:center}
-  table.tl thead th{font-family:var(--ui);font-size:10.5px;font-weight:700;color:var(--slate);background:#f7f9fb;line-height:1.2}
-  table.tl thead th:first-child{background:#fff}
+  table.tl thead th{font-family:var(--ui);font-size:10.5px;font-weight:700;color:var(--slate);background:#f7f9fb;line-height:1.2;vertical-align:top}
+  /* invisible stand-in for columns with no icon, same box size as .ico, so every header's icon row
+     (and the label/unit rows under it) start at the same y regardless of which columns have an icon */
+  table.tl thead th .th-ico-ph{display:inline-block;width:15px;height:15px}
   .u3{font-weight:400;font-size:9.5px;color:#9aa7b6}
   table.tl thead th .u3{font-weight:400;font-size:9.5px;color:#9aa7b6}
   table.tl td.rl{text-align:left;font-family:var(--ui);font-size:13px;font-weight:600;color:var(--ink);white-space:nowrap;background:#f7f9fb}
@@ -1159,16 +1161,16 @@ hide_hero: true
           <thead>
             <tr>
               <th></th>
-              <th>Elev <span class="u3">ft</span></th>
+              <th><span class="th-ico-ph"></span><br>Elev<br><span class="u3">ft</span></th>
               <th class="tl-sm"><span class="ico wx" data-tip="Prog charts isobar (Aviation Weather)">W</span><br>Altimeter<br><span class="u3">inHg</span></th>
               <th class="tl-sm"><span class="ico cal" data-tip="CX-3">C</span><br>PA<br><span class="u3">ft</span></th>
               <th class="tl-sm"><span class="ico wx" data-tip="Temperature chart (Aviation Weather)">W</span><br>OAT<br><span class="u3">°C</span></th>
               <th class="tl-sm"><span class="ico" data-tip="Density Altitude (for reference)">i</span><br>DA<br><span class="u3">ft</span></th>
               <th class="tl-md"><span class="ico wx" data-tip="METAR, TAF (VRB ⇒ Direct X-wind)">W</span><br>Wind Dir<br><span class="u3">°</span></th>
               <th class="tl-md"><span class="ico wx" data-tip="METAR, TAF">W</span><br>Wind Spd<br><span class="u3">kt</span></th>
-              <th>Runway<br><span class="u3">Number</span></th>
-              <th>Length<br><span class="u3">ft</span></th>
-              <th>Surface</th>
+              <th><span class="th-ico-ph"></span><br>Runway<br><span class="u3">Number</span></th>
+              <th><span class="th-ico-ph"></span><br>Length<br><span class="u3">ft</span></th>
+              <th><span class="th-ico-ph"></span><br>Surface<br><span class="u3">&nbsp;</span></th>
               <th><span class="ico cal" data-tip="Crosswind component chart (or CX-3)">C</span><br>Headwind<br><span class="u3">kt</span></th>
               <th><span class="ico cal" data-tip="Crosswind component chart (or CX-3)">C</span><br>Crosswind<br><span class="u3">kt</span></th>
             </tr>
