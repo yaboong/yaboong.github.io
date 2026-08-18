@@ -2304,19 +2304,35 @@ const SECTION_HELP={
     title:"Nav Log",
     body:`<p>An auto-generated, printable nav log — there's nothing to type directly in this section.</p>
     <ul>
-      <li>Built from your Navigation Data, Cruise Data, Fuel, and Meta Data entries.</li>
       <li>Press <strong>Generate Nav Log</strong> (at the bottom of Navigation Data) any time you update your route to refresh this table.</li>
-      <li>Use <strong>Print / Download PDF</strong> at the bottom of the page for a kneeboard-ready copy.</li>
-    </ul>`
+      <li>While flying, the log alternates red/blue row coloring between checkpoints so you don't lose your place when filling in Actual GS and ETE — print it in color.</li>
+      <li>For a VFR pilotage cross-country, this is the only sheet you need clipped to your kneeboard.</li>
+      <li>Use <strong>Print / Download PDF</strong> at the bottom of the page for a 6" x 9" kneeboard-ready copy. (With a lot of legs, it may overflow onto a second page.)</li>
+    </ul>
+    <p><strong>Pain points with the standard <a href="https://vsl.aero/PP_navlog.pdf" target="_blank" rel="noopener">Jeppesen VFR Navigation Log</a></strong>:</p>
+    <ul>
+      <li>Flying an actual cross-country with the Jeppesen log in hand gets chaotic fast.</li>
+      <li>You have to pencil in actual GS and ETE at every checkpoint, but the boxes for that are tiny.</li>
+      <li>The fields you actually need to fill in are laid out far from their checkpoint, so it's not obvious at a glance which value maps to which.</li>
+      <li>Aside from heading, altitude, distance, GS, and ETE, most of the other columns are only there for the planning calculations, not for use in flight — they just add to the clutter.</li>
+    </ul>
+    <blockquote>This Nav Log was designed from scratch to fix exactly those pain points.</blockquote>`
   },
   fuel:{
     title:"Fuel",
-    body:`<p>Fuel planning and reserves for the flight.</p>
+    body:`<p>All values are in gallons. Fuel planning and reserves for the flight.</p>
+    <p><strong>Summary (top row)</strong></p>
     <ul>
-      <li><strong>Flight</strong> — pulled automatically from your Navigation Data leg fuel burn. No entry needed.</li>
-      <li><strong>Ground / Landing</strong> — allowances for engine start &amp; taxi, and traffic pattern / go-around.</li>
-      <li><strong>Legal Reserve</strong> — your regulatory minimum (14 CFR 91.151 for VFR, 91.167 for IFR).</li>
-      <li><strong>Personal Min</strong> — your own personal reserve minimum, if it's higher than the legal one.</li>
+      <li>Flight: fuel needed for the flying portion of the trip.</li>
+      <li>Reserve: Ground + Landing + Legal Reserve + Personal Min.</li>
+      <li>Total: Flight + Reserve.</li>
+    </ul>
+    <p><strong>Inputs (below)</strong></p>
+    <ul>
+      <li>Flight: GS, ETE, and per-leg Fuel are calculated from your Navigation Data entries, then summed here; <strong>you can't edit this value directly</strong>.</li>
+      <li>Ground / Landing: allowances for engine start &amp; taxi, and traffic pattern / go-around.</li>
+      <li>Legal Reserve: your regulatory minimum (<a href="https://www.ecfr.gov/current/title-14/section-91.151" target="_blank" rel="noopener">14 CFR 91.151</a> for VFR, <a href="https://www.ecfr.gov/current/title-14/section-91.167" target="_blank" rel="noopener">91.167</a> for IFR).</li>
+      <li>Personal Min: your own personal reserve minimum, if it's higher than the legal one.</li>
     </ul>`
   },
   wb:{
