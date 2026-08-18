@@ -173,16 +173,27 @@ li > ol {
 }
 
 table {
-    border-bottom: 1px solid $gallery;
-    display: block;
     font-size: 16px;
     line-height: 1.5;
+    margin: 0 0 24px;
+    min-width: 100%;
+    text-align: left;
+}
+
+.table-scroll-wrap {
     margin: 0 0 24px;
     max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-    text-align: left;
-    width: 100%;
+}
+
+.table-scroll-wrap table {
+    margin: 0;
+}
+
+tbody tr:last-child td,
+tbody tr:last-child th {
+    border-bottom: 1px solid $gallery;
 }
 
 caption {

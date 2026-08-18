@@ -28,6 +28,9 @@
             $('html, body').animate({'scrollTop': 0});
             e.preventDefault();
         });
+
+        // Wrap tables so wide ones scroll horizontally instead of breaking layout
+        $('.entry-content table').wrap('<div class="table-scroll-wrap"></div>');
     });
 
 }(jQuery));
