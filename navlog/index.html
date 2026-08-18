@@ -126,6 +126,7 @@ hide_hero: true
   .section-help-body li strong{color:var(--ink)}
   .section-help-body code{font-family:var(--mono);font-size:12px;background:#f0f2f5;border-radius:3px;padding:1px 5px;color:var(--ink)}
   .section-help-body a{color:var(--blue)}
+  .section-help-body .warn{color:#c0392b;font-weight:700}
   .section-help-body blockquote{
     margin:12px 0 0;padding:8px 14px;border-left:3px solid var(--line-strong);
     background:#f7f8fa;border-radius:0 6px 6px 0;font-style:italic;color:var(--slate);
@@ -2339,11 +2340,11 @@ const SECTION_HELP={
     title:"Weight & Balance",
     body:`<p>Aircraft loading and center-of-gravity check.</p>
     <ul>
-      <li>Pick your <strong>Aircraft</strong> type and <strong>Callsign</strong> — this sets the row layout and CG envelope used below.</li>
-      <li><strong>Basic Empty Weight</strong> — from your aircraft's current weight &amp; balance record, not the sample POH.</li>
-      <li>Enter the weight for each occupant/baggage row; <strong>Arm</strong> is fixed per aircraft and <strong>Moment</strong> is calculated for you.</li>
-      <li><strong>Fuel weight</strong> and <strong>Total Loaded Airplane</strong> come from your Fuel section entries automatically.</li>
-      <li>The CG graph plots your loaded CG against the aircraft's normal/utility envelope.</li>
+      <li>Pick your <strong>Aircraft</strong> type (and <strong>Callsign</strong> if PA-28-161 is selected).</li>
+      <li><strong>Basic Empty Weight</strong> <span class="warn">must come from the POH carried in the actual aircraft</span> you'll be flying — this value is unique to each individual airplane.</li>
+      <li>When <strong>PA-28-161</strong> is selected, you can pick from a few aircraft based at 7B2, and each one's Basic Empty Weight fills in automatically.</li>
+      <li>The CG envelope graph is only shown for the <strong>PA-28-161</strong>.</li>
+      <li>The <strong>Fuel</strong> row fills in automatically — it's the total fuel (flight portion + reserves) from the Fuel section, converted to pounds. It turns red if it exceeds the fuel tank's maximum capacity.</li>
     </ul>`
   },
   tl:{
