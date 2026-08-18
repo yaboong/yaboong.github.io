@@ -124,7 +124,7 @@ async function main() {
     // 6 decimal places (~11cm) is already far more precision than VFR nav needs —
     // rounding here just strips the floating-point noise some source rows carry
     // (e.g. raw 42.5499992371) without losing anything a pilot could use.
-    const entry = [elev, round6(lat), round6(lon), rwyString];
+    const entry = [elev, round6(lat), round6(lon), rwyString, a.name || ""];
 
     const idents = new Set([a.ident, a.icao_code, a.gps_code, a.local_code].filter(Boolean));
     if (idents.size === 0) continue;

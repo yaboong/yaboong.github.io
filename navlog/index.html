@@ -295,6 +295,15 @@ hide_hero: true
     font-size:11px;font-weight:700;letter-spacing:.03em;cursor:pointer;padding:4px 2px}
   #dateCal .dc-clear-btn{color:var(--slate)}
   .field .err{display:none;font-size:11px;font-weight:600;color:#c0392b;margin-top:5px}
+
+  /* ---- airport code autocomplete dropdown (Departure/Destination/Alternate) ---- */
+  .airport-ac{display:none;position:fixed;z-index:250;background:#fff;border:1px solid var(--line-strong);
+    border-radius:10px;box-shadow:var(--shadow);max-height:260px;overflow-y:auto;font-family:var(--ui)}
+  .airport-ac .ac-item{padding:7px 12px;cursor:pointer;border-bottom:1px solid var(--line)}
+  .airport-ac .ac-item:last-child{border-bottom:none}
+  .airport-ac .ac-item:hover,.airport-ac .ac-item.active{background:#eef5fb}
+  .airport-ac .ac-code{font-family:var(--mono);font-size:13px;font-weight:800;color:var(--ink)}
+  .airport-ac .ac-name{font-size:11px;color:var(--slate);margin-top:1px}
   .field.bad input{border-color:#c0392b;background:#fdecea}
   .field.bad .err{display:block}
 
@@ -942,6 +951,7 @@ hide_hero: true
         <div class="field"><label>Destination</label><input id="metaDst" autocapitalize="characters" autocomplete="off" placeholder="KLCI"></div>
         <div class="field"><label>Alternate</label><input id="metaAlt" autocapitalize="characters" autocomplete="off" placeholder=""></div>
       </div>
+      <div id="airportAC" class="airport-ac noprint" role="listbox"></div>
       <div class="field" style="margin-top:14px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
           <label style="margin:0">Routes</label>
@@ -1692,7 +1702,7 @@ function renderCGGraph(aircraft, totW, cg){
    loaded async from data/airports.json (kept out of this file so it can be regenerated
    and diffed independently — see scripts/update-airport-db.mjs); data/airports.meta.json
    carries the generation date shown in the "Airport DB updated" .tl-db-note. */
-/* format: ident -> [elev_ft, lat, lon, "rwy,rwy,..."] */
+/* format: ident -> [elev_ft, lat, lon, "rwy,rwy,...", name] */
 let APT_DB={};
 let APT_DB_META={generatedAt:"",recordCount:0};
 let aptDbReady=false;
@@ -1717,6 +1727,64 @@ function loadAirportDBMeta(){
 function getAirport(code){
   if(!code) return null;
   return APT_DB[code.trim().toUpperCase()]||null;
+}
+
+/* ---------- airport code autocomplete (Departure/Destination/Alternate) ---------- */
+const META_AIRPORT_COL={metaDep:"dep",metaDst:"dst",metaAlt:"alt"};
+let acItems=[], acActiveIdx=-1, acTargetInput=null;
+function searchAirports(prefix){
+  const p=prefix.trim().toUpperCase();
+  if(p.length<2) return [];
+  const out=[];
+  for(const code in APT_DB){
+    if(code.startsWith(p)){
+      out.push({code, name:APT_DB[code][4]||""});
+      if(out.length>=8) break;
+    }
+  }
+  return out;
+}
+function closeAirportAC(){
+  const box=$("airportAC");
+  box.style.display="none"; box.innerHTML="";
+  acItems=[]; acActiveIdx=-1; acTargetInput=null;
+}
+function updateACActive(){
+  $("airportAC").querySelectorAll(".ac-item").forEach((el,i)=>el.classList.toggle("active", i===acActiveIdx));
+}
+function openAirportAC(inputEl, col){
+  if(!aptDbReady){ closeAirportAC(); return; }
+  const items=searchAirports(inputEl.value);
+  if(items.length===0){ closeAirportAC(); return; }
+  acItems=items; acActiveIdx=-1; acTargetInput=inputEl;
+  const box=$("airportAC");
+  box.innerHTML=items.map((it,i)=>
+    `<div class="ac-item" data-idx="${i}"><div class="ac-code">${escapeHtml(it.code)}</div>${it.name?`<div class="ac-name">${escapeHtml(it.name)}</div>`:""}</div>`
+  ).join("");
+  const r=inputEl.getBoundingClientRect();
+  box.style.left=r.left+"px";
+  box.style.top=(r.bottom+4)+"px";
+  box.style.width=Math.max(r.width,200)+"px";
+  box.style.display="block";
+  box.querySelectorAll(".ac-item").forEach(el=>{
+    // mousedown (not click) + preventDefault keeps focus on the input, so blur never
+    // fires and closes the dropdown out from under the click
+    el.addEventListener("mousedown",e=>{
+      e.preventDefault();
+      selectAirportAC(col, parseInt(el.dataset.idx,10));
+    });
+  });
+}
+function selectAirportAC(col, idx){
+  const it=acItems[idx];
+  if(!it||!acTargetInput) return;
+  snapshot();
+  acTargetInput.value=it.code;
+  if(!state.meta) state.meta={};
+  state.meta[col]=it.code;
+  applyAirportData(col, it.code);
+  save();
+  closeAirportAC();
 }
 function parseRunways(rwStr){
   const map={};
@@ -2842,12 +2910,23 @@ function bindAll(){
     el.addEventListener("input",()=>{
       const v=el.value,c=v.replace(/[^a-zA-Z0-9]/g,"").toUpperCase();
       if(v!==c) el.value=c;
+      openAirportAC(el, META_AIRPORT_COL[id]);
+    });
+    el.addEventListener("keydown",e=>{
+      if(acTargetInput!==el||$("airportAC").style.display!=="block") return;
+      if(e.key==="ArrowDown"){ e.preventDefault(); acActiveIdx=Math.min(acActiveIdx+1,acItems.length-1); updateACActive(); }
+      else if(e.key==="ArrowUp"){ e.preventDefault(); acActiveIdx=Math.max(acActiveIdx-1,0); updateACActive(); }
+      else if(e.key==="Enter"){ if(acActiveIdx>=0){ e.preventDefault(); selectAirportAC(META_AIRPORT_COL[id],acActiveIdx); } }
+      else if(e.key==="Escape"){ closeAirportAC(); }
     });
   });
+  window.addEventListener("scroll",closeAirportAC,true);
+  window.addEventListener("resize",closeAirportAC);
   META_FIELDS.forEach(([id,key])=>{
     $(id).addEventListener("input",()=>{ snapshot(); if(!state.meta) state.meta={}; state.meta[key]=$(id).value; save(); if(key==="dep"||key==="dst"||key==="alt") renderTL(); if(id==="metaRoute") autoResize($(id)); });
     if(key==="dep"||key==="dst"||key==="alt"){
       $(id).addEventListener("blur",()=>{
+        closeAirportAC();
         const code=((state.meta&&state.meta[key])||"").trim();
         applyAirportData(key, code);
       });
