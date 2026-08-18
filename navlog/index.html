@@ -313,13 +313,15 @@ hide_hero: true
   table.nav{border-collapse:separate;border-spacing:0;width:100%;min-width:940px;font-family:var(--mono)}
   table.nav th,table.nav td{padding:0;text-align:center;border-bottom:1px solid var(--line)}
   table.nav thead th{
-    position:sticky;top:0;z-index:2;background:#f2f5f8;
+    position:sticky;top:0;z-index:2;background:#f2f5f8;vertical-align:top;
     font-family:var(--ui);font-size:10.5px;font-weight:500;letter-spacing:.04em;
     color:var(--slate);text-transform:uppercase;padding:6px 4px;border-bottom:1px solid var(--line-strong);
   }
+  /* vertical-align:top above + fixed-height icon row here keeps every icon (and the label text under it)
+     starting at the same y regardless of whether a neighboring column's label wraps to two lines */
   table.nav thead th .th-inner{display:flex;flex-direction:column;align-items:center;gap:3px}
   table.nav thead th.leghead .th-inner{align-items:flex-start}
-  table.nav thead th .th-ico-ph{display:block;height:18px}
+  table.nav thead th .th-ico-ph,table.nav thead th .th-inner>.ico{height:15px}
   table.nav thead th:not(.calc):not(.grip){color:var(--ink);font-weight:700;border-top:1px solid var(--nav-border)}
   table.nav thead th.calc{color:var(--slate)}
   table.nav thead th.grip{width:26px}
