@@ -2631,8 +2631,8 @@ function buildTLPrintView(){
     if(col==="alt"&&!hasAlt) return;
     const c=state.tl[col];
     const r=computeTL(c);
-    const len=$(`tl_${col}_len`).textContent.trim();
-    const surface=$(`tl_${col}_surface`).textContent.trim();
+    const len=$(`tl_${col}_len`).value.trim()||"—";
+    const surface=$(`tl_${col}_surface`).value.trim()||"—";
     const labels={dep:"Departure",dst:"Destination",alt:"Alternate"};
 
     // Elev / Altimeter / PA
