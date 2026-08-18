@@ -6,9 +6,14 @@ banner_image: flyb.png
 ---
 ### Profile
 
-| Location | Email | Status |
-|:--------:|:-----:|:------:|
-| Massachusetts, USA | yebonyou@gmail.com | Permanent Resident |
+<table>
+<tbody>
+<tr><td><strong>Name</strong></td><td>Yebon You</td></tr>
+<tr><td><strong>Location</strong></td><td>Massachusetts, US</td></tr>
+<tr><td><strong>Email</strong></td><td>yebonyou@gmail.com</td></tr>
+<tr><td><strong>Status</strong></td><td>Permanent Resident</td></tr>
+</tbody>
+</table>
 
 ### Certificates
 
