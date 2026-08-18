@@ -133,6 +133,15 @@ hide_hero: true
     color:var(--ink);font-weight:600;font-size:13.5px
   }
   .info-callout svg{flex-shrink:0;width:18px;height:18px;color:var(--blue)}
+  .close-guide-row{display:flex;justify-content:center;margin-top:16px}
+  .close-guide-btn{
+    background:#fff;border:1.5px solid var(--blue);color:var(--blue);
+    padding:8px 22px;border-radius:8px;font-size:12px;font-weight:800;letter-spacing:.06em;
+    text-transform:uppercase;cursor:pointer;-webkit-appearance:none;appearance:none;outline:none;
+    transition:background .12s ease;
+  }
+  .close-guide-btn:hover,.close-guide-btn:focus,.close-guide-btn:active{background:var(--blue-soft);color:var(--blue)}
+  .close-guide-btn:focus-visible{box-shadow:0 0 0 2px var(--blue)}
   .section-help-body blockquote{
     margin:12px 0 0;padding:8px 14px;border-left:3px solid var(--line-strong);
     background:#f7f8fa;border-radius:0 6px 6px 0;font-style:italic;color:var(--slate);
@@ -838,8 +847,10 @@ hide_hero: true
           <li><strong>Header's</strong> <span class="inline-btn">SAMPLE</span> icon: Load sample data, (click <span class="inline-ico accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg></span> to clear everything)</li>
           <li><strong>Data Storage</strong>: saved to this browser only, not a permanent or shared store — use export <span class="inline-ico neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span> / import <span class="inline-ico neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></span> to save or load a plan as a file.</li>
           <li><strong>Input Guide</strong>: every section has a <span class="head-help" style="cursor:default">GUIDE</span> button next to its header — click it for a detailed guide on how to use that section.</li>
-          <li>Click the title to collapse/expand completed sections. Try clicking this section's title area.</li>
         </ul>
+        <div class="close-guide-row">
+          <button type="button" class="close-guide-btn" id="closeGuideBtn">Close This Guide</button>
+        </div>
       </div>
     </div>
   </section>
@@ -2406,6 +2417,9 @@ document.querySelectorAll(".panel.collapsible").forEach(panel=>{
   title.addEventListener("keydown",e=>{
     if(e.key==="Enter"||e.key===" "){ e.preventDefault(); toggle(); }
   });
+});
+$("closeGuideBtn").addEventListener("click",()=>{
+  document.querySelector("#guidePanel .head-title").click();
 });
 
 /* ---------- print helpers ---------- */
