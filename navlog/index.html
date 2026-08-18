@@ -2495,6 +2495,12 @@ const SECTION_HELP={
       <li>Use <strong>+ Add Leg</strong> to insert more checkpoints, and drag the grip handle (⠿) to reorder rows.</li>
       <li>Once your legs are filled in, press <strong>Generate Nav Log</strong> at the bottom to build the printable summary in the Nav Log section below.</li>
     </ul>
+    <p><strong>VOR &amp; CRS columns</strong></p>
+    <ul>
+      <li><strong>VOR</strong>: the VOR station this leg is measured from, e.g. <code>GDM</code>. <strong>CRS</strong>: the course/radial off that VOR, e.g. <code>061</code>.</li>
+      <li>Any VOR ident you type here automatically shows up in a <strong>VOR Freq</strong> bar above the table — enter its frequency there once, and it's reused for every leg that references the same VOR.</li>
+      <li>Its Morse identification code is generated automatically from the ident (shown next to the frequency input, so you don't need to type it yourself), and both the frequency and Morse code are pulled onto the printed Nav Log as a VORs row above Divert Fuel.</li>
+    </ul>
     <blockquote>Note: entering MC instead of TC directly might seem odd. Both SkyVector and ForeFlight give you MC by default, so this app has you enter MC for convenience — just be sure to separately practice finding True Course with a plotter on a paper chart.</blockquote>`
   },
   navlog:{
