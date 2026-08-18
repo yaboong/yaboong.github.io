@@ -2349,12 +2349,13 @@ const SECTION_HELP={
   },
   tl:{
     title:"Takeoff & Landing Performance",
-    body:`<p>Density altitude and runway performance at Departure, Destination, and Alternate.</p>
+    body:`<p>In this section, you enter the values needed for takeoff &amp; landing performance, and the rest is calculated automatically.</p>
     <ul>
-      <li><strong>Altimeter / OAT / Wind Dir / Wind Spd</strong> — from current weather (METAR/TAF) for each airport.</li>
-      <li><strong>Runway</strong> — pick from the airport's available runways; Length and Surface fill in automatically.</li>
-      <li><strong>PA, DA, Headwind, Crosswind</strong> are all calculated for you.</li>
-      <li><strong>Takeoff/Landing Distance</strong> — look these up in your POH's performance charts using the calculated density altitude.</li>
+      <li>This section sits at the very bottom for a reason: <strong>takeoff</strong> performance <strong>depends</strong> on aircraft <strong>weight</strong>, weight depends on fuel, and fuel depends on a completed nav log — so this is the last thing you can calculate, only after everything else is filled in.</li>
+      <li>Airport elevation and runway data (number, length, surface) load automatically based on the Departure, Destination, and Alternate you entered in Meta Data.</li>
+      <li>Takeoff &amp; Landing Performance calculations need to know whether you have a <strong>headwind</strong> or <strong>tailwind</strong>. This app calculates it for you, but you should still know how to work it out yourself with a Crosswind Component Chart.</li>
+      <li>Check the <strong>tooltips</strong> for where to pull each value from.</li>
+      <li>Check the <strong>Airport DB updated</strong> date shown above the table, and <strong>double-check</strong> that the runway data still matches what's current as of when you're building your nav log.</li>
     </ul>`
   }
 };
