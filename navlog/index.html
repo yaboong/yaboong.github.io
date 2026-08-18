@@ -127,6 +127,7 @@ hide_hero: true
   .section-help-body code{font-family:var(--mono);font-size:12px;background:#f0f2f5;border-radius:3px;padding:1px 5px;color:var(--ink)}
   .section-help-body a{color:var(--blue)}
   .section-help-body .warn{color:#c0392b;font-weight:700}
+  .section-help-body .poh-hl{color:#ff33ff;font-weight:700}
   .info-callout{
     display:flex;align-items:center;gap:8px;margin:0 0 14px;padding:10px 12px;
     background:var(--blue-soft);border:1px solid var(--blue);border-radius:8px;
@@ -197,10 +198,10 @@ hide_hero: true
   .panel.collapsible.collapsed > .body{display:none}
   .head-help{
     display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;
-    height:20px;padding:0 6px;margin:0;border-radius:5px;
+    min-width:20px;height:20px;padding:0 6px;margin:0;border-radius:5px;
     -webkit-appearance:none;appearance:none;outline:none;
     background:#fff;border:1.5px solid var(--blue);color:var(--blue);cursor:pointer;
-    font-family:var(--ui);font-size:9px;font-weight:800;letter-spacing:.06em;
+    font-family:var(--ui);font-size:11px;font-weight:800;
     transition:background .12s ease;
   }
   .head-help:hover,.head-help:focus,.head-help:active{background:#e3f6ff;color:var(--blue)}
@@ -890,10 +891,10 @@ hide_hero: true
           </li>
           <li><strong>Header's</strong> <span class="inline-btn">SAMPLE</span> icon: Load sample data, (click <span class="inline-ico accent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg></span> to clear everything)</li>
           <li><strong>Data Storage</strong>: saved to this browser only, not a permanent or shared store — use export <span class="inline-ico neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span> / import <span class="inline-ico neutral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></span> to save or load a plan as a file.</li>
-          <li><strong>Input Guide</strong>: every section has a <span class="head-help" style="cursor:default">GUIDE</span> button next to its header — click it for a detailed guide on how to use that section.</li>
+          <li><strong>Input Guide</strong>: every section has a <span class="head-help" style="cursor:default">?</span> button next to its header — click it for a detailed guide on how to use that section.</li>
         </ul>
         <div class="close-guide-row">
-          <button type="button" class="close-guide-btn" id="closeGuideBtn">Close This Guide</button>
+          <button type="button" class="close-guide-btn" id="closeGuideBtn">Close</button>
         </div>
       </div>
     </div>
@@ -942,7 +943,7 @@ hide_hero: true
 
   <!-- META DATA -->
   <section class="panel collapsible" id="metaPanel">
-    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Meta Data</h2><button class="head-help" data-help="meta" title="How to use this section" aria-label="How to use this section">GUIDE</button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Meta Data</h2><button class="head-help" data-help="meta" title="How to use this section" aria-label="How to use this section">?</button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div class="grid cols-5">
         <div class="field"><label>Date</label><input type="text" id="metaDate" readonly inputmode="none" autocomplete="off" placeholder="Select date"></div>
@@ -965,7 +966,7 @@ hide_hero: true
 
   <!-- CRUISE / POH -->
   <section class="panel collapsible" id="cruisePanel">
-    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Cruise Data</h2><button class="head-help" data-help="cruise" title="How to use this section" aria-label="How to use this section">GUIDE</button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Cruise Data</h2><button class="head-help" data-help="cruise" title="How to use this section" aria-label="How to use this section">?</button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div class="grid">
         <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip">- VFR/IFR cruising altitude rule<br>- MEF (Maximum Elevation Figure)<br>- Airspace<br>- Wind (tailwind preferred)<br>- Cloud clearance<br>- Icing<br>- Turbulence<br>- Aircraft performance<br>- Terrain<br>- Oxygen requirement</span></span> Cruise ALT <span class="unit">ft</span></label><input id="alt" inputmode="decimal" placeholder="5500"></div>
@@ -986,7 +987,7 @@ hide_hero: true
     <div class="head">
       <span class="head-title" role="button" tabindex="0" aria-expanded="true">
         <h2>Navigation Data</h2>
-        <button class="head-help" data-help="nav" title="How to use this section" aria-label="How to use this section">GUIDE</button>
+        <button class="head-help" data-help="nav" title="How to use this section" aria-label="How to use this section">?</button>
         <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
       </span>
     </div>
@@ -1076,7 +1077,7 @@ hide_hero: true
     <div class="head">
       <span class="head-title" role="button" tabindex="0" aria-expanded="true">
         <h2>Nav Log</h2>
-        <button class="head-help" data-help="navlog" title="How to use this section" aria-label="How to use this section">GUIDE</button>
+        <button class="head-help" data-help="navlog" title="How to use this section" aria-label="How to use this section">?</button>
         <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
       </span>
     </div>
@@ -1087,7 +1088,7 @@ hide_hero: true
 
   <!-- FUEL RESERVES -->
   <section class="panel collapsible" id="fuelPanel">
-    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Fuel<span class="head-unit">gallon</span></h2><button class="head-help" data-help="fuel" title="How to use this section" aria-label="How to use this section">GUIDE</button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Fuel<span class="head-unit">gallon</span></h2><button class="head-help" data-help="fuel" title="How to use this section" aria-label="How to use this section">?</button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div class="totals">
         <div class="t"><div class="tl">Flight</div><div class="tv"><span id="fuelSumFlight">—</span><span class="u">gal</span></div></div>
@@ -1110,7 +1111,7 @@ hide_hero: true
     <div class="head">
       <span class="head-title" role="button" tabindex="0" aria-expanded="true">
         <h2>Weight &amp; Balance</h2>
-        <button class="head-help" data-help="wb" title="How to use this section" aria-label="How to use this section">GUIDE</button>
+        <button class="head-help" data-help="wb" title="How to use this section" aria-label="How to use this section">?</button>
         <span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
       </span>
       <button class="btn ghost noprint" id="wbClear">Clear W&amp;B</button>
@@ -1195,7 +1196,7 @@ hide_hero: true
 
   <!-- TAKEOFF & LANDING DATA -->
   <section class="panel collapsible" id="tlPanel">
-    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Takeoff & Landing Performance</h2><button class="head-help" data-help="tl" title="How to use this section" aria-label="How to use this section">GUIDE</button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Takeoff & Landing Performance</h2><button class="head-help" data-help="tl" title="How to use this section" aria-label="How to use this section">?</button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div id="tlPrintView" class="tl-print-view"></div>
       <div class="tl-db-note">Airport DB updated Aug 14, 2026</div>
@@ -2621,7 +2622,7 @@ const SECTION_HELP={
     body:`<p>Aircraft loading and center-of-gravity check.</p>
     <ul>
       <li>Pick your <strong>Aircraft</strong> type (and <strong>Callsign</strong> if PA-28-161 is selected).</li>
-      <li><strong>Basic Empty Weight</strong> <span class="warn">must come from the POH carried in the actual aircraft</span> you'll be flying — this value is unique to each individual airplane.</li>
+      <li><strong>Basic Empty Weight</strong> <span class="poh-hl">must come from the POH carried in the actual aircraft</span> you'll be flying — this value is unique to each individual airplane.</li>
       <li>When <strong>PA-28-161</strong> is selected, you can pick from a few aircraft based at 7B2, and each one's Basic Empty Weight fills in automatically.</li>
       <li>The CG envelope graph is only shown for the <strong>PA-28-161</strong>.</li>
       <li>The <strong>Fuel</strong> row fills in automatically — it's the total fuel (flight portion + reserves) from the Fuel section, converted to pounds. It turns red if it exceeds the fuel tank's maximum capacity.</li>
