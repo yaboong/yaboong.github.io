@@ -798,23 +798,23 @@ hide_hero: true
       <span class="tail">CROSS&nbsp;COUNTRY&nbsp;PLANNER</span>
     </div>
     <div class="toolbar noprint">
-      <button class="btn" id="btnSample">SAMPLE</button>
-      <button class="btn-icon accent" id="btnReset" title="Clear">
+      <button class="btn tip-btn" id="btnSample" data-tip="Load example data">SAMPLE</button>
+      <button class="btn-icon accent tip-btn" id="btnReset" data-tip="Clear all inputs">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7 21-4.3-4.3c-1-1-1-2.5 0-3.4l9.6-9.6c1-1 2.5-1 3.4 0l5.6 5.6c1 1 1 2.5 0 3.4L13 21"/><path d="M22 21H7"/><path d="m5 11 9 9"/></svg>
       </button>
-      <button class="btn-icon" id="btnUndo" title="Undo" disabled>
+      <button class="btn-icon tip-btn" id="btnUndo" data-tip="Undo" disabled>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>
       </button>
-      <button class="btn-icon" id="btnRedo" title="Redo" disabled>
+      <button class="btn-icon tip-btn" id="btnRedo" data-tip="Redo" disabled>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14l5-5-5-5"/><path d="M20 9H9.5a5.5 5.5 0 0 0 0 11H13"/></svg>
       </button>
-      <button class="btn-icon" id="btnImportCsv" title="Import CSV">
+      <button class="btn-icon tip-btn" id="btnImportCsv" data-tip="Import">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
       </button>
-      <button class="btn-icon" id="btnExportCsv" title="Export CSV">
+      <button class="btn-icon tip-btn" id="btnExportCsv" data-tip="Export">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       </button>
-      <button class="btn-icon light" id="btnDiagram" title="Show field relationship diagram">
+      <button class="btn-icon light tip-btn" id="btnDiagram" data-tip="Field relationship diagram">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg>
       </button>
     </div>
@@ -1311,15 +1311,15 @@ function defaultState(){
     others:{ fuelGround:2.0, fuelLanding:2.0, fuelLegal:4.4, fuelPersonal:4.4 },
     wb:{ aircraft:"PA-28-161 (N79NA)", bewW:1442.37, bewA:87.57, bewM:126301.45, pilotW:320, rearW:120, bagW:80 },
     legs:[
-      {name:"[On-Course] Amherst",vor:"GDM",crs:"257",alt:1900,dist:6, mc:54,var:14,dev:0,tas:79, windDir:307,windSpd:14},
-      {name:"[TOC]",             vor:"GDM",crs:"273",alt:5500,dist:10,mc:55,var:14,dev:0,tas:79, windDir:307,windSpd:15},
-      {name:"KORE",            vor:"GDM",crs:"293",alt:5500,dist:5, mc:55,var:14,dev:0,tas:105,windDir:308,windSpd:16},
-      {name:"Mt Monadnock",    vor:"GDM",crs:"007",alt:5500,dist:19,mc:38,var:14,dev:0,tas:105,windDir:308,windSpd:17},
-      {name:"Powder Mill Pond",vor:"CON",crs:"061",alt:5500,dist:10,mc:61,var:14,dev:0,tas:105,windDir:309,windSpd:18},
-      {name:"Weare Reservoir", vor:"CON",crs:"061",alt:5500,dist:10,mc:61,var:14,dev:0,tas:105,windDir:309,windSpd:19},
-      {name:"CON (VOR)",       vor:"CON",crs:"061",alt:5500,dist:12,mc:61,var:14,dev:0,tas:105,windDir:309,windSpd:20},
-      {name:"[TOD]",             vor:"CON",crs:"027",alt:5500,dist:7, mc:27,var:14,dev:0,tas:105,windDir:311,windSpd:20},
-      {name:"[BOD] Laconia",   vor:"CON",crs:"027",alt:1600,dist:12,mc:27,var:14,dev:0,tas:90,windDir:311,windSpd:16},
+      {name:"[On-Course] Amherst",vor:"GDM",crs:"R-257",alt:1900,dist:6, mc:54,var:14,dev:0,tas:79, windDir:307,windSpd:14},
+      {name:"[TOC]",             vor:"GDM",crs:"R-273",alt:5500,dist:10,mc:55,var:14,dev:0,tas:79, windDir:307,windSpd:15},
+      {name:"KORE",            vor:"GDM",crs:"R-293",alt:5500,dist:5, mc:55,var:14,dev:0,tas:105,windDir:308,windSpd:16},
+      {name:"Mt Monadnock",    vor:"GDM",crs:"R-007",alt:5500,dist:19,mc:38,var:14,dev:0,tas:105,windDir:308,windSpd:17},
+      {name:"Powder Mill Pond",vor:"CON",crs:"T-061",alt:5500,dist:10,mc:61,var:14,dev:0,tas:105,windDir:309,windSpd:18},
+      {name:"Weare Reservoir", vor:"CON",crs:"T-061",alt:5500,dist:10,mc:61,var:14,dev:0,tas:105,windDir:309,windSpd:19},
+      {name:"CON (VOR)",       vor:"CON",crs:"T-061",alt:5500,dist:12,mc:61,var:14,dev:0,tas:105,windDir:309,windSpd:20},
+      {name:"[TOD]",             vor:"CON",crs:"R-027",alt:5500,dist:7, mc:27,var:14,dev:0,tas:105,windDir:311,windSpd:20},
+      {name:"[BOD] Laconia",   vor:"CON",crs:"R-027",alt:1600,dist:12,mc:27,var:14,dev:0,tas:90,windDir:311,windSpd:16},
       {name:"KLCI",            vor:"",   crs:"",    alt:545, dist:4, mc:55,var:14,dev:0,tas:90, windDir:310,windSpd:16}
     ]
   };
@@ -2228,7 +2228,7 @@ function importCSV(text){
 
 /* ---------- toolbar ---------- */
 $("btnSample").onclick=()=>{ snapshot(true); state=defaultState(); save(); renderAll(); toast("Sample loaded"); };
-$("btnReset").onclick=()=>{ snapshot(true); state=emptyState(); save(); renderAll(); $("navlogWrap").innerHTML='<p class="empty-note">Press "Generate Nav Log" to build a printable log here.</p>'; toast("Cleared"); };
+$("btnReset").onclick=()=>{ snapshot(true); state=emptyState(); save(); renderAll(); $("navlogWrap").innerHTML='<p class="empty-note">Press "Generate Nav Log" to build a printable log here.</p>'; collapsePanel("guidePanel"); collapsePanel("pohPanel"); toast("Cleared"); };
 $("btnExportCsv").onclick=exportCSV;
 $("btnImportCsv").onclick=()=>$("csvFileInput").click();
 $("csvFileInput").addEventListener("change",e=>{
@@ -2246,6 +2246,14 @@ function expandPanel(id){
   const title=panel.querySelector(".head .head-title");
   if(title) title.setAttribute("aria-expanded","true");
   store.set("navlogCollapsed_"+id,"0");
+}
+function collapsePanel(id){
+  const panel=$(id);
+  if(!panel||!panel.classList.contains("collapsible")) return;
+  panel.classList.add("collapsed");
+  const title=panel.querySelector(".head .head-title");
+  if(title) title.setAttribute("aria-expanded","false");
+  store.set("navlogCollapsed_"+id,"1");
 }
 $("btnGen").onclick=()=>{ expandPanel("navlogPanel"); generateNavlog(); };
 $("btnPrint").onclick=()=>{ generateNavlog(); prepareForPrint(); setTimeout(()=>window.print(),120); };
@@ -2945,6 +2953,14 @@ document.querySelectorAll('.ico').forEach(el=>el.setAttribute('tabindex','-1'));
     if(!gt.contains(e.target)){ gt.style.display='none'; openIco=null; }
   });
   window.addEventListener('scroll',()=>{ gt.style.display='none'; openIco=null; },{passive:true,capture:true});
+  // header toolbar buttons: hover/focus-only tooltip (no click-to-toggle — these buttons already
+  // have their own click action, so reusing the .ico click handler above would fire both at once)
+  document.querySelectorAll('.tip-btn').forEach(btn=>{
+    btn.addEventListener('mouseenter',()=>{ if(!isTouch){ cancelHide(); showTip(btn); } });
+    btn.addEventListener('mouseleave',()=>{ if(!isTouch) scheduleHide(); });
+    btn.addEventListener('focus',()=>{ if(!isTouch){ cancelHide(); showTip(btn); } });
+    btn.addEventListener('blur',scheduleHide);
+  });
 }
 
 /* --- custom calendar picker for #metaDate — native type="date" won't render consistently on iOS
