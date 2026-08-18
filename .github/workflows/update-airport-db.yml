@@ -1,0 +1,49 @@
+name: Update airport DB
+
+on:
+  schedule:
+    # every Thursday at 06:00 UTC — commits every run (see the Commit step below): even
+    # on weeks where the airport data itself didn't change, this bumps the "last checked"
+    # date shown on the page, so the note reflects that the DB was actually re-verified
+    # against OurAirports that week, not just whenever it last happened to change.
+    - cron: "0 6 * * 4"
+  workflow_dispatch: {}
+    # ^ lets you trigger this on demand from the Actions tab instead of waiting for Thursday
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Regenerate airport DB
+        run: node navlog/scripts/update-airport-db.mjs
+
+      - name: Commit
+        run: |
+          # airports.meta.json's generatedAt is always today (this run just verified the
+          # DB against OurAirports), so it changes every run — that's the point, it's the
+          # "last checked" date shown on the page. airports.json only changes when the
+          # actual airport data did. Distinguish the two in the commit message so the git
+          # history stays readable: a real data update vs. a routine "still current" check.
+          if git diff --quiet -- navlog/data; then
+            echo "Nothing to commit (already ran today)."
+            exit 0
+          fi
+          if git diff --quiet -- navlog/data/airports.json; then
+            MSG="airports: verified up to date ($(node -e "console.log(require('./navlog/data/airports.meta.json').recordCount)") keys)"
+          else
+            MSG="airports: refresh from OurAirports ($(node -e "console.log(require('./navlog/data/airports.meta.json').recordCount)") keys)"
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add navlog/data/airports.json navlog/data/airports.meta.json
+          git commit -m "$MSG"
+          git push
