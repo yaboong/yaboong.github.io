@@ -126,6 +126,12 @@ hide_hero: true
   .section-help-body li strong{color:var(--ink)}
   .section-help-body code{font-family:var(--mono);font-size:12px;background:#f0f2f5;border-radius:3px;padding:1px 5px;color:var(--ink)}
   .section-help-body a{color:var(--blue)}
+  .section-help-body blockquote{
+    margin:12px 0 0;padding:8px 14px;border-left:3px solid var(--line-strong);
+    background:#f7f8fa;border-radius:0 6px 6px 0;font-style:italic;color:var(--slate);
+    font-size:inherit;line-height:inherit
+  }
+  .section-help-body blockquote:first-child{margin-top:0}
   .section-help-body img{display:block;max-width:100%;border:1px solid var(--line);border-radius:8px;margin:0 0 10px}
   .section-help-body img:last-child{margin-bottom:0}
   .section-help-body p:last-child,.section-help-body ul:last-child{margin-bottom:0}
@@ -2286,11 +2292,13 @@ const SECTION_HELP={
     title:"Navigation Data",
     body:`<p>Leg-by-leg route planning — the core table the rest of the nav log is built from.</p>
     <ul>
-      <li>For each checkpoint, enter <strong>VOR / CRS / Altitude / Distance / Magnetic Course / Variation / Deviation / TAS / Wind</strong>, taken from your sectional chart, POH performance data, and weather briefing.</li>
-      <li><strong>TC, WCA, GS, MH, CH, ETE, Fuel</strong> are calculated automatically as you type.</li>
+      <li>The columns inside the <strong>blue outline</strong> are the ones you <strong>enter yourself</strong>: LEG, VOR, ALT, DIST, MC, VAR, DEV, TAS, WIND DIR, WIND SPD.</li>
+      <li>Everything to the right of that blue outline (TC, WCA, GS, MH, CH, ETE, FUEL) is <strong>calculated automatically</strong>.</li>
+      <li><strong>Hover any calculated value</strong> (tap on mobile) to instantly see which inputs it depends on — a fast way to trace how the numbers connect, or track down which input to fix if a result looks off.</li>
       <li>Use <strong>+ Add Leg</strong> to insert more checkpoints, and drag the grip handle (⠿) to reorder rows.</li>
       <li>Once your legs are filled in, press <strong>Generate Nav Log</strong> at the bottom to build the printable summary in the Nav Log section below.</li>
-    </ul>`
+    </ul>
+    <blockquote>Note: entering MC instead of TC directly might seem odd. Both SkyVector and ForeFlight give you MC by default, so this app has you enter MC for convenience — just be sure to separately practice finding True Course with a plotter on a paper chart.</blockquote>`
   },
   navlog:{
     title:"Nav Log",
