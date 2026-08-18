@@ -4,7 +4,26 @@ title: About Yaboong
 description: About this blog and host yaboong.
 banner_image: flyb.png
 ---
-### YABOONG
+### Profile
+
+| Location | Email | Status |
+|:--------:|:-----:|:------:|
+| Massachusetts, USA | yebonyou@gmail.com | Permanent Resident |
+
+### Certificates
+
+- Private Pilot License (PPL)
+- Instrument Rating (IR)
+- Commercial Pilot License (CPL)
+- FAA 1st Class Medical
+
+### Flight Time
+
+| Total Time | Total PIC | Cross Country | Night | Solo | Instrument |
+|:----------:|:---------:|:-------------:|:-----:|:----:|:----------:|
+| 264.7      | 187.7     | 114.0         |  27.1 | 66.3 | 53.6       |
+
+### Timeline
 
 - **2008-2009:** Management & Economics major
 - **2009-2010:** Tried to become a musician
