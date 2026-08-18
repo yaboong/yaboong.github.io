@@ -413,6 +413,7 @@ hide_hero: true
   .vor-freq-bar .vf-id{font-family:var(--mono);font-size:11px;font-weight:800;color:var(--ink);letter-spacing:.03em}
   .vor-freq-bar .vf-freq{width:64px;font-family:var(--mono);font-size:12px;font-weight:400;border:1.5px solid var(--line-strong);border-radius:6px;padding:4px 6px;background:#fff;color:var(--ink)}
   .vor-freq-bar .vf-freq:focus{outline:none;box-shadow:0 0 0 0.5px var(--blue)}
+  .vor-freq-bar .vf-morse{font-family:var(--mono);font-size:10px;color:var(--slate);letter-spacing:.04em;cursor:default}
 
   /* ---- divert fuel quick-ref ---- */
   .nav-footnote{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -1511,7 +1512,7 @@ function renderVorFreqBar(){
   if(vors.length===0){ bar.style.display="none"; bar.innerHTML=""; return; }
   bar.style.display="";
   bar.innerHTML = `<span class="vf-label">VOR Freq</span>` + vors.map(v=>
-    `<span class="vf-item"><span class="vf-id">${escapeHtml(v)}</span><input class="vf-freq" data-vor="${escapeAttr(v)}" inputmode="decimal" placeholder="MHz" value="${escapeAttr(state.vorFreq[v]||"")}"></span>`
+    `<span class="vf-item"><span class="vf-id">${escapeHtml(v)}</span><input class="vf-freq" data-vor="${escapeAttr(v)}" inputmode="decimal" placeholder="MHz" value="${escapeAttr(state.vorFreq[v]||"")}"><span class="vf-morse" title="Auto-included on the printed Nav Log — no need to enter this yourself">${escapeHtml(identMorse(v))}</span></span>`
   ).join("");
   bar.querySelectorAll(".vf-freq").forEach(inp=>{
     inp.addEventListener("input",()=>{
