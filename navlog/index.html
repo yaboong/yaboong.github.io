@@ -127,6 +127,12 @@ hide_hero: true
   .section-help-body code{font-family:var(--mono);font-size:12px;background:#f0f2f5;border-radius:3px;padding:1px 5px;color:var(--ink)}
   .section-help-body a{color:var(--blue)}
   .section-help-body .warn{color:#c0392b;font-weight:700}
+  .info-callout{
+    display:flex;align-items:center;gap:8px;margin:0 0 14px;padding:10px 12px;
+    background:var(--blue-soft);border:1px solid var(--blue);border-radius:8px;
+    color:var(--ink);font-weight:600;font-size:13.5px
+  }
+  .info-callout svg{flex-shrink:0;width:18px;height:18px;color:var(--blue)}
   .section-help-body blockquote{
     margin:12px 0 0;padding:8px 14px;border-left:3px solid var(--line-strong);
     background:#f7f8fa;border-radius:0 6px 6px 0;font-style:italic;color:var(--slate);
@@ -810,6 +816,10 @@ hide_hero: true
     <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Guide</h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div class="section-help-body">
+        <div class="info-callout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          For the best experience, please use the desktop Chrome browser.
+        </div>
         <ul>
           <li><strong>Input Order</strong>:  Enter data in the order shown. Click the <button type="button" class="inline-ico doc" id="guideDiagramTrigger" title="Show field relationship diagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="16" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="9" y="2" width="6" height="6" rx="1"/><path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M12 12V8"/></svg></button> in Header to see how the values relate. (colors match the tooltip colors below)
             <ul>
