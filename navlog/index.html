@@ -405,6 +405,8 @@ hide_hero: true
   input.cell-in.nav-sel{background:rgba(33,180,235,.18) !important;outline:1.5px solid var(--blue) !important}
 
   .table-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+
+  /* ---- divert fuel quick-ref ---- */
   .nav-footnote{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
   .nav-footnote-col h4{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:0 0 6px;line-height:1.5}
   .nav-footnote-col ul{margin:0;padding:0 0 0 13px;list-style:disc}
@@ -441,6 +443,15 @@ hide_hero: true
   .log .sumrow .sval{font-family:var(--mono);font-size:10px;font-weight:400;background:#fff;color:var(--ink)}
   .log .sumrow .hl{background:#fff;color:var(--ink)}
   .log .sumrow .sval.mag{color:var(--ink);background:#fff}
+
+  /* divert fuel row: sits above sumrow so it always stays on page 1 regardless of leg count */
+  .log thead th.divert-lbl{background:#e7eaef;font-family:var(--ui);font-weight:800;font-size:10px;letter-spacing:.04em;text-align:center;display:table-cell}
+  .log thead th.divert-lbl .ico{margin-right:3px}
+  .log thead th.divert-vals{background:#fff;padding:4px 6px}
+  .log .df-vals{display:flex;justify-content:center;gap:12px}
+  .log .df-item{display:flex;align-items:baseline;gap:3px}
+  .log .df-min{font-size:9px;color:var(--slate);font-weight:700}
+  .log .df-val{font-family:var(--mono);font-size:11px;font-weight:800;color:var(--ink)}
 
   /* header label rows */
   .log thead .grp th,.log thead .grp2 th,.log thead .lbl th,.log thead .lbl2 th{
@@ -614,6 +625,8 @@ hide_hero: true
   @media print{
     /* 1in side margins → 6.5"×9" usable; navlog panel constrained to 5.5" = smaller than 6"×9" kneeboard */
     @page{size:letter portrait;margin:0.75in 0.3in}
+    /* page 1 (nav log) only: top margin +50% (0.75in → 1.125in) so a kneeboard clip doesn't cover the header */
+    @page :first{margin-top:1.125in}
     body{background:#fff;font-size:9pt;color:#111;-webkit-print-color-adjust:exact;print-color-adjust:exact}
     .navlog-app{background:#fff !important}
     .wrap{max-width:none;margin:0;padding:0;display:block}
@@ -1781,6 +1794,10 @@ function generateNavlog(){
   const gphDisp = valOr(state.cruise.gph);
   const fTotals = fuelTotals();
 
+  const divertHtml = [5,10,15,20,25,30].map(min=>
+    `<div class="df-item"><span class="df-min">${min}′</span><span class="df-val">${Number.isNaN(gph)?"—":round2(gph*min/60).toFixed(1)}</span></div>`
+  ).join("");
+
   let cum=0;
   const rowsHtml = legs.map((l,idx)=>{
     const r=computeLeg(l,gph);
@@ -1819,6 +1836,10 @@ function generateNavlog(){
          <col class="c-gs"><col class="c-ete"><col class="c-eta"><col class="c-fuel">
        </colgroup>
        <thead>
+         <tr class="divertrow">
+           <th class="divert-lbl" colspan="2"><span class="ico rich cal" tabindex="0">C<span class="tip">Quick fuel estimate for a divert<br>- GPS Direct gives ETE, read fuel here<br>- e.g. ETE 7min → between 5′/10′ → ~1.0 gal<br><br>*computed from GPH (Cruise Data)</span></span>Divert Fuel</th>
+           <th class="divert-vals" colspan="6"><div class="df-vals">${divertHtml}</div></th>
+         </tr>
          <tr class="sumrow">
            <th>RPM</th><th class="sval hl">${rpm||"—"}</th>
            <th>IAS</th><th class="sval hl">${ias||"—"}</th>
