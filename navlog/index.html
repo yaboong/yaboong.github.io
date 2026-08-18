@@ -1440,7 +1440,7 @@ function computeCruise(){
 /* ---------- rendering ---------- */
 const $ = id => document.getElementById(id);
 const IN_COLS = [
-  {k:"vor",cls:"in",im:"text"},     {k:"crs",cls:"in",im:"numeric",digits:true},
+  {k:"vor",cls:"in",im:"text",alpha:true}, {k:"crs",cls:"in",im:"numeric",digits:true},
   {k:"alt",cls:"in",im:"decimal",num:true},{k:"dist",cls:"in",im:"decimal",num:true},{k:"mc",cls:"in",im:"decimal",num:true},
   {k:"var",cls:"in",im:"decimal",num:true},{k:"dev",cls:"in",im:"decimal",num:true},{k:"tas",cls:"in",im:"decimal",num:true},
   {k:"windDir",cls:"in",im:"decimal",num:true},{k:"windSpd",cls:"in",im:"decimal",num:true}
@@ -1458,7 +1458,7 @@ function renderTable(){
     tr.innerHTML =
       `<td class="grip" title="Drag to reorder">⠿</td>`+
       `<td class="leg in"><input class="cell-in" data-k="name" data-row="${i}" data-col="0" value="${escapeAttr(leg.name)}" placeholder="Checkpoint"></td>`+
-      IN_COLS.map((c,ci)=>`<td class="in"><input class="cell-in" inputmode="${c.im}"${c.num?' data-numeric="1"':''}${c.digits?' data-digits="1" maxlength="3"':''} data-k="${c.k}" data-row="${i}" data-col="${ci+1}" value="${valOr(leg[c.k])}"></td>`).join("")+
+      IN_COLS.map((c,ci)=>`<td class="in"><input class="cell-in" inputmode="${c.im}"${c.num?' data-numeric="1"':''}${c.digits?' data-digits="1" maxlength="3"':''}${c.alpha?' data-alpha="1" maxlength="3" style="text-transform:uppercase"':''} data-k="${c.k}" data-row="${i}" data-col="${ci+1}" value="${valOr(leg[c.k])}"></td>`).join("")+
       `<td class="calc">${r.tc}</td>`+
       `<td class="calc">${r.wca}</td>`+
       `<td class="calc">${r.gs}</td>`+
@@ -1472,6 +1472,10 @@ function renderTable(){
     tr.querySelectorAll("input").forEach(inp=>{
       inp.addEventListener("input",()=>{
         snapshot();
+        if(inp.dataset.alpha){
+          const c=inp.value.replace(/[^a-zA-Z]/g,"").toUpperCase();
+          if(inp.value!==c) inp.value=c;
+        }
         state.legs[i][inp.dataset.k]=inp.value;
         recalcRow(tr,i);
         renderTotals();
@@ -2872,6 +2876,10 @@ function bindAll(){
   $("navBody").addEventListener("input",e=>{
     const el=e.target; if(el.tagName!=="INPUT"||!el.dataset.digits) return;
     const v=el.value,c=v.replace(/[^0-9]/g,"").slice(0,3); if(v!==c) el.value=c;
+  });
+  $("navBody").addEventListener("beforeinput",e=>{
+    const el=e.target; if(el.tagName!=="INPUT"||!el.dataset.alpha) return;
+    if(e.data&&/[^a-zA-Z]/.test(e.data)) e.preventDefault();
   });
   $("wbTbody").addEventListener("input",e=>{
     const el=e.target; if(el.tagName!=="INPUT") return;
