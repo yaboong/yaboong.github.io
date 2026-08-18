@@ -406,6 +406,14 @@ hide_hero: true
 
   .table-actions{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
 
+  /* ---- VOR frequency bar (above Navigation Data table) ---- */
+  .vor-freq-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:0 0 12px}
+  .vor-freq-bar .vf-label{font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--slate);text-transform:uppercase}
+  .vor-freq-bar .vf-item{display:flex;align-items:center;gap:6px;background:#f6f8fa;border:1px solid var(--line);border-radius:8px;padding:4px 8px}
+  .vor-freq-bar .vf-id{font-family:var(--mono);font-size:11px;font-weight:800;color:var(--ink);letter-spacing:.03em}
+  .vor-freq-bar .vf-freq{width:64px;font-family:var(--mono);font-size:12px;font-weight:400;border:1.5px solid var(--line-strong);border-radius:6px;padding:4px 6px;background:#fff;color:var(--ink)}
+  .vor-freq-bar .vf-freq:focus{outline:none;box-shadow:0 0 0 0.5px var(--blue)}
+
   /* ---- divert fuel quick-ref ---- */
   .nav-footnote{margin-top:18px;padding-top:18px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
   .nav-footnote-col h4{font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:0 0 6px;line-height:1.5}
@@ -452,6 +460,12 @@ hide_hero: true
   .log .df-item{display:flex;align-items:baseline;gap:3px}
   .log .df-min{font-size:9px;color:var(--slate);font-weight:700}
   .log .df-val{font-family:var(--mono);font-size:11px;font-weight:800;color:var(--ink)}
+
+  /* VORs row: sits directly above Divert Fuel, same label/value styling */
+  .log .vor-vals{display:flex;justify-content:center;flex-wrap:wrap;gap:3px 16px;font-family:var(--mono)}
+  .log .vf-out-id{font-size:11px;font-weight:800;color:var(--ink)}
+  .log .vf-out-freq{font-size:11px;font-weight:800;color:var(--ink);margin-left:3px}
+  .log .vf-out-morse{font-size:9px;color:var(--slate);margin-left:5px;letter-spacing:.04em}
 
   /* header label rows */
   .log thead .grp th,.log thead .grp2 th,.log thead .lbl th,.log thead .lbl2 th{
@@ -972,6 +986,8 @@ hide_hero: true
         <div class="t"><div class="tl">Flight Fuel</div><div class="tv"><span id="tFuelFlight">—</span><span class="u">gal</span></div></div>
       </div>
 
+      <div class="vor-freq-bar noprint" id="vorFreqBar" style="display:none"></div>
+
       <div class="tablescroll">
         <table class="nav">
           <thead>
@@ -1353,7 +1369,8 @@ function defaultState(){
       {name:"[TOD]",             vor:"CON",crs:"027",alt:5500,dist:7, mc:27,var:14,dev:0,tas:104,windDir:311,windSpd:20},
       {name:"[BOD] Laconia",   vor:"CON",crs:"027",alt:1600,dist:12,mc:27,var:14,dev:0,tas:90,windDir:311,windSpd:16},
       {name:"KLCI",            vor:"",   crs:"",    alt:545, dist:4, mc:55,var:14,dev:0,tas:90, windDir:310,windSpd:16}
-    ]
+    ],
+    vorFreq:{ GDM:"116.95", CON:"112.9" }
   };
 }
 
@@ -1365,7 +1382,8 @@ function emptyState(){
     tl: emptyTL(),
     others:{ fuelGround:"", fuelLanding:"", fuelLegal:"", fuelPersonal:"" },
     wb:{ aircraft:"PA-28-161", bewW:"", bewA:"", bewM:"", pilotW:"", rearW:"", bagW:"" },
-    legs: ["[On-Course]","[TOC]","[TOD]","[BOD]","DESTINATION"].map(n=>({name:n,vor:"",crs:"",alt:"",dist:"",mc:"",var:"",dev:"",tas:"",windDir:"",windSpd:""}))
+    legs: ["[On-Course]","[TOC]","[TOD]","[BOD]","DESTINATION"].map(n=>({name:n,vor:"",crs:"",alt:"",dist:"",mc:"",var:"",dev:"",tas:"",windDir:"",windSpd:""})),
+    vorFreq:{}
   };
 }
 
@@ -1373,6 +1391,7 @@ let state = load() || emptyState();
 if(!state.meta) state.meta = { date:"", time:"", dep:"", dst:"", alt:"", route:"" };
 if(!state.wb) state.wb = { aircraft:"PA-28-161", bewW:1442.37, bewA:87.57, bewM:126301.45, pilotW:"", rearW:"", bagW:"" };
 if(!state.tl) state.tl = emptyTL();
+if(!state.vorFreq) state.vorFreq = {};
 
 /* ---------- per-leg computation (mirrors the sheet formulas) ---------- */
 function computeLeg(leg, gph){
@@ -1455,6 +1474,7 @@ function renderTable(){
         state.legs[i][inp.dataset.k]=inp.value;
         recalcRow(tr,i);
         renderTotals();
+        if(inp.dataset.k==="vor") renderVorFreqBar();
         save();
       });
     });
@@ -1466,6 +1486,55 @@ function renderTable(){
     attachDrag(tr);
     body.appendChild(tr);
   });
+  renderVorFreqBar();
+}
+
+// VOR idents currently used across the legs table, deduped, in first-appearance order
+function usedVors(){
+  const seen=new Set(), out=[];
+  state.legs.forEach(l=>{
+    const v=String(l.vor||"").trim().toUpperCase();
+    if(v && !seen.has(v)){ seen.add(v); out.push(v); }
+  });
+  return out;
+}
+
+const MORSE={A:".-",B:"-...",C:"-.-.",D:"-..",E:".",F:"..-.",G:"--.",H:"....",I:"..",J:".---",K:"-.-",L:".-..",M:"--",N:"-.",O:"---",P:".--.",Q:"--.-",R:".-.",S:"...",T:"-",U:"..-",V:"...-",W:".--",X:"-..-",Y:"-.--",Z:"--.."};
+function identMorse(ident){
+  return ident.split("").map(ch=>MORSE[ch]).filter(Boolean).join(" / ");
+}
+
+// small bar above the Navigation Data table: one freq input per VOR ident currently in use
+function renderVorFreqBar(){
+  const bar=$("vorFreqBar");
+  const vors=usedVors();
+  if(vors.length===0){ bar.style.display="none"; bar.innerHTML=""; return; }
+  bar.style.display="";
+  bar.innerHTML = `<span class="vf-label">VOR Freq</span>` + vors.map(v=>
+    `<span class="vf-item"><span class="vf-id">${escapeHtml(v)}</span><input class="vf-freq" data-vor="${escapeAttr(v)}" inputmode="decimal" placeholder="MHz" value="${escapeAttr(state.vorFreq[v]||"")}"></span>`
+  ).join("");
+  bar.querySelectorAll(".vf-freq").forEach(inp=>{
+    inp.addEventListener("input",()=>{
+      snapshot();
+      state.vorFreq[inp.dataset.vor]=inp.value;
+      save();
+    });
+  });
+}
+
+// gate for Generate/Print: every VOR ident in use must have a frequency entered first
+function requireVorFreq(){
+  const missing=usedVors().filter(v=>!String(state.vorFreq[v]||"").trim());
+  if(missing.length===0) return true;
+  expandPanel("navPanel");
+  const bar=$("vorFreqBar");
+  if(bar){
+    bar.scrollIntoView({behavior:"smooth",block:"center"});
+    const inp=Array.from(bar.querySelectorAll(".vf-freq")).find(el=>el.dataset.vor===missing[0]);
+    if(inp) inp.focus();
+  }
+  toast(`Enter VOR frequency for ${missing.join(", ")} before generating the Nav Log`);
+  return false;
 }
 
 /* recompute just one row's calc cells (keeps focus while typing) */
@@ -1852,6 +1921,15 @@ function generateNavlog(){
     `<div class="df-item"><span class="df-min">${min}′</span><span class="df-val">${Number.isNaN(gph)?"—":round2(gph*min/60).toFixed(1)}</span></div>`
   ).join("");
 
+  const vorsUsed = usedVors().filter(v=>String(state.vorFreq[v]||"").trim());
+  const vorRowHtml = vorsUsed.length===0 ? "" :
+    `<tr class="vorrow">
+       <th class="divert-lbl" colspan="2">VORs</th>
+       <th class="divert-vals" colspan="6"><div class="vor-vals">${vorsUsed.map(v=>
+         `<span class="vf-out-item"><span class="vf-out-id">${escapeHtml(v)}</span><span class="vf-out-freq">${escapeHtml(String(state.vorFreq[v]).trim())}</span><span class="vf-out-morse">${escapeHtml(identMorse(v))}</span></span>`
+       ).join("")}</div></th>
+     </tr>`;
+
   let cum=0;
   const rowsHtml = legs.map((l,idx)=>{
     const r=computeLeg(l,gph);
@@ -1890,6 +1968,7 @@ function generateNavlog(){
          <col class="c-gs"><col class="c-ete"><col class="c-eta"><col class="c-fuel">
        </colgroup>
        <thead>
+         ${vorRowHtml}
          <tr class="divertrow">
            <th class="divert-lbl" colspan="2"><span class="ico rich cal" tabindex="0">C<span class="tip">Quick fuel estimate for a divert<br>- GPS Direct gives ETE, read fuel here<br>- e.g. ETE 7min → between 5′/10′ → ~1.0 gal<br><br>*computed from GPH (Cruise Data)</span></span>Divert Fuel</th>
            <th class="divert-vals" colspan="6"><div class="df-vals">${divertHtml}</div></th>
@@ -2342,8 +2421,8 @@ function collapsePanel(id){
   if(title) title.setAttribute("aria-expanded","false");
   store.set("navlogCollapsed_"+id,"1");
 }
-$("btnGen").onclick=()=>{ expandPanel("navlogPanel"); generateNavlog(); };
-$("btnPrint").onclick=()=>{ generateNavlog(); prepareForPrint(); setTimeout(()=>window.print(),120); };
+$("btnGen").onclick=()=>{ if(!requireVorFreq()) return; expandPanel("navlogPanel"); generateNavlog(); };
+$("btnPrint").onclick=()=>{ if(!requireVorFreq()) return; generateNavlog(); prepareForPrint(); setTimeout(()=>window.print(),120); };
 
 /* ---------- modals (diagram / per-section help) ---------- */
 function bindModal(triggerId, overlayId, closeId){
