@@ -216,9 +216,10 @@ hide_hero: true
   .cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
   .cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
   .cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .cols-6{grid-template-columns:repeat(6,minmax(0,1fr))}
   .cols-9{grid-template-columns:repeat(9,minmax(0,1fr))}
-  @media screen and (max-width:720px){.cols-3,.cols-4,.cols-5,.cols-9{grid-template-columns:repeat(3,minmax(0,1fr))}}
-  @media screen and (max-width:430px){.cols-3,.cols-4,.cols-5,.cols-9{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media screen and (max-width:720px){.cols-3,.cols-4,.cols-5,.cols-6,.cols-9{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media screen and (max-width:430px){.cols-3,.cols-4,.cols-5,.cols-6,.cols-9{grid-template-columns:repeat(2,minmax(0,1fr))}}
   /* screen-only: mobile Safari's print preview evaluates max-width against the device's screen width,
      not the print page, so an unscoped rule here would leak into print and force the 4-column
      nav-footnote (and everything else in this section) into a single mobile column on printouts */
@@ -267,6 +268,14 @@ hide_hero: true
     padding:9px 10px;border:1.5px solid var(--line-strong);border-radius:9px;
     background:#fff;color:var(--ink);
   }
+  /* match the W&B "Aircraft" select's look (.wb-side select) so dropdowns inside .field don't
+     fall back to the bare native <select> appearance */
+  .field select{
+    width:100%;font-family:var(--ui);font-size:14px;font-weight:400;
+    padding:8px 10px;border:1.5px solid var(--line-strong);border-radius:9px;
+    background:#fff;color:var(--ink);cursor:pointer;
+  }
+  .field select:focus{outline:none;box-shadow:0 0 0 0.5px var(--blue)}
   .field input:focus{outline:none;box-shadow:0 0 0 0.5px var(--blue)}
   .field input[readonly]{background:#fafbfc;border-color:var(--line);color:var(--slate);cursor:default}
   .field input[readonly].blue{color:var(--ink)}
@@ -917,12 +926,13 @@ hide_hero: true
   <section class="panel collapsible" id="metaPanel">
     <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Meta Data</h2><button class="head-help" data-help="meta" title="How to use this section" aria-label="How to use this section">GUIDE</button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
-      <div class="grid cols-5">
+      <div class="grid cols-6">
         <div class="field"><label>Date</label><input type="text" id="metaDate" readonly inputmode="none" autocomplete="off" placeholder="Select date"></div>
         <div class="field"><label>Time <span class="unit">UTC</span></label><input id="metaTime" inputmode="numeric" pattern="[0-9]*" maxlength="5" placeholder="HH:mm"></div>
         <div class="field"><label>Departure</label><input id="metaDep" autocapitalize="characters" autocomplete="off" placeholder="7B2"></div>
         <div class="field"><label>Destination</label><input id="metaDst" autocapitalize="characters" autocomplete="off" placeholder="KLCI"></div>
         <div class="field"><label>Alternate</label><input id="metaAlt" autocapitalize="characters" autocomplete="off" placeholder=""></div>
+        <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip">Applies to every Altimeter field (Cruise Data + Takeoff &amp; Landing)<br>- inHg: US/Canada standard<br>- hPa: ICAO standard used by most other countries</span></span> Altimeter Unit</label><select id="metaAltimeterUnit"><option value="inHg">inHg</option><option value="hPa">hPa</option></select></div>
       </div>
       <div class="field" style="margin-top:14px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
@@ -941,7 +951,7 @@ hide_hero: true
     <div class="body">
       <div class="grid">
         <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip">- VFR/IFR cruising altitude rule<br>- MEF (Maximum Elevation Figure)<br>- Airspace<br>- Wind (tailwind preferred)<br>- Cloud clearance<br>- Icing<br>- Turbulence<br>- Aircraft performance<br>- Terrain<br>- Oxygen requirement</span></span> Cruise ALT <span class="unit">ft</span></label><input id="alt" inputmode="decimal" placeholder="5500"></div>
-        <div class="field"><label><span class="ico rich wx" tabindex="0">W<span class="tip">Prog charts isobar (Aviation Weather)</span></span> Altimeter <span class="unit">inHg</span></label><input id="altimeter" inputmode="decimal" placeholder="29.92"><div class="err" id="altErr">Use inHg (27.00–32.00), not hPa/mb</div></div>
+        <div class="field"><label><span class="ico rich wx" tabindex="0">W<span class="tip">Prog charts isobar (Aviation Weather)</span></span> Altimeter <span class="unit" id="altimeterUnitLabel">inHg</span></label><input id="altimeter" inputmode="decimal" placeholder="29.92"><div class="err" id="altErr">Use inHg (27.00–32.00), not hPa/mb</div></div>
         <div class="field"><label><span class="ico rich cal" tabindex="0">C<span class="tip">Pressure Altitude<br><br>*required: Cruise Altitude/Altimeter</span></span> PA <span class="unit">ft</span></label><input id="outPA" readonly tabindex="-1" placeholder="—" class="blue"></div>
         <div class="field"><label><span class="ico rich wx" tabindex="0">W<span class="tip">Outside Air Temperature<br>- Winds Aloft (ForeFlight)<br>- Wind/temp data (Aviation Weather)</span></span> OAT <span class="unit">°C</span></label><input id="oat" inputmode="decimal" placeholder="9"></div>
         <div class="field"><label><span class="ico rich poh" tabindex="0">P<span class="tip">Fuel Consumption (Gallon Per Hour)<br>- POH 5-18 Engine Performance<br>- Best power 65% recommended<br>- Check aircraft's serial no.<br></span></span> GPH</label><input id="gph" inputmode="decimal" placeholder="8.8"></div>
@@ -1175,7 +1185,7 @@ hide_hero: true
             <tr>
               <th></th>
               <th><span class="th-ico-ph"></span><br>Elev<br><span class="u3">ft</span></th>
-              <th class="tl-sm"><span class="ico wx" data-tip="Prog charts isobar (Aviation Weather)">W</span><br>Altimeter<br><span class="u3">inHg</span></th>
+              <th class="tl-sm"><span class="ico wx" data-tip="Prog charts isobar (Aviation Weather)">W</span><br>Altimeter<br><span class="u3" id="tlAltimeterUnitLabel">inHg</span></th>
               <th class="tl-sm"><span class="ico cal" data-tip="CX-3">C</span><br>PA<br><span class="u3">ft</span></th>
               <th class="tl-sm"><span class="ico wx" data-tip="Temperature chart (Aviation Weather)">W</span><br>OAT<br><span class="u3">°C</span></th>
               <th class="tl-sm"><span class="ico" data-tip="Density Altitude (for reference)">i</span><br>DA<br><span class="u3">ft</span></th>
@@ -1310,6 +1320,70 @@ function pad3(v){ return String(v).padStart(3,"0"); }
 /* altimeter sanity range (inHg) — rejects hPa/mb values like 1016 */
 const ALT_MIN=27, ALT_MAX=32;
 
+/* altimeter unit toggle (Meta Data) — storage stays inHg everywhere (state.cruise.altimeter,
+   state.tl[col].altimeter); only the display value/format/validation-message is unit-aware.
+   That keeps PA/DA math (which is hardcoded to inHg, see computeCruise/computeTL) untouched. */
+const HPA_PER_INHG=33.8639;
+function altimeterUnit(){ return (state.meta&&state.meta.altimeterUnit)==="hPa" ? "hPa" : "inHg"; }
+function altimeterBoundsForUnit(){
+  return altimeterUnit()==="hPa"
+    ? {min:Math.round(ALT_MIN*HPA_PER_INHG), max:Math.round(ALT_MAX*HPA_PER_INHG)}
+    : {min:ALT_MIN, max:ALT_MAX};
+}
+function altimeterErrText(){
+  const b=altimeterBoundsForUnit();
+  return altimeterUnit()==="hPa"
+    ? `Use hPa (${b.min}–${b.max}), not inHg`
+    : `Use inHg (${b.min.toFixed(2)}–${b.max.toFixed(2)}), not hPa/mb`;
+}
+/* raw text in the CURRENT display unit -> canonical inHg string for state storage */
+function altimeterToInHg(raw){
+  const n=num(raw);
+  if(Number.isNaN(n)) return raw;
+  return String(altimeterUnit()==="hPa" ? n/HPA_PER_INHG : n);
+}
+/* canonical inHg number -> formatted string in the CURRENT display unit */
+function altimeterFromInHg(n){
+  if(Number.isNaN(n)) return "";
+  return altimeterUnit()==="hPa" ? String(Math.round(n*HPA_PER_INHG)) : n.toFixed(2);
+}
+/* raw state value (always inHg) -> in-range check; empty = not an error, just missing */
+function altimeterOkInHg(raw){
+  if(raw===""||raw===null||raw===undefined) return true;
+  const n=num(raw);
+  return !Number.isNaN(n)&&n>=ALT_MIN&&n<=ALT_MAX;
+}
+/* wire an altimeter <input> so typed text (in the current display unit) is converted to
+   canonical inHg on every keystroke, and reformatted/validated on blur. Shared by the
+   Cruise Data altimeter field and all three Takeoff & Landing altimeter fields. */
+function bindAltimeter(el,get,set,validate,onChange,clearInvalid){
+  el.addEventListener("input",()=>{
+    snapshot();
+    set(altimeterToInHg(el.value));
+    if(clearInvalid) clearInvalid();
+    onChange(); save();
+  });
+  el.addEventListener("blur",()=>{
+    const n=num(get());
+    if(!Number.isNaN(n)) set(n.toFixed(2));
+    el.value=altimeterFromInHg(num(get()));
+    validate();
+    onChange(); save();
+  });
+}
+/* refresh unit labels/placeholders + reformat all 4 altimeter fields for the current unit
+   (called on init and whenever the Meta Data toggle changes) */
+function applyAltimeterUnit(){
+  const u=altimeterUnit();
+  $("metaAltimeterUnit").value=u;
+  $("altimeterUnitLabel").textContent=u;
+  $("tlAltimeterUnitLabel").textContent=u;
+  const placeholder=u==="hPa"?"1013":"29.92";
+  $("altimeter").placeholder=placeholder;
+  fmtAltimeterField(); validateAltimeter();
+  TL_COLS.forEach(col=>{ $(`tl_${col}_altimeter`).placeholder=placeholder; fmtTLAltimeter(col); validateTLAltimeter(col); });
+}
+
 /* ---------- default state (seeded with a verified KLCI example) ---------- */
 function emptyTL(){
   const blank=()=>({airport:"",elev:"",rwy:"",oat:"",altimeter:"",windDir:"",windSpd:""});
@@ -1317,7 +1391,7 @@ function emptyTL(){
 }
 function defaultState(){
   return {
-    meta:{ date:"2026-08-14", time:"12:00", dep:"7B2", dst:"KLCI", alt:"", route:"7B2 42.31427641595739/-72.58733312947969 42.3754806789466/-72.51536026892134 42.50034407633179/-72.36888664606184 42.57002/-72.28849 42.86244/-72.10911 42.978569/-71.93395700000001 43.087754/-71.773366 43.219814/-71.575428 43.326878/-71.541192 43.52241/-71.47928 KLCI" },
+    meta:{ date:"2026-08-14", time:"12:00", dep:"7B2", dst:"KLCI", alt:"", route:"7B2 42.31427641595739/-72.58733312947969 42.3754806789466/-72.51536026892134 42.50034407633179/-72.36888664606184 42.57002/-72.28849 42.86244/-72.10911 42.978569/-71.93395700000001 43.087754/-71.773366 43.219814/-71.575428 43.326878/-71.541192 43.52241/-71.47928 KLCI", altimeterUnit:"inHg" },
     cruise:{ alt:5500, altimeter:30.00, oat:9, gph:8.8, rpm:2475, tas:104, ias:96 },
     tl:{
       dep:{airport:"",elev:"",rwy:"14",oat:"26",altimeter:"30.03",windDir:"230",windSpd:"4",dist:""},
@@ -1345,7 +1419,7 @@ function defaultState(){
 /* fully blank state — used by Reset */
 function emptyState(){
   return {
-    meta:{ date:"", time:"", dep:"", dst:"", alt:"", route:"" },
+    meta:{ date:"", time:"", dep:"", dst:"", alt:"", route:"", altimeterUnit:"inHg" },
     cruise:{ alt:"", altimeter:"", oat:"", gph:"", rpm:"", tas:"", ias:"" },
     tl: emptyTL(),
     others:{ fuelGround:"", fuelLanding:"", fuelLegal:"", fuelPersonal:"" },
@@ -1703,15 +1777,14 @@ function renderTL(){
 }
 function fmtTLAltimeter(col){
   const n=num(state.tl[col].altimeter);
-  if(!Number.isNaN(n)){ state.tl[col].altimeter=n.toFixed(2); $(`tl_${col}_altimeter`).value=state.tl[col].altimeter; }
+  if(!Number.isNaN(n)) state.tl[col].altimeter=n.toFixed(2);
+  $(`tl_${col}_altimeter`).value=altimeterFromInHg(num(state.tl[col].altimeter));
 }
 function validateTLAltimeter(col){
-  const raw=state.tl[col].altimeter;
-  let ok=true;
-  if(raw!==""&&raw!=null){ const n=num(raw); ok=!Number.isNaN(n)&&n>=ALT_MIN&&n<=ALT_MAX; }
+  const ok=altimeterOkInHg(state.tl[col].altimeter);
   const el=$(`tl_${col}_altimeter`);
   el.classList.toggle("bad-in", !ok);
-  el.title = ok ? "" : "Use inHg (27.00–32.00), not hPa/mb";
+  el.title = ok ? "" : altimeterErrText();
 }
 
 function renderWB(){
@@ -2479,7 +2552,8 @@ function buildTLPrintView(){
 
     // Elev / Altimeter / PA
     const elev=c.elev||"—";
-    const altim=c.altimeter||"—";
+    const altimNum=num(c.altimeter);
+    const altim=Number.isNaN(altimNum)?"—":altimeterFromInHg(altimNum);
     const pa=r.pa!=="—"?r.pa:"—";
 
     // OAT / DA
@@ -2528,7 +2602,7 @@ function buildTLPrintView(){
       <thead><tr>
         <th></th>
         <th>Elev</th>
-        <th>Altimeter</th>
+        <th>Altimeter (${altimeterUnit()})</th>
         <th>PA</th>
         <th>OAT</th>
         <th>DA</th>
@@ -2601,8 +2675,6 @@ function renderAll(){
   setMetaDateDisplay(valOr(state.meta.date));
   const _r=$("metaRoute"); if(_r){_r.style.height="auto";_r.style.height=_r.scrollHeight+"px";}
   ["alt","altimeter","oat","gph","rpm","tas","ias"].forEach(k=>$(k).value=valOr(state.cruise[k]));
-  fmtAltimeterField();
-  validateAltimeter();
   ["fuelGround","fuelLanding","fuelLegal","fuelPersonal"].forEach(k=>$(k).value=valOr(state.others[k]));
   if(!state.wb) state.wb={ aircraft:"PA-28-161", bewW:1442.37, bewA:87.57, bewM:126301.45, rows:["","",""] };
   // migrate old state format (pilotW/rearW/bagW → rows[])
@@ -2616,7 +2688,6 @@ function renderAll(){
   TL_COLS.forEach(col=>{
     TL_INPUTS.forEach(f=>$(`tl_${col}_${f}`).value=valOr(state.tl[col][f]));
   });
-  TL_COLS.forEach(col=>{ fmtTLAltimeter(col); validateTLAltimeter(col); });
   ["takeoffDist","landingDist"].forEach(k=>{
     const n=parseInt(state.tl[k],10);
     $(`tl_${k}`).value=isNaN(n)?"":n.toLocaleString();
@@ -2624,19 +2695,19 @@ function renderAll(){
   renderTL();
   initAirportSelects();
   renderCruise(); renderTable(); renderTotals();
+  applyAltimeterUnit();
 }
 function fmtAltimeterField(){
   const n=num(state.cruise.altimeter);
-  if(!Number.isNaN(n)){ state.cruise.altimeter=n.toFixed(2); $("altimeter").value=state.cruise.altimeter; }
+  if(!Number.isNaN(n)) state.cruise.altimeter=n.toFixed(2);
+  $("altimeter").value=altimeterFromInHg(num(state.cruise.altimeter));
 }
 function altimeterOk(){
-  const raw=state.cruise.altimeter;
-  if(raw===""||raw===null||raw===undefined) return true;   // empty = not an error, just missing
-  const n=num(raw);
-  return !Number.isNaN(n)&&n>=ALT_MIN&&n<=ALT_MAX;
+  return altimeterOkInHg(state.cruise.altimeter);
 }
 function validateAltimeter(){
   $("altimeter").closest(".field").classList.toggle("bad", !altimeterOk());
+  $("altErr").textContent=altimeterErrText();
 }
 const WB_FIELDS = [["wbBewW","bewW"],["wbBewA","bewA"],["wbBewM","bewM"],["wbPilotW","pilotW"],["wbRearW","rearW"],["wbBagW","bagW"]];
 const META_FIELDS = [["metaTime","time"],["metaDep","dep"],["metaDst","dst"],["metaAlt","alt"],["metaRoute","route"]];
@@ -2652,9 +2723,11 @@ function bindAll(){
     el.addEventListener("beforeinput",e=>{if(e.data&&/[^0-9]/.test(e.data))e.preventDefault()});
     el.addEventListener("input",()=>{const v=el.value,c=v.replace(/[^0-9]/g,"");if(v!==c)el.value=c});
   });
-  // Altimeter: typing 4 digits with no "." auto-inserts one (2992 -> 29.92); "." still typeable directly
+  // Altimeter (inHg only): typing 4 digits with no "." auto-inserts one (2992 -> 29.92); "." still typeable directly.
+  // hPa is a plain 3-4 digit integer (e.g. 1013), so this auto-dot behavior would corrupt it — skip in hPa mode.
   ["altimeter","tl_dep_altimeter","tl_dst_altimeter","tl_alt_altimeter"].forEach(id=>{
     $(id).addEventListener("input",()=>{
+      if(altimeterUnit()==="hPa") return;
       const el=$(id);
       if(el.value.includes(".")) return;
       const digits=el.value.replace(/[^0-9]/g,"");
@@ -2695,7 +2768,7 @@ function bindAll(){
       });
     }
   });
-  bindField("alt","cruise.alt"); bindField("altimeter","cruise.altimeter"); bindField("oat","cruise.oat");
+  bindField("alt","cruise.alt"); bindField("oat","cruise.oat");
   bindField("gph","cruise.gph"); bindField("rpm","cruise.rpm"); bindField("tas","cruise.tas"); bindField("ias","cruise.ias");
   bindField("fuelGround","others.fuelGround"); bindField("fuelLanding","others.fuelLanding");
   bindField("fuelLegal","others.fuelLegal"); bindField("fuelPersonal","others.fuelPersonal");
@@ -2730,11 +2803,15 @@ function bindAll(){
     calcWBTotals(); save();
   });
   TL_COLS.forEach(col=>{
-    TL_INPUTS.forEach(f=>{
+    TL_INPUTS.filter(f=>f!=="altimeter").forEach(f=>{
       const el=$(`tl_${col}_${f}`);
-      el.addEventListener("input",()=>{ snapshot(); state.tl[col][f]=el.value; if(f==="altimeter") el.classList.remove("bad-in"); renderTL(); save(); });
-      if(f==="altimeter") el.addEventListener("blur",()=>{ fmtTLAltimeter(col); validateTLAltimeter(col); renderTL(); save(); });
+      el.addEventListener("input",()=>{ snapshot(); state.tl[col][f]=el.value; renderTL(); save(); });
     });
+    bindAltimeter($(`tl_${col}_altimeter`),
+      ()=>state.tl[col].altimeter, v=>state.tl[col].altimeter=v,
+      ()=>validateTLAltimeter(col),
+      ()=>renderTL(),
+      ()=>$(`tl_${col}_altimeter`).classList.remove("bad-in"));
     const rwyEl=$(`tl_${col}_rwy`);
     rwyEl.addEventListener("change",()=>{ snapshot(); state.tl[col].rwy=rwyEl.value; renderTL(); save(); });
   });
@@ -3179,8 +3256,18 @@ ${coordLines}
   toast("KML exported.");
 };
 
-$("altimeter").addEventListener("input",()=>{ $("altimeter").closest(".field").classList.remove("bad"); });
-$("altimeter").addEventListener("blur",()=>{ fmtAltimeterField(); validateAltimeter(); renderCruise(); save(); });
+bindAltimeter($("altimeter"),
+  ()=>state.cruise.altimeter, v=>state.cruise.altimeter=v,
+  validateAltimeter,
+  ()=>renderCruise(),
+  ()=>$("altimeter").closest(".field").classList.remove("bad"));
+$("metaAltimeterUnit").addEventListener("change",()=>{
+  snapshot();
+  if(!state.meta) state.meta={};
+  state.meta.altimeterUnit=$("metaAltimeterUnit").value;
+  applyAltimeterUnit();
+  save();
+});
 renderAll();
 
 /* undo: Cmd+Z / Ctrl+Z  redo: Cmd+Shift+Z / Ctrl+Shift+Z */
