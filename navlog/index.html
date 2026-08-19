@@ -648,6 +648,7 @@ hide_hero: true
   .print-route{display:none}
   .tl-print-view{display:none}
   .fuel-print-view{display:none}
+  .fuel-totals-print-view{display:none}
 
   /* cruise data: row1=ALT/Altimeter/PA/OAT, row2=GPH/RPM/TAS/CAS/IAS */
   @media screen{
@@ -747,22 +748,24 @@ hide_hero: true
     .grid{gap:6pt 12pt}
     #cruisePanel .grid{grid-template-columns:repeat(5,minmax(0,1fr)) !important}
 
-    /* totals: simple label/value pairs, no bordered box */
-    .totals{
-      display:flex;flex-wrap:wrap;gap:4pt 18pt;margin-bottom:8pt;
-      border:none !important;border-radius:0 !important;
-      overflow:visible !important;background:transparent !important
+    /* totals: card layout reads poorly at kneeboard scale — swap for a compact matrix table
+       (rows = metric, columns = Flight/Reserve/Total) built by buildFuelTotalsPrintView() */
+    .totals{display:none !important}
+    .fuel-totals-print-view{display:block !important;margin-bottom:10pt}
+    table.fp-totals{width:auto;border-collapse:collapse;font-family:inherit}
+    table.fp-totals th,table.fp-totals td{padding:2.5pt 0;text-align:right;white-space:nowrap}
+    table.fp-totals th+th,table.fp-totals td+td{padding-left:16pt}
+    table.fp-totals th:first-child,table.fp-totals td:first-child{text-align:left;min-width:52pt}
+    table.fp-totals thead th{
+      font-size:6.5pt;color:#666;text-transform:uppercase;letter-spacing:.06em;font-weight:700;
+      border-bottom:1pt solid #555;padding-bottom:3pt
     }
-    .totals .t{
-      display:flex;flex-direction:column;gap:1pt;
-      padding:0 !important;border:none !important;flex:none;min-width:0
+    table.fp-totals tbody th{
+      font-size:6.5pt;color:#666;text-transform:uppercase;letter-spacing:.05em;font-weight:700;text-align:left
     }
-    .totals .tl{font-size:6.5pt;color:#666;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
-    .totals .tv{font-size:9pt;font-weight:400;color:#111;font-family:inherit !important}
-    .totals .tv .u{font-size:7pt;font-weight:400;color:#555}
-    .totals .tv.pink{color:#111 !important}
-    .totals .tsub{font-size:6.5pt;font-weight:400;color:#555;gap:3pt;margin-top:1pt}
-    .totals .tsub .tsub-u{font-size:6.5pt;color:#777}
+    table.fp-totals tbody td{font-size:8.5pt;color:#111;padding-top:3pt}
+    table.fp-totals tbody tr.fp-total{border-top:0.5pt solid #ccc}
+    table.fp-totals tbody tr.fp-total th,table.fp-totals tbody tr.fp-total td{font-weight:700;color:#111;padding-top:4pt}
 
     /* scrollable containers */
     .tablescroll{overflow:visible}
@@ -1132,6 +1135,7 @@ hide_hero: true
         <div class="t"><div class="tl">Reserve</div><div class="tv"><span id="fuelSumReserve">—</span><span class="u">gal</span></div><div class="tsub"><span id="fuelSumReserveLbs">—</span><span class="tsub-u">lbs</span><span class="tsub-sep">·</span><span id="fuelSumReserveEndurance">—</span></div></div>
         <div class="t"><div class="tl">Total</div><div class="tv pink"><span id="fuelSumTotal">—</span><span class="u">gal</span></div><div class="tsub"><span id="fuelSumTotalLbs">—</span><span class="tsub-u">lbs</span><span class="tsub-sep">·</span><span id="fuelSumTotalEndurance">—</span></div></div>
       </div>
+      <div id="fuelTotalsPrintView" class="fuel-totals-print-view"></div>
       <div class="grid cols-5">
         <div class="field"><label><span class="ico rich cal" tabindex="0">C<span class="tip">from Navigation Data</span></span> Flight</label><input id="fuelFlightDisp" readonly tabindex="-1" placeholder="—" class="blue"><div class="field-hint" id="fuelFlightHint">—</div></div>
         <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip">Engine Start / Taxi</span></span> Ground</label><input id="fuelGround" inputmode="decimal" placeholder="2.0"><div class="field-hint" id="fuelGroundHint">—</div></div>
@@ -2612,7 +2616,7 @@ function collapsePanel(id){
   store.set("navlogCollapsed_"+id,"1");
 }
 $("btnGen").onclick=()=>{ if(!requireVorFreq()) return; expandPanel("navlogPanel"); generateNavlog(); };
-$("btnPrint").onclick=()=>{ if(!requireVorFreq()) return; generateNavlog(); prepareForPrint(); setTimeout(()=>window.print(),120); };
+$("btnPrint").onclick=()=>{ if(!requireVorFreq()) return; prepareForPrint(); setTimeout(()=>window.print(),120); };
 
 /* ---------- modals (diagram / per-section help) ---------- */
 function bindModal(triggerId, overlayId, closeId){
@@ -2895,8 +2899,32 @@ function buildFuelPrintView(){
   ).join("");
 }
 
+/* print-only matrix (rows=metric, cols=Flight/Reserve/Total) — the on-screen card layout
+   crams gal/lbs/endurance onto one line and reads poorly at kneeboard scale */
+function buildFuelTotalsPrintView(){
+  const el=$("fuelTotalsPrintView");
+  if(!el) return;
+  const gph=num(state.cruise.gph);
+  const hasGph = !Number.isNaN(gph) && gph>0;
+  const f=fuelTotals();
+  const anyTotal=f.anyFlight||f.anyRes;
+  const gal=(v,any)=>any?round2(v).toFixed(2)+" gal":"—";
+  const lbs=(v,any)=>any?Math.ceil(v*6)+" lbs":"—";
+  const hm=(v,any)=>(any&&hasGph)?fmtHM(v/gph*3600):"—";
+  el.innerHTML=`
+    <table class="fp-totals">
+      <thead><tr><th></th><th>Fuel</th><th>Weight</th><th>Endurance</th></tr></thead>
+      <tbody>
+        <tr><th>Flight</th><td>${gal(f.flight,f.anyFlight)}</td><td>${lbs(f.flight,f.anyFlight)}</td><td>${hm(f.flight,f.anyFlight)}</td></tr>
+        <tr><th>Reserve</th><td>${gal(f.reserves,f.anyRes)}</td><td>${lbs(f.reserves,f.anyRes)}</td><td>${hm(f.reserves,f.anyRes)}</td></tr>
+        <tr class="fp-total"><th>Total</th><td>${gal(f.total,anyTotal)}</td><td>${lbs(f.total,anyTotal)}</td><td>${hm(f.total,anyTotal)}</td></tr>
+      </tbody>
+    </table>`;
+}
+
 let _navlogMoved=false,_navlogNext=null;
 function prepareForPrint(){
+  generateNavlog();
   const wrap=document.querySelector(".wrap");
   const navlog=$("navlogPanel");
   if(wrap&&navlog&&navlog.parentNode===wrap&&navlog!==wrap.firstChild){
@@ -2907,6 +2935,7 @@ function prepareForPrint(){
   $("metaRoutePrint").textContent=(state.meta&&state.meta.route)||"";
   buildTLPrintView();
   buildFuelPrintView();
+  buildFuelTotalsPrintView();
   const m=state.meta||{}, c=state.cruise||{};
   const dateStr=(m.date||"").replace(/-/g,"");
   const timeStr=(m.time||"").replace(":","");
@@ -2929,6 +2958,7 @@ function cleanupAfterPrint(){
   $("metaRoutePrint").textContent="";
   $("tlPrintView").innerHTML="";
   $("fuelPrintView").innerHTML="";
+  $("fuelTotalsPrintView").innerHTML="";
 }
 window.addEventListener("beforeprint",prepareForPrint);
 window.addEventListener("afterprint",cleanupAfterPrint);
