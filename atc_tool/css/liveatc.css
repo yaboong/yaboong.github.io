@@ -79,7 +79,7 @@ header.top{
     padding:24px 15px;
     transition:border-color .15s ease, background .15s ease;
 }
-#drop-area:hover{border-color:var(--blue);background:var(--blue-soft)}
+#drop-area:hover{border-color:var(--blue)}
 #drop-area p{
     margin:0 0 14px;color:var(--slate);font-weight:700;font-size:14px;
     text-transform:uppercase;letter-spacing:.04em;
@@ -151,7 +151,7 @@ header.top{
 
 #file-label:hover,
 #process-button:hover{
-    background:#4dc3f0;
+    background:#8260e5;
 }
 
 #process-button{
