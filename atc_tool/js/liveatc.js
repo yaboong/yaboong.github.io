@@ -2,106 +2,88 @@ function isMobile() {
     return /Mobi|Android|iPhone|iPad|iPod|Windows Phone/i.test(navigator.userAgent);
 }
 
-function floatTo16BitPCM(float32) {
-    const out = new Int16Array(float32.length);
-    for (let i = 0; i < float32.length; i++) {
-        const s = Math.max(-1, Math.min(1, float32[i]));
-        out[i] = s < 0 ? s * 0x8000 : s * 0x7fff;
-    }
-    return out;
+// Runs async jobs with at most `concurrency` in flight at once — used to
+// bound how many files are decoded (a memory-heavy step) at the same time.
+function createLimiter(concurrency) {
+    let active = 0;
+    const queue = [];
+    const runNext = () => {
+        if (active >= concurrency || queue.length === 0) return;
+        active++;
+        const { fn, resolve, reject } = queue.shift();
+        fn().then(resolve, reject).finally(() => {
+            active--;
+            runNext();
+        });
+    };
+    return (fn) =>
+        new Promise((resolve, reject) => {
+            queue.push({ fn, resolve, reject });
+            runNext();
+        });
 }
 
-function computeDbWindows(samples, sampleRate, windowMs) {
-    const windowSize = Math.max(1, Math.round((sampleRate * windowMs) / 1000));
-    const windowCount = Math.ceil(samples.length / windowSize);
-    const db = new Float32Array(windowCount);
-    for (let w = 0; w < windowCount; w++) {
-        const start = w * windowSize;
-        const end = Math.min(start + windowSize, samples.length);
-        let sumSq = 0;
-        for (let i = start; i < end; i++) {
-            sumSq += samples[i] * samples[i];
-        }
-        const rms = Math.sqrt(sumSq / (end - start));
-        db[w] = rms > 0 ? 20 * Math.log10(rms) : -Infinity;
+// Pool of workers that do silence-removal + mp3 encoding (the slow, CPU-bound
+// part) so multiple files can process in parallel across CPU cores.
+class WorkerPool {
+    constructor(url, size) {
+        this.idle = Array.from({ length: size }, () => new Worker(url));
+        this.queue = [];
+        this.pending = new Map();
+        this.idle.forEach((worker) => {
+            worker.onmessage = (e) => {
+                const { id, type } = e.data;
+                const task = this.pending.get(id);
+                if (!task) return;
+                if (type === "progress") {
+                    task.onProgress(e.data.value);
+                } else if (type === "done") {
+                    this.pending.delete(id);
+                    task.resolve(e.data.mp3Bytes);
+                    this._release(worker);
+                } else if (type === "error") {
+                    this.pending.delete(id);
+                    task.reject(new Error(e.data.message));
+                    this._release(worker);
+                }
+            };
+        });
     }
-    return { db, windowSize };
-}
 
-// Mirrors ffmpeg's `silenceremove`: leading silence is trimmed down to
-// startPadSec, and any other silent run (mid-file gaps, trailing silence)
-// longer than stopPadSec is trimmed down to stopPadSec.
-function removeSilence(samples, sampleRate, opts) {
-    const {
-        thresholdDb = -40,
-        startPadSec = 1.5,
-        stopPadSec = 2.0,
-        windowMs = 20,
-    } = opts || {};
-
-    const { db, windowSize } = computeDbWindows(samples, sampleRate, windowMs);
-
-    const silentFlags = new Uint8Array(db.length);
-    for (let i = 0; i < db.length; i++) silentFlags[i] = db[i] < thresholdDb ? 1 : 0;
-
-    const startPadWindows = Math.round((startPadSec * 1000) / windowMs);
-    const stopPadWindows = Math.round((stopPadSec * 1000) / windowMs);
-
-    const keepWindow = new Uint8Array(silentFlags.length).fill(1);
-
-    let i = 0;
-    while (i < silentFlags.length) {
-        if (!silentFlags[i]) {
-            i++;
-            continue;
+    _release(worker) {
+        const next = this.queue.shift();
+        if (next) {
+            this._dispatch(worker, next);
+        } else {
+            this.idle.push(worker);
         }
-        let j = i;
-        while (j < silentFlags.length && silentFlags[j]) j++;
-        const runLen = j - i;
-        const isLeading = i === 0;
-        const pad = isLeading ? startPadWindows : stopPadWindows;
-        if (runLen > pad) {
-            if (isLeading) {
-                // keep only the tail `pad` windows, right before sound starts
-                for (let w = i; w < j - pad; w++) keepWindow[w] = 0;
+    }
+
+    _dispatch(worker, task) {
+        this.pending.set(task.id, task);
+        worker.postMessage({ id: task.id, samples: task.samples, sampleRate: task.sampleRate }, [task.samples.buffer]);
+    }
+
+    run(id, samples, sampleRate, onProgress) {
+        return new Promise((resolve, reject) => {
+            const task = { id, samples, sampleRate, onProgress, resolve, reject };
+            const worker = this.idle.pop();
+            if (worker) {
+                this._dispatch(worker, task);
             } else {
-                // keep only the head `pad` windows, right after sound ends
-                for (let w = i + pad; w < j; w++) keepWindow[w] = 0;
+                this.queue.push(task);
             }
-        }
-        i = j;
+        });
     }
 
-    let outLength = 0;
-    for (let w = 0; w < keepWindow.length; w++) {
-        if (keepWindow[w]) {
-            const start = w * windowSize;
-            const end = Math.min(start + windowSize, samples.length);
-            outLength += end - start;
-        }
+    terminate() {
+        this.idle.forEach((w) => w.terminate());
     }
-
-    // Safety net: don't let an over-aggressive classification wipe out a file.
-    if (outLength < sampleRate * 0.5) {
-        return samples;
-    }
-
-    const out = new Float32Array(outLength);
-    let pos = 0;
-    for (let w = 0; w < keepWindow.length; w++) {
-        if (keepWindow[w]) {
-            const start = w * windowSize;
-            const end = Math.min(start + windowSize, samples.length);
-            out.set(samples.subarray(start, end), pos);
-            pos += end - start;
-        }
-    }
-    return out;
 }
 
 // Decodes the mp3, then downmixes/resamples to mono 8kHz while applying the
 // same volume boost + bandpass (200-3000Hz) the old ffmpeg pipeline used —
-// all native Web Audio API, no ffmpeg/wasm/worker involved.
+// all native Web Audio API, no ffmpeg/wasm involved.
 async function decodeAndClean(audioCtx, arrayBuffer) {
     const decoded = await audioCtx.decodeAudioData(arrayBuffer);
     const targetRate = 8000;
@@ -128,35 +110,11 @@ async function decodeAndClean(audioCtx, arrayBuffer) {
     return rendered.getChannelData(0);
 }
 
-async function encodeMp3(samples, sampleRate, progressCb) {
-    const pcm = floatTo16BitPCM(samples);
-    const encoder = new lamejs.Mp3Encoder(1, sampleRate, 32);
-    const chunks = [];
-    const chunkSize = sampleRate * 2; // ~2s per chunk; yields between chunks so long files don't freeze the tab
-
-    for (let i = 0; i < pcm.length; i += chunkSize) {
-        const chunk = pcm.subarray(i, i + chunkSize);
-        const mp3buf = encoder.encodeBuffer(chunk);
-        if (mp3buf.length > 0) chunks.push(mp3buf);
-        if (progressCb) progressCb(i / pcm.length);
-        await new Promise((resolve) => setTimeout(resolve, 0));
-    }
-    const end = encoder.flush();
-    if (end.length > 0) chunks.push(end);
-
-    return new Blob(chunks, { type: "audio/mpeg" });
-}
-
 document.addEventListener("DOMContentLoaded", async () => {
-    console.log("Silence Remover - v3.0.0 (native Web Audio, no ffmpeg)");
+    console.log("Silence Remover - v4.0.0 (native Web Audio + worker pool, no ffmpeg)");
     const mobileMessage = document.getElementById("mobile-message");
     if (isMobile()) {
         mobileMessage.style.display = "flex";
-    }
-
-    if (!window.lamejs) {
-        console.error("lamejs library loading failed!");
-        return;
     }
 
     const dropArea = document.getElementById("drop-area");
@@ -169,6 +127,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     let filesArray = [];
     let isProcessing = false;
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const decodeLimiter = createLimiter(1);
 
     dropArea.addEventListener("dragover", (event) => {
         event.preventDefault();
@@ -224,55 +183,58 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("file-label").style.display = "none";
         loadingIndicator.style.display = "block";
 
-        let processedFiles = [];
+        const poolSize = Math.max(1, Math.min(navigator.hardwareConcurrency || 4, 4, filesArray.length));
+        const pool = new WorkerPool("/atc_tool/js/worker.js", poolSize);
 
-        for (let i = 0; i < filesArray.length; i++) {
-            const file = filesArray[i];
+        const tasks = filesArray.map((file, i) => {
             const listItem = fileList.children[i];
             const progress = listItem.querySelector(".progress-bar span");
 
-            try {
-                const fileName = file.name;
-                const outputMp3 = fileName.replace(".mp3", "_cleaned.mp3");
+            return (async () => {
+                try {
+                    const fileName = file.name;
+                    const outputMp3 = fileName.replace(".mp3", "_cleaned.mp3");
 
-                const arrayBuffer = await file.arrayBuffer();
-                progress.style.width = "20%";
+                    const arrayBuffer = await file.arrayBuffer();
+                    progress.style.width = "10%";
 
-                const filtered = await decodeAndClean(audioCtx, arrayBuffer);
-                progress.style.width = "45%";
+                    const filtered = await decodeLimiter(() => decodeAndClean(audioCtx, arrayBuffer));
+                    progress.style.width = "25%";
 
-                const trimmed = removeSilence(filtered, 8000, {
-                    thresholdDb: -40,
-                    startPadSec: 1.5,
-                    stopPadSec: 2.0,
-                });
-                progress.style.width = "65%";
+                    const mp3Bytes = await pool.run(i, filtered, 8000, (frac) => {
+                        progress.style.width = `${25 + Math.round(frac * 75)}%`;
+                    });
+                    progress.style.width = "100%";
 
-                const audioBlob = await encodeMp3(trimmed, 8000, (frac) => {
-                    progress.style.width = `${65 + Math.round(frac * 35)}%`;
-                });
-                progress.style.width = "100%";
+                    const audioBlob = new Blob([mp3Bytes], { type: "audio/mpeg" });
 
-                listItem.innerHTML = "";
-                const cleanedFileName = document.createElement("span");
-                cleanedFileName.textContent = outputMp3;
-                listItem.appendChild(cleanedFileName);
+                    listItem.innerHTML = "";
+                    const cleanedFileName = document.createElement("span");
+                    cleanedFileName.textContent = outputMp3;
+                    listItem.appendChild(cleanedFileName);
 
-                const downloadLink = document.createElement("a");
-                downloadLink.href = URL.createObjectURL(audioBlob);
-                downloadLink.download = outputMp3;
-                downloadLink.textContent = "Download";
-                downloadLink.classList.add("button");
+                    const downloadLink = document.createElement("a");
+                    downloadLink.href = URL.createObjectURL(audioBlob);
+                    downloadLink.download = outputMp3;
+                    downloadLink.textContent = "Download";
+                    downloadLink.classList.add("button");
 
-                if (!isMobile()) {
-                    listItem.appendChild(downloadLink);
+                    if (!isMobile()) {
+                        listItem.appendChild(downloadLink);
+                    }
+
+                    return { name: outputMp3, blob: audioBlob };
+                } catch (error) {
+                    console.error("[YB ERR] Error while processing file:", error);
+                    return null;
                 }
+            })();
+        });
 
-                processedFiles.push({ name: outputMp3, blob: audioBlob });
-            } catch (error) {
-                console.error("[YB ERR] Error while processing file:", error);
-            }
-        }
+        const results = await Promise.all(tasks);
+        pool.terminate();
+
+        const processedFiles = results.filter(Boolean);
 
         loadingIndicator.style.display = "none";
 
