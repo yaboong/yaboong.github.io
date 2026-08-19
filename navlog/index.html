@@ -264,6 +264,11 @@ hide_hero: true
   .field input[readonly].blue{color:var(--ink)}
   .field input[readonly]:focus{box-shadow:none}
   .field input::placeholder{font-family:var(--ui);font-size:11px;font-weight:400;color:#9aa7b6;letter-spacing:.01em}
+  .field-hint{
+    margin-top:6px;font-family:var(--mono);font-size:11px;font-weight:700;
+    color:var(--blue);text-align:right;letter-spacing:.01em;
+  }
+  .field-hint.dim{color:#c3ccd6;font-weight:600}
   /* #metaDate: custom calendar picker replaces native type="date" (iOS Safari won't render that
      consistently — see JS below); readonly here is the trigger, not a disabled-looking state */
   #metaDate{cursor:pointer;background:#fff url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%235b6b80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>') no-repeat right 10px center/16px 16px;padding-right:34px;color:var(--ink) !important}
@@ -432,8 +437,9 @@ hide_hero: true
   .totals .tv{font-family:var(--mono);font-size:24px;font-weight:800;color:var(--ink)}
   .totals .tv .u{font-size:12px;color:var(--slate);font-weight:600;margin-left:3px}
   .totals .tv.pink{color:var(--ink)}
-  .totals .tv .lbs{font-family:var(--mono);font-size:15px;font-weight:800;color:var(--ink);margin-left:2px}
-  .totals .tv .lbs #tFuelTotalLbs{margin:0}
+  .totals .tsub{margin-top:5px;display:flex;align-items:baseline;gap:6px;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--slate)}
+  .totals .tsub .tsub-u{font-family:var(--ui);font-size:10px;font-weight:600;color:var(--line-strong);margin-left:2px}
+  .totals .tsub .tsub-sep{color:var(--line-strong);font-weight:400}
   @media screen and (max-width:720px){
     .totals .t{flex:1 1 100%;min-width:0;border-right:none;border-bottom:1px solid var(--line)}
     .totals .t:last-child{border-bottom:none}
@@ -754,8 +760,9 @@ hide_hero: true
     .totals .tl{font-size:6.5pt;color:#666;text-transform:uppercase;letter-spacing:.05em;font-weight:700}
     .totals .tv{font-size:9pt;font-weight:400;color:#111;font-family:inherit !important}
     .totals .tv .u{font-size:7pt;font-weight:400;color:#555}
-    .totals .tv .lbs{font-size:7pt;font-weight:400;color:#111}
     .totals .tv.pink{color:#111 !important}
+    .totals .tsub{font-size:6.5pt;font-weight:400;color:#555;gap:3pt;margin-top:1pt}
+    .totals .tsub .tsub-u{font-size:6.5pt;color:#777}
 
     /* scrollable containers */
     .tablescroll{overflow:visible}
@@ -1121,16 +1128,16 @@ hide_hero: true
     <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Fuel<span class="head-unit">gallon</span></h2><button class="head-help" data-help="fuel" title="How to use this section" aria-label="How to use this section">?</button><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
       <div class="totals">
-        <div class="t"><div class="tl">Flight</div><div class="tv"><span id="fuelSumFlight">—</span><span class="u">gal</span></div></div>
-        <div class="t"><div class="tl">Reserve</div><div class="tv"><span id="fuelSumReserve">—</span><span class="u">gal</span></div></div>
-        <div class="t"><div class="tl">Total</div><div class="tv pink"><span id="fuelSumTotal">—</span><span class="u">gal</span> <span class="lbs">(<span id="fuelSumTotalLbs">—</span> lbs)</span></div></div>
+        <div class="t"><div class="tl">Flight</div><div class="tv"><span id="fuelSumFlight">—</span><span class="u">gal</span></div><div class="tsub"><span id="fuelSumFlightLbs">—</span><span class="tsub-u">lbs</span><span class="tsub-sep">·</span><span id="fuelSumFlightEndurance">—</span></div></div>
+        <div class="t"><div class="tl">Reserve</div><div class="tv"><span id="fuelSumReserve">—</span><span class="u">gal</span></div><div class="tsub"><span id="fuelSumReserveLbs">—</span><span class="tsub-u">lbs</span><span class="tsub-sep">·</span><span id="fuelSumReserveEndurance">—</span></div></div>
+        <div class="t"><div class="tl">Total</div><div class="tv pink"><span id="fuelSumTotal">—</span><span class="u">gal</span></div><div class="tsub"><span id="fuelSumTotalLbs">—</span><span class="tsub-u">lbs</span><span class="tsub-sep">·</span><span id="fuelSumTotalEndurance">—</span></div></div>
       </div>
       <div class="grid cols-5">
-        <div class="field"><label><span class="ico rich cal" tabindex="0">C<span class="tip">from Navigation Data</span></span> Flight</label><input id="fuelFlightDisp" readonly tabindex="-1" placeholder="—" class="blue"></div>
-        <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip">Engine Start / Taxi</span></span> Ground</label><input id="fuelGround" inputmode="decimal" placeholder="2.0"></div>
-        <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip">Traffic Pattern / Go-Around</span></span> Landing</label><input id="fuelLanding" inputmode="decimal" placeholder="2.0"></div>
-        <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip"><a href="https://www.ecfr.gov/current/title-14/section-91.151" target="_blank" rel="noopener">14 CFR 91.151</a> (VFR) <br/>- day +30 min<br/>- night +45 min<br><a href="https://www.ecfr.gov/current/title-14/section-91.167" target="_blank" rel="noopener">14 CFR 91.167</a> (IFR)<br/>- dest, alter, +45 min</span></span> Legal Reserve</label><input id="fuelLegal" inputmode="decimal" placeholder="4.4"></div>
-        <div class="field"><label>Personal Min</label><input id="fuelPersonal" inputmode="decimal" placeholder="4.4"></div>
+        <div class="field"><label><span class="ico rich cal" tabindex="0">C<span class="tip">from Navigation Data</span></span> Flight</label><input id="fuelFlightDisp" readonly tabindex="-1" placeholder="—" class="blue"><div class="field-hint" id="fuelFlightHint">—</div></div>
+        <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip">Engine Start / Taxi</span></span> Ground</label><input id="fuelGround" inputmode="decimal" placeholder="2.0"><div class="field-hint" id="fuelGroundHint">—</div></div>
+        <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip">Traffic Pattern / Go-Around</span></span> Landing</label><input id="fuelLanding" inputmode="decimal" placeholder="2.0"><div class="field-hint" id="fuelLandingHint">—</div></div>
+        <div class="field"><label><span class="ico rich" tabindex="0">i<span class="tip"><a href="https://www.ecfr.gov/current/title-14/section-91.151" target="_blank" rel="noopener">14 CFR 91.151</a> (VFR) <br/>- day +30 min<br/>- night +45 min<br><a href="https://www.ecfr.gov/current/title-14/section-91.167" target="_blank" rel="noopener">14 CFR 91.167</a> (IFR)<br/>- dest, alter, +45 min</span></span> Legal Reserve</label><input id="fuelLegal" inputmode="decimal" placeholder="4.4"><div class="field-hint" id="fuelLegalHint">—</div></div>
+        <div class="field"><label>Personal Min</label><input id="fuelPersonal" inputmode="decimal" placeholder="4.4"><div class="field-hint" id="fuelPersonalHint">—</div></div>
       </div>
       <div id="fuelPrintView" class="fuel-print-view"></div>
     </div>
@@ -1366,6 +1373,14 @@ const round2 = x => Math.round(x*100)/100;
 function norm360(x){ let r=((x%360)+360)%360; return r===0?360:r; }
 function fmtMS(sec){ const s=Math.round(sec); const m=Math.floor(s/60); const ss=s%60; return m+":"+String(ss).padStart(2,"0"); }
 function fmtHMS(sec){ const s=Math.round(sec); const h=Math.floor(s/3600); const m=Math.floor((s%3600)/60); const ss=s%60; return h+":"+String(m).padStart(2,"0")+":"+String(ss).padStart(2,"0"); }
+function fmtHM(sec){ const s=Math.round(sec); const h=Math.floor(s/3600); const m=Math.floor((s%3600)/60); return h+"h "+String(m).padStart(2,"0")+"m"; }
+/* shows a gallon input's fuel value as endurance ("1h 30m") under the field, dimmed when empty/no GPH */
+function setFieldHint(id, gal, hasGph, gph){
+  const el=$(id); if(!el) return;
+  const ok = !Number.isNaN(gal) && gal>0 && hasGph;
+  el.textContent = ok?fmtHM(gal/gph*3600):"—";
+  el.classList.toggle("dim", !ok);
+}
 function pad3(v){ return String(v).padStart(3,"0"); }
 
 /* altimeter sanity range (inHg) — rejects hPa/mb values like 1016 */
@@ -1683,10 +1698,20 @@ function renderTotals(){
   $("tEte").textContent        = anyEte?fmtHMS(ete):"—";
   $("tFuelFlight").textContent = f.anyFlight?round2(f.flight).toFixed(2):"—";
   $("fuelFlightDisp").value = f.anyFlight?round2(f.flight).toFixed(2):"";
+  const hasGph = !Number.isNaN(gph) && gph>0;
   $("fuelSumFlight").textContent = f.anyFlight?round2(f.flight).toFixed(2):"—";
+  $("fuelSumFlightLbs").textContent = f.anyFlight?Math.ceil(f.flight*6):"—";
+  $("fuelSumFlightEndurance").textContent = (f.anyFlight && hasGph)?fmtHM(f.flight/gph*3600):"—";
   $("fuelSumReserve").textContent = f.anyRes?round2(f.reserves).toFixed(2):"—";
+  $("fuelSumReserveLbs").textContent = f.anyRes?Math.ceil(f.reserves*6):"—";
+  $("fuelSumReserveEndurance").textContent = (f.anyRes && hasGph)?fmtHM(f.reserves/gph*3600):"—";
   $("fuelSumTotal").textContent = (f.anyFlight||f.anyRes)?round2(f.total).toFixed(2):"—";
   $("fuelSumTotalLbs").textContent = (f.anyFlight||f.anyRes)?Math.ceil(f.total*6):"—";
+  $("fuelSumTotalEndurance").textContent = ((f.anyFlight||f.anyRes) && hasGph)?fmtHM(f.total/gph*3600):"—";
+  setFieldHint("fuelFlightHint", f.anyFlight?f.flight:NaN, hasGph, gph);
+  ["fuelGround","fuelLanding","fuelLegal","fuelPersonal"].forEach(k=>{
+    setFieldHint(k+"Hint", num(state.others[k]), hasGph, gph);
+  });
   renderWB();
 }
 
