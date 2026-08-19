@@ -98,25 +98,16 @@ hide_hero: true
   .btn-icon.light:hover:not(:disabled){background:#e3f6ff;border-color:#e3f6ff;color:var(--blue)}
   header.top .btn-icon.light{background:#fff;border-color:#fff;color:var(--blue)}
   header.top .btn-icon.light:hover:not(:disabled){background:#e3f6ff;border-color:#e3f6ff;color:var(--blue)}
-  .doc-link{
-    display:flex;align-items:center;gap:6px;padding:5px 7px;min-width:0;
-    border:1px solid var(--line-strong);border-radius:8px;text-decoration:none;
-    transition:border-color .12s ease, background .12s ease;
-  }
-  .doc-link:hover{border-color:var(--blue);background:var(--blue-soft)}
-  .doc-link-icon{
-    display:flex;align-items:center;justify-content:center;flex-shrink:0;
-    width:19px;height:19px;border-radius:6px;background:var(--blue-soft);color:var(--blue);
-  }
-  .doc-link-icon svg{width:11px;height:11px}
-  .doc-link-text{display:flex;align-items:baseline;gap:4px;min-width:0}
-  .doc-link-title{font-size:11.5px;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-  .doc-link-sub{font-size:8.5px;font-weight:600;color:var(--slate);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;flex-shrink:0}
-  .doc-link-arrow{margin-left:auto;flex-shrink:0;font-size:11px;color:var(--line-strong);transition:color .12s ease}
-  .doc-link:hover .doc-link-arrow{color:var(--blue)}
-  .poh-note{font-size:13px;color:var(--slate);margin:0 0 10px}
-  #pohPanel .grid{gap:10px}
-  @media screen and (max-width:720px){#pohPanel .grid{grid-template-columns:1fr !important}}
+  .resource-groups{display:flex;gap:28px;margin:0 0 16px}
+  .resource-groups:last-child{margin-bottom:0}
+  .resource-group{flex:1;min-width:0}
+  .resource-group h4{margin:0 0 6px;font-size:11px;font-weight:700;color:var(--slate);letter-spacing:.06em;text-transform:uppercase}
+  .resource-list{list-style:none;margin:0;padding:0}
+  .resource-list li{font-size:13px;line-height:1.9}
+  .resource-list a{color:var(--blue);text-decoration:none}
+  .resource-list a:hover{text-decoration:underline}
+  .resource-list a.hl{font-weight:700}
+  @media screen and (max-width:720px){.resource-groups{flex-direction:column;gap:14px}}
   .section-help-body{font-size:13.5px;color:var(--ink);line-height:1.6}
   .section-help-body p{margin:0 0 12px}
   .section-help-body ul{margin:0 0 12px;padding-left:18px}
@@ -927,43 +918,54 @@ hide_hero: true
     </div>
   </section>
 
-  <!-- POH -->
-  <section class="panel noprint collapsible" id="pohPanel">
-    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>POH</h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
+  <!-- RESOURCES -->
+  <section class="panel noprint collapsible" id="resourcePanel">
+    <div class="head"><span class="head-title" role="button" tabindex="0" aria-expanded="true"><h2>Resources</h2><span class="chev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></span></div>
     <div class="body">
-      <div class="grid cols-4">
-        <a class="doc-link" href="https://northamptonairport.com/wp-content/uploads/2016/10/POH-Piper-Warrior-II.pdf" target="_blank" rel="noopener">
-          <span class="doc-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
-          <span class="doc-link-text">
-            <span class="doc-link-title">PA-28-161</span>
-            <span class="doc-link-sub">Warrior II</span>
-          </span>
-          <span class="doc-link-arrow">↗</span>
-        </a>
-        <a class="doc-link" href="https://independentaviation.training/wp-content/uploads/2025/03/Piper-PA-28-181-Archer-III-POH.pdf" target="_blank" rel="noopener">
-          <span class="doc-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
-          <span class="doc-link-text">
-            <span class="doc-link-title">PA-28-181</span>
-            <span class="doc-link-sub">Archer III</span>
-          </span>
-          <span class="doc-link-arrow">↗</span>
-        </a>
-        <a class="doc-link" href="https://www.purdueaviationllc.com/storage/app/media/Forms/172S%20POH%20and%20AFM.compressed.pdf" target="_blank" rel="noopener">
-          <span class="doc-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
-          <span class="doc-link-text">
-            <span class="doc-link-title">Cessna 172S</span>
-            <span class="doc-link-sub"></span>
-          </span>
-          <span class="doc-link-arrow">↗</span>
-        </a>
-        <a class="doc-link" href="https://clemsonflyingclub.org/wp-content/uploads/2020/11/C152-Pilot-Operating-Handbook.pdf" target="_blank" rel="noopener">
-          <span class="doc-link-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span>
-          <span class="doc-link-text">
-            <span class="doc-link-title">Cessna 152</span>
-            <span class="doc-link-sub"></span>
-          </span>
-          <span class="doc-link-arrow">↗</span>
-        </a>
+      <div class="resource-groups">
+        <div class="resource-group">
+          <h4>POH</h4>
+          <ul class="resource-list">
+            <li><a class="hl" href="https://northamptonairport.com/wp-content/uploads/2016/10/POH-Piper-Warrior-II.pdf" target="_blank" rel="noopener">PA-28-161 (Warrior II) ↗</a></li>
+            <li><a href="https://independentaviation.training/wp-content/uploads/2025/03/Piper-PA-28-181-Archer-III-POH.pdf" target="_blank" rel="noopener">PA-28-181 (Archer III) ↗</a></li>
+            <li><a href="https://www.purdueaviationllc.com/storage/app/media/Forms/172S%20POH%20and%20AFM.compressed.pdf" target="_blank" rel="noopener">Cessna 172S ↗</a></li>
+            <li><a href="https://clemsonflyingclub.org/wp-content/uploads/2020/11/C152-Pilot-Operating-Handbook.pdf" target="_blank" rel="noopener">Cessna 152 ↗</a></li>
+          </ul>
+        </div>
+        <div class="resource-group">
+          <h4>Route Planning</h4>
+          <ul class="resource-list">
+            <li><a href="https://www.1800wxbrief.com/Website/interactiveMap" target="_blank" rel="noopener">1800wxbrief ↗</a></li>
+            <li><a href="https://foreflight.com/products/foreflight-web/" target="_blank" rel="noopener">ForeFlight ↗</a></li>
+            <li><a href="https://skyvector.com/" target="_blank" rel="noopener">SkyVector ↗</a></li>
+          </ul>
+        </div>
+        <div class="resource-group">
+          <h4>Weather</h4>
+          <ul class="resource-list">
+            <li><a href="https://aviationweather.gov/gfa/#progchart" target="_blank" rel="noopener">AWC (Aviation Weather) ↗</a></li>
+            <li><a href="https://www.weather.gov/" target="_blank" rel="noopener">NWS (National Weather) ↗</a></li>
+            <li><a href="https://www.spc.noaa.gov/" target="_blank" rel="noopener">SPC (Storm Prediction) ↗</a></li>
+          </ul>
+        </div>
+        <div class="resource-group">
+          <h4>FAA</h4>
+          <ul class="resource-list">
+            <li><a href="https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/vfr/" target="_blank" rel="noopener">VFR Charts ↗</a></li>
+            <li><a href="https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/dafd/search/" target="_blank" rel="noopener">NOTAMs Search ↗</a></li>
+            <li><a href="https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/dafd/search/" target="_blank" rel="noopener">Chart Supplements Search ↗</a></li>
+            <li><a href="https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/aero_guide/" target="_blank" rel="noopener">Chart Users' Guide ↗</a></li>
+          </ul>
+        </div>
+        <div class="resource-group">
+          <h4>Tools</h4>
+          <ul class="resource-list">
+            <li><a href="https://earth.google.com/" target="_blank" rel="noopener">Google Earth ↗</a></li>
+            <li><a href="https://prepware.com/cx3e/index.html" target="_blank" rel="noopener">CX-3 ↗</a></li>
+            <li><a href="https://mediafiles.aero.und.edu/aero.und.edu/aviation/trainers/e6b/" target="_blank" rel="noopener">E6B ↗</a></li>
+            <li><a href="https://xc-planner.netlify.app/" target="_blank" rel="noopener">XC Planner ↗</a></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -2557,7 +2559,7 @@ function importCSV(text){
 
 /* ---------- toolbar ---------- */
 $("btnSample").onclick=()=>{ snapshot(true); state=defaultState(); save(); renderAll(); toast("Sample loaded"); };
-$("btnReset").onclick=()=>{ snapshot(true); state=emptyState(); save(); renderAll(); $("navlogWrap").innerHTML='<p class="empty-note">Press "Generate Nav Log" to build a printable log here.</p>'; $("divertTableWrap").innerHTML=""; collapsePanel("guidePanel"); collapsePanel("pohPanel"); toast("Cleared"); };
+$("btnReset").onclick=()=>{ snapshot(true); state=emptyState(); save(); renderAll(); $("navlogWrap").innerHTML='<p class="empty-note">Press "Generate Nav Log" to build a printable log here.</p>'; $("divertTableWrap").innerHTML=""; collapsePanel("guidePanel"); collapsePanel("resourcePanel"); toast("Cleared"); };
 $("btnExportCsv").onclick=exportCSV;
 $("btnImportCsv").onclick=()=>$("csvFileInput").click();
 $("csvFileInput").addEventListener("change",e=>{
