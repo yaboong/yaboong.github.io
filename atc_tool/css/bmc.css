@@ -1,0 +1,30 @@
+/* Buy Me a Coffee */
+.bmc-btn-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.bmc-btn {
+    display: none;
+    /* display: inline-flex; */
+    align-items: center;
+    background-color: #8260e5;
+    color: #ffffff;
+    font-family: 'Cookie', cursive;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 9px 17px;
+    border-radius: 6px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.bmc-btn:hover {
+    background-color: #BD5FFF;
+    transform: translateY(-2px);
+}
+
+.bmc-btn-text {
+    line-height: 1;
+}

@@ -1,0 +1,57 @@
+---
+layout: default
+title: ATC Tool
+description: LiveATC Silence Remover is a free web tool that removes silent sections from ATC MP3 recordings. Trim LiveATC MP3 files easily and quickly.
+hide_hero: true
+---
+{% raw %}
+<link rel="stylesheet" href="/atc_tool/css/liveatc.css">
+<link rel="stylesheet" href="/atc_tool/css/bmc.css">
+
+<div class="atc-app">
+<div class="wrap">
+
+  <header class="top"><div class="top-inner">
+    <div class="brand">
+      <h1>LIVE ATC SILENCE REMOVER</h1>
+      <span class="tail">ATC MP3 TOOL</span>
+    </div>
+  </div></header>
+
+  <section class="panel">
+    <div class="head"><h2>Audio Silence Remover</h2></div>
+    <div class="body">
+      <p class="sub">Drop in your LiveATC MP3 recordings and the silent gaps get trimmed out — processing happens entirely in your browser, nothing is uploaded anywhere.</p>
+
+      <p id="mobile-message" class="info-callout">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        <span>For a smoother experience, we recommend a <strong>desktop browser</strong> — but if you like a challenge, be my guest! ;)</span>
+      </p>
+
+      <div id="drop-area">
+        <p>Drag &amp; Drop mp3 Files</p>
+        <ul id="file-list"></ul>
+        <div id="file-controls">
+          <label for="file-input" id="file-label">Choose Files</label>
+          <input type="file" id="file-input" multiple accept="audio/mpeg">
+          <button id="process-button">Silence Remove</button>
+        </div>
+      </div>
+
+      <p id="loading-indicator">Processing...</p>
+
+      <div id="control-buttons">
+        <button id="download-all-button" class="button hidden">Download All</button>
+        <a id="bmc-button" class="bmc-btn" href="https://buymeacoffee.com/yaboong" target="_blank">
+          <span class="bmc-btn-text">☕ Buy me a coffee</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.0/lame.min.js" defer></script>
+<script src="/atc_tool/js/liveatc.js" defer></script>
+{% endraw %}
