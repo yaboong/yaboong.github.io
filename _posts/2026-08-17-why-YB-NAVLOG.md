@@ -66,6 +66,9 @@ Comparing the two catches mistakes you'd otherwise make from the chart alone —
 
 ## How to Use **{% include href.html url="https://yaboong.github.io/navlog" text="YB NAVLOG" %}**
 ---
+
+> **Hate reading instructions?** Just hit the SAMPLE button at the top to see how it looks, clear it with the eraser, and fill out the fields as they come up.
+
 Start by reading the User Guide section.
 
 {% include image_caption_href.html title="YB NAVLOG - User Guide" caption="YB NAVLOG - User Guide" imageurl="/posts_image/2026-08-17/example-user-guide.png" %}
