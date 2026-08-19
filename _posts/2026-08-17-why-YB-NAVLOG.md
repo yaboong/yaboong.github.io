@@ -11,13 +11,13 @@ tags: [XC, cross-country, navigation-log, route-planning, VFR, pilotage, dead-re
 ---
 > How do I actually teach XC planning well?
 
-* That question came up while I was putting together CFI teaching material, and I kept circling back to it. 
-* I ended up recalling every painful, confusing moment I'd had with navlogs through my PPL, IR, and CPL, and built something out of that. 
-* This post is a detailed walk-through of that thought process.
+- That question came up while I was putting together CFI teaching material, and I kept circling back to it. 
+- I ended up recalling every painful, confusing moment I'd had with navlogs through my PPL, IR, and CPL, and built something out of that. 
+- Here's what I built, followed by the thought process behind it.
 
 <!--more-->
 
-## New VFR Navigation Log Format I Built 
+## The New VFR Navigation Log Format I Built 
 ---
 #### {% include href.html url="https://yaboong.github.io/navlog" text="YB NAVLOG" %} will give you {% include href.html url="/posts_image/2026-08-17/YB_NAVLOG_PDF_SAMPLE.pdf" text="THIS" %}
 
@@ -85,7 +85,7 @@ Once everything is filled in, hit **PRINT / DOWNLOAD PDF** at the bottom to gene
 Bring it along with your weather briefing to the checkride!
 
 
-## Yes, I Reinvented the Wheel. WHY?
+## Yes, I Reinvented the Wheel. WHY? {#why-i-built-this}
 ---
 {% include image_caption_href.html title="ForeFlight Navlog" caption="ForeFlight Navlog" imageurl="/posts_image/2026-08-17/navlog-foreflight.png" %}
 
