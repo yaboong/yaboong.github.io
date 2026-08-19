@@ -75,7 +75,7 @@ function normalizeSurface(raw) {
   if (/^(ASP|BIT|PEM)/.test(s)) return "ASP";
   if (/^(CON|PCC)/.test(s)) return "CON";
   if (/^(TURF|GRASS|SOD)/.test(s) || s === "GRS") return "TRF";
-  if (/^(GRAVEL|GRVL)/.test(s)) return "GRV";
+  if (/^(GRAVEL|GRVL|GVL)/.test(s)) return "GRV";
   if (/^(DIRT|EARTH|CLAY|SAND)/.test(s)) return "DRT";
   if (/^WAT/.test(s)) return "WAT";
   if (/^(MAT|PSP)/.test(s)) return "MAT";
