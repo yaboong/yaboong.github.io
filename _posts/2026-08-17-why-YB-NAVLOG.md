@@ -54,11 +54,11 @@ As you fill in values in order, the tooltip next to each input tells you where t
 {% include image_caption_href.html title="YB NAVLOG - Navdata Table Hover" caption="YB NAVLOG - Navdata Table Hover" imageurl="/posts_image/2026-08-17/example-navdata-table-hover.png" %}
 
 ### 3. Using Google Earth
-You can download a file that lets you **open your planned route in Google Earth**, and viewing it there gives you a **3D look at the terrain**, which makes picking good checkpoints much more effective. 
+You can download a file that lets you **open your planned route in Google Earth**. It's not a replacement for the **VFR Sectional Chart** — the point is to **cross-reference the two**: read the chart as usual, then check what that same spot actually looks like in Google Earth's **3D terrain view**, which makes picking good checkpoints much more effective. 
 
-It catches mistakes you'd otherwise make on paper — a feature that looks like a big pond on the chart but is actually hidden behind a mountain along your flight path, a "ski area" label that's actually on the far side of the ridge from your route, or an airport you assumed would be easy to spot but turns out to be hard to identify in practice. 
+Comparing the two catches mistakes you'd otherwise make from the chart alone — a feature that looks like a big pond on the chart but is actually hidden behind a mountain along your flight path, a "ski area" label that's actually on the far side of the ridge from your route, or an airport you assumed would be easy to spot but turns out to be hard to identify in practice. 
 
-**One caveat**: prominent man-made features like wind turbines don't always render well, so don't take Google Earth's rendering as gospel.
+**One caveat**: prominent man-made features like wind turbines don't always render well in Google Earth, so keep cross-checking against the chart.
 
 {% include image_caption_href.html title="Google Earth - 7B2 Departure" caption="Google Earth - 7B2 Departure" imageurl="/navlog/images/google-earth-7B2-departure.png" %}
 {% include image_caption_href.html title="Google Earth - UMass" caption="Google Earth - UMass" imageurl="/navlog/images/google-earth-UMass.png" %}
@@ -94,7 +94,7 @@ Bring it along with your weather briefing to the checkride!
 - But I couldn't bring myself to use it on a checkride.
 - The reason is that **it's hard to reason about how each number was derived**. It's difficult to justify any single value, **because I didn't build it and I didn't calculate it**.
 - An auto-generated navlog is a great tool, but if you can't reason about the numbers behind it, that's risky while you're still learning.
-- So I wanted a happy medium: something that kept the reasoning intact while still taking the calculation burden off my hands.
+- So I wanted a happy medium: something where I could still explain every number, without having to do all the math by hand.
 
 ### 1. The Navlog Formats Out There Didn't Fit Me
 - The format I used to use is the one you can get {% include href.html url="https://vsl.aero/PP_navlog.pdf" text="here" %}.
@@ -127,7 +127,7 @@ Bring it along with your weather briefing to the checkride!
 - What if you forgot to "subtract 7kts if wheel fairings are not installed" when calculating TAS?
 - What if you wake up and the winds aloft forecast has shifted significantly overnight?
 - In both cases, you have to redo WCA, GS, ETE, and fuel for every single leg, and redo W&B on top of that.
-- If you're lucky, you at least remember which parts need recalculating and what's affected. Often, though, you can't even trace which values are related to which, let alone what a given change ripples into.
+- If you're lucky, you at least remember which parts need recalculating and what's affected. But often you can't even trace which values are related to which, so predicting what else changes when one value does is even harder.
 
 ### 5. Could the Relationships Between Values Be Easier to See?
 - I wanted to be able to see the relationships between all the values used while filling out a navlog.
