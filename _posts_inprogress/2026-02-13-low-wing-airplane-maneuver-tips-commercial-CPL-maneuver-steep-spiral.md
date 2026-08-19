@@ -16,7 +16,7 @@ tags: [CPL, commercial-pilot, commercial-maneuver, steep-spiral]
 <!--more-->
 
 ## Disclaimer
-> ⚠️ This is for educational and entertainment purposes only. 
+> ⚠️ This is for educational purposes only. 
 I am not a certified flight instructor (CFI). 
 Do not use this as a substitute for professional flight training. 
 Always consult a CFI and follow your aircraft's POH.

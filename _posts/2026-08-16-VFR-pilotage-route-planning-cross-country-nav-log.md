@@ -133,7 +133,7 @@ Comparing the two routes in ForeFlight against today's weather, the distance is 
 7B2 42.35609/-72.65952 42.28042/-72.88527000000001 42.34459/-73.32104 42.54448/-73.82057 42.65189/-74.04236 42.68244/-74.48524 42.45842/-75.04004999999999 42.30169/-75.41701999999999 42.36971/-75.97595 KITH
 
 ## Disclaimer
-> ⚠️ This is for educational and entertainment purposes only.
+> ⚠️ This is for educational purposes only.
 I am not a certified flight instructor (CFI).
 Do not use this as a substitute for professional flight training.
 Always consult a CFI and follow your aircraft's POH.
