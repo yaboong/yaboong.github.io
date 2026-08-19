@@ -42,7 +42,7 @@ navigation:
 - text: NavLog
   url: /navlog/
 - text: ATC Tool
-  url: /atc_tool/
+  url: /atc-tool/
 
 # The shortname for your Disqus site to enable comments.
 # disqus: yaboong-github-io
