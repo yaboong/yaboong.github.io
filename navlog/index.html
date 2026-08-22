@@ -1075,16 +1075,21 @@ hide_hero: true
 
       <div class="nav-footnote">
         <div class="nav-footnote-col">
-          <h4><span class="ico rich poh" tabindex="0">P<span class="tip">POH 5-19 Climb Performance<br><br>*required: Cruise OAT/PA</span></span> On-course Checkpoint</h4>
+          <h4><span class="ico rich poh" tabindex="0">P<span class="tip">POH 5-19 Climb Performance<br><br>*required: Cruise OAT/PA<br><br>Chart is based on MGW — using cruise altitude PA alone gives an FPM that's too low</span></span> On-course Checkpoint</h4>
           <ul>
             <li>3–5 NM from Departure</li>
             <li>Climb FPM * ETE → ALT</li>
+            <li>FPM = average of (Airport PA FPM, Cruise PA FPM)</li>
+            <li>At checkride weight (~2100 lbs, full tank): add ~+100 fpm</li>
+            <li>Realistic Vy climb: 600–700 fpm</li>
           </ul>
         </div>
         <div class="nav-footnote-col">
           <h4><span class="ico rich poh" tabindex="0">P<span class="tip">POH 5-20 Fuel, Time and Distance to Climb<br><br>*required: Cruise OAT/PA, Departure OAT/PA</span></span> ToC (Top of Climb)</h4>
           <ul>
             <li>Climb TAS: 79 kts</li>
+            <li>ETE = Cruise ALT ÷ FPM (e.g., 5500/650 ≈ 8.46 min ≈ 8 min 27 sec)</li>
+            <li>DIST = ETE(min) ÷ 60 × GS — cross-check against POH 5-20 distance</li>
           </ul>
         </div>
         <div class="nav-footnote-col">
@@ -1420,9 +1425,9 @@ function defaultState(){
     others:{ fuelGround:2.0, fuelLanding:2.0, fuelLegal:4.4, fuelPersonal:4.4 },
     wb:{ aircraft:"PA-28-161 (N79NA)", bewW:1442.37, bewA:87.57, bewM:126301.45, pilotW:320, rearW:120, bagW:80 },
     legs:[
-      {name:"[On-Course] Amherst",vor:"GDM",crs:"257",alt:1900,dist:6, mc:54,var:14,dev:0,tas:79, windDir:307,windSpd:14},
-      {name:"[TOC]",             vor:"GDM",crs:"273",alt:5500,dist:10,mc:55,var:14,dev:0,tas:79, windDir:307,windSpd:15},
-      {name:"KORE",            vor:"GDM",crs:"293",alt:5500,dist:5, mc:55,var:14,dev:0,tas:104,windDir:308,windSpd:16},
+      {name:"[On-Course] Amherst",vor:"GDM",crs:"257",alt:3000,dist:6, mc:54,var:14,dev:0,tas:79, windDir:307,windSpd:14},
+      {name:"[TOC]",             vor:"GDM",crs:"273",alt:5500,dist:4,mc:55,var:14,dev:0,tas:79, windDir:307,windSpd:15},
+      {name:"KORE",            vor:"GDM",crs:"293",alt:5500,dist:11, mc:55,var:14,dev:0,tas:104,windDir:308,windSpd:16},
       {name:"Mt Monadnock",    vor:"GDM",crs:"007",alt:5500,dist:19,mc:38,var:14,dev:0,tas:104,windDir:308,windSpd:17},
       {name:"Powder Mill Pond",vor:"CON",crs:"061",alt:5500,dist:10,mc:61,var:14,dev:0,tas:104,windDir:309,windSpd:18},
       {name:"Weare Reservoir", vor:"CON",crs:"061",alt:5500,dist:10,mc:61,var:14,dev:0,tas:104,windDir:309,windSpd:19},
