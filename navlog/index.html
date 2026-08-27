@@ -1075,21 +1075,47 @@ hide_hero: true
 
       <div class="nav-footnote">
         <div class="nav-footnote-col">
-          <h4><span class="ico rich poh" tabindex="0">P<span class="tip">POH 5-19 Climb Performance<br><br>*required: Cruise OAT/PA<br><br>Chart is based on MGW — using cruise altitude PA alone gives an FPM that's too low</span></span> On-course Checkpoint</h4>
+          <h4>
+            <span class="ico rich poh" tabindex="0">P
+              <span class="tip">
+              POH 5-19 Climb Performance<br>
+              - FPM = average of (Airport PA FPM, Cruise PA FPM)<br>
+              - Chart is based on MGW<br>
+              - At checkride weight (~2100 lbs, full tank): add ~+150 fpm<br><br>
+              - Realistic Vy climb: 600–700 fpm <br><br>
+              *required: Cruise OAT/PA
+              </span>
+            </span><span class="ico rich cal" tabindex="0">C
+              <span class="tip">
+              CX-3 Climb & Descent<br>
+              - Input: Dist, GS, RoC/D (Rate of Climb/Descent)<br>
+              - Output: Desc (=means altitude to climb/descent)
+              </span>
+            </span> On-course Checkpoint
+          </h4>
           <ul>
             <li>3–5 NM from Departure</li>
-            <li>Climb FPM * ETE → ALT</li>
-            <li>FPM = average of (Airport PA FPM, Cruise PA FPM)</li>
-            <li>At checkride weight (~2100 lbs, full tank): add ~+100 fpm</li>
-            <li>Realistic Vy climb: 600–700 fpm</li>
+            <li>POH → FPM</li>
+            <li>CX-3 → <strong>On-course Altitude</strong></li>
           </ul>
         </div>
         <div class="nav-footnote-col">
-          <h4><span class="ico rich poh" tabindex="0">P<span class="tip">POH 5-20 Fuel, Time and Distance to Climb<br><br>*required: Cruise OAT/PA, Departure OAT/PA</span></span> ToC (Top of Climb)</h4>
+          <h4>
+            <span class="ico rich poh" tabindex="0">P<span class="tip">
+              POH 5-20 Fuel, Time and Distance to Climb<br><br>*required: Cruise OAT/PA, Departure OAT/PA</span>
+            </span><span class="ico rich cal" tabindex="0">C
+              <span class="tip">
+                CX-3 Climb & Descent<br>
+                - Input: Desc (Cruise Altitude), GS, RoC/D<br>
+                - Output: Dist
+              </span>
+            </span> ToC (Top of Climb)
+          </h4>
           <ul>
             <li>Climb TAS: 79 kts</li>
-            <li>ETE = Cruise ALT ÷ FPM (e.g., 5500/650 ≈ 8.46 min ≈ 8 min 27 sec)</li>
-            <li>DIST = ETE(min) ÷ 60 × GS — cross-check against POH 5-20 distance</li>
+            <li>POH → Total dist to cruise altitude</li>
+            <li>CX-3 → Total dist to cruise altitude (crosscheck)</li>
+            <li><strong>TOC Dist</strong> = Total Dist - On-course Dist</li>
           </ul>
         </div>
         <div class="nav-footnote-col">
@@ -1414,7 +1440,7 @@ function emptyTL(){
 }
 function defaultState(){
   return {
-    meta:{ date:"2026-08-14", time:"12:00", dep:"7B2", dst:"KLCI", alt:"", route:"7B2 42.31427641595739/-72.58733312947969 42.3754806789466/-72.51536026892134 42.42650°N/72.45483°W 42.57002/-72.28849 42.86244/-72.10911 42.978569/-71.93395700000001 43.087754/-71.773366 43.219814/-71.575428 43.326878/-71.541192 43.52241/-71.47928 KLCI" },
+    meta:{ date:"2026-08-14", time:"12:00", dep:"7B2", dst:"KLCI", alt:"", route:"7B2 42.31427641595739/-72.58733312947969 42.3754806789466/-72.51536026892134 42.43815°N/72.44127°W 42.57002/-72.28849 42.86244/-72.10911 42.978569/-71.93395700000001 43.087754/-71.773366 43.219814/-71.575428 43.326878/-71.541192 43.52241/-71.47928 KLCI" },
     cruise:{ alt:5500, altimeter:30.00, oat:9, gph:8.8, rpm:2475, tas:104, ias:96 },
     tl:{
       dep:{airport:"",elev:"",rwy:"14",rwyLen:"",rwySurf:"",oat:"26",altimeter:"30.03",windDir:"230",windSpd:"4",dist:""},
@@ -1426,7 +1452,7 @@ function defaultState(){
     wb:{ aircraft:"PA-28-161 (N79NA)", bewW:1442.37, bewA:87.57, bewM:126301.45, pilotW:320, rearW:120, bagW:80 },
     legs:[
       {name:"[On-Course] Amherst",vor:"GDM",crs:"257",alt:3000,dist:6, mc:54,var:14,dev:0,tas:79, windDir:307,windSpd:14},
-      {name:"[TOC]",             vor:"GDM",crs:"261",alt:5500,dist:4,mc:55,var:14,dev:0,tas:79, windDir:307,windSpd:15},
+      {name:"[TOC]",             vor:"GDM",crs:"261",alt:5500,dist:5,mc:55,var:14,dev:0,tas:79, windDir:307,windSpd:15},
       {name:"KORE",            vor:"GDM",crs:"293",alt:5500,dist:11, mc:55,var:14,dev:0,tas:104,windDir:308,windSpd:16},
       {name:"Mt Monadnock",    vor:"GDM",crs:"007",alt:5500,dist:19,mc:38,var:14,dev:0,tas:104,windDir:308,windSpd:17},
       {name:"Powder Mill Pond",vor:"CON",crs:"061",alt:5500,dist:10,mc:61,var:14,dev:0,tas:104,windDir:309,windSpd:18},
