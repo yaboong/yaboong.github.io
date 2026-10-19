@@ -28,6 +28,13 @@ banner_image: flyb.png
 |:----------:|:---------:|:-------------:|:-----:|:----:|:----------:|
 | 264.7      | 187.7     | 114.0         |  27.1 | 66.3 | 53.6       |
 
+#### Flight Experiences
+
+- [The Day I Actually Needed a Steep Spiral: Engine Roughness on the Way Home]({% post_url 2026-10-19-engine-roughness-real-steep-spiral-power-off-180-landing %})
+- [Post-Flight Analysis: Near Engine Failure (RPM Gauge Anomaly)]({% post_url 2026-02-05-post-flight-analysis-near-engine-failure-rpm-gauge-anomaly %})
+- [Reinventing the Wheel: Why I Built a New VFR Navigation Log Format]({% post_url 2026-08-17-why-YB-NAVLOG %})
+- [Direct Isn't Always Best: VFR Pilotage Route Planning]({% post_url 2026-08-16-VFR-pilotage-route-planning-cross-country-nav-log %})
+
 ### My Life
 
 - **2008-2009:** Management & Economics major
