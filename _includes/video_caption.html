@@ -1,0 +1,8 @@
+<figure class="caption" style="text-align:center;">
+    <video src="{{ include.videourl }}" controls playsinline preload="metadata" style="max-width:100%;">
+        <a href="{{ include.videourl }}" target="_blank">{{ include.title }}</a>
+    </video>
+    {% if include.caption %}
+    <figcaption class="caption-text">{{ include.caption }}</figcaption>
+    {% endif %}
+</figure>
