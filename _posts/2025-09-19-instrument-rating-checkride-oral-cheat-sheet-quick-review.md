@@ -77,7 +77,7 @@ The author assumes no liability for errors or omissions in the content.
   - for hire over water (unless part 121): flotation device for each, at least 1 pyrotechnic signaling device
   - above FL240: using VOR → DME/RNAV required
 - **ATOMATOFLAMES**: altimeter/tachometer/oil-pressure/manifold-pressure/airspeed/temperature-engine/oil-temperature/fuel-quantity/landing-gear-position-light/anti-collision/magnetic-direction/ELT/safety-belts
-- **FLAPS**: fuses or circuit-breaker/landing-light/anti-collision/position(navigation)/source of electricity
+- **FLAPS**: fuses or circuit-breaker/landing-light (only if for hire)/anti-collision/position(navigation)/source of electricity
 - **GRABCARD**: generator or alternator/2way-radio/altimeter(sensitive)/ball(slip-skid)/clock/attitude-ind./rate-of-turn/directional-gyro(heading ind.)
 
 <details><summary><u>Operating With Inoperative Items (91.213)</u></summary> 

@@ -39,6 +39,8 @@ The author assumes no liability for errors or omissions in the content.
   - charitable/nonprofit/community event flights (under 91.146)
   - search & location operations (reimbursement)
   - aircraft salesman (200h↑) demonstrating aircraft
+- **pro rata share**: equal share per occupant (total cost ÷ number of occupants incl. pilot), e.g. $400 flight, pilot + 3 passengers → pilot pays ≥$100
+- **required docs pilot** ([61.3](https://www.ecfr.gov/current/title-14/section-61.3)): PRIM (Pilot cert / Radio license(international) / ID-photo / Medical or BasicMed)
 - **requirements to act as PIC**: PRIM, flight review, passenger currency (if carrying passengers), endorsements (if required), medical or BasicMed
 - **endorsement** ([61.31](https://www.ecfr.gov/current/title-14/section-61.31)): complex, high-perf(200HP↑), pressurized(can fly FL250↑), tailwheel
 - **complex**: retractable landing gear, flaps, controllable-pitch (constant-speed) props
@@ -60,7 +62,6 @@ The author assumes no liability for errors or omissions in the content.
   - requires: 48CMEC, 24online, treatment, US driver’s, FAA med cert after 7/14/2006
     - [CMEC (Comprehensive Medical Exam Checklist)](https://www.faa.gov/forms/index.cfm/go/document.information/documentID/1030366) ← [Updates](https://www.faa.gov/newsroom/faa-updates-basicmed-program)
   - limit: US, max 7 occ. (6 passengers), MTOW 12500lbs↓, 18000MSL↓, 250kts↓, no compensation/hire
-- **required docs pilot** ([61.3](https://www.ecfr.gov/current/title-14/section-61.3)): PRIM (Pilot cert / Radio license(international) / ID-photo / Medical or BasicMed)
 - **docs presentation**: [cert/med/log/+any] to administrator, NTSB, law enforcement officer
 - **other rules**: address change 30days ([61.60](https://www.ecfr.gov/current/title-14/section-61.60)), DUI/DWI (motor vehicle action) report 60days ([61.15](https://www.ecfr.gov/current/title-14/section-61.15))
 
@@ -90,6 +91,7 @@ The author assumes no liability for errors or omissions in the content.
 - **maintenance type**: major, alteration, repair, preventive
 - **preflight** ([91.103](https://www.ecfr.gov/current/title-14/section-91.103)): NWKRAFT (NOTAMs / Weather / Known ATC delays / Runway lengths / Alternates / Fuel / Takeoff & landing performance)
 - **required equipments** ([91.205](https://www.ecfr.gov/current/title-14/section-91.205)): ATOMATOFLAMES(VFR-day), FLAPS(VFR-night), for [hire/water/↑glide]→device[flotation & pyrotechnic signal 1]
+  - FLAPS: fuses/Landing light (only if for hire)/Anti-collision/Position lights/Source of electricity → landing light NOT required at night unless operated for hire ([91.205(c)(4)](https://www.ecfr.gov/current/title-14/part-91/section-91.205#p-91.205(c)(4)))
 - **inoperative** ([91.213(d)](https://www.ecfr.gov/current/title-14/part-91/section-91.213#p-91.213(d))): no MEL?
   - not in [VFR-day type certification(POH/AFM)→KOEL(POH/AFM)→[91.205](https://www.ecfr.gov/current/title-14/section-91.205)→AD]?→ then ok
   - but, [remove/deactivate/placard "INOPERATIVE"] & record maintenance record, PIC determines no hazard
@@ -215,7 +217,7 @@ The author assumes no liability for errors or omissions in the content.
 ## Flight Instruments
 
 - **pitot-static**: pitot tube (dynamic p), static port (ambient static p), pitot mast
-- **altimeter**: measure altitude above specific ref (sea level, Kollsman window), after set→within 75ft airport elev,  , 18000↑→29.92→FL180
+- **altimeter**: measure altitude above specific ref (sea level, Kollsman window), after set→within 75ft airport elev, high to low → look out below, 18000↑→29.92→FL180
   - altitude↑→pressure↓→aneroid wafer expands→mechanical linkage→indicate
   - kollsman window↑→indicated altitude↑
 - **VSI**: shows rate-of-climb in fpm, trend→immediate, rate→6-9sec delay after established

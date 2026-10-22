@@ -98,6 +98,7 @@ The author assumes no liability for errors or omissions in the content.
   - log→[description, date, name, signature, certificate number, kind of certificate]
   - e.g.→[[Appendix-A-to-Part-43(c)](https://www.ecfr.gov/current/title-14/appendix-Appendix%20A%20to%20Part%2043#p-Appendix-A-to-Part-43(c)), landing gear tires, lights, bulbs, hydraulic fluid, ...]
 - **required equipments** ([91.205](https://www.ecfr.gov/current/title-14/section-91.205)): ATOMATOFLAMES(V-day), FLAPS(V-night), GRABCARD(IFR), for [hire/water/↑glide]→device[flotation & pyrotechnic signal 1]
+  - FLAPS: fuses/Landing light (only if for hire)/Anti-collision/Position lights/Source of electricity → landing light NOT required at night unless operated for hire ([91.205(c)(4)](https://www.ecfr.gov/current/title-14/part-91/section-91.205#p-91.205(c)(4)))
 - **inoperative** ([91.213(d)](https://www.ecfr.gov/current/title-14/part-91/section-91.213#p-91.213(d))): not for turbine-powered (requires ferry permit)
   - not in [MEL→VFR-day type certification(POH/AFM ch6)→KOEL(POH/AFM ch2)→[91.205](https://www.ecfr.gov/current/title-14/section-91.205)→AD]?→ then ok
   - but, [remove/deactivate/placard] & record maintenance record
@@ -257,7 +258,7 @@ The author assumes no liability for errors or omissions in the content.
 ## Flight Instruments
 
 - **pitot-static**: pitot tube (dynamic p), static port (ambient static p), pitot mast
-- **altimeter**: measure altitude above specific ref (sea level, Kollsman window), after set→within 75ft airport elev,  , 18000↑→29.92→FL180
+- **altimeter**: measure altitude above specific ref (sea level, Kollsman window), after set→within 75ft airport elev, high to low → look out below, 18000↑→29.92→FL180
   - altitude↑→pressure↓→aneroid wafer expands→mechanical linkage→indicate
   - kollsman window↑→indicated altitude↑
 - **VSI**: shows rate-of-climb in fpm, trend→immediate, rate→6-9sec delay after established
