@@ -15,6 +15,7 @@ layout: default
                     </div><!-- .entry-meta -->
                 </header><!-- .entry-header -->
                 <div class="entry-content">
+                    {% if page.slides %}{% include google_slides.html src=page.slides title=page.title %}{% endif %}
                     {{content}}
                 </div><!-- .entry-content -->
             </article><!-- .post -->
