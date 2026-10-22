@@ -89,7 +89,7 @@ The author assumes no liability for errors or omissions in the content.
 - **sources**: aviation weather, 1800wxbrief(web&call), fltplan, EFB(ForeFlight), in-flight [FSS, FIS-B(ADS-B), NEXRAD, ATC]
 - **ATIS**: airport (wind, vis, sky, temp, dew, altimeter, NOTAMs), update hourly (55min)
 - **AWOS**: basic (wind, vis, altimeter, temp, dew, density alt)
-- **ASOS**: more advanced than AWOS+(precipitation type, intensity, runway condition)
+- **ASOS**: more advanced than AWOS+(precipitation type/intensity, freezing rain (select sites), lightning (ALDARS))
 - **METAR**: routine weather report, airport, hourly(55-59min), valid current hour
 - **SPECI**: significant change (vis↓, thunderstorms, wind shifts), update with METAR
 - **know how to read**:
@@ -106,14 +106,15 @@ The author assumes no liability for errors or omissions in the content.
   - BECMG 3000/3001 VRB05KT 9999 **NSW** FEW050 SCT090 QNH2987INS **TX23/2920Z TN11/3010Z**
   - 042025Z 0420/0523 1901520KT 9999 SCT060 BKN250 QNH2975INS WND 17009KT **AFT 0502** TEMPO 0420/0501 21015G25KT **520005**
 - **winds aloft (FB)**: various altitudes, 4 times daily, (no wind 1500↓AGL, no temp 2500↓AGL), for [choosing alt/fuel plan/icing/freezing level/lapse rate/temperature inversion/turbulence], “7525-02”
-- **AIRMET (WA)**: non-scheduled inflight advisory, hazardous light aircraft, valid 6hrs, S(mountain obscuration), T(srf wind≥30, turbulence, low-level wind shear), Z(icing, freezing level)
+- **G-AIRMET** (CONUS): scheduled every 6hrs (0245/0845/1445/2045Z), graphical only (text AIRMET over CONUS retired 2025.01.27, text S/T/Z only AK/HI), snapshots every 3hrs up to 12hrs (00/03/06/09/12), hazardous light aircraft
+  - IFR (ceiling<1000 / vis<3), mountain obscuration, moderate icing, freezing level, moderate turbulence, LLWS (below 2000AGL), sustained surface wind>30kts
 - **SIGMET (WS)**: non-convective severe, for all aircraft, not associated with thunderstorms, valid 4hrs (6 if hurricane), severe turbulence (CAT), severe icing, volcanic ash, dust/sand storms reducing vis to ≤ 3S
 - **Convective SIGMET (WST)**:
-  - severe convective weather, hazardous to all aircraft, hourly at H+55, valid for 2hrs (severe or greater turbulence, severe icing, low-level wind shear)
+  - severe convective weather, hazardous to all aircraft, hourly at H+55, valid for 1hr (2hrs before 2026.12.01, [details]({% post_url 2026-10-19-convective-SIGMET-valid-time-1-hour-changes-SCN-26-85 %})), implies (severe or greater turbulence, severe icing, low-level wind shear)
   - convective?: vertical movement of air caused by heating → thunderstorms & lightning
   - issued for: (not for Alaska/Hawaii)
     - thunder-storm: areas ≥ 40% of 3000sq miles
-    - severe thunder-storm: surface wind≥50kts, hail at surface ≥ 3/4 inch in diameter
+    - severe thunder-storm: surface wind≥50kts, hail at surface ≥ 3/4 inch in diameter, tornadoes
     - embedded thunder-storm: obscured by cloud layers
     - squall line thunder-storm: at least [60 miles long & affecting at 40% of its length]
 - **Convective Outlook (AC)**: forecasting tool, broad view of t-storm. expectation, available SPC, 8 day outlook (1,2,3,4-8), issuance [day1(5times), day2(2times), day3(1time)]
@@ -153,9 +154,9 @@ The author assumes no liability for errors or omissions in the content.
 - **dew point**: temperature at which air becomes saturated → no longer hold water vapor → condensation begins (water vapor → liquid)
   - closer temp&dewpoint→humidity↑visible moisture↑(fog/clouds/dew/frost/rain)→ vis↓
   - aircraft surface == dew point → frost
-  - temperature < dew point → icing
+  - icing → visible moisture + temperature ≤ 0℃ (temperature can't go below dew point)
 - **precipitation**: any form of water that falls from the atmosphere (rain/drizzle/sleet/hail)
-  - sleet: snow(solid, ice crystals)+freezing rain(rapid structural icing)
+  - sleet (ice pellets): rain falls through temp inversion → freezes in cold air below → ice pellets at surface → freezing rain at higher alt
   - hail: ice pellets produced by strong updrafts in thunderstorms
 - **fronts**: boundaries between two air masses
   - squall line? → ahead of a cold front
@@ -173,7 +174,7 @@ The author assumes no liability for errors or omissions in the content.
 - **clouds**: moist air cooled to its dew point → water vapor condenses into tiny liquid
   - caused by lifting: convective(air heated&rise), orographic(air rise by mountain), frontal
   - hazards: icing, turb(cumuliform clouds), vis↓, thunderstorms
-- **cloud types**: cumulus(piled), stratus(in layers), cirrus(high-level,20000↑), nimbus (rain-bearing), alto(middle-level,5000-20000)
+- **cloud types**: cumulus(piled), stratus(in layers), cirrus(high-level,20000↑), nimbus (rain-bearing), alto(middle-level,6500-20000)
   - lenticularus: lens-shaped, formed over mountains in strong winds
   - virga - contains strong downdrafts
   - rotor clouds
@@ -182,7 +183,7 @@ The author assumes no liability for errors or omissions in the content.
 - **thunderstorm caution**: keep 20NM distance (hail/rain can be thrown up to 20NM)
 - **microburst**: [undetectable/small/strong]downdraft→sudden/powerful winds near ground
   - losing altitude 6000ft/min, dangerous WS(especially takeoff/landing)
-  - wind(150mph=131kts), short-lived, lasting 5-15 min, less than 2.5 miles wide
+  - horizontal wind up to 45kts → 90kts shear (headwind→tailwind), short-lived, lasting 5-15 min, less than 2.5 miles wide
 - **fog** (PAIRUS): cloud near surface(50’), air cools to its dew point & moisture added
   - precipitation: rain→moisture evaporates→humidity↑→air saturated, warm rain through cooler air[warm front/temperature inversion]
   - advection: warm/moist air moves over cooler surface (coastal areas), opposite of steam fog, forms quickly, cover large areas
@@ -233,13 +234,13 @@ The author assumes no liability for errors or omissions in the content.
 - **FIKI**: [frost/ice/snow] on airplane→not allowed, but deicing or anti-icing equip to protect[wings/windshield/controls/instrument]? → allowed (use caution)
 - **icing on airfoils**: shape change→weight↑lift↓(less noticeable at low AoA)→stall speed↑
   - small ice→localized stall→roll/spin, likely form first on tailplane, flaps already extended?(never retract)→retract?→stall speed↑
-- **roll upset**: can be caused by localized stall, try [AoA↓/airspeed↑/extend flaps/wings level]
+- **roll upset**: can be caused by localized stall, try [AoA↓(pitch↓)/wings level/appropriate power/flaps extended? don't retract], partly opposite of ICTS recovery
 - **tailplane**: tailplane creates tail-down force→nose-up moment→counteracts nose-down moment created by lift, better ice collector than wings
 - **tailplane icing (ICTS)**: Ice Contaminated Tailplane Stall, mostly during approach/landing
   - tailplane icing→tail-down force↓→nose-down↑ ← don’t [deploy flaps or speed↑]
     - if flaps or speed↑→lift↑→even more nose-down
   - symptoms: elevator[vibration↑effectiveness↓heavier] & uncommanded nose-down
-  - recovery: retract flaps immediately, and then speed↑ to counteract flap retraction, slowly control nose-down pitch, no-flaps approach
+  - recovery: flaps to previous setting, pull back (nose-up), no speed↑ (higher speed → closer to tailplane stall), power effect differs by design (follow AFM/POH), no-flaps approach
 - **plan&predict** (CAFFU): Cloud layers, Air temperature & pressure (more likely in low-pressure areas, cool temperatures), Fronts movement, Freezing level, Use weather briefing (METAR/TAF/AIRMET/SIGMET)
 - **anti-icing/deicing**: anti-icing(prevention), deicing(removal)
   - for airfoil: inflatable deicing boots, thermal anti-ice leading edge, weeping wings
@@ -262,10 +263,10 @@ The author assumes no liability for errors or omissions in the content.
     | Maneuve r                          | Pitch       | Bank             | Powe r       |
     |------------------------------------|-------------|------------------|--------------|
     | Straight & Level                   | Altimeter   | Heading          | Airspeed     |
-    | Climbs / Descents (Airspeed)       | Airspeed    | Heading          | VSI          |
+    | Climbs / Descents (Airspeed)       | Airspeed    | Heading          | Tach/MP      |
     | Climbs / Descents (Vertical Speed) | VSI         | Heading          | Airspeed     |
     | Turns                              | Altimeter   | Turn Coordinator | Airspeed     |
-    | Transition to Climb                | Attitude    | Heading          | VSI/Airspeed |
+    | Transition to Climb                | Attitude    | Heading          | Tach/MP      |
     | Transition to Turn                 | Altimeter   | Attitude         | Airspeed     |
     | ILS Approach                       | Glide Slope | Localizer        | Airspeed     |
 - **gyroscopic principles**
@@ -427,7 +428,7 @@ The author assumes no liability for errors or omissions in the content.
   - **APV**: prevision-like, to DA, with vertical guidance but doesn’t meet precision standard
     - LDA with Glide Slope, LPV, LNAV/VNAV
 - **other types of approach:** circling/visual/contact/radar-vectors/parallel/GLS
-  - **circling**: course alignment↔rwy center exceeds 30°, approach name not include rwy (VOR/DME-B), remain 1.3NM (for category A) radius of all runways (B1.5, C1.7, D2.3, E4.5), visual ref lost while circling? (climbing turn to landing rwy → continue turn until established on missed course)
+  - **circling**: course alignment↔rwy center exceeds 30°, approach name not include rwy (VOR/DME-B), remain 1.3NM (for category A) radius of all runways (B1.5, C1.7, D2.3, E4.5) for procedures before late 2012, Ⓒ on chart → expanded radii (vary by category & MSL circling alt), visual ref lost while circling? (climbing turn to landing rwy → continue turn until established on missed course)
   - **visual**: pilot or ATC initiate (pilot can reject), vis≥3SM, ceiling≥1000 (IFR under VMC), must have [airport or traffic to follow] in-sight, pilot responsible visual separation
   - **contact**: similar to visual but SVFR, only init by pilot (no ATC), airport with IAP (ground vis≥1sm, remain Coc), obs. clr. pilot’s responsibility
   - **radar vectors to final**: at least 2NM outside FAF, until cleared [no turn to final / maintain last assigned altitude]
@@ -462,7 +463,7 @@ The author assumes no liability for errors or omissions in the content.
   - (+) **SFRA** (Special Flight Rules Area): Grand Canyon, Washington DC, Hudson River
 - **minimum altitude for IFR**
   - no applicable minimum altitude? → mountainous (2000↑ highest obs., 4NM horizontal), others (1000↑ highest obs., 4NM horizontal)
-  - **DA(DH)**: precision, above rwy threshold
+  - **DA(DH)**: precision, DA → MSL, DH → height above TDZE/threshold
   - **MDA(MDH)**: non-precision, above wy threshold, visual references
   - **MCA**: route & direction, must cross higher than MCA, flying to higher MEA, X flag
   - **MTA**: obstacle clearance (vertical/lateral) turns over fixes
