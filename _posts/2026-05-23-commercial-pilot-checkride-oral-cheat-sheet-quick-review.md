@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Commercial Pilot Checkride Oral Cheat Sheet (Quick CPL review)"
-date: 2026-10-21
+date: 2026-05-23
 banner_image: cockpit.png
 categories: [aviation]
 tags: [aviation-theory, checkride, oral-exam, CPL]
@@ -10,7 +10,7 @@ tags: [aviation-theory, checkride, oral-exam, CPL]
 ## Intro
 
 * This is the CPL version of my [Instrument Rating Checkride Oral Cheat Sheet]({% post_url 2025-09-19-instrument-rating-checkride-oral-cheat-sheet-quick-review %}).
-* It's my own cheat sheet, condensed into keywords for quick review. If you're curious how I build these, see [How I Prepare for the Checkride Oral]({% post_url 2026-10-21-how-I-prepare-for-checkride-oral %}).
+* It's my own cheat sheet, condensed into keywords for quick review. If you're curious how I build these, see [How I Prepare for the Checkride Oral]({% post_url 2026-06-14-how-I-prepare-for-checkride-oral %}).
 * This isn't a detailed, in-depth explanation of each topic. It's meant for rapidly going over everything you've studied, especially in the week leading up to your exam.
 * Click the **image** toggles to open the related figures.
 
