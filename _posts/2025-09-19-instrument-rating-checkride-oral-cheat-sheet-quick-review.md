@@ -240,7 +240,7 @@ The author assumes no liability for errors or omissions in the content.
   - tailplane icing→tail-down force↓→nose-down↑ ← don’t [deploy flaps or speed↑]
     - if flaps or speed↑→lift↑→even more nose-down
   - symptoms: elevator[vibration↑effectiveness↓heavier] & uncommanded nose-down
-  - recovery: flaps to previous setting, pull back (nose-up), no speed↑ (higher speed → closer to tailplane stall), power effect differs by design (follow AFM/POH), no-flaps approach
+  - recovery (IFH): flaps to previous setting + nose-up elevator, airspeed↑ only as appropriate for reduced flap setting (excess speed worsens ICTS), power per AFM/POH, nose-down pitch changes slowly, cycle deice boots, no-flaps approach
 - **plan&predict** (CAFFU): Cloud layers, Air temperature & pressure (more likely in low-pressure areas, cool temperatures), Fronts movement, Freezing level, Use weather briefing (METAR/TAF/AIRMET/SIGMET)
 - **anti-icing/deicing**: anti-icing(prevention), deicing(removal)
   - for airfoil: inflatable deicing boots, thermal anti-ice leading edge, weeping wings
