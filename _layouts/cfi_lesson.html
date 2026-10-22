@@ -11,7 +11,7 @@ layout: default
                         <h1 class="entry-title">{{page.title}}</h1>
                     </div><!-- .entry-header-wrap -->
                     <div class="entry-meta">
-                        <a href="{{ '/cfi-lesson-plan/' | prepend: site.baseurl }}">CFI Lesson Plan</a>{% if area %} › Area of Operation {{ area.roman }}. {{ area.title }}{% endif %}
+                        <a href="{{ '/cfi-lesson-plan/' | prepend: site.baseurl }}">CFI Lesson Plan</a>{% if area %} › Area of Operation {{ area.roman }}. {{ area.title }}{% elsif page.module %} › Modules{% endif %}
                     </div><!-- .entry-meta -->
                 </header><!-- .entry-header -->
                 <div class="entry-content">

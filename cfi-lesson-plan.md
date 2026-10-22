@@ -16,3 +16,12 @@ Lesson plans organized by the Flight Instructor ACS (Airplane) areas of operatio
 {% endfor %}
 </ul>
 {% endfor %}
+
+{% assign modules = site.cfi_lessons | where: "module", true | sort: "title" %}
+<h3>Modules</h3>
+<p>Short, reusable topic lessons shared across multiple tasks.</p>
+<ul>
+{% for m in modules %}
+<li><a href="{{ m.url | prepend: site.baseurl }}">{{ m.title | remove_first: "Module. " }}</a></li>
+{% endfor %}
+</ul>
