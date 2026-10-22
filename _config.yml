@@ -29,16 +29,23 @@ sass:
 # The base hostname & protocol of your site for where absolute urls are needed
 url: "https://yaboong.github.io"
 
+# Top-level sections: posts in these categories → /aviation/, all others → /cs/
+aviation_categories: [aviation, aviation-experience, FAR/AIM]
+# Display names for categories (category values stay as-is so post URLs don't change)
+category_labels:
+  aviation: "Checkride"
+  aviation-experience: "Flight Experiences"
+
 # Site navigation - each item must have a title and a url.
 navigation:
 - text: Home
   url: /
 - text: About
   url: /about/
-- text: Categories
-  url: /categories
-- text: Tags
-  url: /tags/
+- text: Aviation
+  url: /aviation/
+- text: CS
+  url: /cs/
 - text: NavLog
   url: /navlog/
 # - text: CFI Lesson Plan   # hidden until ready (page still at /cfi-lesson-plan/)

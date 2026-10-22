@@ -38,7 +38,7 @@ banner_image: flyb.png
 #### Checkride Cheat Sheets
 
 - [How I Prepare for the Checkride Oral (What Worked for Me)]({% post_url 2026-06-14-how-I-prepare-for-checkride-oral %})
-- [Private Pilot Checkride Oral Cheat Sheet (Quick PPL review)]({% post_url 2026-10-22-private-pilot-checkride-oral-cheat-sheet-quick-review %})
+- [Private Pilot Checkride Oral Cheat Sheet (Quick PPL review)]({% post_url 2025-02-02-private-pilot-checkride-oral-cheat-sheet-quick-review %})
 - [Instrument Rating Checkride Oral Cheat Sheet (Quick IR review)]({% post_url 2025-09-19-instrument-rating-checkride-oral-cheat-sheet-quick-review %})
 - [Commercial Pilot Checkride Oral Cheat Sheet (Quick CPL review)]({% post_url 2026-05-23-commercial-pilot-checkride-oral-cheat-sheet-quick-review %})
 

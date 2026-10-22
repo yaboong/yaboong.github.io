@@ -3,7 +3,8 @@ layout: post
 title: "How I Prepare for the Checkride Oral (What Worked for Me)"
 date: 2026-06-14
 banner_image: aviation-experience.png
-categories: [aviation-experience]
+categories: [aviation]
+permalink: /aviation-experience/2026/06/14/how-I-prepare-for-checkride-oral/
 tags: [checkride, oral-exam, study-method, PPL, IR, CPL, ACS, ground-school]
 ---
 

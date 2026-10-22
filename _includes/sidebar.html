@@ -49,7 +49,7 @@
         <h2 class="widget-title">Categories</h2>
         <div class="tagcloud">
             {% for category in sortedCategories %}
-            <a href="{{site.baseurl}}/categories/#{{ category | cgi_escape }}">{{ category }}</a>
+            <a href="{{site.baseurl}}/categories/#{{ category | cgi_escape }}">{{ site.category_labels[category] | default: category }}</a>
             {% endfor %}
         </div><!-- .tagcloud -->
     </section><!-- .widget -->
