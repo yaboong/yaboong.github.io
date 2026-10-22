@@ -41,6 +41,8 @@ navigation:
   url: /tags/
 - text: NavLog
   url: /navlog/
+# - text: CFI Lesson Plan   # hidden until ready (page still at /cfi-lesson-plan/)
+#   url: /cfi-lesson-plan/
 - text: ATC Tool
   url: /atc-tool/
 
@@ -94,6 +96,19 @@ exclude:
 
 # Google Analytics
 google_analytics: UA-113745841-1
+
+# CFI lesson plans (separate from posts, listed on /cfi-lesson-plan/)
+collections:
+  cfi_lessons:
+    output: true
+    permalink: /cfi-lesson-plan/:name/
+defaults:
+  - scope:
+      path: ""
+      type: cfi_lessons
+    values:
+      layout: cfi_lesson
+      sitemap: false  # set sitemap: true per lesson once its content is written
 
 # for ffmpeg
 include:

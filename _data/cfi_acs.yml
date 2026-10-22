@@ -1,0 +1,272 @@
+# CFI ACS (FAA-S-ACS-25) areas/tasks shown on /cfi-lesson-plan/.
+# doc = file name in _cfi_lessons/ (omit → listed without a link)
+areas:
+  - num: 2
+    roman: II
+    title: "Technical Subject Areas"
+    tasks:
+      - id: "A"
+        title: "Human Factors"
+        doc: ii-a-human-factors
+      - id: "B"
+        title: "Visual Scanning and Collision Avoidance"
+        doc: ii-b-visual-scanning-and-collision-avoidance
+      - id: "C"
+        title: "Runway Incursion Avoidance"
+        doc: ii-c-runway-incursion-avoidance
+      - id: "D"
+        title: "Principles of Flight"
+        doc: ii-d-principles-of-flight
+      - id: "E"
+        title: "Aircraft Flight Controls and Operation of Systems"
+        doc: ii-e-aircraft-flight-controls-and-operation-of-systems
+      - id: "F"
+        title: "Performance and Limitations"
+        doc: ii-f-performance-and-limitations
+      - id: "G"
+        title: "National Airspace System"
+        doc: ii-g-national-airspace-system
+      - id: "H"
+        title: "Navigation Systems and Radar Services"
+        doc: ii-h-navigation-systems-and-radar-services
+      - id: "I"
+        title: "Navigation and Cross-Country Flight Planning"
+        doc: ii-i-navigation-and-cross-country-flight-planning
+      - id: "J"
+        title: "14 CFR and Publications"
+        doc: ii-j-14-cfr-and-publications
+      - id: "K"
+        title: "Endorsements and Logbook Entries"
+        doc: ii-k-endorsements-and-logbook-entries
+      - id: "L"
+        title: "Water and Seaplane Characteristics, Seaplane Bases, Maritime Rules, and Aids to Marine Navigation (ASES, AMES)"
+      - id: "M"
+        title: "Night Operations"
+        doc: ii-m-night-operations
+      - id: "N/O"
+        title: "High Altitude Operations - Supplemental Oxygen, Pressurization"
+        doc: ii-n-o-high-altitude-operations-supplemental-oxygen-pressurization
+      - id: "P"
+        title: "One Engine Inoperative (OEI) Performance (AMEL, AMES)"
+  - num: 3
+    roman: III
+    title: "Preflight Preparation"
+    tasks:
+      - id: "A"
+        title: "Pilot Qualifications"
+        doc: iii-a-pilot-qualifications
+      - id: "B"
+        title: "Airworthiness Requirements"
+        doc: iii-b-airworthiness-requirements
+      - id: "C"
+        title: "Weather Information"
+        doc: iii-c-weather-information
+  - num: 4
+    roman: IV
+    title: "Preflight Lesson on a Maneuver to be Performed in Flight"
+    tasks:
+      - id: "A"
+        title: "Maneuver Lesson"
+  - num: 5
+    roman: V
+    title: "Preflight Procedures"
+    tasks:
+      - id: "A"
+        title: "Preflight Assessment"
+        doc: v-a-preflight-assessment
+      - id: "B"
+        title: "Flight Deck Management"
+        doc: v-b-flight-deck-management
+      - id: "C"
+        title: "Engine Starting"
+        doc: v-c-engine-starting
+      - id: "D"
+        title: "Taxiing, Airport Signs, and Lighting (ASEL, AMEL)"
+        doc: v-d-taxiing-airport-signs-and-lighting
+      - id: "E"
+        title: "Taxiing and Sailing (ASES, AMES)"
+      - id: "F"
+        title: "Before Takeoff Check"
+        doc: v-f-before-takeoff-check
+  - num: 6
+    roman: VI
+    title: "Airport and Seaplane Base Operations"
+    tasks:
+      - id: "A"
+        title: "Communications, Light Signals, and Runway Lighting Systems"
+        doc: vi-a-communications-light-signals-and-runway-lighting-systems
+      - id: "B"
+        title: "Traffic Patterns"
+        doc: vi-b-traffic-patterns
+  - num: 7
+    roman: VII
+    title: "Takeoffs, Landings, and Go-Arounds"
+    tasks:
+      - id: "A"
+        title: "Normal Takeoff and Climb"
+        doc: vii-a-normal-takeoff-and-climb
+      - id: "B"
+        title: "Normal Approach and Landing"
+        doc: vii-b-normal-approach-and-landing
+      - id: "C"
+        title: "Soft-Field Takeoff and Climb (ASEL)"
+        doc: vii-c-soft-field-takeoff-and-climb
+      - id: "D"
+        title: "Soft-Field Approach and Landing (ASEL)"
+        doc: vii-d-soft-field-approach-and-landing
+      - id: "E"
+        title: "Short-Field Takeoff and Maximum Performance Climb (ASEL, AMEL)"
+        doc: vii-e-short-field-takeoff-and-maximum-performance-climb
+      - id: "F"
+        title: "Short-Field Approach and Landing (ASEL, AMEL)"
+        doc: vii-f-short-field-approach-and-landing
+      - id: "G"
+        title: "Confined Area Takeoff and Maximum Performance Climb (ASES, AMES)"
+      - id: "H"
+        title: "Confined Area Approach and Landing (ASES, AMES)"
+      - id: "I"
+        title: "Glassy Water Takeoff and Climb (ASES, AMES)"
+      - id: "J"
+        title: "Glassy Water Approach and Landing (ASES, AMES)"
+      - id: "K"
+        title: "Rough Water Takeoff and Climb (ASES, AMES)"
+      - id: "L"
+        title: "Rough Water Approach and Landing (ASES, AMES)"
+      - id: "M"
+        title: "Slip to a Landing (ASEL, ASES)"
+        doc: vii-m-slip-to-a-landing
+      - id: "N"
+        title: "Go-Around/Rejected Landing"
+        doc: vii-n-go-around-rejected-landing
+      - id: "O"
+        title: "Power-Off 180° Accuracy Approach and Landing (ASEL, ASES)"
+        doc: vii-o-power-off-180-accuracy-approach-and-landing
+  - num: 8
+    roman: VIII
+    title: "Fundamentals of Flight"
+    tasks:
+      - id: "A"
+        title: "Straight-and-Level Flight"
+        doc: viii-a-d-fundamentals-of-flight
+      - id: "B"
+        title: "Level Turns"
+        doc: viii-a-d-fundamentals-of-flight
+      - id: "C"
+        title: "Straight Climbs and Climbing Turns"
+        doc: viii-a-d-fundamentals-of-flight
+      - id: "D"
+        title: "Straight Descents and Descending Turns"
+        doc: viii-a-d-fundamentals-of-flight
+  - num: 9
+    roman: IX
+    title: "Performance and Ground Reference Maneuvers"
+    tasks:
+      - id: "A"
+        title: "Steep Turns"
+        doc: ix-a-steep-turns
+      - id: "B"
+        title: "Steep Spiral (ASEL, ASES)"
+        doc: ix-b-steep-spiral
+      - id: "C"
+        title: "Chandelles (ASEL, ASES)"
+        doc: ix-c-chandelles
+      - id: "D"
+        title: "Lazy Eights (ASEL, ASES)"
+        doc: ix-d-lazy-eights
+      - id: "E"
+        title: "Ground Reference Maneuvers"
+        doc: ix-e-ground-reference-maneuvers
+      - id: "F"
+        title: "Eights on Pylons (ASEL, ASES)"
+        doc: ix-f-eights-on-pylons
+  - num: 10
+    roman: X
+    title: "Slow flight, Stalls, and Spins"
+    tasks:
+      - id: "A"
+        title: "Maneuvering During Slow Flight"
+        doc: x-a-maneuvering-during-slow-flight
+      - id: "B"
+        title: "Demonstration of Flight Characteristics at Various Configurations and Airspeeds (ASEL, ASES)"
+        doc: x-b-demonstration-of-flight-characteristics-at-various-configurations-and-airspeeds
+      - id: "C"
+        title: "Power-Off Stalls"
+        doc: x-c-i-stalls-spin
+      - id: "D"
+        title: "Power-On Stalls"
+        doc: x-c-i-stalls-spin
+      - id: "E"
+        title: "Accelerated Stalls"
+        doc: x-c-i-stalls-spin
+      - id: "F"
+        title: "Cross-Controlled Stall Demonstration (ASEL, ASES)"
+        doc: x-c-i-stalls-spin
+      - id: "G"
+        title: "Elevator Trim Stall Demonstration (ASEL, ASES)"
+        doc: x-c-i-stalls-spin
+      - id: "H"
+        title: "Secondary Stall Demonstration (ASEL, ASES)"
+        doc: x-c-i-stalls-spin
+      - id: "I"
+        title: "Spin Awareness and Spins"
+        doc: x-c-i-stalls-spin
+  - num: 11
+    roman: XI
+    title: "Basic Instrument Maneuvers"
+    tasks:
+      - id: "A"
+        title: "Straight-and-Level Flight"
+        doc: xi-a-e-basic-instrument-maneuvers
+      - id: "B"
+        title: "Constant Airspeed Climbs"
+        doc: xi-a-e-basic-instrument-maneuvers
+      - id: "C"
+        title: "Constant Airspeed Descents"
+        doc: xi-a-e-basic-instrument-maneuvers
+      - id: "D"
+        title: "Turns to Headings"
+        doc: xi-a-e-basic-instrument-maneuvers
+      - id: "E"
+        title: "Recovery from Unusual Flight Attitudes"
+        doc: xi-a-e-basic-instrument-maneuvers
+  - num: 12
+    roman: XII
+    title: "Emergency Operations"
+    tasks:
+      - id: "A"
+        title: "Emergency Descent"
+        doc: xii-a-d-emergency-operations
+      - id: "B"
+        title: "Emergency Approach and Landing (Simulated) (ASEL, ASES)"
+        doc: xii-a-d-emergency-operations
+      - id: "C"
+        title: "Systems and Equipment Malfunctions"
+        doc: xii-a-d-emergency-operations
+      - id: "D"
+        title: "Emergency Equipment and Survival Gear"
+        doc: xii-a-d-emergency-operations
+      - id: "E"
+        title: "Engine Failure During Takeoff Before VMC (Simulated) (AMEL, AMES)"
+      - id: "F"
+        title: "Engine Failure After Liftoff (Simulated) (AMEL, AMES)"
+      - id: "G"
+        title: "Approach and Landing with an Inoperative Engine (Simulated) (AMEL, AMES)"
+  - num: 13
+    roman: XIII
+    title: "Multiengine Operations"
+    tasks:
+      - id: "A"
+        title: "Maneuvering with One Engine Inoperative (AMEL, AMES)"
+      - id: "B"
+        title: "VMC Demonstration (AMEL, AMES)"
+      - id: "C"
+        title: "Demonstration of Effects of Various Airspeeds and Configurations during Engine Inoperative Performance (AMEL, AMES)"
+  - num: 14
+    roman: XIV
+    title: "Postflight Procedures"
+    tasks:
+      - id: "A"
+        title: "After Landing, Parking, and Securing (ASEL, AMEL)"
+        doc: xiv-a-after-landing-parking-and-securing
+      - id: "B"
+        title: "Seaplane Post-Landing Procedures (ASES, AMES)"
