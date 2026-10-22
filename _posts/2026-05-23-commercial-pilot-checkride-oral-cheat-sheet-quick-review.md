@@ -524,11 +524,6 @@ The author assumes no liability for errors or omissions in the content.
   - key) ↑stall speed, but easier to recover
 - **aft CG vs forward CG**
   - <details><summary><u>image: PHAK 5-43</u></summary><a href="/posts_image/2026-10-21/cpl/06-performance-w-b-04.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/06-performance-w-b-04.jpg" alt="PHAK 5-43" loading="lazy"/></a></details>
-- **weight shift formula**
-  - `(weight shifted / total weight) = (old CG − new CG) / (distance object shifted)`
-- Q) how much baggage would have to be moved from station 180 to station 40? (weight:3650, current CG:94, goal: CG92)
-  - \frac{\text{Weight to be shifted}}{\text{3650}} = \frac{\text{94} - \text{92}}{\text{180} - \text{40}}
-  - = 140x = 3650*2 = 7300 → x = 7300/140 = 52.14
 
 ## Airport
 
@@ -624,7 +619,7 @@ The author assumes no liability for errors or omissions in the content.
     - <details><summary><u>image: visual only rwy</u></summary><a href="/posts_image/2026-10-21/cpl/07-airport-42.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/07-airport-42.jpg" alt="visual only rwy" loading="lazy"/></a></details>
   - **rwy centerline**: every 50ft, w-until last 3000ft & last 3000ft (w/r 2000ft, r 1000ft)
     - <details><summary><u>image: rwy centerline</u></summary><a href="/posts_image/2026-10-21/cpl/07-airport-43.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/07-airport-43.jpg" alt="rwy centerline" loading="lazy"/></a><a href="/posts_image/2026-10-21/cpl/07-airport-44.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/07-airport-44.jpg" alt="rwy centerline" loading="lazy"/></a><a href="/posts_image/2026-10-21/cpl/07-airport-45.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/07-airport-45.jpg" alt="rwy centerline" loading="lazy"/></a></details>
-  - **rwy edge**: white, yellow (last 2000ft)
+  - **rwy edge**: white, instrument rwy → yellow last 2000ft or half rwy (whichever less)
   - **taxiway**: edge(blue), center(green), lead-on/off(green/yellow)
     - <details><summary><u>image: taxiway</u></summary><a href="/posts_image/2026-10-21/cpl/07-airport-46.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/07-airport-46.jpg" alt="taxiway" loading="lazy"/></a></details>
 - **signs & runway/taxiway boundary**
@@ -1185,7 +1180,7 @@ The author assumes no liability for errors or omissions in the content.
 - **PA-28-161**: Vs0(44), Vs1(51), Vne(160), Vno(126), Va(88-111), Vfe(103), Vy(79), Vx(63), Vg(73), Vb(87), turb(111), final(63)
   - LAHSO: min vis≥3SM
   - rwy centerline: every 50ft, w-until last 3000ft & last 3000ft (w/r 2000ft, r 1000ft)
-  - rwy edge: white, yellow (last 2000ft)
+  - rwy edge: white, instrument rwy → yellow last 2000ft or half rwy (whichever less)
   - light: non-towered → radio click (in 5 sec: 7, 5, 3)
   - **time & distance to station**: how far (time/distance) you went vs. how much the bearing changed
   - time to station = (elapsed time * 60) / degree of change
