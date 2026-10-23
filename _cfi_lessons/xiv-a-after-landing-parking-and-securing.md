@@ -2,6 +2,7 @@
 title: "XIV. Task A. After Landing, Parking, and Securing (ASEL, AMEL)"
 area: 14
 task: "A"
+slides: "https://docs.google.com/presentation/d/e/2PACX-1vRv26oOLciu5XYDBIti4XPDFOjSxT1QxrDvH29pgwgb4k1q4OBN6wQNa0PLQr9iSRgVYTzjvzkxSGQ4/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective

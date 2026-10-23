@@ -2,6 +2,7 @@
 title: "IX. Task B. Steep Spiral (ASEL, ASES)"
 area: 9
 task: "B"
+slides: "https://docs.google.com/presentation/d/e/2PACX-1vSHxFqItWCJnYiK5aiI7B98FzWqHcTpZ6cglUyoz1XVPwqZYmwvo6AVqH4MQTspWLg3AuSxtFZ1bWt-/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective

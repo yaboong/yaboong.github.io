@@ -2,6 +2,7 @@
 title: "IX. Task A. Steep Turns"
 area: 9
 task: "A"
+slides: "https://docs.google.com/presentation/d/e/2PACX-1vSB22KVxNDP2SOOeLyvvMVW-rVC7jVig1GKonIrXASeWCbxHOz8Ob8iOde6k6zJrJefG59rOKrq7F-E/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective

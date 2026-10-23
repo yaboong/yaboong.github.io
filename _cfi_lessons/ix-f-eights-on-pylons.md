@@ -2,6 +2,7 @@
 title: "IX. Task F. Eights on Pylons (ASEL, ASES)"
 area: 9
 task: "F"
+slides: "https://docs.google.com/presentation/d/e/2PACX-1vR17heBovdTPpfxnRjhiUG6MpUEYPs72vK_bH_geljX7WDsJbRkxkHzRkp14sTNw1-7gJT2gZmX-QKc/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective

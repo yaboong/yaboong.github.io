@@ -2,6 +2,7 @@
 title: "IX. Task E. Ground Reference Maneuvers"
 area: 9
 task: "E"
+slides: "https://docs.google.com/presentation/d/e/2PACX-1vT7YdDQVEKj9p6L839hRMYMgS55yfxfEf1OKMvHfZ9bpDp4hNlBarooopoHuiqowB-2uXa8nU3eenGF/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective

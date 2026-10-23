@@ -1,5 +1,6 @@
 # CFI ACS (FAA-S-ACS-25) areas/tasks shown on /cfi-lesson-plan/.
 # doc = file name in _cfi_lessons/ (omit → listed without a link)
+# planned: true = lesson in progress, no page yet (shown in normal text, not grayed out)
 areas:
   - num: 2
     roman: II
@@ -73,13 +74,13 @@ areas:
     tasks:
       - id: "A"
         title: "Preflight Assessment"
-        doc: v-a-preflight-assessment
+        planned: true
       - id: "B"
         title: "Flight Deck Management"
-        doc: v-b-flight-deck-management
+        planned: true
       - id: "C"
         title: "Engine Starting"
-        doc: v-c-engine-starting
+        planned: true
       - id: "D"
         title: "Taxiing, Airport Signs, and Lighting (ASEL, AMEL)"
         doc: v-d-taxiing-airport-signs-and-lighting
@@ -188,7 +189,7 @@ areas:
         doc: x-a-maneuvering-during-slow-flight
       - id: "B"
         title: "Demonstration of Flight Characteristics at Various Configurations and Airspeeds (ASEL, ASES)"
-        doc: x-b-demonstration-of-flight-characteristics-at-various-configurations-and-airspeeds
+        planned: true
       - id: "C"
         title: "Power-Off Stalls"
         doc: x-c-i-stalls-spin

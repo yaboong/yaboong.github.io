@@ -2,6 +2,7 @@
 title: "X. Task A. Maneuvering During Slow Flight"
 area: 10
 task: "A"
+slides: "https://docs.google.com/presentation/d/e/2PACX-1vRWtCGW5JoG2pPahd9mfqw6OnTkEIABBtukgXzu56LWshIA9_--2RcyONyhs56D8Qc5Ejh1tA4AwZMO/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective

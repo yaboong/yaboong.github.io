@@ -2,6 +2,7 @@
 title: "X. Task C/D/E/F/G/H/I. Stalls & Spin"
 area: 10
 task: "C/D/E/F/G/H/I"
+slides: "https://docs.google.com/presentation/d/e/2PACX-1vSVkaKEYCdCSASs7wSpmozrqXQ-UapEQxsQdvsOwYZBLUEnBJ7_DCJP0__JH8yZFMgLQVul8oOoUYAw/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective
