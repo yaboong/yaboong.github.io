@@ -13,6 +13,12 @@
             {% if site.github_username %}
             <a href="https://github.com/{{ site.github_username }}" class="fa-github-alt square fill-horizontal"><span class="screen-reader-text">GitHub</span></a>
             {% endif %}
+            {% if site.author_youtube %}
+            <a href="{{ site.author_youtube }}" class="fa-youtube-play square fill-horizontal"><span class="screen-reader-text">YouTube</span></a>
+            {% endif %}
+            {% if site.author_email %}
+            <a href="mailto:{{ site.author_email }}" class="fa-envelope square fill-horizontal"><span class="screen-reader-text">Email</span></a>
+            {% endif %}
             {% if site.codepen_username %}
             <a href="http://codepen.io/{{ site.codepen_username }}" class="fa-codepen square fill-horizontal"><span class="screen-reader-text">CodePen</span></a>
             {% endif %}

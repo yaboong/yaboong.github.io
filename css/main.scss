@@ -1058,3 +1058,45 @@ a.archive-top-link:hover {
         position: static;
     }
 }
+
+/* Sidebar contact buttons and post author YouTube icon */
+.contact-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.contact-buttons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    color: #fff;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.contact-buttons a svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.contact-buttons a:hover {
+    background-color: $picton-blue;
+    border-color: $picton-blue;
+    color: #fff;
+}
+
+.author-youtube {
+    color: #ff0000;
+    font-size: 24px;
+    line-height: 24px;
+    vertical-align: middle;
+    text-decoration: none;
+}
+
+.author-more {
+    white-space: nowrap;
+}

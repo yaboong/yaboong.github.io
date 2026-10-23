@@ -62,12 +62,13 @@ disqus: false
 
 # Author information - author info at the bottom of the post
 author_name: "Yaboong"
-author_bio: "Oskar Schindler was a mere opportunist and a corrupt businessman. Yet, when it seemed that great evil was taking over the world, it was not nobles, intellectuals, or religious leaders who rose to defy it and save lives—it was a corrupt opportunist, Oskar Schindler."
+author_bio: "Former software engineer (7 years) turned pilot. CPL/IR, working toward CFI and the airline. Writing down what I learn along the way."
 author_url:  "https://github.com/yaboong"
 author_location: "Massachusetts, US"
 author_image: /images/yaboong.jpeg
 author_linkedin: "https://www.linkedin.com/in/yebonyou/"
 author_email: "yebonyou@gmail.com"
+author_youtube: "https://www.youtube.com/@flyb-hm5yj"
 
 # Sidebar Add banner
 banner_url: "https://github.com/yaboong"
