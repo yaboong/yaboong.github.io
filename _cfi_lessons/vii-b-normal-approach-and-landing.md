@@ -4,42 +4,38 @@ area: 7
 task: "B"
 ---
 
-### Lesson Content
+### 1. Lesson Objective
 
 - TBD
 
-### Objective
+### 2. Content
 
 - TBD
 
-### Purpose
+### 3. Schedule
 
 - TBD
 
-### Schedule
+### 4. Equipment
 
 - TBD
 
-### Equipment
+### 5. Instructor's Actions
 
 - TBD
 
-### Student Actions
+### 6. Student's Actions
 
 - TBD
 
-### Instructor Actions
+### 7. Completion Standards
 
 - TBD
 
-### Completion Standards
+### 8. Common Errors
 
 - TBD
 
-### Common Errors
-
-- TBD
-
-### References
+### 9. References
 
 - TBD
