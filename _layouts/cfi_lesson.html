@@ -19,6 +19,7 @@ layout: default
                     {% for deck in page.slide_decks %}<h4>{{ deck.title }}</h4>{% include google_slides.html src=deck.url title=deck.title %}{% endfor %}
                     {% for video in page.videos %}<h4>{{ video.title }}</h4><div style="position:relative; width:100%; padding-bottom:56.25%; height:0; margin-bottom:1.5em;"><iframe src="https://www.youtube.com/embed/{{ video.id }}" title="{{ video.title }}" style="position:absolute; inset:0; width:100%; height:100%; border:0;" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>{% endfor %}
                     {{content}}
+                    {% include cfi_copyright.html %}
                 </div><!-- .entry-content -->
             </article><!-- .post -->
             {% include author_box.html %}

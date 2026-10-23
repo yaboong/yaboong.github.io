@@ -34,3 +34,5 @@ sitemap: false
 <li><a href="{{ m.url | prepend: site.baseurl }}">{{ m.title | remove_first: "Module. " }}</a></li>
 {% endfor %}
 </ul>
+
+{% include cfi_copyright.html %}
