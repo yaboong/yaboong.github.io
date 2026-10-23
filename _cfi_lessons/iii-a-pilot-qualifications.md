@@ -2,6 +2,9 @@
 title: "III. Task A. Pilot Qualifications"
 area: 3
 task: "A"
+slide_decks:
+  - title: "Part 1 - Summary"
+    url: "https://docs.google.com/presentation/d/e/2PACX-1vSYvOrqlUf2VQLYXvzchGVJMqotMm7gL0fGLjRIC5XjAOzl5thstCbIOwwaTUQeqXh_cJIyoEKPJo5C/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective

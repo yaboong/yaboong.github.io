@@ -2,6 +2,7 @@
 title: "V. Task D. Taxiing, Airport Signs, and Lighting (ASEL, AMEL)"
 area: 5
 task: "D"
+slides: "https://docs.google.com/presentation/d/e/2PACX-1vSbtHx3nxFPDiQI1eZ1BouU6H_NNLo1oBrt-3rY7j8yVtkLgHyaumufgITMMbmRqdngvl3nRf535HA3/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective

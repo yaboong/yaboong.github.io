@@ -2,6 +2,7 @@
 title: "VI. Task A. Communications, Light Signals, and Runway Lighting Systems"
 area: 6
 task: "A"
+slides: "https://docs.google.com/presentation/d/e/2PACX-1vT4NkY6je054qbH2BiN3SrIRmcXHNuwPHm0f6lKHRIjkEC1WdsN_ycULRstoCHU4bnQGr-Tmok48mbk/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective
