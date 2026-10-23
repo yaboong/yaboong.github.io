@@ -20,6 +20,28 @@
     <a href="#{{ category | cgi_escape }}">{{ site.category_labels[category] | default: category }} </a>
     {% endif %}{% endfor %}
 </div>{% endif %}
+{% if include.section == "checkride" %}
+<div class="archive-tags-list">
+    {% for group in site.checkride_groups %}
+    <a href="#{{ group.key | cgi_escape }}">{{ group.label }} </a>
+    {% endfor %}
+</div>
+{% for group in site.checkride_groups %}
+{% assign group_posts = "" | split: "" %}
+{% for category in section_categories %}{% for post in site.categories[category] %}
+{% assign post_group = post.checkride | default: "General" %}
+{% if post_group == group.key %}{% assign group_posts = group_posts | push: post %}{% endif %}
+{% endfor %}{% endfor %}
+{% if group_posts.size > 0 %}
+<h4 id="{{ group.key | cgi_escape }}">{{ group.label }}</h4>
+<ul class="archive-posts-list bulleted">
+    {% for post in group_posts %}
+    <li><a href="{{ site.baseurl }}{{ post.url }}" rel="bookmark" title="{{ post.title }}">{{ post.short_title | default: post.title }}</a> <span class="archive-meta"> — <time class="published" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%B %-d, %Y" }}</time></span></li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endfor %}
+{% else %}
 {% for category in section_categories %}{% if site.categories[category] %}
 {% if section_categories.size > 1 %}<h2 id="{{ category | cgi_escape }}">{{ site.category_labels[category] | default: category }}</h2>{% endif %}
 <ul class="archive-posts-list bulleted">
@@ -28,4 +50,5 @@
     {% endfor %}
 </ul>
 {% endif %}{% endfor %}
+{% endif %}
 <p><a href="#top" class="archive-top-link" title="Back to Top">Return to top</a></p>

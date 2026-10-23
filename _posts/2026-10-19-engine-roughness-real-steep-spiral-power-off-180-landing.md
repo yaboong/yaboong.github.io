@@ -10,9 +10,9 @@ tags: [engine-roughness, steep-spiral, power-off-180, emergency-descent, primer,
 ## Intro
 > **The steep spiral is a maneuver most of us only practice for the checkride. This time I actually had to use it.**
 
-I was in the **right seat** practicing for my CFI, with my instructor in the left seat.
-On the way back from a canceled pattern practice flight, every time I brought the RPM below 2,000, the yoke started shaking violently in my hands.
-We held 2,000 RPM and flew back to our home field at 4,000ft. Over the airport, I pulled the power to idle and never touched it again: a steep spiral down, into the downwind for RWY 32, and a power-off 180 all the way to touchdown.
+I was flying from the **right seat** for CFI practice, with my instructor on the left.
+On the way home, the yoke shook violently every time the RPM dropped below 2,000, so we held 2,000 RPM back to our home field at 4,000ft.
+Over the airport, I pulled the power to idle and left it there: a steep spiral down, then a power-off 180 to RWY 32.
 A week later, maintenance found the cause. Here is what happened and what we learned.
 
 <!--more-->

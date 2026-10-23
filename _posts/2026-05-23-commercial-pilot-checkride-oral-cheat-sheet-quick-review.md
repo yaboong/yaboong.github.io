@@ -5,6 +5,7 @@ short_title: "CPL Oral Cheat Sheet"
 date: 2026-05-23
 banner_image: cockpit.png
 categories: [aviation]
+checkride: CPL
 tags: [aviation-theory, checkride, oral-exam, CPL]
 ---
 

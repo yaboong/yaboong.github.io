@@ -32,6 +32,16 @@ url: "https://yaboong.github.io"
 # Top-level sections: /flying/ and /checkride/ list these categories, /cs/ lists all others
 flying_categories: [aviation-experience, FAR/AIM]
 checkride_categories: [aviation]
+# Checkride page groups, by the post's `checkride:` front matter (posts without it go under General)
+checkride_groups:
+  - key: General
+    label: "General"
+  - key: PPL
+    label: "Private Pilot (PPL)"
+  - key: IR
+    label: "Instrument Rating (IR)"
+  - key: CPL
+    label: "Commercial Pilot (CPL)"
 # Display names for categories (category values stay as-is so post URLs don't change)
 category_labels:
   aviation: "Checkride"

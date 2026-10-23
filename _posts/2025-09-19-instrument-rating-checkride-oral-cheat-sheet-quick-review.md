@@ -5,6 +5,7 @@ short_title: "IR Oral Cheat Sheet"
 date: 2025-02-15
 banner_image: cockpit.png
 categories: [aviation]
+checkride: IR
 tags: [aviation-theory]
 ---
 

@@ -5,6 +5,7 @@ short_title: "PPL Oral Cheat Sheet"
 date: 2025-02-02
 banner_image: cockpit.png
 categories: [aviation]
+checkride: PPL
 tags: [aviation-theory, checkride, oral-exam, PPL]
 ---
 
@@ -12,6 +13,7 @@ tags: [aviation-theory, checkride, oral-exam, PPL]
 
 * This is the PPL version of my [Commercial Pilot Checkride Oral Cheat Sheet]({% post_url 2026-05-23-commercial-pilot-checkride-oral-cheat-sheet-quick-review %}) and [Instrument Rating Checkride Oral Cheat Sheet]({% post_url 2025-09-19-instrument-rating-checkride-oral-cheat-sheet-quick-review %}).
 * Many topics overlap with the CPL version. Qualification and regulation are rewritten for the private pilot, and topics only in the PPL ACS (navigation, night operations) are added, following the [Private Pilot ACS](https://www.faa.gov/training_testing/testing/acs/private_airplane_acs_6.pdf).
+* For what the DPE actually asked on my checkride, see [My Private Pilot Checkride: Oral and Flight Review]({% post_url 2025-02-03-private-pilot-checkride-experience-oral-and-flight-review %}).
 * It's condensed into keywords for quick review, not an in-depth explanation. If you're curious how I build these, see [How I Prepare for the Checkride Oral]({% post_url 2026-06-14-how-I-prepare-for-checkride-oral %}).
 * Click the **image** toggles to open the related figures.
 
