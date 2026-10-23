@@ -6,6 +6,8 @@ task: "I"
 
 No slide deck for this lesson. It is taught on [YB NAVLOG](https://yaboong.github.io/navlog/), building a real navigation log with the student.
 
+{% include image_caption_href.html title="YB NAVLOG - Field Relationship Diagram" caption="YB NAVLOG - Field Relationship Diagram" imageurl="/navlog/images/YB_NAVLOG_DIAGRAM.png" %}
+
 ### 1. Lesson Objective
 
 - The student can plan a VFR cross-country flight from route selection to a completed navigation log and a filed VFR flight plan.
