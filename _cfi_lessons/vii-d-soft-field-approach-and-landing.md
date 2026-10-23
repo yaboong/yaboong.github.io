@@ -11,36 +11,52 @@ slide_decks:
 
 ### 1. Lesson Objective
 
-- TBD
+- The student can land on a soft or rough surface at the slowest possible speed with the weight on the wings as long as possible, and keep the nosewheel off the surface during the roll-out.
 
 ### 2. Content
 
-- TBD
+- Prerequisite lessons: [normal approach and landing]({{ '/cfi-lesson-plan/vii-b-normal-approach-and-landing/' | relative_url }}), [crosswind landing]({{ '/cfi-lesson-plan/module-crosswind-landing/' | relative_url }})
+- What a soft or rough field is and the goal of the technique
+- Video of a soft-field landing
+- Round-out, flare and touchdown with power (about 1200 RPM), extended flare in ground effect
+- Roll-out: full back pressure, nosewheel held off, flaps not retracted during the roll, no braking, keep moving
+- AFH common errors (approach, round-out and power, touchdown and weight transfer)
 
-### 3. Schedule
+### 3. Schedule (ground about 40 min; flight about 45 min)
 
-- TBD
+| Segment | Time |
+| --- | --- |
+| Goal and approach | 10 min |
+| Round-out, touchdown and roll-out technique | 15 min |
+| Common errors and review | 15 min |
+| Flight: demonstration and practice | 45 min |
+| Postflight debrief | 10 min |
 
 ### 4. Equipment
 
-- TBD
+- Laptop or projector with the deck (video)
+- PA-28-161 POH (Section 4) and school checklist
+- N79NA; a grass or soft runway if available, otherwise simulated on a paved runway
 
 ### 5. Instructor's Actions
 
-- TBD
+- Explain why the wings should carry the weight as long as possible.
+- Demonstrate the power setting and extended flare, then the roll-out with the nosewheel held off.
+- Coach power management in the flare and smooth weight transfer.
 
 ### 6. Student's Actions
 
-- TBD
+- Explain the purpose of each step of the technique.
+- Fly a stabilized approach and touch down at minimum speed with power.
+- Hold the nosewheel off and keep the airplane moving after touchdown.
 
 ### 7. Completion Standards
 
-- TBD
+- The student touches down softly at minimum speed with a nose-high attitude and correct power use.
+- The student holds the nosewheel off, avoids braking, and maintains directional control during the roll-out.
 
-### 8. Common Errors
+### 8. References
 
-- TBD
-
-### 9. References
-
-- TBD
+- Airplane Flying Handbook (FAA-H-8083-3), Ch. 9 Approaches and Landings (soft-field approach and landing, common errors)
+- PA-28-161 Pilot's Operating Handbook: Section 4 Normal Procedures
+- Private and Commercial Pilot Airman Certification Standards (soft-field approach and landing)
