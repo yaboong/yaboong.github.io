@@ -2,6 +2,7 @@
 title: "VII. Task N. Go-Around/Rejected Landing"
 area: 7
 task: "N"
+slides: "https://docs.google.com/presentation/d/e/2PACX-1vThXOr15xk_sGlg8D6jL_z_d3uPVeslhog2_4ma3_u9ovuDDDY_aF7DXUlAFwqFVYNgtMKmJ8t94Pe8/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective

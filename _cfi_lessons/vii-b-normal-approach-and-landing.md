@@ -2,6 +2,11 @@
 title: "VII. Task B. Normal Approach and Landing"
 area: 7
 task: "B"
+slide_decks:
+  - title: "Normal Approach and Landing"
+    url: "https://docs.google.com/presentation/d/e/2PACX-1vRnl76f-5hkzE9dF_tW1dtJzcdQXZDUB4E3VQYzVQMBNZGx4k4F-Y64Nq-Kmqm-jx8KjAC-ldcBWSYG/pubembed?start=false&loop=false&delayms=3000"
+  - title: "Module. Crosswind Landing"
+    url: "https://docs.google.com/presentation/d/e/2PACX-1vQFb7y25FqEKbDqibvOZelOf6omICjn2trC2k8lM7hu7FrA0985uw7RCmLesYAaBOpuRlx4l1lCMFu_/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective

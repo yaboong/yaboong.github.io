@@ -2,6 +2,7 @@
 title: "VIII. Task A/B/C/D. Fundamentals of Flight"
 area: 8
 task: "A/B/C/D"
+slides: "https://docs.google.com/presentation/d/e/2PACX-1vS7HSV9SZIyH2sUai0fAVG0wqpiokdT_zHDvbeKgsRN97gbmarvBzr_VZxxo2xcTCmQ8osiBIb2MSi_/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective

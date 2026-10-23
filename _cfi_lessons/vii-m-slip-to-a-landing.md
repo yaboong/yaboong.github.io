@@ -2,6 +2,11 @@
 title: "VII. Task M. Slip to a Landing (ASEL, ASES)"
 area: 7
 task: "M"
+slide_decks:
+  - title: "Slip to a Landing"
+    url: "https://docs.google.com/presentation/d/e/2PACX-1vRTIJojfIShRnOPQdHHDCRtc5jIbFAkDtLmKT2_7aARqQ-KafxAz_Q3C70t3WHVkLXTCXwMJ827YfEV/pubembed?start=false&loop=false&delayms=3000"
+  - title: "Module. Crosswind Landing"
+    url: "https://docs.google.com/presentation/d/e/2PACX-1vQFb7y25FqEKbDqibvOZelOf6omICjn2trC2k8lM7hu7FrA0985uw7RCmLesYAaBOpuRlx4l1lCMFu_/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective

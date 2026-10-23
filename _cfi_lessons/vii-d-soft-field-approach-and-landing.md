@@ -2,6 +2,11 @@
 title: "VII. Task D. Soft-Field Approach and Landing (ASEL)"
 area: 7
 task: "D"
+slide_decks:
+  - title: "Soft-Field Approach and Landing"
+    url: "https://docs.google.com/presentation/d/e/2PACX-1vTymhD13h-nVJVskOJZOAyE56VVcPEDmeNR5N1LWHULgsHK91YDU1fpdDwuXScl9AkHZdJfMVWpTf3Y/pubembed?start=false&loop=false&delayms=3000"
+  - title: "Module. Crosswind Landing"
+    url: "https://docs.google.com/presentation/d/e/2PACX-1vQFb7y25FqEKbDqibvOZelOf6omICjn2trC2k8lM7hu7FrA0985uw7RCmLesYAaBOpuRlx4l1lCMFu_/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective

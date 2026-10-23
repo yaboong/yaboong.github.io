@@ -2,6 +2,11 @@
 title: "VII. Task O. Power-Off 180° Accuracy Approach and Landing (ASEL, ASES)"
 area: 7
 task: "O"
+slide_decks:
+  - title: "Power-Off 180° Accuracy Approach and Landing"
+    url: "https://docs.google.com/presentation/d/e/2PACX-1vRlDdaQo-xla7n_2SNTRPfo8H3KXoTKZfYz--eMdrWeKOS92Ac-AWpuAEGEO6-Me4_xlOWGXMi9KAzE/pubembed?start=false&loop=false&delayms=3000"
+  - title: "Module. Crosswind Landing"
+    url: "https://docs.google.com/presentation/d/e/2PACX-1vQFb7y25FqEKbDqibvOZelOf6omICjn2trC2k8lM7hu7FrA0985uw7RCmLesYAaBOpuRlx4l1lCMFu_/pubembed?start=false&loop=false&delayms=3000"
 ---
 
 ### 1. Lesson Objective
