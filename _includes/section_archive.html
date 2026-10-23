@@ -1,24 +1,28 @@
 {% comment %}
   Posts grouped by category for one top-level section.
-  include.section: "aviation" → categories in site.aviation_categories
-                   "cs"       → every other category
+  include.section: "flying"    → site.flying_categories
+                   "checkride" → site.checkride_categories
+                   "cs"        → every other category
 {% endcomment %}
 {% capture site_categories %}{% for category in site.categories %}{{ category | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
 {% assign all_categories = site_categories | split:',' | sort %}
-{% if include.section == "aviation" %}
-{% assign section_categories = site.aviation_categories %}
+{% if include.section == "flying" %}
+{% assign section_categories = site.flying_categories %}
+{% elsif include.section == "checkride" %}
+{% assign section_categories = site.checkride_categories %}
 {% else %}
-{% capture cs_categories %}{% for category in all_categories %}{% unless site.aviation_categories contains category %}{{ category }},{% endunless %}{% endfor %}{% endcapture %}
+{% assign other_categories = site.flying_categories | concat: site.checkride_categories %}
+{% capture cs_categories %}{% for category in all_categories %}{% unless other_categories contains category %}{{ category }},{% endunless %}{% endfor %}{% endcapture %}
 {% assign section_categories = cs_categories | split:',' %}
 {% endif %}
-<div class="archive-tags-list">
+{% if section_categories.size > 1 %}<div class="archive-tags-list">
     {% for category in section_categories %}{% if site.categories[category] %}
     <a href="#{{ category | cgi_escape }}">{{ site.category_labels[category] | default: category }} </a>
     {% endif %}{% endfor %}
-</div>
+</div>{% endif %}
 {% for category in section_categories %}{% if site.categories[category] %}
-<h2 id="{{ category | cgi_escape }}">{{ site.category_labels[category] | default: category }}</h2>
-<ul class="archive-posts-list">
+{% if section_categories.size > 1 %}<h2 id="{{ category | cgi_escape }}">{{ site.category_labels[category] | default: category }}</h2>{% endif %}
+<ul class="archive-posts-list bulleted">
     {% for post in site.categories[category] %}
     <li><a href="{{ site.baseurl }}{{ post.url }}" rel="bookmark" title="Permanent Link to {{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> <span class="archive-meta"> — <time class="published" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%B %-d, %Y" }}</time></span></li>
     {% endfor %}

@@ -29,8 +29,9 @@ sass:
 # The base hostname & protocol of your site for where absolute urls are needed
 url: "https://yaboong.github.io"
 
-# Top-level sections: posts in these categories → /aviation/, all others → /cs/
-aviation_categories: [aviation, aviation-experience, FAR/AIM]
+# Top-level sections: /flying/ and /checkride/ list these categories, /cs/ lists all others
+flying_categories: [aviation-experience, FAR/AIM]
+checkride_categories: [aviation]
 # Display names for categories (category values stay as-is so post URLs don't change)
 category_labels:
   aviation: "Checkride"
@@ -42,16 +43,18 @@ navigation:
   url: /
 - text: About
   url: /about/
-- text: Aviation
-  url: /aviation/
-- text: CS
-  url: /cs/
+- text: Flying
+  url: /flying/
+- text: Checkride
+  url: /checkride/
 - text: NavLog
   url: /navlog/
 # - text: CFI Lesson Plan   # hidden until ready (page still at /cfi-lesson-plan/)
 #   url: /cfi-lesson-plan/
 - text: ATC Tool
   url: /atc-tool/
+- text: CS
+  url: /cs/
 
 # The shortname for your Disqus site to enable comments.
 # disqus: yaboong-github-io
