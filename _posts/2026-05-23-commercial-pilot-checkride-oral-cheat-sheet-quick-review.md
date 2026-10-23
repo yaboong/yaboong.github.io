@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Commercial Pilot Checkride Oral Cheat Sheet (Quick CPL review)"
+short_title: "CPL Oral Cheat Sheet"
 date: 2026-05-23
 banner_image: cockpit.png
 categories: [aviation]

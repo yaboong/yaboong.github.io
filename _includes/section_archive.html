@@ -24,7 +24,7 @@
 {% if section_categories.size > 1 %}<h2 id="{{ category | cgi_escape }}">{{ site.category_labels[category] | default: category }}</h2>{% endif %}
 <ul class="archive-posts-list bulleted">
     {% for post in site.categories[category] %}
-    <li><a href="{{ site.baseurl }}{{ post.url }}" rel="bookmark" title="Permanent Link to {{ site.baseurl }}{{ post.url }}">{{ post.title }}</a> <span class="archive-meta"> — <time class="published" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%B %-d, %Y" }}</time></span></li>
+    <li><a href="{{ site.baseurl }}{{ post.url }}" rel="bookmark" title="{{ post.title }}">{{ post.short_title | default: post.title }}</a> <span class="archive-meta"> — <time class="published" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%B %-d, %Y" }}</time></span></li>
     {% endfor %}
 </ul>
 {% endif %}{% endfor %}

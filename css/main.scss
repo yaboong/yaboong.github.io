@@ -1129,3 +1129,28 @@ a.archive-top-link:hover {
 .sidebar-more a:hover {
     text-decoration: underline;
 }
+
+/* About page certificate badges */
+.cert-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 24px;
+}
+
+.cert-badges span {
+    display: inline-block;
+    padding: 4px 14px;
+    border: 1px solid $picton-blue;
+    border-radius: 999px;
+    color: $picton-blue;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.cert-badges span.cert-medical {
+    border-color: #bbb;
+    color: #777;
+    font-weight: normal;
+}

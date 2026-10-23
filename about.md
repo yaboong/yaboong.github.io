@@ -12,11 +12,12 @@ banner_image: flyb.png
 <tr><td><strong>Location</strong></td><td>Massachusetts, US</td></tr>
 <tr><td><strong>Email</strong></td><td>yebonyou@gmail.com</td></tr>
 <tr><td><strong>Status</strong></td><td>Permanent Resident</td></tr>
-<tr><td><strong>Certificates</strong></td><td>CPL, IR, PPL · FAA 1st Class Medical</td></tr>
 </tbody>
 </table>
 
 ### Flight Experience
+
+<div class="cert-badges"><span>CPL</span><span>IR</span><span>PPL</span><span class="cert-medical">FAA 1st Class Medical</span></div>
 
 | Total Time | Total PIC | Cross Country | Night | Solo | Instrument |
 |:----------:|:---------:|:-------------:|:-----:|:----:|:----------:|
@@ -32,9 +33,9 @@ banner_image: flyb.png
 ##### Checkride Prep
 
 - [How I Prepare for the Checkride Oral (What Worked for Me)]({% post_url 2026-06-14-how-I-prepare-for-checkride-oral %})
-- [Quick PPL review]({% post_url 2025-02-02-private-pilot-checkride-oral-cheat-sheet-quick-review %})
-- [Quick IR review]({% post_url 2025-09-19-instrument-rating-checkride-oral-cheat-sheet-quick-review %})
-- [Quick CPL review]({% post_url 2026-05-23-commercial-pilot-checkride-oral-cheat-sheet-quick-review %})
+- [PPL Oral Cheat Sheet]({% post_url 2025-02-02-private-pilot-checkride-oral-cheat-sheet-quick-review %})
+- [IR Oral Cheat Sheet]({% post_url 2025-09-19-instrument-rating-checkride-oral-cheat-sheet-quick-review %})
+- [CPL Oral Cheat Sheet]({% post_url 2026-05-23-commercial-pilot-checkride-oral-cheat-sheet-quick-review %})
 
 ### My Life
 

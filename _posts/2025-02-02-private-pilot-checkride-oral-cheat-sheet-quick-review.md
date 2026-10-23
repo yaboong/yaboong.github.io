@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Private Pilot Checkride Oral Cheat Sheet (Quick PPL review)"
+short_title: "PPL Oral Cheat Sheet"
 date: 2025-02-02
 banner_image: cockpit.png
 categories: [aviation]

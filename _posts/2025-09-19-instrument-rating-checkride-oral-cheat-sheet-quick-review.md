@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Instrument Rating Checkride Oral Cheat Sheet (Quick IR review)"
+short_title: "IR Oral Cheat Sheet"
 date: 2025-02-15
 banner_image: cockpit.png
 categories: [aviation]
