@@ -23,19 +23,23 @@ banner_image: flyb.png
 |:----------:|:---------:|:-------------:|:-----:|:----:|:----------:|
 | 264.7      | 187.7     | 114.0         |  27.1 | 66.3 | 53.6       |
 
-##### From the Cockpit
-
-- [The Day I Actually Needed a Steep Spiral: Engine Roughness on the Way Home]({% post_url 2026-10-19-engine-roughness-real-steep-spiral-power-off-180-landing %})
-- [Post-Flight Analysis: Near Engine Failure (RPM Gauge Anomaly)]({% post_url 2026-02-05-post-flight-analysis-near-engine-failure-rpm-gauge-anomaly %})
-- [Reinventing the Wheel: Why I Built a New VFR Navigation Log Format]({% post_url 2026-08-17-why-YB-NAVLOG %})
-- [Direct Isn't Always Best: VFR Pilotage Route Planning]({% post_url 2026-08-16-VFR-pilotage-route-planning-cross-country-nav-log %})
-
 ##### Checkride Prep
 
 - [How I Prepare for the Checkride Oral (What Worked for Me)]({% post_url 2026-06-14-how-I-prepare-for-checkride-oral %})
 - [PPL Oral Cheat Sheet]({% post_url 2025-02-02-private-pilot-checkride-oral-cheat-sheet-quick-review %})
 - [IR Oral Cheat Sheet]({% post_url 2025-09-19-instrument-rating-checkride-oral-cheat-sheet-quick-review %})
 - [CPL Oral Cheat Sheet]({% post_url 2026-05-23-commercial-pilot-checkride-oral-cheat-sheet-quick-review %})
+
+##### VFR Navigation Log Generator
+
+- [YB NAVLOG]({{ '/navlog/' | relative_url }})
+- [Reinventing the Wheel: Why I Built a New VFR Navigation Log Format]({% post_url 2026-08-17-why-YB-NAVLOG %})
+
+##### From the Cockpit
+
+- [The Day I Actually Needed a Steep Spiral: Engine Roughness on the Way Home]({% post_url 2026-10-19-engine-roughness-real-steep-spiral-power-off-180-landing %})
+- [Post-Flight Analysis: Near Engine Failure (RPM Gauge Anomaly)]({% post_url 2026-02-05-post-flight-analysis-near-engine-failure-rpm-gauge-anomaly %})
+- [Direct Isn't Always Best: VFR Pilotage Route Planning]({% post_url 2026-08-16-VFR-pilotage-route-planning-cross-country-nav-log %})
 
 ### My Life
 
@@ -46,7 +50,7 @@ banner_image: flyb.png
 - **2023:** Moved to the U.S.
 - **2017–2023:** Software Engineer (Backend & DevOps)
 - **2016:** Bachelor's degree in Computer Science & Management
-- **2015:** Volunteered in the DR Congo (Africa)
+- **2015:** Volunteered in the Democratic Republic of the Congo, Africa
 - **2013–2015:** Switched my major to Computer Science
 - **2010–2012:** Served in the Republic of Korea Air Force
 - **2009–2010:** Tried to become a musician (drummer)
