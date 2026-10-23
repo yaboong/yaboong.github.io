@@ -15,13 +15,13 @@ banner_image: flyb.png
 </tbody>
 </table>
 
-### Flight Experience
+<h3 id="flight-experience" class="with-badges">Flight Experience <span class="cert-badges"><span>CPL</span><span>IR</span><span>PPL</span><span class="cert-medical">FAA 1st Class Medical</span></span></h3>
 
-<div class="cert-badges"><span>CPL</span><span>IR</span><span>PPL</span><span class="cert-medical">FAA 1st Class Medical</span></div>
+<p class="table-asof">As of Oct 23, 2026</p>
 
 | Total Time | Total PIC | Cross Country | Night | Solo | Instrument |
 |:----------:|:---------:|:-------------:|:-----:|:----:|:----------:|
-| 264.7      | 187.7     | 114.0         |  27.1 | 66.3 | 53.6       |
+| 272.6      | 195.6     | 114.0         |  27.1 | 66.3 | 54.1       |
 
 ##### Checkride Prep
 
@@ -35,7 +35,7 @@ banner_image: flyb.png
 - [YB NAVLOG]({{ '/navlog/' | relative_url }})
 - [Reinventing the Wheel: Why I Built a New VFR Navigation Log Format]({% post_url 2026-08-17-why-YB-NAVLOG %})
 
-##### From the Cockpit
+##### Lessons from Flight Training
 
 - [The Day I Actually Needed a Steep Spiral: Engine Roughness on the Way Home]({% post_url 2026-10-19-engine-roughness-real-steep-spiral-power-off-180-landing %})
 - [Post-Flight Analysis: Near Engine Failure (RPM Gauge Anomaly)]({% post_url 2026-02-05-post-flight-analysis-near-engine-failure-rpm-gauge-anomaly %})
@@ -53,5 +53,5 @@ banner_image: flyb.png
 - **2015:** Volunteered in the Democratic Republic of the Congo, Africa
 - **2013–2015:** Switched my major to Computer Science
 - **2010–2012:** Served in the Republic of Korea Air Force
-- **2009–2010:** Tried to become a musician (drummer)
+- **2009–2010:** Tried to become a musician (drummer). Rock will never die 🤘
 - **2008–2009:** Studied Management & Economics
