@@ -74,13 +74,13 @@ areas:
     tasks:
       - id: "A"
         title: "Preflight Assessment"
-        planned: true
+        doc: v-a-preflight-assessment
       - id: "B"
         title: "Flight Deck Management"
-        planned: true
+        doc: v-b-flight-deck-management
       - id: "C"
         title: "Engine Starting"
-        planned: true
+        doc: v-c-engine-starting
       - id: "D"
         title: "Taxiing, Airport Signs, and Lighting (ASEL, AMEL)"
         doc: v-d-taxiing-airport-signs-and-lighting

@@ -3,6 +3,9 @@ title: "V. Task F. Before Takeoff Check"
 area: 5
 task: "F"
 slides: "https://docs.google.com/presentation/d/e/2PACX-1vRuI8lKMb7XrBazbyacYR4EhBb18RuqjZp3Onb8xGaepYL6A7ybZ1gCpffP4mkCd8YQI8VUg1q1-23e/pubembed?start=false&loop=false&delayms=3000"
+videos:
+  - id: "EJPQSeIoX4o"
+    title: "Run-Up Piper Warrior (PA-28-161)"
 ---
 
 ### 1. Lesson Objective
