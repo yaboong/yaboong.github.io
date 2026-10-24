@@ -38,7 +38,7 @@
     <!--{% endif %}-->
 
     <section class="widget widget-recent-posts">
-        <h2 class="widget-title">FAA Checkride</h2>
+        <h2 class="widget-title">Checkride Prep &amp; Gouge</h2>
         <ul class="recent-posts">
             {% assign checkride_posts = site.posts | where_exp: "post", "post.checkride" | sort: "date" %}
             {% for group in site.checkride_groups %}{% if group.key != "General" %}

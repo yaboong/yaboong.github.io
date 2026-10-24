@@ -36,7 +36,7 @@
 <h4 id="{{ group.key | cgi_escape }}">{{ group.label }}</h4>
 <ul class="archive-posts-list bulleted">
     {% for post in group_posts %}
-    <li><a href="{{ site.baseurl }}{{ post.url }}" rel="bookmark" title="{{ post.title }}">{{ post.short_title | default: post.title }}</a> <span class="archive-meta"> — <time class="published" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%B %-d, %Y" }}</time></span></li>
+    <li><a href="{{ site.baseurl }}{{ post.url }}" rel="bookmark noopener" target="_blank" title="{{ post.title }}">{{ post.short_title | default: post.title }}</a> <span class="archive-meta"> — <time class="published" datetime="{{ post.date | date: "%Y-%m-%d" }}">{{ post.date | date: "%B %-d, %Y" }}</time></span></li>
     {% endfor %}
 </ul>
 {% endif %}
