@@ -2,7 +2,8 @@
 layout: post
 title: "Instrument Rating Checkride Oral Cheat Sheet (Quick IR review)"
 short_title: "IR Oral Cheat Sheet"
-date: 2025-02-15
+date: 2025-09-16
+permalink: /aviation/2025/02/15/instrument-rating-checkride-oral-cheat-sheet-quick-review/
 banner_image: cockpit.png
 categories: [aviation]
 checkride: IR
@@ -14,6 +15,7 @@ tags: [aviation-theory]
 * So, I’ve summarized and simplified the essential knowledge into a very simple format.
 * This isn't a detailed, in-depth explanation of each topic.
 * It's meant for quick review when you want to rapidly go over everything you've studied, especially in the week leading up to your exam. 
+* For what the DPE actually asked on my checkride, see [My Instrument Rating Checkride: Oral and Flight Review]({% post_url 2025-09-17-instrument-rating-checkride-experience-oral-and-flight-review %}).
 
 <!--more-->
 

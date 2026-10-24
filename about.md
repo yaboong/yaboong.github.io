@@ -27,7 +27,7 @@ banner_image: flyb.png
 
 - [How I Prepare for the Checkride Oral (What Worked for Me)]({% post_url 2026-06-14-how-I-prepare-for-checkride-oral %})
 - **PPL**: [Oral Cheat Sheet]({% post_url 2025-02-02-private-pilot-checkride-oral-cheat-sheet-quick-review %}) · [Checkride Review]({% post_url 2025-02-03-private-pilot-checkride-experience-oral-and-flight-review %})
-- **IR**: [Oral Cheat Sheet]({% post_url 2025-09-19-instrument-rating-checkride-oral-cheat-sheet-quick-review %})
+- **IR**: [Oral Cheat Sheet]({% post_url 2025-09-19-instrument-rating-checkride-oral-cheat-sheet-quick-review %}) · [Checkride Review]({% post_url 2025-09-17-instrument-rating-checkride-experience-oral-and-flight-review %})
 - **CPL**: [Oral Cheat Sheet]({% post_url 2026-05-23-commercial-pilot-checkride-oral-cheat-sheet-quick-review %})
 
 ##### VFR Navigation Log Generator
