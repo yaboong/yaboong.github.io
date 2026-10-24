@@ -14,6 +14,7 @@ tags: [aviation-theory, checkride, oral-exam, CPL]
 * This is the CPL version of my [Instrument Rating Checkride Oral Cheat Sheet]({% post_url 2025-09-19-instrument-rating-checkride-oral-cheat-sheet-quick-review %}).
 * It's my own cheat sheet, condensed into keywords for quick review. If you're curious how I build these, see [How I Prepare for the Checkride Oral]({% post_url 2026-06-14-how-I-prepare-for-checkride-oral %}).
 * This isn't a detailed, in-depth explanation of each topic. It's meant for rapidly going over everything you've studied, especially in the week leading up to your exam.
+* For what the DPE actually asked on my checkride, see [My Commercial Pilot Checkride: Oral and Flight Review]({% post_url 2026-05-24-commercial-pilot-checkride-experience-oral-and-flight-review %}).
 * Click the **image** toggles to open the related figures.
 
 <!--more-->
