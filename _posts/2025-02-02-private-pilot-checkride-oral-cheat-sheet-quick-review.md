@@ -26,11 +26,6 @@ The author assumes no liability for errors or omissions in the content.
 
 ## Qualification
 
-- **student pilot** ([61.83](https://www.ecfr.gov/current/title-14/section-61.83), [61.87](https://www.ecfr.gov/current/title-14/section-61.87)): age 16 (airplane), read/speak/write/understand English
-  - solo: pre-solo knowledge test + pre-solo flight training → solo endorsement (valid 90 days)
-  - solo XC ([61.93](https://www.ecfr.gov/current/title-14/section-61.93)): solo XC endorsement + endorsement for each XC flight (planning reviewed by CFI)
-  - class B ([61.95](https://www.ecfr.gov/current/title-14/section-61.95)): ground & flight training + endorsement within 90 days for that specific class B
-- **student pilot limits** ([61.89](https://www.ecfr.gov/current/title-14/section-61.89)): no passengers, no compensation/hire, no furtherance of business, no international, vis↓[day 3SM / night 5SM], no flight without visual reference to surface, comply with endorsement limits
 - **PPL eligibility** ([61.103](https://www.ecfr.gov/current/title-14/section-61.103)): age 17, English, at least student pilot cert, ground training endorsement → knowledge test, flight training endorsement → practical test
 - **aeronautical experience (ASEL)** ([61.109](https://www.ecfr.gov/current/title-14/section-61.109)): total 40h (20h dual + 10h solo)
   - dual: 3h XC, 3h night (one XC 100NM↑ total & 10 TOL full stop), 3h instrument, 3h checkride prep within 2 cal months
@@ -66,7 +61,6 @@ The author assumes no liability for errors or omissions in the content.
     - [CMEC (Comprehensive Medical Exam Checklist)](https://www.faa.gov/forms/index.cfm/go/document.information/documentID/1030366) ← [Updates](https://www.faa.gov/newsroom/faa-updates-basicmed-program)
   - limit: US, max 7 occ. (6 passengers), MTOW 12500lbs↓, 18000MSL↓, 250kts↓, no compensation/hire
 - **docs presentation**: [cert/med/log/+any] to administrator, NTSB, law enforcement officer
-- **other rules**: address change 30days ([61.60](https://www.ecfr.gov/current/title-14/section-61.60)), DUI/DWI (motor vehicle action) report 60days ([61.15](https://www.ecfr.gov/current/title-14/section-61.15))
 
 ## Regulation
 
@@ -108,13 +102,9 @@ The author assumes no liability for errors or omissions in the content.
 - **safety belts** ([91.105](https://www.ecfr.gov/current/title-14/section-91.105), [91.107](https://www.ecfr.gov/current/title-14/section-91.107)): crew[cruise:belt,TOL:+harness], passenger[cruise:x,TOL:belt], exception[2yrs-old↓,parachuting], PIC briefing (how to fasten/unfasten)
 - **alcohol & drug** ([91.17](https://www.ecfr.gov/current/title-14/section-91.17)): [4,8,16], 0.04<↓, no within 8hrs, 1oz→3hrs, can remain 16hrs, no intoxicated passengers (except emergency/medical care)
 - **supplemental oxygen** ([91.211](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.211)): unpressurized?→12500<(min-crew,30min+)≤14000, 14000>min-crew, 15000>occupant provided
-- **right-of-way** ([91.113](https://www.ecfr.gov/current/title-14/section-91.113)): distress > BGTS > engine, head-on→both turn right, converging→aircraft on the right, being overtaken has right-of-way (overtake on the right), landing→lower altitude (don't cut in)
+- **right-of-way** ([91.113](https://www.ecfr.gov/current/title-14/section-91.113)): distress > BGTS (balloon > glider > towing/refueling > airship) > engine, head-on→both turn right, converging→aircraft on the right, being overtaken has right-of-way (overtake on the right), landing→lower altitude (don't cut in)
 - **speed limit** ([91.117](https://www.ecfr.gov/current/title-14/section-91.117)): 10000MSL↓→250kts↓, under class B or VFR corridor 200kts↓, within 4NM of class C/D primary & 2500AGL↓ → 200kts↓
 - **SVFR** ([91.157](https://www.ecfr.gov/current/title-14/section-91.157)): below VFR [ceiling<1000, vis<3] but [CoC, vis≥1] unless NO-SVFR, surface area of controlled airspace below 10000MSL → ATC clearance, night → IR & IFR-equipped
-- **aerobatic flight** ([91.303](https://www.ecfr.gov/current/title-14/section-91.303)): NO[congested-area/open-assembly/class B,C,D,E surface area/within 4NM of airway/1500AGL↓/vis<3SM]
-- **parachute** ([91.307](https://www.ecfr.gov/current/title-14/section-91.307)): passengers + bank>60° or pitch>30° (nose up/down) → parachute required (except flight training/checkride with CFI)
-- **dropping objects** ([91.15](https://www.ecfr.gov/current/title-14/section-91.15)): allowed with reasonable precautions to avoid injury/damage
-- **NTSB** ([830](https://www.ecfr.gov/current/title-49/part-830)): accident[death/serious injury/substantial damage] → notify immediately, report within 10 days (7 days if overdue aircraft), incident → immediate notification for listed items (e.g. flight control failure, in-flight fire, collision in flight)
 - **PA28 class & category**: aircraft[category:normal/class:airplane], airmen[category:airplane/class:SEL]
 - **aircraft’s $CLASS == airmen’s $CATEGORY($CLASS)**
   - <details><summary><u>image: aircraft’s $CLASS == airmen’s $CATEGORY($CLASS)</u></summary><a href="/posts_image/2026-10-21/cpl/02-regulation-01.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/02-regulation-01.jpg" alt="aircraft’s $CLASS == airmen’s $CATEGORY($CLASS)" loading="lazy"/></a></details>
@@ -124,6 +114,13 @@ The author assumes no liability for errors or omissions in the content.
   - lighter-than-air(airship/ballon)
   - weight shift control(land/sea)
   - powered parachute(land/sea)
+- **other rules**
+  - address change 30days ([61.60](https://www.ecfr.gov/current/title-14/section-61.60))
+  - DUI/DWI (motor vehicle action) report 60days ([61.15](https://www.ecfr.gov/current/title-14/section-61.15))
+  - **NTSB** ([830](https://www.ecfr.gov/current/title-49/part-830)): accident[death/serious injury/substantial damage] → notify immediately, report within 10 days (7 days if overdue aircraft), incident → immediate notification for listed items (e.g. flight control failure, in-flight fire, collision in flight)
+  - **parachute** ([91.307](https://www.ecfr.gov/current/title-14/section-91.307)): passengers + bank>60° or pitch>30° (nose up/down) → parachute required (except flight training/checkride with CFI)
+  - **aerobatic flight** ([91.303](https://www.ecfr.gov/current/title-14/section-91.303)): NO[congested-area/open-assembly/class B,C,D,E surface area/within 4NM of airway/1500AGL↓/vis<3SM]
+  - **dropping objects** ([91.15](https://www.ecfr.gov/current/title-14/section-91.15)): allowed with reasonable precautions to avoid injury/damage
 
 ## Systems
 
@@ -1058,10 +1055,18 @@ The author assumes no liability for errors or omissions in the content.
 #### Human Factors
 
 - **IMSAFE, PAVE**
-- *carbon monoxide (CO, mono- means 1), carbon dioxide (CO2, di- means 2)
-- **hypoxia**: oxygen deficiency body cells, 12000↑, hypoxic(altitude), hypemic(anemia/carbon monoxide poisoning→inability to carry oxygen), histotoxic(alcohol/drugs→inability to use oxygen), stagnant(G), [euphoria/dizziness/headache/tunnel-vision], sol[oxygen-mask/pressurization]
+  - IMSAFE (personal checklist): Illness, Medication, Stress, Alcohol (8hr bottle to throttle, BAC<0.04), Fatigue, Emotion/Eating
+  - PAVE (risk assessment): Pilot (IMSAFE, recency, proficiency), Aircraft (airworthiness, performance, fuel, equipment), enVironment (weather, terrain, airport/runway, airspace, day/night), External pressures (schedule, passengers, get-there-itis)
+- **hypoxia**: oxygen deficiency body cells, 12000↑
+  - hypoxic: altitude (low partial pressure of O2)
+  - hypemic: anemia/carbon monoxide poisoning → inability to carry oxygen
+  - histotoxic: alcohol/drugs → inability to use oxygen
+  - stagnant: poor blood circulation → G-force (blood pools away from the brain in steep turns/pull-ups), cold, shock
+  - symptoms: euphoria/dizziness/headache/tunnel-vision
+  - sol: oxygen-mask/pressurization
 - **oxygen (unpressurized cabin)**: above 12.5~14 (crew must use after 30min), above 14 (crew entire time), above 15 (each occupants provided), FAA[10000day/5000night]
 - **carbon monoxide poisoning**: [colorless/odorless] exhaust fumes, prevents red blood cells carrying oxygen, symptom[exhaust-smell/dizziness/headache/blurred-vision], sol[heat-off/vents-open/land ASAPoss]
+  - carbon monoxide (CO, mono- means 1), carbon dioxide (CO2, di- means 2)
 - **hyperventilation**: not enough carbon dioxide in blood, excessive breathing, [dizziness/headache/suffocation/muscle-spasms], sol [talk/loud/paperbag]
 - **hypothermia**: body [loses heat > produce heat]
 - **middle ear & sinus blockage**: congestion block pressure equalization climb/descend, symp[ear pain/facial pressure], sol [avoid flying/valsalva/yawn/chew-gums/eat]
