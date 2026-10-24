@@ -40,7 +40,7 @@ slides: "https://docs.google.com/presentation/d/e/2PACX-1vQDRGHeo0J16TJ2du_r5KdE
 - PA-28-161 POH and night checklist
 - Flashlights (white and red), spare batteries
 - Sectional chart and Chart Supplement (pilot-controlled lighting frequencies, airport lighting)
-- N79NA for a lighting walk-around
+- PA-28-161 for a lighting walk-around
 
 ### 5. Instructor's Actions
 

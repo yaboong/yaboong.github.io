@@ -189,7 +189,7 @@ areas:
         doc: x-a-maneuvering-during-slow-flight
       - id: "B"
         title: "Demonstration of Flight Characteristics at Various Configurations and Airspeeds (ASEL, ASES)"
-        planned: true
+        doc: x-a-maneuvering-during-slow-flight
       - id: "C"
         title: "Power-Off Stalls"
         doc: x-c-i-stalls-spin

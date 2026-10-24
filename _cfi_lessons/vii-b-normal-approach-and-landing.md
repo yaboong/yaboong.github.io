@@ -49,7 +49,7 @@ slide_decks:
 - Laptop or projector with the deck (videos, simulator sequence)
 - PA-28-161 POH (Section 4 approach and landing, Section 5 landing chart) and school checklist
 - Chart Supplement (7B2, KBAF, local airports), ForeFlight
-- N79NA; whiteboard and model airplane
+- PA-28-161; whiteboard and model airplane
 
 ### 5. Instructor's Actions
 

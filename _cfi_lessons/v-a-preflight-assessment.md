@@ -34,7 +34,7 @@ slides: "https://docs.google.com/presentation/d/e/2PACX-1vR7babFPP0e0UiOdg96T575
 
 - Laptop or projector with the deck
 - PA-28-161 POH and the school preflight checklist
-- N79NA and a fuel tester
+- PA-28-161 and a fuel tester
 - Weather briefing, NOTAMs, sectional chart
 
 ### 5. Instructor's Actions

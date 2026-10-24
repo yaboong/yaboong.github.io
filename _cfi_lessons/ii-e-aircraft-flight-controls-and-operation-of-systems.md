@@ -22,7 +22,7 @@ One lesson plan covering three decks: Part 1 (flight controls, brakes, landing g
 
 - Part 1: primary and secondary flight controls (stabilator, antiservo tab, flaps, trim) compared with the Cessna 172; adverse yaw; toe brakes and the hydraulic disc brake system; fixed tricycle gear, oleo struts, strut exposure, tire pressure, nosewheel steering; oil system functions and limits
 - Part 2: Lycoming O-320-D3G; fuel system (low-wing fuel-pump system, usable fuel, vents, 100LL); float-type carburetor (mixture, venturi, throttle); four-stroke cycle; dual magnetos, P-lead and hot mag; crankshaft as the hub; fixed-pitch and constant-speed propellers; primer vs fuel injection; carburetor icing and carb heat; cabin heat, defroster and carbon monoxide; starter, alternator, battery, ammeter, circuit breakers; alternator failure case study
-- Part 3: pitot-static system and blockages; altimeter (setting, pressure and temperature errors), VSI and airspeed indicator with PA-28-161 markings; alternate static source; vacuum system and gyroscopic principles; attitude, heading and turn instruments; magnetic compass errors (variation, deviation, UNOS, ANDS); N79NA avionics (G5 PFD/HSI, ADC, AHRS, GNC 355, GMA 342, transponder, ADS-B, WAAS check) and antenna locations
+- Part 3: pitot-static system and blockages; altimeter (setting, pressure and temperature errors), VSI and airspeed indicator with PA-28-161 markings; alternate static source; vacuum system and gyroscopic principles; attitude, heading and turn instruments; magnetic compass errors (variation, deviation, UNOS, ANDS); the PA-28-161's avionics (G5 PFD/HSI, ADC, AHRS, GNC 355, GMA 342, transponder, ADS-B, WAAS check) and antenna locations
 
 ### 3. Schedule (about 2 hours 30 min; can be split into three sessions)
 
@@ -41,7 +41,7 @@ One lesson plan covering three decks: Part 1 (flight controls, brakes, landing g
 
 - Laptop or projector with the three decks (engine, gyro and compass videos)
 - PA-28-161 POH and school checklist
-- The airplane (N79NA) for a walk-around: control surfaces, struts, engine compartment, antennas, panel
+- PA-28-161 for a walk-around: control surfaces, struts, engine compartment, antennas, panel
 - Whiteboard and markers (engine flow diagram, pitot-static diagram)
 - Garmin G5 and GNC 355 manuals; GNC 355 trainer app on an iPad
 
@@ -51,7 +51,7 @@ One lesson plan covering three decks: Part 1 (flight controls, brakes, landing g
 - Ask the two key questions: where is the electrical system in the engine flow, and what turns the crankshaft first.
 - Relate every system to its cockpit control, indication and POH page.
 - For each instrument, explain the source (pitot, static, vacuum, electric) and have the student work out blockage and failure effects instead of memorizing them.
-- Show the N79NA panel and avionics, and walk the airplane to locate parts and antennas.
+- Show the PA-28-161's panel and avionics, and walk the airplane to locate parts and antennas.
 - Use the alternator failure flight to discuss failure recognition and response.
 
 ### 6. Student's Actions

@@ -38,7 +38,7 @@ slide_decks:
 
 - Laptop or projector with the deck (video)
 - PA-28-161 POH (Section 4 short field landing, Section 5 landing chart) and school checklist
-- N79NA; runway diagram showing the aiming point and specified touchdown point
+- PA-28-161; runway diagram showing the aiming point and specified touchdown point
 
 ### 5. Instructor's Actions
 

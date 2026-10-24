@@ -21,7 +21,7 @@ slides: "https://docs.google.com/presentation/d/e/2PACX-1vRahb-lIkw3J_uDQGAbB_cc
 - Finding VORs in the Chart Supplement; service volume classes; checking NOTAMs for out-of-service VORs
 - VOR checks (VOT, ground and airborne checkpoints, dual check) and the 30-day IFR requirement
 - GPS: how it works, RAIM, SBAS/WAAS, primary vs supplemental navigation
-- Radar services (shared slides): VFR traffic advisories and flight following phraseology, transponder codes and modes, ADS-B Out and In, N79NA's equipment and antennas, managing distraction
+- Radar services (shared slides): VFR traffic advisories and flight following phraseology, transponder codes and modes, ADS-B Out and In, the PA-28-161's equipment and antennas, managing distraction
 
 ### 3. Schedule (about 1 hour 45 min)
 
@@ -43,7 +43,7 @@ slides: "https://docs.google.com/presentation/d/e/2PACX-1vRahb-lIkw3J_uDQGAbB_cc
 - Laptop or projector with the deck and a VOR simulator
 - Current sectional chart and Chart Supplement (Northeast)
 - FAA NOTAM Search
-- N79NA panel (G5 HSI, GNC 355, Garmin 255 NAV/COM, Stratus ESG transponder) and an iPad with ForeFlight
+- PA-28-161 panel (G5 HSI, GNC 355, Garmin 255 NAV/COM, Stratus ESG transponder) and an iPad with ForeFlight
 - Whiteboard and markers
 
 ### 5. Instructor's Actions
@@ -68,7 +68,7 @@ slides: "https://docs.google.com/presentation/d/e/2PACX-1vRahb-lIkw3J_uDQGAbB_cc
 
 - The student explains the operation and limitations of VOR, DME and GPS and how to verify that they are usable.
 - The student correctly interprets CDI and HSI indications, including reverse sensing.
-- The student correctly requests VFR flight following and uses the transponder and ADS-B equipment in N79NA.
+- The student correctly requests VFR flight following and uses the transponder and ADS-B equipment in the PA-28-161.
 
 ### 8. References
 

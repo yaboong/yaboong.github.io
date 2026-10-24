@@ -39,7 +39,7 @@ slide_decks:
 
 - Laptop or projector with the deck
 - PA-28-161 POH (Section 4 short-field takeoff, Section 5 takeoff chart) and school checklist
-- N79NA
+- PA-28-161
 
 ### 5. Instructor's Actions
 

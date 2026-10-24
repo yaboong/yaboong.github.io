@@ -36,7 +36,7 @@ slides: "https://docs.google.com/presentation/d/e/2PACX-1vThXOr15xk_sGlg8D6jL_z_
 
 - Laptop or projector with the deck (videos)
 - PA-28-161 POH (Section 4 balked landing) and school checklist
-- N79NA
+- PA-28-161
 
 ### 5. Instructor's Actions
 

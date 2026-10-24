@@ -34,7 +34,7 @@ slides: "https://docs.google.com/presentation/d/e/2PACX-1vT5V1qo9dHXCglV5UGUL_x2
 
 - Laptop or projector with the deck (videos)
 - PA-28-161 POH (Section 3, Section 4) and the school checklist
-- N79NA for a start demonstration
+- PA-28-161 for a start demonstration
 
 ### 5. Instructor's Actions
 

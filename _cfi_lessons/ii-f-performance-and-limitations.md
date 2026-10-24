@@ -7,7 +7,7 @@ slides: "https://docs.google.com/presentation/d/e/2PACX-1vT9BZUuwwQtyIIwU4PC9nso
 
 ### 1. Lesson Objective
 
-- The student can compute weight and balance for N79NA, judge whether a load is within limits, and correct a load that is not.
+- The student can compute weight and balance for the PA-28-161, judge whether a load is within limits, and correct a load that is not.
 - The student understands the factors that affect performance and can read every PA- 28-161 performance chart used for flight planning.
 
 ### 2. Content
@@ -15,7 +15,7 @@ slides: "https://docs.google.com/presentation/d/e/2PACX-1vT9BZUuwwQtyIIwU4PC9nso
 - Family trip scenario to Bar Harbor (KBHB) as the running example
 - Effects of excess weight on performance (PHAK 10-2)
 - Weight and balance terms: datum, arm, moment, CG; standard and basic empty weight, useful load, MGW
-- N79NA's weight and balance record (BEW 1442.37 lbs, CG 87.57 in) and the POH loading table
+- The PA-28-161's actual weight and balance record (basic empty weight and CG) and the POH loading table
 - Worked calculations: checkride load (in limits) and family trip load (CG beyond the 93.0-in aft limit)
 - Load factor limits (normal 3.8 G, utility 4.4 G) and utility category conditions
 - Forward vs aft CG: tail down force, stall speed, cruise efficiency, stability, stall/spin recovery
@@ -23,7 +23,7 @@ slides: "https://docs.google.com/presentation/d/e/2PACX-1vT9BZUuwwQtyIIwU4PC9nso
 - Factors affecting performance: runway length, slope, surface, elevation, obstacles; personal weight minimum (2255 lbs)
 - Stall speed chart; types of altitude; pressure and density altitude; density altitude accident case study (NTSB WPR12LA283)
 - POH performance charts: airspeed calibration, short field takeoff (no obstacle and 50- ft obstacle), engine performance by serial number, climb, fuel/time/distance to climb, best power cruise, leaning, glide, descent planning (3:1 rule, ground speed × 5), landing distance
-- Appendix: setting up N79NA's weight and balance in ForeFlight
+- Appendix: setting up the PA-28-161's weight and balance in ForeFlight
 
 ### 3. Schedule (about 2 hours)
 
@@ -31,7 +31,7 @@ slides: "https://docs.google.com/presentation/d/e/2PACX-1vT9BZUuwwQtyIIwU4PC9nso
 | Segment | Time |
 |---|---|
 | Scenario introduction and effects of weight | 10 min |
-| Weight and balance terms and N79NA's record | 15 min |
+| Weight and balance terms and the PA-28-161's record | 15 min |
 | Checkride load calculation and envelope check | 15 min |
 | Load factor limits and forward vs aft CG | 15 min |
 | Family trip calculation and the three fixes | 20 min |
@@ -43,7 +43,7 @@ slides: "https://docs.google.com/presentation/d/e/2PACX-1vT9BZUuwwQtyIIwU4PC9nso
 ### 4. Equipment
 
 - Laptop or projector with the deck (case study video)
-- PA-28-161 POH (Sections 2, 4, 5, 6) and N79NA's current weight and balance record
+- PA-28-161 POH (Sections 2, 4, 5, 6) and the PA-28-161's current weight and balance record
 - Calculator, plotter or ruler for reading charts, printed loading form and CG envelope
 - iPad with ForeFlight
 - Whiteboard and markers
@@ -51,7 +51,7 @@ slides: "https://docs.google.com/presentation/d/e/2PACX-1vT9BZUuwwQtyIIwU4PC9nso
 ### 5. Instructor's Actions
 
 - Start with the family trip and ask whether the flight can be made, before teaching any terms.
-- Explain the terms using the POH leveling diagram and N79NA's actual record.
+- Explain the terms using the POH leveling diagram and the PA-28-161's actual record.
 - Work the checkride load step by step on the whiteboard, then have the student work the family trip load.
 - Explain why aft CG is dangerous and why forward CG raises stall speed, using the tail down force.
 - Guide the student through the remove, shift and add fixes, and discuss what margin is acceptable.
@@ -77,7 +77,7 @@ slides: "https://docs.google.com/presentation/d/e/2PACX-1vT9BZUuwwQtyIIwU4PC9nso
 ### 8. References
 
 - PA-28-161 Pilot's Operating Handbook: Section 2 Limitations (2.13 CG limits, flight load factors); Section 4 Normal Procedures (cruising, approach and landing); Section 5 Performance (5-11 through 5-32 charts); Section 6 Weight and Balance (6-4 leveling diagram, 6-12 loading table, 6-14 CG envelope)
-- N79NA weight and balance record (maintenance logbook)
+- The PA-28-161's weight and balance record (maintenance logbook)
 - Pilot's Handbook of Aeronautical Knowledge (FAA-H-8083-25), Ch. 10 Weight and Balance; Ch. 11 Aircraft Performance; Ch. 5 Aerodynamics of Flight (load factor)
 - Aircraft Weight and Balance Handbook (FAA-H-8083-1)
 - NTSB accident report WPR12LA283

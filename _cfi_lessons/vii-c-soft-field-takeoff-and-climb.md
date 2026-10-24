@@ -44,7 +44,7 @@ slide_decks:
 
 - Laptop or projector with the deck (video)
 - PA-28-161 POH (Section 4 soft-field takeoff, Section 5 takeoff chart) and school checklist
-- N79NA; a grass runway if available, otherwise simulated on a paved runway
+- PA-28-161; a grass runway if available, otherwise simulated on a paved runway
 
 ### 5. Instructor's Actions
 

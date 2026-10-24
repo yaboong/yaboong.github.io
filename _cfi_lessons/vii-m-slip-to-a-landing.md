@@ -38,7 +38,7 @@ slide_decks:
 
 - Laptop or projector with the deck (video)
 - PA-28-161 POH (Section 2 and 4 notes on slips) and school checklist
-- N79NA; model airplane
+- PA-28-161; model airplane
 
 ### 5. Instructor's Actions
 

@@ -39,7 +39,7 @@ slide_decks:
 
 - Laptop or projector with the deck
 - PA-28-161 POH (best glide speed, approach speeds) and school checklist
-- N79NA; runway diagram with the selected touchdown point
+- PA-28-161; runway diagram with the selected touchdown point
 
 ### 5. Instructor's Actions
 

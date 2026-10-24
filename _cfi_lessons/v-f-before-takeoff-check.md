@@ -40,7 +40,7 @@ videos:
 - Laptop or projector with the deck (run-up video)
 - PA-28-161 POH (Section 4 Normal Procedures, Section 5 takeoff and landing charts) and the school checklist
 - Airport diagrams for KBAF, 7B2, 0B5
-- N79NA for a run-up demonstration
+- PA-28-161 for a run-up demonstration
 - Whiteboard and markers
 
 ### 5. Instructor's Actions
