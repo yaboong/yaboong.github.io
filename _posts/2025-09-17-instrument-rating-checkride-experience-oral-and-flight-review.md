@@ -225,13 +225,7 @@ The DPE briefed the flight on the ground. It didn't go as planned.
 - "How do you know our airplane's WAAS is enabled?"
   - System → GPS Status → SBAS → WAAS
 
-{% include image_caption_href.html title="Home → System" caption="Home → System" imageurl="/posts_image/2025-09-17/ir-checkride-waas-1-home.png" %}
-
-{% include image_caption_href.html title="System → GPS Status" caption="System → GPS Status" imageurl="/posts_image/2025-09-17/ir-checkride-waas-2-system.png" %}
-
-{% include image_caption_href.html title="GPS Status → SBAS" caption="GPS Status → SBAS" imageurl="/posts_image/2025-09-17/ir-checkride-waas-3-gps-status.png" %}
-
-{% include image_caption_href.html title="SBAS Providers → WAAS" caption="SBAS Providers → WAAS" imageurl="/posts_image/2025-09-17/ir-checkride-waas-4-sbas.png" %}
+{% include image_gallery.html images="/posts_image/2025-09-17/ir-checkride-waas-1-home.png|/posts_image/2025-09-17/ir-checkride-waas-2-system.png|/posts_image/2025-09-17/ir-checkride-waas-3-gps-status.png|/posts_image/2025-09-17/ir-checkride-waas-4-sbas.png" captions="Home → System|System → GPS Status|GPS Status → SBAS|SBAS Providers → WAAS" %}
 
 - The DPE gave me time on the ground to brief and set up the first approach.
 - "Which runway are we using, and how do we taxi to it?"

@@ -1,0 +1,81 @@
+{% comment %}
+  Row of small thumbnails; click one to open a modal and flip through them like slides.
+  include.images:   image urls separated by "|"
+  include.captions: captions separated by "|" (same order, optional)
+{% endcomment %}
+{% assign gallery_images = include.images | split: "|" %}
+{% assign gallery_captions = include.captions | split: "|" %}
+<div class="image-gallery">
+    {% for image in gallery_images %}
+    {% assign caption = gallery_captions[forloop.index0] | strip %}
+    <figure class="image-gallery-item">
+        <a href="{{ image | strip }}" data-caption="{{ caption }}">
+            <img src="{{ image | strip }}" alt="{{ caption }}" loading="lazy">
+        </a>
+        {% if caption != "" %}<figcaption class="caption-text">{{ forloop.index }}. {{ caption }}</figcaption>{% endif %}
+    </figure>
+    {% endfor %}
+</div>
+{% unless image_gallery_script_loaded %}
+{% assign image_gallery_script_loaded = true %}
+<div class="gallery-modal" hidden>
+    <button type="button" class="gallery-modal-close" aria-label="Close">&times;</button>
+    <button type="button" class="gallery-modal-prev" aria-label="Previous">&#8249;</button>
+    <figure>
+        <img alt="">
+        <figcaption></figcaption>
+    </figure>
+    <button type="button" class="gallery-modal-next" aria-label="Next">&#8250;</button>
+</div>
+<script>
+(function () {
+    var modal = document.querySelector('.gallery-modal');
+    document.body.appendChild(modal); // escape the post container so the overlay covers the whole viewport
+    var img = modal.querySelector('img');
+    var caption = modal.querySelector('figcaption');
+    var links = [], index = 0, touchX = null;
+
+    function show(i) {
+        index = (i + links.length) % links.length;
+        img.src = links[index].href;
+        img.alt = links[index].dataset.caption;
+        caption.textContent = (index + 1) + ' / ' + links.length + (links[index].dataset.caption ? '  ·  ' + links[index].dataset.caption : '');
+    }
+    function close() {
+        modal.hidden = true;
+        document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.image-gallery').forEach(function (gallery) {
+        var galleryLinks = Array.prototype.slice.call(gallery.querySelectorAll('a'));
+        galleryLinks.forEach(function (link, i) {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                links = galleryLinks;
+                show(i);
+                modal.hidden = false;
+                document.body.style.overflow = 'hidden';
+            });
+        });
+    });
+
+    modal.querySelector('.gallery-modal-prev').addEventListener('click', function () { show(index - 1); });
+    modal.querySelector('.gallery-modal-next').addEventListener('click', function () { show(index + 1); });
+    modal.querySelector('.gallery-modal-close').addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+    document.addEventListener('keydown', function (e) {
+        if (modal.hidden) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') show(index - 1);
+        if (e.key === 'ArrowRight') show(index + 1);
+    });
+    modal.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; });
+    modal.addEventListener('touchend', function (e) {
+        if (touchX === null) return;
+        var dx = e.changedTouches[0].clientX - touchX;
+        if (Math.abs(dx) > 40) show(index + (dx < 0 ? 1 : -1));
+        touchX = null;
+    });
+})();
+</script>
+{% endunless %}
