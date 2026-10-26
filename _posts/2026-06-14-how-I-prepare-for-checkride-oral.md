@@ -6,11 +6,14 @@ banner_image: aviation-experience.png
 categories: [aviation]
 checkride: General
 permalink: /aviation-experience/2026/06/14/how-I-prepare-for-checkride-oral/
+description: "If you're preparing for the PPL oral, see my Private Pilot Checkride Oral Cheat Sheet for the end result. How I study for the checkride oral: written notes, ground school, my own study notes, a keyword cheat sheet, and practicing out loud."
 tags: [checkride, oral-exam, study-method, PPL, IR, CPL, ACS, ground-school]
 ---
 
 ## Intro
-> **Where do I even start studying for the oral?**
+> If you're preparing for the PPL oral, see my [Private Pilot Checkride Oral Cheat Sheet]({% post_url 2025-02-02-private-pilot-checkride-oral-cheat-sheet-quick-review %}) for the end result.
+
+**Where do I even start studying for the oral?**
 
 - That was the hardest part of my PPL. I was willing to put in the work, but I had no idea what to study, how deep to go, or how much ground to cover.
 - After a lot of trial and error, I landed on a method I've used ever since, for my IR, CPL, and now CFI.
