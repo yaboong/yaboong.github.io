@@ -114,7 +114,7 @@ The author assumes no liability for errors or omissions in the content.
 - **safety belts** ([91.105](https://www.ecfr.gov/current/title-14/section-91.105), [91.107](https://www.ecfr.gov/current/title-14/section-91.107)): crew[cruise:belt,TOL:+harness], passenger[cruise:x,TOL:belt], exception[2yrs-old↓,parachuting], PIC briefing (how to fasten/unfasten)
 - **alcohol & drug**: [4,8,16], 0.04<↓, no within 8hrs, 1oz→3hrs, can remain 16hrs
 - **supplemental oxygen**([91.211](https://www.ecfr.gov/current/title-14/chapter-I/subchapter-F/part-91/subpart-C/section-91.211)): unpressurized?→12500<(min-crew,30min+)≤14000, 14000>min-crew, 15000>occupant provided, hypoxia
-- **right-of-way** ([91.113](https://www.ecfr.gov/current/title-14/section-91.113), [91.115](https://www.ecfr.gov/current/title-14/section-91.115)): distress > BGTS > engine, head-on→right, being over taken?→right-of-way, overtaking?→right, final>lower>ground
+- **right-of-way** ([91.113](https://www.ecfr.gov/current/title-14/section-91.113), [91.115](https://www.ecfr.gov/current/title-14/section-91.115)): distress > BGTS (balloon > glider > towing/refueling > airship) > engine, head-on→right, being over taken?→right-of-way, overtaking?→right, final>lower>ground
 - **speed limit** ([91.117](https://www.ecfr.gov/current/title-14/section-91.117)): class B VFR corridor 200kts↓, any 10000MSL↓→250kts↓
 - **SVFR** ([91.157](https://www.ecfr.gov/current/title-14/section-91.157)): below VFR [ceiling<1000, vis<3] but [CoC, vis≥1] unless NO-SVFR, controlled airspace below 10000MSL?→ATC clearance
 - **maintenance type**: major, alteration, repair, preventive
@@ -1093,10 +1093,18 @@ The author assumes no liability for errors or omissions in the content.
 #### Human Factors
 
 - **IMSAFE, PAVE**
-- *carbon monoxide (CO, mono- means 1), carbon dioxide (CO2, di- means 2)
-- **hypoxia**: oxygen deficiency body cells, 12000↑, hypoxic(altitude), hypemic(anemia/carbon monoxide poisoning→inability to carry oxygen), histotoxic(alcohol/drugs→inability to use oxygen), stagnant(G), [euphoria/dizziness/headache/tunnel-vision], sol[oxygen-mask/pressurization]
+  - IMSAFE (personal checklist): Illness, Medication, Stress, Alcohol (8hr bottle to throttle, BAC<0.04), Fatigue, Emotion/Eating
+  - PAVE (risk assessment): Pilot (IMSAFE, recency, proficiency), Aircraft (airworthiness, performance, fuel, equipment), enVironment (weather, terrain, airport/runway, airspace, day/night), External pressures (schedule, passengers, get-there-itis)
+- **hypoxia**: oxygen deficiency body cells, 12000↑
+  - hypoxic: altitude (low partial pressure of O2)
+  - hypemic: anemia/carbon monoxide poisoning → inability to carry oxygen
+  - histotoxic: alcohol/drugs → inability to use oxygen
+  - stagnant: poor blood circulation → G-force (blood pools away from the brain in steep turns/pull-ups), cold, shock
+  - symptoms: euphoria/dizziness/headache/tunnel-vision
+  - sol: oxygen-mask/pressurization
 - **oxygen (unpressurized cabin)**: above 12.5~14 (crew must use after 30min), above 14 (crew entire time), above 15 (each occupants provided), FAA[10000day/5000night]
 - **carbon monoxide poisoning**: [colorless/odorless] exhaust fumes, prevents red blood cells carrying oxygen, symptom[exhaust-smell/dizziness/headache/blurred-vision], sol[heat-off/vents-open/land ASAPoss]
+  - carbon monoxide (CO, mono- means 1), carbon dioxide (CO2, di- means 2)
 - **hyperventilation**: not enough carbon dioxide in blood, excessive breathing, [dizziness/headache/suffocation/muscle-spasms], sol [talk/loud/paperbag]
 - **hypothermia**: body [loses heat > produce heat]
 - **middle ear & sinus blockage**: congestion block pressure equalization climb/descend, symp[ear pain/facial pressure], sol [avoid flying/valsalva/yawn/chew-gums/eat]

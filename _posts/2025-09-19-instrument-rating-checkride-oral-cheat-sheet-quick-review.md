@@ -50,7 +50,15 @@ The author assumes no liability for errors or omissions in the content.
 
 ## Human Factors & ADM
 - **IMSAFE, PAVE**: [FAA Personal Minimums Checklist](https://www.faasafety.gov/files/gslac/courses/content/28/212/Personal%20Minimums%20Checklist.pdf)
-- **hypoxia**: oxygen deficiency in body cells, 12000↑, hypoxic(altitude), hypemic(carbon monoxide poisoning/anemia), histotoxic(alcohol/drugs), stagnant(G-force), dizziness/headache
+  - IMSAFE (personal checklist): Illness, Medication, Stress, Alcohol (8hr bottle to throttle, BAC<0.04), Fatigue, Emotion/Eating
+  - PAVE (risk assessment): Pilot (IMSAFE, recency, proficiency), Aircraft (airworthiness, performance, fuel, equipment), enVironment (weather, terrain, airport/runway, airspace, day/night), External pressures (schedule, passengers, get-there-itis)
+- **hypoxia**: oxygen deficiency in body cells, 12000↑
+  - hypoxic: altitude (low partial pressure of O2)
+  - hypemic: anemia/carbon monoxide poisoning → inability to carry oxygen
+  - histotoxic: alcohol/drugs → inability to use oxygen
+  - stagnant: poor blood circulation → G-force (blood pools away from the brain in steep turns/pull-ups), cold, shock
+  - symptoms: euphoria/dizziness/headache/tunnel-vision
+  - sol: oxygen-mask/pressurization
 - **carbon monoxide poisoning**: exhaust fumes, [dizziness/headache], solution [heat-off/vents-open/land ASAPoss]
 - **hyperventilation**: excessive breathing, [dizziness/headache], solution [talk/loud/paperbag]
 - **body system**
