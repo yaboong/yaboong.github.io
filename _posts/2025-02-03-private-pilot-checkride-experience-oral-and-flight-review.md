@@ -10,8 +10,6 @@ tags: [checkride, oral-exam, PPL, ACS, DPE, scenario-based]
 ---
 
 ## Intro
-> **It wasn't a test of how much I had memorized. It was a test of whether I could use it.**
-
 * This is a review of my Private Pilot checkride: what the DPE asked, how I answered, and what I learned.
 * The answers below are what I actually said during the exam, not necessarily the correct ones. Where I got something wrong, I added the correct answer as a note.
 * For a keyword review of the oral topics, see my [Private Pilot Checkride Oral Cheat Sheet]({% post_url 2025-02-02-private-pilot-checkride-oral-cheat-sheet-quick-review %}). For how I study for the oral, see [How I Prepare for the Checkride Oral]({% post_url 2026-06-14-how-I-prepare-for-checkride-oral %}).
