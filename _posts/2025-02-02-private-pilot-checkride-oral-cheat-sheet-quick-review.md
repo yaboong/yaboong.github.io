@@ -490,7 +490,7 @@ The author assumes no liability for errors or omissions in the content.
 
 - **READ**: [runways (PilotInstitute)](https://pilotinstitute.com/runway-markings-explained/), [signs (PilotInstitute)](https://pilotinstitute.com/runway-signs-explained/), [ILS critical (boldmethod)](https://www.boldmethod.com/learn-to-fly/regulations/ils-critical-area/), [[AIM] Section3. Airport Marking Aids and Signs](https://www.faa.gov/air_traffic/publications/atpubs/aim_html/chap2_section_3.html)
 - **airport beacon**: active[night(ss-sr) or weather<VFR], lights[w/g(civil), w/w/g(military), w/y(water), w/g/y(heli)]
-  - <details><summary><u>image: airport beacon</u></summary><a href="/posts_image/2026-10-21/cpl/07-airport-01.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/07-airport-01.jpg" alt="airport beacon" loading="lazy"/></a></details>
+  - <details><summary><u>image: airport beacon</u> - <a href="https://pilotinstitute.com/" target="_blank">PilotInstitute</a></summary><a href="/posts_image/2026-10-21/cpl/07-airport-01.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/07-airport-01.jpg" alt="airport beacon" loading="lazy"/></a></details>
 - **light gun signals**: in-flight[steady-G:cleared land, flashing-G:return(pattern), steady-R:circle, flashing-R: don’t land]
   - <details><summary><u>image: PHAK</u></summary><a href="/posts_image/2026-10-21/cpl/07-airport-02.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/07-airport-02.jpg" alt="PHAK" loading="lazy"/></a></details>
 - **airport types**: towered/un-towered→civil/military/private, SIDA(security identification display area)
@@ -508,6 +508,7 @@ The author assumes no liability for errors or omissions in the content.
 - **control lighting**: towered (ATC controls), non-towered [radio click in 5 sec: 7, 5, 3]
 - **traffic pattern**: 1000ftAGL, call 10mile, entry-downwind, dep-straight/45°, non-towered(overfly 1500ftAGL→wind indicator→rwy→teardrop/midfield)
   - <details><summary><u>image: AIM FIG 4-3-1</u></summary><a href="/posts_image/2026-10-21/cpl/07-airport-05.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/07-airport-05.jpg" alt="AIM FIG 4-3-1" loading="lazy"/></a></details>
+  - **READ**: [Departure vs. Upwind Leg in the Traffic Pattern]({% post_url 2025-10-18-upwind-leg-departure-leg-AIM-updates %})
 - **wind direction indicators**: wind sock(cone), tetrahedron, wind tee, segmented circle
   - <details><summary><u>image: wind direction indicators</u></summary><a href="/posts_image/2026-10-21/cpl/07-airport-06.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/07-airport-06.jpg" alt="wind direction indicators" loading="lazy"/></a><a href="/posts_image/2026-10-21/cpl/07-airport-07.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/07-airport-07.jpg" alt="wind direction indicators" loading="lazy"/></a></details>
 - **wake turbulence**: lift creates vortices, greatest when [heavy/clean/slow], runway [rotate-before/stay-above/land-beyond], sink rate (000ft/min), affects 500-1000ft below, worst when light quatering tailwind (takeoff rwy4 after B737, wind 180@5), wingtip voritices drift at the same speed with the wind
