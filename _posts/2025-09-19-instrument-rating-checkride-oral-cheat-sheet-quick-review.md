@@ -450,17 +450,54 @@ The author assumes no liability for errors or omissions in the content.
   - LPV: requires WAAS, GPS based, no temperature error
   - LNAV/VNAV: non-WAAS ok, GPS + baro-VNAV based → temperature error  
 
-<details><summary><u>Approach Chart</u></summary>
-{% include image_caption_href.html title="Approach Chart" caption="Approach Chart" imageurl="/yaboong-blog-static-resources/aviation/approach-chart.png" %}'
-</details>
+## Summary of Approach Types
 
-<details><summary><u>RVR</u></summary> 
+| Approach | Category | Minima | Vertical guidance | Required equipment | If vertical guidance is lost |
+|----------|----------|--------|-------------------|--------------------|------------------------------|
+| **ILS** | Precision | DA | GS (ground antenna) | ILS receiver (LOC + GS) | Reverts to LOC: use LOC minima if published. Past the FAF, go missed (common practice) |
+| **GLS** | Precision | DA | GP (GPS + GBAS) | GLS avionics, GBAS at the airport | Go missed |
+| **LPV** | APV | DA | GP (WAAS) | **WAAS required**. No temperature error | Go missed, or LNAV minima (see below) |
+| **LNAV/VNAV** | APV | DA | GP (WAAS or baro-VNAV) | **WAAS not required**: WAAS-VNAV or baro-VNAV. Less precise than LPV, baro → temperature error | Go missed, or LNAV minima (see below) |
+| **LP** | Non-precision | MDA | None | **WAAS required** (LP-capable receiver) | N/A |
+| **LOC** | Non-precision | MDA | None | LOC receiver, ground facility | N/A |
+| **LNAV** | Non-precision | MDA | None | **Any IFR-approved GPS**, WAAS not needed | N/A |
+| **LP+V** | Non-precision | MDA | Advisory only | **WAAS required** (same as LP) | Continue, advisory only |
+| **LNAV+V** | Non-precision | MDA | Advisory only | **WAAS not required**: +V with WAAS or baro-VNAV avionics | Continue, advisory only |
+
+- **signal source**
+  - ground facility: ILS (localizer + glideslope antenna), LOC (localizer)
+  - GPS: LPV, LNAV/VNAV, LP, LNAV
+  - GPS + computed advisory path: LP+V, LNAV+V
+- **GPS equipment**
+  - non-WAAS (TSO-C129, C196): RAIM required → RAIM not available? cannot fly the RNAV (GPS) approach
+  - WAAS (TSO-C145, C146): WAAS provides integrity
+- **vertical guidance lost on LPV or LNAV/VNAV**: receiver does not “fail down” on its own once the approach is active
+  - vertical flag only → may use LNAV minima, if your operating rules allow changing approach type after commencing
+  - no LNAV minima, or already below them → go missed
+- **Baro-VNAV vs +V**
+  - **Baro-VNAV**: FMS function, altimeter setting + GPS lateral position → computes descent path, mainly for LNAV/VNAV. Considered part of the navigation equipment on approved procedures, but altimeter-based → temperature error (cold temperature airport X, altitude correction, snowflake on chart)
+  - **+V**: descent path computed by GPS navigator, added to LP or LNAV for situational awareness only. Not a line of minima on the chart (fly the LP or LNAV line) → MDA and step-down altitudes still apply
+- **type notes**
+  - **ILS**: glideslope normally 3°
+  - **LPV**: WAAS required (GNSS + WAAS/SBAS). ILS-like approach, WAAS-based vertical guidance → not affected by temperature
+  - **LNAV/VNAV**: WAAS can be used but is not required, needs WAAS-based VNAV or baro-VNAV. Less precise than LPV
+    - flown with baro-VNAV → very low or high temperature (especially cold) can cause vertical error → chart note “For uncompensated Baro-VNAV systems, LNAV/VNAV NA below __°C or above __°C” (usually in the briefing section). Doesn’t apply when flown with WAAS
+  - **LP**: localizer-like lateral guidance with no ground equipment, more precise than LNAV. Published where terrain or obstacles prevent LPV. Receivers certified before TSO-C145b/C146b don’t support LP (check AFM)
+- **flags**: red flag or X = data invalid, do not use
+  - GS/GP flag → vertical guidance lost, see table
+  - PFD red X (airspeed/attitude/altitude/heading fail) → sensor failure, use backup instruments
+
+{% include image_caption_href.html title="PFD red X" caption="PFD red X" width="320px" imageurl="/yaboong-blog-static-resources/aviation/pfd-red-x.png" %}
+
+## Approach Chart
+{% include image_caption_href.html title="Approach Chart" caption="Approach Chart" imageurl="/yaboong-blog-static-resources/aviation/approach-chart.png" %}
+
+<details><summary><u>RVR (5420/40 = minimum 5420 ft MSL, RVR 4000 ft: charted in hundreds of feet)</u></summary>
 {% include image_caption_href.html title="RVR" caption="RVR" imageurl="/yaboong-blog-static-resources/aviation/rvr.png" %}
 </details>
 
-<details><summary><u>Approach Lighting System</u></summary> 
+## Approach Lighting System
 {% include image_caption_href.html title="Approach Lighting System" caption="Approach Lighting System" imageurl="/yaboong-blog-static-resources/aviation/ALS.png" %}
-</details>
 
 ## Airspace & IFR Low Chart
 - **special user airspace**: MCPRAWN
