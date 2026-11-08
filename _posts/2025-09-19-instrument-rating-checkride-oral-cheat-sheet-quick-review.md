@@ -437,7 +437,7 @@ The author assumes no liability for errors or omissions in the content.
   - **precision**: ILS, MLS, PAR, GLS, TLS → lateral & vertical guidance to DA
   - **non-precision**: VOR, LOC, RNAV/RNP to LNAV or LP Minima, LDA, SDF, ASR, NDB → lateral only to MDA, step-down
     - NDB, VOR, LOC: may use IFR-certified GPS as primary source until the FAF
-  - **APV**: prevision-like, to DA, with vertical guidance but doesn’t meet precision standard
+  - **APV**: precision-like, to DA, with vertical guidance but doesn’t meet precision standard
     - LDA with Glide Slope, LPV, LNAV/VNAV
 - **other types of approach:** circling/visual/contact/radar-vectors/parallel/GLS
   - **circling**: course alignment↔rwy center exceeds 30°, approach name not include rwy (VOR/DME-B), remain 1.3NM (for category A) radius of all runways (B1.5, C1.7, D2.3, E4.5) for procedures before late 2012, Ⓒ on chart → expanded radii (vary by category & MSL circling alt), visual ref lost while circling? (climbing turn to landing rwy → continue turn until established on missed course)
