@@ -1268,3 +1268,48 @@ h3.with-badges .cert-badges {
 .gallery-modal-next {
     right: 8px;
 }
+
+/* Sidebar table of contents */
+.widget-toc[hidden] {
+    display: none;
+}
+
+.widget-recent-posts .toc-list li {
+    margin-bottom: 8px;
+}
+
+.widget-recent-posts .toc-list a {
+    font-size: 14px;
+}
+
+.widget-recent-posts .toc-list a.is-active {
+    color: $picton-blue;
+    font-weight: 700;
+}
+
+/* The sidebar floats and ends with its own content, so stretch it to the
+   article's height to let the table of contents follow the scroll. */
+@media only screen and (min-width: 961px) {
+    .inner.has-toc {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .inner.has-toc:before,
+    .inner.has-toc:after {
+        display: none;
+    }
+
+    .inner.has-toc > .site-main,
+    .inner.has-toc > .sidebar {
+        float: none;
+        min-width: 0;
+    }
+
+    .widget-toc {
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+        position: sticky;
+        top: 20px;
+    }
+}

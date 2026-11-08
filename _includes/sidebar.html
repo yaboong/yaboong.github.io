@@ -72,8 +72,12 @@
         </div><!-- .tagcloud -->
     </section><!-- .widget -->
 
-
-
+    {% if page.layout == 'post' or page.layout == 'cfi_lesson' %}
+    <section class="widget widget-recent-posts widget-toc" hidden>
+        <h2 class="widget-title">On This Page</h2>
+        <ul class="toc-list"></ul>
+    </section><!-- .widget-toc -->
+    {% endif %}
 
     {% comment %} Tags widget hidden (too long); /tags/ page still exists {% endcomment %}
     {% comment %}

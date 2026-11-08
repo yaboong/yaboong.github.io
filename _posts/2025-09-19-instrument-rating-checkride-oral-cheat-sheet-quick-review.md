@@ -409,6 +409,13 @@ The author assumes no liability for errors or omissions in the content.
 </details>
 
 
+## Approach Chart
+{% include image_caption_href.html title="Approach Chart" caption="Approach Chart" imageurl="/yaboong-blog-static-resources/aviation/approach-chart.png" %}
+
+<details><summary><u>RVR (5420/40 = minimum 5420 ft MSL, RVR 4000 ft: charted in hundreds of feet)</u></summary>
+{% include image_caption_href.html title="RVR" caption="RVR" imageurl="/yaboong-blog-static-resources/aviation/rvr.png" %}
+</details>
+
 ## Approach
 - **stabilized approach**: landing config, on profile, airspeed±10, descent rate 500~700 (no more than 1000), optimal RPM
 - **chart reading**: TDZE(highest in first 3000’), THRE(threshold elev.), MSA(guarantees 1000’ obs. clear. within 25NM radius, no sig coverage), TCH (threshold crossing height)
@@ -488,13 +495,6 @@ The author assumes no liability for errors or omissions in the content.
   - PFD red X (airspeed/attitude/altitude/heading fail) → sensor failure, use backup instruments
 
 {% include image_caption_href.html title="PFD red X" caption="PFD red X" width="320px" imageurl="/yaboong-blog-static-resources/aviation/pfd-red-x.png" %}
-
-## Approach Chart
-{% include image_caption_href.html title="Approach Chart" caption="Approach Chart" imageurl="/yaboong-blog-static-resources/aviation/approach-chart.png" %}
-
-<details><summary><u>RVR (5420/40 = minimum 5420 ft MSL, RVR 4000 ft: charted in hundreds of feet)</u></summary>
-{% include image_caption_href.html title="RVR" caption="RVR" imageurl="/yaboong-blog-static-resources/aviation/rvr.png" %}
-</details>
 
 ## Approach Lighting System
 {% include image_caption_href.html title="Approach Lighting System" caption="Approach Lighting System" imageurl="/yaboong-blog-static-resources/aviation/ALS.png" %}
