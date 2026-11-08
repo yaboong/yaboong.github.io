@@ -456,10 +456,10 @@ The author assumes no liability for errors or omissions in the content.
     - → pilot and front seat: 80.5 → distance from the datum is 80.5 inch
   - station: location of an object in relationship to the datum (similar to the arm)
   - moment: weight * arm (distance from the reference point)
-  - SEW (standard empty weight): airplane + unusable fuel(2lbs) + operating fluids(oil)
+  - SEW (standard empty weight): airplane + unusable fuel(2gal) + operating fluids(oil)
   - BEW (basic empty weight): SEW + optional equipment
   - MGW (max gross weight): BEW + max useful load
-  - useful load: piot + passengers + cargo + usable fuel (MTOW-BEW)
+  - useful load: pilot + passengers + cargo + usable fuel (MTOW-BEW)
   - MTOW (max takeoff weight): max weight for safe takeoff
   - MRW (max ramp weight): max weight on ground (including fuel before start-up←can be higher than MTOW←fuel burn during taxi)
   - ZFW (zero fuel weight): BEW + payload(passengers+cargo)
@@ -467,12 +467,11 @@ The author assumes no liability for errors or omissions in the content.
     - Not for PA-28-161
 - **taildown force & drag**: GA aircraft → CL(center of lift) is located aft of CG
   - lift generated → nose-down moment → counteract? → taildown force↑ → nose-up
-    - <details><summary><u>image: lift generated → nose-down moment → counteract? → taildown f</u></summary><a href="/posts_image/2026-10-21/cpl/06-performance-w-b-03.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/06-performance-w-b-03.jpg" alt="lift generated → nose-down moment → counteract? → taildown f" loading="lazy"/></a></details>
+    - <details><summary><u>image: tail-down force (PHAK Figure 6-10)</u></summary><a href="/posts_image/2026-10-21/cpl/06-performance-w-b-03.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/06-performance-w-b-03.jpg" alt="Tail-down force" loading="lazy"/></a></details>
   - total lift (at CL) = aircraft weight + taildown force
   - taildown force↑→lift↑→induced drag↑ (vice versa)
-- **CG**: always located forward of the CL (both aft CG and forward CG)
-- **aft CG**: CG/CL closer→nose-up→↓taildown force→wing load↓→stall speed↓
-- (critical AoA is reached at a lower airspeed due to decreased wing loading)
+- **CG**: normally located forward of the CL, within limits (both aft CG and forward CG)
+- **aft CG**: CG/CL closer→nose-up→↓taildown force→wing load↓→stall speed↓ (critical AoA is reached at a lower airspeed due to decreased wing loading)
   - ↓taildown force→req lift↓→AoA↓→induced drag↓
   - pros) stall speed↓,cruise speed↑,fuel efficiency↑,range↑,takeoff roll↓
   - cons) stability↓,control efficiency↓(harder stall recovery),over rotation/flare on TO/L
@@ -483,7 +482,7 @@ The author assumes no liability for errors or omissions in the content.
   - cons) stall speed↑,cruise speed↓,fuel efficiency↓,range↓,takeoff roll↑,flare difficult
   - key) ↑stall speed, but easier to recover
 - **aft CG vs forward CG**
-  - <details><summary><u>image: PHAK 5-43</u></summary><a href="/posts_image/2026-10-21/cpl/06-performance-w-b-04.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/06-performance-w-b-04.jpg" alt="PHAK 5-43" loading="lazy"/></a></details>
+  - <details><summary><u>image: PHAK Figure 5-63</u></summary><a href="/posts_image/2026-10-21/cpl/06-performance-w-b-04.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/06-performance-w-b-04.jpg" alt="PHAK Figure 5-63" loading="lazy"/></a></details>
 
 ## Airport
 

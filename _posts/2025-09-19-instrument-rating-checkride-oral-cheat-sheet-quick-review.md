@@ -530,10 +530,42 @@ The author assumes no liability for errors or omissions in the content.
 - **off airways navigation**: VOR only & below 18000ft ? → max distance between NAVAIDs = 80NM
 
 ## W/B
-- **forward**: CG toward nose (stable)
-  - ↑stable(↓maneuverable), stall↑, TOL roll↑, cruise effi↓
-  - returns to level flight easily, harder to raise the nose, need↑elevator force
-- **aft**: CG toward tail (maneuverable)
-  - ↑maneuverable(↓stable), stall↓, TOL roll↓, cruise effi↑fuel↑
-  - less stable, more likely to pitch up, less elevator force is needed
-
+- **W/B**: total weight & location of CG, over[weight/CG]→control↓→accident, read AFM/POH
+- **W/B terms**
+  - **CG (center of gravity)**: point where weight is applied (balance point), must remain within limit(=envelope), “Total Moment ÷ Total Weight”
+  - **CP (center of pressure=CL)**: point where lift is applied (informal: "center of lift")
+  - **CG range**: distance between the CG limits
+  - **datum**: imaginary vertical line from which all arms are measured → reference point to measure arm
+  - **arm**: distance from the datum to where the weight (force) is applied (PA-28-161 front seats: 80.5 → 80.5 inches from the datum)
+  - **station**: location of an object in relationship to the datum (similar to the arm)
+  - **moment**: weight * arm (distance from the reference point)
+- **weights**
+  - **SEW (standard empty weight)**: airplane + unusable fuel + operating fluids(oil)
+  - **BEW (basic empty weight)**: SEW + optional equipment
+  - **useful load**: pilot + passengers + cargo + usable fuel (MTOW-BEW)
+  - **MGW (max gross weight)**: BEW + max useful load
+  - **MTOW (max takeoff weight)**: max weight for safe takeoff
+  - **MRW (max ramp weight)**: max weight on ground (including fuel before start-up←can be higher than MTOW←fuel burn during taxi)
+  - **ZFW (zero fuel weight)**: BEW + payload(passengers+cargo)
+    - ZFW limit: structural limit to prevent wing root stress in flight, not for PA-28-161
+- **weight & performance**
+  - **climb**: weight↑→require lift↑→induced drag↑→require thrust↑→reserved thrust for climb↓→climb performance↓
+  - **takeoff**: gross weight10%↑→causes[takeoff velocity5%↑, rate of acceleration 9%↓, takeoff distance 21-22%↑(high thrust-to-weight aircraft), takeoff distance 25-30%↑(low thrust-to-weight aircraft)]
+  - **landing**: gross weight10%↑→causes[landing velocity5%↑,landing distance10%↑]
+- **taildown force & drag**: GA aircraft → CG normally forward of CL (both aft CG and forward CG, within limits)
+  - lift generated → nose-down moment → counteract? → taildown force↑ → nose-up
+  - total lift (at CL) = aircraft weight + taildown force
+  - taildown force↑→lift↑→induced drag↑ (vice versa)
+  - <details><summary><u>image: tail-down force (PHAK Figure 6-10)</u></summary><a href="/posts_image/2026-10-21/cpl/06-performance-w-b-03.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/06-performance-w-b-03.jpg" alt="Tail-down force" loading="lazy"/></a></details>
+- **forward CG**: CG toward nose, CG/CL farther→nose-down→↑taildown force→wing load↑→stall speed↑ (critical AoA is reached at a higher airspeed due to increased wing loading)
+  - ↑taildown force→req lift↑→AoA↑→induced drag↑
+  - pros) stability↑(returns to level flight easily),control efficiency↑(easier stall recovery)
+  - cons) stall speed↑,cruise speed↓,fuel efficiency↓,range↓,takeoff roll↑,harder to raise the nose(need↑elevator force),flare difficult
+  - key) ↑stall speed, but easier to recover
+- **aft CG**: CG toward tail, CG/CL closer→nose-up→↓taildown force→wing load↓→stall speed↓ (critical AoA is reached at a lower airspeed due to decreased wing loading)
+  - ↓taildown force→req lift↓→AoA↓→induced drag↓
+  - pros) stall speed↓,cruise speed↑,fuel efficiency↑,range↑,takeoff roll↓,more maneuverable(less elevator force needed)
+  - cons) stability↓(more likely to pitch up),control efficiency↓(harder stall recovery),over rotation/flare on TO/L
+  - key) ↓stall speed, but harder to recover
+- **aft CG vs forward CG**
+  - <details><summary><u>image: PHAK Figure 5-63</u></summary><a href="/posts_image/2026-10-21/cpl/06-performance-w-b-04.jpg" target="_blank"><img src="/posts_image/2026-10-21/cpl/06-performance-w-b-04.jpg" alt="Aft CG vs forward CG" loading="lazy"/></a></details>
