@@ -1,0 +1,26 @@
+{% assign checkride_posts = site.posts | where_exp: "post", "post.checkride" | sort: "date" %}
+<section class="checkride-hero" aria-labelledby="checkride-hero-title">
+    <p class="checkride-hero-eyebrow">Checkride Prep &amp; Gouge</p>
+    <h2 class="checkride-hero-title" id="checkride-hero-title">Getting ready for a checkride?</h2>
+    <p class="checkride-hero-lead">Oral cheat sheets and real checkride reviews, from PPL to CPL.</p>
+    <div class="checkride-hero-grid">
+        {% for group in site.checkride_groups %}{% if group.key != "General" %}
+        <div class="checkride-hero-card">
+            <div class="checkride-hero-key">{{ group.key }}</div>
+            <div class="checkride-hero-label">{{ group.label | split: " (" | first }}</div>
+            <ul>
+                {% for post in checkride_posts %}{% if post.checkride == group.key %}
+                {% assign link_text = post.short_title | default: post.title | remove_first: group.key | strip %}
+                <li><a href="{{ site.baseurl }}{{ post.url }}"{% if link_text contains "Cheat Sheet" %} class="is-primary"{% endif %}>{% assign link_words = link_text | split: " " %}{% if link_words.size > 1 %}<span class="checkride-hero-word">{{ link_words | first }} </span>{{ link_words | shift | join: " " }}{% else %}{{ link_text }}{% endif %} <span class="checkride-hero-arrow" aria-hidden="true">&rarr;</span></a></li>
+                {% endif %}{% endfor %}
+            </ul>
+        </div>
+        {% endif %}{% endfor %}
+    </div>
+    <div class="checkride-hero-footer">
+        {% for post in checkride_posts %}{% if post.checkride == "General" %}
+        <a class="checkride-hero-start" href="{{ site.baseurl }}{{ post.url }}">New here? Start with: {{ post.short_title | default: post.title }}</a>
+        {% break %}{% endif %}{% endfor %}
+        <a class="checkride-hero-all" href="{{ site.baseurl }}/checkride/">All checkride posts &rarr;</a>
+    </div>
+</section><!-- .checkride-hero -->

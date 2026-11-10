@@ -4,6 +4,7 @@ layout: default
 <div class="site-content">
     <div class="inner">
         <main class="site-main"> 
+            {% if paginator.page == 1 %}{% include checkride_hero.html %}{% include navlog_promo.html %}{% endif %}
             {% for post in paginator.posts %}
             {% unless post.unlisted %}
             <article class="post">

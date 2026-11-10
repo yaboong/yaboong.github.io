@@ -1313,3 +1313,274 @@ h3.with-badges .cert-badges {
         top: 20px;
     }
 }
+
+/* Home: Checkride Prep & Gouge banner (flat, matches the post cards) */
+.checkride-hero {
+    background-color: $white;
+    margin-bottom: 60px;
+    padding: 0 40px 32px;
+}
+
+.checkride-hero-eyebrow {
+    background-color: $picton-blue;
+    color: $white;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0 0 24px;
+    padding: 10px 16px;
+    text-transform: uppercase;
+}
+
+.checkride-hero-title {
+    color: $mine-shaft;
+    font-size: 28px;
+    line-height: 1.25;
+    margin: 0 0 6px;
+}
+
+.checkride-hero-lead {
+    color: $gray;
+    margin: 0 0 24px;
+}
+
+.checkride-hero-grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.checkride-hero-card {
+    border: 1px solid $gallery;
+    border-top: 3px solid $picton-blue;
+    padding: 18px 20px 20px;
+}
+
+.checkride-hero-key {
+    color: $picton-blue;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.checkride-hero-label {
+    color: $gray;
+    font-size: 13px;
+    margin: 6px 0 10px;
+}
+
+.checkride-hero-card ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.checkride-hero-card li {
+    margin: 0;
+    padding: 0;
+}
+
+.checkride-hero-card li + li {
+    margin-top: 8px;
+}
+
+.checkride-hero-card a,
+.checkride-hero-footer a {
+    text-decoration: none;
+}
+
+.checkride-hero-card a {
+    background-color: lighten( $picton-blue, 43% );
+    color: darken( $picton-blue, 22% );
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 11px 14px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.checkride-hero-card a:hover {
+    background-color: $picton-blue;
+    color: $white;
+}
+
+.checkride-hero-card a.is-primary {
+    background-color: $picton-blue;
+    color: $white;
+}
+
+.checkride-hero-card a.is-primary:hover {
+    background-color: lighten( $picton-blue, 43% );
+    color: darken( $picton-blue, 22% );
+}
+
+.checkride-hero-footer a:hover {
+    color: $picton-blue;
+}
+
+.checkride-hero-footer {
+    border-top: 1px solid $gallery;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14px;
+    gap: 10px 24px;
+    justify-content: space-between;
+    margin-top: 24px;
+    padding-top: 18px;
+}
+
+.checkride-hero-footer a {
+    color: $gray;
+}
+
+.checkride-hero-footer a.checkride-hero-all {
+    color: $picton-blue;
+    font-weight: 700;
+}
+
+.checkride-hero-footer a.checkride-hero-start {
+    color: $picton-blue;
+}
+
+.checkride-hero-footer a.checkride-hero-start:hover {
+    color: $gray;
+}
+
+@media only screen and (max-width: 640px) {
+    .checkride-hero {
+        margin-bottom: 30px;
+        padding: 0 20px 24px;
+    }
+
+    .checkride-hero-title {
+        font-size: 22px;
+    }
+
+    .checkride-hero-lead {
+        margin-bottom: 16px;
+    }
+
+    /* Compact rows on phones: key on the left, the two links side by side */
+    .checkride-hero-grid {
+        gap: 8px;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .checkride-hero-card {
+        align-items: center;
+        border-top-width: 1px;
+        border-left: 3px solid $picton-blue;
+        display: flex;
+        gap: 10px;
+        padding: 8px;
+    }
+
+    .checkride-hero-key {
+        flex: 0 0 44px;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    /* Shorter link text on phones: "Cheat Sheet", "Review" */
+    .checkride-hero-label,
+    .checkride-hero-word,
+    .checkride-hero-arrow {
+        display: none;
+    }
+
+    .checkride-hero-card ul {
+        display: grid;
+        flex: 1;
+        gap: 6px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .checkride-hero-card li + li {
+        margin-top: 0;
+    }
+
+    .checkride-hero-card a {
+        font-size: 14px;
+        padding: 9px 6px;
+        text-align: center;
+        white-space: nowrap;
+    }
+}
+
+/* Home: NavLog tool promo strip (same flat style as the checkride banner) */
+.navlog-promo {
+    align-items: center;
+    background-color: $white;
+    border-left: 4px solid $picton-blue;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin: -30px 0 60px;
+    padding: 22px 30px;
+}
+
+.navlog-promo-text {
+    min-width: 0;
+}
+
+.navlog-promo-eyebrow {
+    color: $picton-blue;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 0 0 4px;
+    text-transform: uppercase;
+}
+
+.navlog-promo-title {
+    color: $mine-shaft;
+    font-size: 20px;
+    line-height: 1.3;
+    margin: 0 0 4px;
+}
+
+.navlog-promo-features {
+    color: $gray;
+    font-size: 14px;
+    margin: 0;
+}
+
+.navlog-promo-button {
+    background-color: $picton-blue;
+    color: $white;
+    flex: 0 0 auto;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 12px 18px;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.navlog-promo-button:hover {
+    background-color: lighten( $picton-blue, 43% );
+    color: darken( $picton-blue, 22% );
+}
+
+@media only screen and (max-width: 640px) {
+    .navlog-promo {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 12px;
+        margin: -15px 0 30px;
+        padding: 16px 20px;
+    }
+
+    .navlog-promo-title {
+        font-size: 17px;
+    }
+
+    .navlog-promo-features {
+        font-size: 13px;
+    }
+
+    .navlog-promo-button {
+        text-align: center;
+    }
+}
