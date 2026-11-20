@@ -3,8 +3,9 @@ layout: page
 title: CFI Lesson Plan
 description: CFI lesson plans organized by the Flight Instructor ACS areas of operation and tasks.
 permalink: /cfi-lesson-plan/
-sitemap: false
 ---
+{% include cfi_disclaimer.html %}
+
 <h3>PPL Flight Training Syllabus</h3>
 <ul>
 <li><a href="https://docs.google.com/spreadsheets/d/1PgHlWjVPUzYFpK3sM6ImaRNLEAMM1uALF2Fr6-PcfFc/edit?usp=sharing" target="_blank" rel="noopener">PPL Syllabus &amp; 61.109 Tracker</a></li>
