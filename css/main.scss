@@ -63,6 +63,14 @@
 
 .site-navigation {
     background: lighten( $mine-shaft, 4% );
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Keep anchor jumps from landing under the sticky navigation bar */
+html {
+    scroll-padding-top: 64px;
 }
 
 .site-navigation .inner {
@@ -830,6 +838,8 @@ a.archive-top-link:hover {
         display: none;
         margin-left: -15px;
         margin-right: -15px;
+        max-height: calc(100vh - 50px);
+        overflow-y: auto;
         padding-left: 15px;
         padding-right: 15px;
     }
@@ -1307,10 +1317,10 @@ h3.with-badges .cert-badges {
     }
 
     .widget-toc {
-        max-height: calc(100vh - 40px);
+        max-height: calc(100vh - 90px);
         overflow-y: auto;
         position: sticky;
-        top: 20px;
+        top: 70px;
     }
 }
 

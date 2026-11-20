@@ -50,7 +50,7 @@
                 tocTicking = false;
                 var current = 0;
                 $tocHeadings.each(function(i) {
-                    if (this.getBoundingClientRect().top <= 80) { current = i; }
+                    if (this.getBoundingClientRect().top <= 100) { current = i; }
                 });
                 var $active = $tocLinks.removeClass('is-active').eq(current).addClass('is-active');
                 // Keep the highlighted link visible when the list itself scrolls
