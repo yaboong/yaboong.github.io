@@ -1594,3 +1594,28 @@ h3.with-badges .cert-badges {
         text-align: center;
     }
 }
+
+/* Back-to-top button: fixed bottom-right, shown once the page is scrolled */
+#top-link {
+    bottom: 24px;
+    margin: 0;
+    opacity: 0;
+    position: fixed;
+    right: 24px;
+    top: auto;
+    transition: opacity 0.3s, visibility 0.3s, box-shadow 0.3s;
+    visibility: hidden;
+    z-index: 999;
+}
+
+#top-link.is-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+@media only screen and (max-width: 640px) {
+    #top-link {
+        bottom: 16px;
+        right: 16px;
+    }
+}

@@ -23,8 +23,14 @@
             }
         });
 
-        // Scroll to top
-        $('#top-link').on('click', function(e) {
+        // Scroll to top: show the button only after scrolling down a bit
+        var $topLink = $('#top-link');
+        var toggleTopLink = function() {
+            $topLink.toggleClass('is-visible', $(window).scrollTop() > 400);
+        };
+        $(window).on('scroll', toggleTopLink);
+        toggleTopLink();
+        $topLink.on('click', function(e) {
             $('html, body').animate({'scrollTop': 0});
             e.preventDefault();
         });
