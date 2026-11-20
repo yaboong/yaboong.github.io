@@ -59,7 +59,7 @@ navigation:
   url: /checkride/
 - text: NavLog
   url: /navlog/
-- text: PPL Lessons
+- text: CFI Lesson Plan
   url: /cfi-lesson-plan/
 - text: ATC Tool
   url: /atc-tool/
