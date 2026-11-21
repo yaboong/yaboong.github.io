@@ -59,8 +59,8 @@ navigation:
   url: /checkride/
 - text: NavLog
   url: /navlog/
-- text: CFI Lesson Plan
-  url: /cfi-lesson-plan/
+# - text: CFI Lesson Plan   # hidden (page still at /cfi-lesson-plan/)
+#   url: /cfi-lesson-plan/
 - text: ATC Tool
   url: /atc-tool/
 - text: CS
@@ -129,6 +129,7 @@ defaults:
       type: cfi_lessons
     values:
       layout: cfi_lesson
+      sitemap: false  # hidden; set sitemap: true per lesson to expose one
 
 # for ffmpeg
 include:

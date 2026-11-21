@@ -3,6 +3,7 @@ layout: page
 title: CFI Lesson Plan
 description: CFI lesson plans organized by the Flight Instructor ACS areas of operation and tasks.
 permalink: /cfi-lesson-plan/
+sitemap: false
 ---
 {% include cfi_disclaimer.html %}
 
